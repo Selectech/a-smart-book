@@ -274,7 +274,7 @@ html, body
  * TW3Panel
  * ============================================= */
 
-.TW3Panel {
+.TW3Panel, TW3PanelBorderless {
   border:   2px solid #7c7a77;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
@@ -283,6 +283,10 @@ html, body
 	font-size: 12px;
   cursor: default;
 	background-color: #FFFFFF;
+}
+
+.TW3PanelBorderless {
+  border: 0px
 }
 
 /* =============================================
@@ -4961,6 +4965,99 @@ var TW3ListItem= {
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
    ,Invalidate:TW3CustomControl.Invalidate
 };
+/// TW3Button = class (TW3CustomControl)
+///  [line: 99, column: 3, file: w3ctrls]
+var TW3Button= {
+   $ClassName:"TW3Button",
+   $Parent:TW3CustomControl,
+   $Init:function ($) {
+      TW3CustomControl.$Init($);
+   }
+   /// function TW3Button.getCaption() : String
+   ///  [line: 1178, column: 20, file: w3ctrls]
+   ,getCaption$2:function(Self) {
+      var Result="";
+      if ($Check(Self,"").FHandle$3) {
+         Result=$Check(Self,"").FHandle$3.innerHTML.toString();
+      }
+      return Result
+   }
+   /// procedure TW3Button.setCaption(Value: String)
+   ///  [line: 1185, column: 21, file: w3ctrls]
+   ,setCaption$4:function(Self, Value$11) {
+      if ($Check(Self,"").FHandle$3) {
+         $Check(Self,"").FHandle$3.innerHTML=Value$11;
+      }
+   }
+   /// function TW3Button.makeElementTagObj() : THandle
+   ///  [line: 1173, column: 20, file: w3ctrls]
+   ,makeElementTagObj:function(Self) {
+      return w3_createHtmlElement("button");
+   }
+   /// procedure TW3Button.InitializeObject()
+   ///  [line: 1166, column: 21, file: w3ctrls]
+   ,InitializeObject:function(Self) {
+      TW3CustomControl.InitializeObject(Self);
+      TW3MovableControl.setWidth$1$($Check(Self,""),100);
+      TW3MovableControl.setHeight$($Check(Self,""),32);
+   }
+   ,Destroy:TW3TagObj.Destroy
+   ,makeElementTagId:TW3TagObj.makeElementTagId
+   ,makeElementTagObj$:function($){return $.ClassType.makeElementTagObj($)}
+   ,StyleTagObject:TW3CustomControl.StyleTagObject
+   ,AfterUpdate:TW3CustomControl.AfterUpdate
+   ,InitializeObject$:function($){return $.ClassType.InitializeObject($)}
+   ,FinalizeObject:TW3CustomControl.FinalizeObject
+   ,UnHookEvents:TW3TagObj.UnHookEvents
+   ,EndUpdate:TW3TagObj.EndUpdate
+   ,Create$23:TW3TagObj.Create$23
+   ,CBNoBehavior:TW3Component.CBNoBehavior
+   ,Create$24:TW3Component.Create$24
+   ,getWidth$6:TW3MovableControl.getWidth$6
+   ,getHeight$5:TW3MovableControl.getHeight$5
+   ,getLeft:TW3MovableControl.getLeft
+   ,getTop:TW3MovableControl.getTop
+   ,getVisible:TW3MovableControl.getVisible
+   ,setLeft:TW3MovableControl.setLeft
+   ,setTop:TW3MovableControl.setTop
+   ,setWidth$1:TW3MovableControl.setWidth$1
+   ,setHeight:TW3MovableControl.setHeight
+   ,setVisible:TW3MovableControl.setVisible
+   ,getBoundsRect:TW3MovableControl.getBoundsRect
+   // IGNORED: TW3MovableControl.Moved
+   ,Resize:TW3MovableControl.Resize
+   ,AdjustToParentBox:TW3MovableControl.AdjustToParentBox
+   ,MoveTo:TW3MovableControl.MoveTo
+   ,SetSize$4:TW3MovableControl.SetSize$4
+   ,SetBounds:TW3MovableControl.SetBounds
+   ,CBChanged:TW3CustomControl.CBChanged
+   ,CBMouseDown:TW3CustomControl.CBMouseDown
+   ,CBMouseUp:TW3CustomControl.CBMouseUp
+   ,CBMouseMove:TW3CustomControl.CBMouseMove
+   ,CBMouseEnter:TW3CustomControl.CBMouseEnter
+   ,CBMouseExit:TW3CustomControl.CBMouseExit
+   ,CBClick:TW3CustomControl.CBClick
+   ,CBDblClick:TW3CustomControl.CBDblClick
+   ,CBKeyDown:TW3CustomControl.CBKeyDown
+   ,CBKeyUp:TW3CustomControl.CBKeyUp
+   ,CBKeyPress:TW3CustomControl.CBKeyPress
+   ,CMTouchBegins:TW3CustomControl.CMTouchBegins
+   ,CMTouchMove:TW3CustomControl.CMTouchMove
+   ,CMTouchEnds:TW3CustomControl.CMTouchEnds
+   ,CMGestureStart:TW3CustomControl.CMGestureStart
+   ,CMGestureChange:TW3CustomControl.CMGestureChange
+   ,CMGestureEnd:TW3CustomControl.CMGestureEnd
+   ,CBFocused:TW3CustomControl.CBFocused
+   ,CBLostFocus:TW3CustomControl.CBLostFocus
+   ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
+   ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
+   ,LayoutChildren:TW3CustomControl.LayoutChildren
+   // IGNORED: TW3CustomControl.getSizeInfo
+   ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
+   ,Invalidate:TW3CustomControl.Invalidate
+};
 /// TW3CustomAnimation = class (TObject)
 ///  [line: 25, column: 3, file: w3effects]
 var TW3CustomAnimation= {
@@ -5037,9 +5134,9 @@ var TW3CustomAnimation= {
    }
    /// procedure TW3CustomAnimation.setDuration(Value: Float)
    ///  [line: 381, column: 30, file: w3effects]
-   ,setDuration:function(Self, Value$11) {
+   ,setDuration:function(Self, Value$12) {
       if (!$Check(Self,"").FBusy) {
-         $Check(Self,"").FDuration=Value$11;
+         $Check(Self,"").FDuration=Value$12;
       } else {
          throw Exception.Create$1($New(Exception),"Duration cannot be altered while the transition is active error");
       }
@@ -5147,10 +5244,10 @@ var TForm1= {
    $Parent:TW3Form,
    $Init:function ($) {
       TW3Form.$Init($);
-      $.W3Panel1=$.W3Panel2=$.W3Panel4=null;
+      $.W3Button1=$.W3Button2=$.W3Button3=$.W3Panel1=$.W3Panel2=$.W3Panel3=$.W3Panel4=null;
    }
    /// procedure TForm1.FinalizeObject()
-   ///  [line: 35, column: 18, file: form1]
+   ///  [line: 41, column: 18, file: form1]
    ,FinalizeObject:function(Self) {
       TW3CustomControl.FinalizeObject(Self);
    }
@@ -5175,7 +5272,7 @@ var TForm1= {
       $Check(Self,"").W3Panel1=TW3Component.Create$24$($New(TW3Panel),Self);
       TW3Component.setName$1($Check(Self,"").W3Panel1,"W3Panel1");
       TW3MovableControl.setVisible$($Check($Check(Self,"").W3Panel1,""),true);
-      TW3MovableControl.SetBounds$($Check($Check(Self,"").W3Panel1,""),260,132,224,160);
+      TW3MovableControl.SetBounds$($Check($Check(Self,"").W3Panel1,""),260,132,236,160);
       TW3MovableControl.setUseAlpha($Check(Self,"").W3Panel1,true);
       TW3CustomControl.setStyleClass($Check(Self,"").W3Panel1,"TW3Panel");
       TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3Panel1,""),true);
@@ -5190,15 +5287,46 @@ var TForm1= {
       TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3Panel2,""),true);
       TW3MovableControl.setAlpha($Check(Self,"").W3Panel2,128);
       TW3MovableControl.setColor$3($Check(Self,"").W3Panel2,16711680);
+      $Check(Self,"").W3Panel3=TW3Component.Create$24$($New(TW3Panel),Self);
+      TW3Component.setName$1($Check(Self,"").W3Panel3,"W3Panel3");
+      TW3MovableControl.setVisible$($Check($Check(Self,"").W3Panel3,""),true);
+      TW3MovableControl.SetBounds$($Check($Check(Self,"").W3Panel3,""),32,376,336,80);
+      TW3CustomControl.setStyleClass($Check(Self,"").W3Panel3,"TW3PanelBorderless");
+      TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3Panel3,""),true);
+      $Check(Self,"").W3Button1=TW3Component.Create$24$($New(TW3Button),$Check(Self,"").W3Panel3);
+      TW3Component.setName$1($Check(Self,"").W3Button1,"W3Button1");
+      TW3MovableControl.setVisible$($Check($Check(Self,"").W3Button1,""),true);
+      TW3MovableControl.SetBounds$($Check($Check(Self,"").W3Button1,""),16,8,96,64);
+      TW3CustomControl.setStyleClass($Check(Self,"").W3Button1,"TW3Button");
+      TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3Button1,""),true);
+      TW3Button.setCaption$4($Check(Self,"").W3Button1,"");
+      $Check(Self,"").W3Button2=TW3Component.Create$24$($New(TW3Button),$Check(Self,"").W3Panel3);
+      TW3Component.setName$1($Check(Self,"").W3Button2,"W3Button2");
+      TW3MovableControl.setVisible$($Check($Check(Self,"").W3Button2,""),true);
+      TW3MovableControl.SetBounds$($Check($Check(Self,"").W3Button2,""),120,8,96,64);
+      TW3CustomControl.setStyleClass($Check(Self,"").W3Button2,"TW3Button");
+      TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3Button2,""),false);
+      TW3Button.setCaption$4($Check(Self,"").W3Button2,"");
+      $Check(Self,"").W3Button3=TW3Component.Create$24$($New(TW3Button),$Check(Self,"").W3Panel3);
+      TW3Component.setName$1($Check(Self,"").W3Button3,"W3Button3");
+      TW3MovableControl.setVisible$($Check($Check(Self,"").W3Button3,""),true);
+      TW3MovableControl.SetBounds$($Check($Check(Self,"").W3Button3,""),224,8,96,64);
+      TW3CustomControl.setStyleClass($Check(Self,"").W3Button3,"TW3Button");
+      TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3Button3,""),true);
+      TW3Button.setCaption$4($Check(Self,"").W3Button3,"");
       TW3MovableControl.setTransparent($Check(Self,"").W3Panel1,true);
+      TW3MovableControl.setTransparent($Check(Self,"").W3Panel3,true);
+      TW3CustomControl._setMouseClick($Check(Self,"").W3Button1,function (Sender$2) {
+         TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3Panel3,""),false);
+      });
    }
    /// procedure TForm1.Resize()
-   ///  [line: 40, column: 18, file: form1]
+   ///  [line: 46, column: 18, file: form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
    }
    /// procedure TForm1.StyleTagObject()
-   ///  [line: 45, column: 18, file: form1]
+   ///  [line: 51, column: 18, file: form1]
    ,StyleTagObject$10:function(Self) {
       /* null */
    }
