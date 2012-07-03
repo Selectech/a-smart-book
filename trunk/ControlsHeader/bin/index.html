@@ -840,7 +840,7 @@ var TW3TagObj= {
    $Parent:TObject,
    $Init:function ($) {
       TObject.$Init($);
-      $.FHandle$2=undefined;
+      $.FHandle$3=undefined;
       $.FObjReady=false;
       $.FOwner$3=undefined;
       $.FTagId="";
@@ -858,19 +858,19 @@ var TW3TagObj= {
    }
    /// constructor TW3TagObj.Create()
    ///  [line: 582, column: 23, file: w3components]
-   ,Create$21:function(Self) {
+   ,Create$23:function(Self) {
       TObject.Create(Self);
       $Check(Self,"").FObjReady=false;
       try {
          $Check(Self,"").FTagId=TW3TagObj.makeElementTagId$($Check(Self,""));
-         $Check(Self,"").FHandle$2=TW3TagObj.makeElementTagObj$($Check(Self,""));
+         $Check(Self,"").FHandle$3=TW3TagObj.makeElementTagObj$($Check(Self,""));
       } catch ($e) {
          var e=$W($e);
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3TagObj.Create",TObject.ClassName($Check(Self,"").ClassType),$Check(e,"").FMessage]);
       }
-      if (TVariant.asObject(TVariant,$Check(Self,"").FHandle$2)!==TVariant.asObject(TVariant,TW3CustomBrowserAPI.getBody$($Check(BrowserAPI(),"").ClassType))) {
+      if (TVariant.asObject(TVariant,$Check(Self,"").FHandle$3)!==TVariant.asObject(TVariant,TW3CustomBrowserAPI.getBody$($Check(BrowserAPI(),"").ClassType))) {
          if ($Check(Self,"").FTagId.length>0) {
-            w3_setAttrib($Check(Self,"").FHandle$2,"id",$Check(Self,"").FTagId);
+            w3_setAttrib($Check(Self,"").FHandle$3,"id",$Check(Self,"").FTagId);
          }
       }
       TW3TagObj.StyleTagObject$($Check(Self,""));
@@ -886,14 +886,14 @@ var TW3TagObj= {
    /// destructor TW3TagObj.Destroy()
    ///  [line: 617, column: 22, file: w3components]
    ,Destroy:function(Self) {
-      if ($Check(Self,"").FHandle$2) {
+      if ($Check(Self,"").FHandle$3) {
          try {
             TW3TagObj.UnHookEvents$($Check(Self,""));
             TW3TagObj.RemoveFrom(Self);
          } finally {
             TW3TagObj.FinalizeObject$($Check(Self,""));
             $Check(Self,"").FTagId="";
-            $Check(Self,"").FHandle$2=null;
+            $Check(Self,"").FHandle$3=null;
          }
       }
       TObject.Destroy(Self);
@@ -917,8 +917,8 @@ var TW3TagObj= {
    ///  [line: 686, column: 20, file: w3components]
    ,getInnerHTML:function(Self) {
       var Result="";
-      if ($Check(Self,"").FHandle$2) {
-         Result=TVariant.asString(TVariant,$Check(Self,"").FHandle$2.innerHTML);
+      if ($Check(Self,"").FHandle$3) {
+         Result=TVariant.asString(TVariant,$Check(Self,"").FHandle$3.innerHTML);
       }
       return Result
    }
@@ -931,12 +931,12 @@ var TW3TagObj= {
    ///  [line: 768, column: 21, file: w3components]
    ,InsertInto:function(Self, OwnerHandle) {
       if (OwnerHandle) {
-         if ($Check(Self,"").FHandle$2) {
+         if ($Check(Self,"").FHandle$3) {
             try {
                if ($Check(Self,"").FOwner$3) {
                   TW3TagObj.RemoveFrom(Self);
                }
-               w3_setElementParentByRef($Check(Self,"").FHandle$2,OwnerHandle);
+               w3_setElementParentByRef($Check(Self,"").FHandle$3,OwnerHandle);
                $Check(Self,"").FOwner$3=OwnerHandle;
             } catch ($e) {
                var e$1=$W($e);
@@ -970,9 +970,9 @@ var TW3TagObj= {
    ///  [line: 795, column: 21, file: w3components]
    ,RemoveFrom:function(Self) {
       if ($Check(Self,"").FOwner$3) {
-         if ($Check(Self,"").FHandle$2) {
+         if ($Check(Self,"").FHandle$3) {
             try {
-               w3_RemoveElementByRef($Check(Self,"").FHandle$2,$Check(Self,"").FOwner$3);
+               w3_RemoveElementByRef($Check(Self,"").FHandle$3,$Check(Self,"").FOwner$3);
             } catch ($e) {
                var e$3=$W($e);
                throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3TagObj.RemoveFrom",TObject.ClassName($Check(Self,"").ClassType),$Check(e$3,"").FMessage]);
@@ -986,43 +986,43 @@ var TW3TagObj= {
    /// procedure TW3TagObj.setInnerHTML(aValue: String)
    ///  [line: 696, column: 21, file: w3components]
    ,setInnerHTML:function(Self, aValue) {
-      if ($Check(Self,"").FHandle$2) {
-         $Check(Self,"").FHandle$2.innerHTML=aValue;
+      if ($Check(Self,"").FHandle$3) {
+         $Check(Self,"").FHandle$3.innerHTML=aValue;
       }
    }
    /// procedure TW3TagObj.StyleTagObject()
    ///  [line: 725, column: 21, file: w3components]
    ,StyleTagObject:function(Self) {
-      if ($Check(Self,"").FHandle$2) {
-         $Check(Self,"").FHandle$2.style["visibility"]="hidden";
-         $Check(Self,"").FHandle$2.style["display"]="none";
-         $Check(Self,"").FHandle$2.style["position"]="absolute";
-         $Check(Self,"").FHandle$2.style["overflow"]="hidden";
-         $Check(Self,"").FHandle$2.style["left"]="0px";
-         $Check(Self,"").FHandle$2.style["top"]="0px";
+      if ($Check(Self,"").FHandle$3) {
+         $Check(Self,"").FHandle$3.style["visibility"]="hidden";
+         $Check(Self,"").FHandle$3.style["display"]="none";
+         $Check(Self,"").FHandle$3.style["position"]="absolute";
+         $Check(Self,"").FHandle$3.style["overflow"]="hidden";
+         $Check(Self,"").FHandle$3.style["left"]="0px";
+         $Check(Self,"").FHandle$3.style["top"]="0px";
       }
    }
    /// procedure TW3TagObj.UnHookEvents()
    ///  [line: 661, column: 21, file: w3components]
    ,UnHookEvents:function(Self) {
-      if ($Check(Self,"").FHandle$2) {
-         $Check(Self,"").FHandle$2.onresize=null;
-         $Check(Self,"").FHandle$2.onselectstart=null;
-         $Check(Self,"").FHandle$2.onfocus=null;
-         $Check(Self,"").FHandle$2.onblur=null;
-         $Check(Self,"").FHandle$2.onchange=null;
-         $Check(Self,"").FHandle$2.onmousedown=null;
-         $Check(Self,"").FHandle$2.onmouseup=null;
-         $Check(Self,"").FHandle$2.onmousemove=null;
-         $Check(Self,"").FHandle$2.onmouseover=null;
-         $Check(Self,"").FHandle$2.onmouseout=null;
-         $Check(Self,"").FHandle$2.onclick=null;
-         $Check(Self,"").FHandle$2.ondblclick=null;
-         $Check(Self,"").FHandle$2.onkeydown=null;
-         $Check(Self,"").FHandle$2.onkeyup=null;
-         $Check(Self,"").FHandle$2.onkeypress=null;
-         $Check(Self,"").FHandle$2.webkitAnimationStart=null;
-         $Check(Self,"").FHandle$2.webkitAnimationEnd=null;
+      if ($Check(Self,"").FHandle$3) {
+         $Check(Self,"").FHandle$3.onresize=null;
+         $Check(Self,"").FHandle$3.onselectstart=null;
+         $Check(Self,"").FHandle$3.onfocus=null;
+         $Check(Self,"").FHandle$3.onblur=null;
+         $Check(Self,"").FHandle$3.onchange=null;
+         $Check(Self,"").FHandle$3.onmousedown=null;
+         $Check(Self,"").FHandle$3.onmouseup=null;
+         $Check(Self,"").FHandle$3.onmousemove=null;
+         $Check(Self,"").FHandle$3.onmouseover=null;
+         $Check(Self,"").FHandle$3.onmouseout=null;
+         $Check(Self,"").FHandle$3.onclick=null;
+         $Check(Self,"").FHandle$3.ondblclick=null;
+         $Check(Self,"").FHandle$3.onkeydown=null;
+         $Check(Self,"").FHandle$3.onkeyup=null;
+         $Check(Self,"").FHandle$3.onkeypress=null;
+         $Check(Self,"").FHandle$3.webkitAnimationStart=null;
+         $Check(Self,"").FHandle$3.webkitAnimationEnd=null;
       }
    }
    ,Destroy$:function($){return $.ClassType.Destroy($)}
@@ -1034,7 +1034,7 @@ var TW3TagObj= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents$:function($){return $.ClassType.UnHookEvents($)}
    ,EndUpdate$:function($){return $.ClassType.EndUpdate($)}
-   ,Create$21$:function($){return $.ClassType.Create$21($)}
+   ,Create$23$:function($){return $.ClassType.Create$23($)}
 };
 /// TW3Component = class (TW3TagObj)
 ///  [line: 124, column: 3, file: w3components]
@@ -1056,9 +1056,9 @@ var TW3Component= {
      }
    /// constructor TW3Component.Create(AOwner: TW3Component)
    ///  [line: 824, column: 26, file: w3components]
-   ,Create$22:function(Self, AOwner) {
+   ,Create$24:function(Self, AOwner) {
       $Check(Self,"").FParent=AOwner;
-      TW3TagObj.Create$21(Self);
+      TW3TagObj.Create$23(Self);
       if ($Check(Self,"").FParent!==null) {
          TW3Component.RegisterChild($Check(Self,"").FParent,Self);
       }
@@ -1106,7 +1106,7 @@ var TW3Component= {
       if (aChild!==null) {
          if ($Check(Self,"").FChildren.indexOf(aChild)<0) {
             $Check(Self,"").FChildren.push(aChild);
-            TW3TagObj.InsertInto(aChild,$Check(Self,"").FHandle$2);
+            TW3TagObj.InsertInto(aChild,$Check(Self,"").FHandle$3);
          }
       }
    }
@@ -1137,9 +1137,9 @@ var TW3Component= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior$:function($){return $.ClassType.CBNoBehavior($)}
-   ,Create$22$:function($){return $.ClassType.Create$22.apply($.ClassType, arguments)}
+   ,Create$24$:function($){return $.ClassType.Create$24.apply($.ClassType, arguments)}
 };
 /// TW3MovableControl = class (TW3Component)
 ///  [line: 227, column: 3, file: w3components]
@@ -1161,7 +1161,7 @@ var TW3MovableControl= {
       var dy=0;
       var mChild=null;
       var mCtrl=null;
-      if ($Check(Self,"").FHandle$2) {
+      if ($Check(Self,"").FHandle$3) {
          if (!$Check(Self,"").FAdjusted) {
             $Check(Self,"").FAdjusted=true;
             dx=TW3Borders.getHSpace(TW3MovableControl.getBorder(Self));
@@ -1190,9 +1190,9 @@ var TW3MovableControl= {
    ///  [line: 1280, column: 28, file: w3components]
    ,ClientHeight:function(Self) {
       var Result=0;
-      if ($Check(Self,"").FHandle$2) {
-         if (varIsValidRef($Check(Self,"").FHandle$2.clientHeight)) {
-            Result=TVariant.asInteger(TVariant,$Check(Self,"").FHandle$2.clientHeight);
+      if ($Check(Self,"").FHandle$3) {
+         if (varIsValidRef($Check(Self,"").FHandle$3.clientHeight)) {
+            Result=TVariant.asInteger(TVariant,$Check(Self,"").FHandle$3.clientHeight);
             if (TVariant.isNAN(TVariant,Result)||(Result==0)) {
                Result=TW3MovableControl.getWidth$6$($Check(Self,""));
             }
@@ -1206,9 +1206,9 @@ var TW3MovableControl= {
    ///  [line: 1264, column: 28, file: w3components]
    ,ClientWidth:function(Self) {
       var Result=0;
-      if ($Check(Self,"").FHandle$2) {
-         if (varIsValidRef($Check(Self,"").FHandle$2.clientWidth)) {
-            Result=TVariant.asInteger(TVariant,$Check(Self,"").FHandle$2.clientWidth);
+      if ($Check(Self,"").FHandle$3) {
+         if (varIsValidRef($Check(Self,"").FHandle$3.clientWidth)) {
+            Result=TVariant.asInteger(TVariant,$Check(Self,"").FHandle$3.clientWidth);
             if (TVariant.isNAN(TVariant,Result)||(Result==0)) {
                Result=TW3MovableControl.getWidth$6$($Check(Self,""));
             }
@@ -1255,23 +1255,23 @@ var TW3MovableControl= {
    /// function TW3MovableControl.getHeight() : Integer
    ///  [line: 1421, column: 28, file: w3components]
    ,getHeight$5:function(Self) {
-      return w3_getStyleAsInt($Check(Self,"").FHandle$2,"height");
+      return w3_getStyleAsInt($Check(Self,"").FHandle$3,"height");
    }
    /// function TW3MovableControl.getLeft() : Integer
    ///  [line: 1377, column: 28, file: w3components]
    ,getLeft:function(Self) {
-      return w3_getStyleAsInt($Check(Self,"").FHandle$2,"left");
+      return w3_getStyleAsInt($Check(Self,"").FHandle$3,"left");
    }
    /// function TW3MovableControl.getTop() : Integer
    ///  [line: 1390, column: 28, file: w3components]
    ,getTop:function(Self) {
-      return w3_getStyleAsInt($Check(Self,"").FHandle$2,"top");
+      return w3_getStyleAsInt($Check(Self,"").FHandle$3,"top");
    }
    /// function TW3MovableControl.getVisible() : Boolean
    ///  [line: 1338, column: 28, file: w3components]
    ,getVisible:function(Self) {
       var Result=false;
-      var mValue$2=w3_getStyleAsStr($Check(Self,"").FHandle$2,"visibility");
+      var mValue$2=w3_getStyleAsStr($Check(Self,"").FHandle$3,"visibility");
       Result=LowerCase(mValue$2)=="visible";
       return Result
    }
@@ -1288,7 +1288,7 @@ var TW3MovableControl= {
    /// function TW3MovableControl.getWidth() : Integer
    ///  [line: 1403, column: 28, file: w3components]
    ,getWidth$6:function(Self) {
-      return w3_getStyleAsInt($Check(Self,"").FHandle$2,"width");
+      return w3_getStyleAsInt($Check(Self,"").FHandle$3,"width");
    }
    /// procedure TW3MovableControl.InitializeObject()
    ///  [line: 1226, column: 29, file: w3components]
@@ -1303,8 +1303,8 @@ var TW3MovableControl= {
    ///  [line: 1467, column: 29, file: w3components]
    ,MoveTo:function(Self, aLeft, aTop) {
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self,"").FHandle$2.style["left"]=TInteger.toPxStr(TInteger,aLeft);
-      $Check(Self,"").FHandle$2.style["top"]=TInteger.toPxStr(TInteger,aTop);
+      $Check(Self,"").FHandle$3.style["left"]=TInteger.toPxStr(TInteger,aLeft);
+      $Check(Self,"").FHandle$3.style["top"]=TInteger.toPxStr(TInteger,aTop);
       TW3MovableControl.setWasMoved(Self);
       TW3TagObj.EndUpdate$($Check(Self,""));
    }
@@ -1326,7 +1326,7 @@ var TW3MovableControl= {
          mBlend=0;
       }
       if ($Check(Self,"").FUseAlpha) {
-         $Check(Self,"").FHandle$2.style["opacity"]=mBlend;
+         $Check(Self,"").FHandle$3.style["opacity"]=mBlend;
       }
       var $temp2;
       for(x$5=0,$temp2=TW3Component.getChildCount(Self);x$5<$temp2;x$5++) {
@@ -1346,10 +1346,10 @@ var TW3MovableControl= {
       mMoved=(aLeft$1!=TW3MovableControl.getLeft$($Check(Self,"")))||(aTop$1!=TW3MovableControl.getTop$($Check(Self,"")));
       mSized=(aWidth!=TW3MovableControl.getWidth$6$($Check(Self,"")))||(aHeight!=TW3MovableControl.getHeight$5$($Check(Self,"")));
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self,"").FHandle$2.style["left"]=TInteger.toPxStr(TInteger,aLeft$1);
-      $Check(Self,"").FHandle$2.style["top"]=TInteger.toPxStr(TInteger,aTop$1);
-      $Check(Self,"").FHandle$2.style["width"]=TInteger.toPxStr(TInteger,aWidth);
-      $Check(Self,"").FHandle$2.style["height"]=TInteger.toPxStr(TInteger,aHeight);
+      $Check(Self,"").FHandle$3.style["left"]=TInteger.toPxStr(TInteger,aLeft$1);
+      $Check(Self,"").FHandle$3.style["top"]=TInteger.toPxStr(TInteger,aTop$1);
+      $Check(Self,"").FHandle$3.style["width"]=TInteger.toPxStr(TInteger,aWidth);
+      $Check(Self,"").FHandle$3.style["height"]=TInteger.toPxStr(TInteger,aHeight);
       if (mMoved) {
          TW3MovableControl.setWasMoved(Self);
       }
@@ -1372,7 +1372,7 @@ var TW3MovableControl= {
                mText=ColorToWebStr($Check(Self,"").FColor);
                break;
          }
-         $Check(Self,"").FHandle$2.style["backgroundColor"]=mText;
+         $Check(Self,"").FHandle$3.style["backgroundColor"]=mText;
       }
    }
    /// procedure TW3MovableControl.setHeight(aValue: Integer)
@@ -1387,7 +1387,7 @@ var TW3MovableControl= {
       }
       if (aValue$1!=TW3MovableControl.getHeight$5$($Check(Self,""))) {
          TW3TagObj.BeginUpdate(Self);
-         $Check(Self,"").FHandle$2.style["height"]=TInteger.toPxStr(TInteger,aValue$1);
+         $Check(Self,"").FHandle$3.style["height"]=TInteger.toPxStr(TInteger,aValue$1);
          TW3MovableControl.setWasSized(Self);
          TW3TagObj.EndUpdate$($Check(Self,""));
       }
@@ -1396,7 +1396,7 @@ var TW3MovableControl= {
    ///  [line: 1382, column: 29, file: w3components]
    ,setLeft:function(Self, aValue$2) {
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self,"").FHandle$2.style["left"]=TInteger.toPxStr(TInteger,aValue$2);
+      $Check(Self,"").FHandle$3.style["left"]=TInteger.toPxStr(TInteger,aValue$2);
       TW3MovableControl.setWasMoved(Self);
       TW3TagObj.EndUpdate$($Check(Self,""));
    }
@@ -1407,8 +1407,8 @@ var TW3MovableControl= {
       aHeight$1=TInteger.EnsureRange(TInteger,aHeight$1,0,2147483647);
       if ((aWidth$1!=TW3MovableControl.getWidth$6$($Check(Self,"")))||(aHeight$1!=TW3MovableControl.getHeight$5$($Check(Self,"")))) {
          TW3TagObj.BeginUpdate(Self);
-         $Check(Self,"").FHandle$2.style["width"]=TInteger.toPxStr(TInteger,aWidth$1);
-         $Check(Self,"").FHandle$2.style["height"]=TInteger.toPxStr(TInteger,aHeight$1);
+         $Check(Self,"").FHandle$3.style["width"]=TInteger.toPxStr(TInteger,aWidth$1);
+         $Check(Self,"").FHandle$3.style["height"]=TInteger.toPxStr(TInteger,aHeight$1);
          TW3MovableControl.setWasSized(Self);
          TW3TagObj.EndUpdate$($Check(Self,""));
       }
@@ -1417,7 +1417,7 @@ var TW3MovableControl= {
    ///  [line: 1395, column: 29, file: w3components]
    ,setTop:function(Self, aValue$3) {
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self,"").FHandle$2.style["top"]=TInteger.toPxStr(TInteger,aValue$3);
+      $Check(Self,"").FHandle$3.style["top"]=TInteger.toPxStr(TInteger,aValue$3);
       TW3MovableControl.setWasMoved(Self);
       TW3TagObj.EndUpdate$($Check(Self,""));
    }
@@ -1436,7 +1436,7 @@ var TW3MovableControl= {
                mText$1=ColorToWebStr($Check(Self,"").FColor);
                break;
          }
-         $Check(Self,"").FHandle$2.style["backgroundColor"]=mText$1;
+         $Check(Self,"").FHandle$3.style["backgroundColor"]=mText$1;
          TW3MovableControl.setWasMoved(Self);
          TW3TagObj.EndUpdate$($Check(Self,""));
       }
@@ -1456,9 +1456,9 @@ var TW3MovableControl= {
                break;
          }
          if ($Check(Self,"").FUseAlpha) {
-            $Check(Self,"").FHandle$2.style["opacity"]=mBlend$1;
+            $Check(Self,"").FHandle$3.style["opacity"]=mBlend$1;
          } else {
-            $Check(Self,"").FHandle$2.style["opacity"]=1;
+            $Check(Self,"").FHandle$3.style["opacity"]=1;
          }
       }
    }
@@ -1468,13 +1468,13 @@ var TW3MovableControl= {
       TW3TagObj.BeginUpdate(Self);
       switch (aValue$4) {
          case true :
-            $Check(Self,"").FHandle$2.style["display"]="inline";
-            $Check(Self,"").FHandle$2.style["visibility"]="visible";
+            $Check(Self,"").FHandle$3.style["display"]="inline";
+            $Check(Self,"").FHandle$3.style["visibility"]="visible";
             TW3MovableControl.setWasSized(Self);
             break;
          case false :
-            $Check(Self,"").FHandle$2.style["display"]="none";
-            $Check(Self,"").FHandle$2.style["visibility"]="hidden";
+            $Check(Self,"").FHandle$3.style["display"]="none";
+            $Check(Self,"").FHandle$3.style["visibility"]="hidden";
             break;
       }
       TW3TagObj.EndUpdate$($Check(Self,""));
@@ -1501,7 +1501,7 @@ var TW3MovableControl= {
       }
       if (aValue$5!=TW3MovableControl.getWidth$6$($Check(Self,""))) {
          TW3TagObj.BeginUpdate(Self);
-         $Check(Self,"").FHandle$2.style["width"]=TInteger.toPxStr(TInteger,aValue$5);
+         $Check(Self,"").FHandle$3.style["width"]=TInteger.toPxStr(TInteger,aValue$5);
          TW3MovableControl.setWasSized(Self);
          TW3TagObj.EndUpdate$($Check(Self,""));
       }
@@ -1515,9 +1515,9 @@ var TW3MovableControl= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6$:function($){return $.ClassType.getWidth$6($)}
    ,getHeight$5$:function($){return $.ClassType.getHeight$5($)}
    ,getLeft$:function($){return $.ClassType.getLeft($)}
@@ -1568,8 +1568,8 @@ var TW3CustomControl= {
    /// procedure TW3CustomControl.bringToFront()
    ///  [line: 1728, column: 28, file: w3components]
    ,bringToFront:function(Self) {
-      if ($Check(Self,"").FHandle$2) {
-         $Check(Self,"").FHandle$2.style["zIndex"]=1;
+      if ($Check(Self,"").FHandle$3) {
+         $Check(Self,"").FHandle$3.style["zIndex"]=1;
       }
    }
    /// procedure TW3CustomControl.CBAnimationBegins(const eventObj: Variant)
@@ -1808,7 +1808,7 @@ var TW3CustomControl= {
    /// function TW3CustomControl.getBorderRadius() : Integer
    ///  [line: 2332, column: 27, file: w3components]
    ,getBorderRadius:function(Self) {
-      return w3_getStyleAsInt($Check(Self,"").FHandle$2,"bordertopleftRadius");
+      return w3_getStyleAsInt($Check(Self,"").FHandle$3,"bordertopleftRadius");
    }
    /// function TW3CustomControl.getChildrenSortedByYpos() : TW3ComponentArray
    ///  [line: 1735, column: 27, file: w3components]
@@ -1849,15 +1849,15 @@ var TW3CustomControl= {
    }
    /// function TW3CustomControl.getEnabled() : Boolean
    ///  [line: 1685, column: 27, file: w3components]
-   ,getEnabled:function(Self) {
-      return $Check(Self,"").FHandle$2.disabled==false;
+   ,getEnabled$1:function(Self) {
+      return $Check(Self,"").FHandle$3.disabled==false;
    }
    /// function TW3CustomControl.getFont() : TW3ControlFont
    ///  [line: 1654, column: 27, file: w3components]
    ,getFont$1:function(Self) {
       var Result=null;
       if ($Check(Self,"").FFont===null) {
-         $Check(Self,"").FFont=TW3ControlFont.Create$23$($New(TW3ControlFont),Self);
+         $Check(Self,"").FFont=TW3ControlFont.Create$25$($New(TW3ControlFont),Self);
       }
       Result=$Check(Self,"").FFont;
       return Result
@@ -1866,8 +1866,8 @@ var TW3CustomControl= {
    ///  [line: 1807, column: 27, file: w3components]
    ,gethasFocus:function(Self) {
       var Result=false;
-      if ($Check(Self,"").FHandle$2) {
-         Result=($Check(Self,"").FHandle$2.focused()?true:false);
+      if ($Check(Self,"").FHandle$3) {
+         Result=($Check(Self,"").FHandle$3.focused()?true:false);
       }
       return Result
    }
@@ -1885,21 +1885,21 @@ var TW3CustomControl= {
    /// function TW3CustomControl.getStyleClass() : String
    ///  [line: 1778, column: 27, file: w3components]
    ,getStyleClass:function(Self) {
-      return w3_getAttribAsStr($Check(Self,"").FHandle$2,"class");
+      return w3_getAttribAsStr($Check(Self,"").FHandle$3,"class");
    }
    /// function TW3CustomControl.getZoom() : Float
    ///  [line: 1661, column: 27, file: w3components]
    ,getZoom:function(Self) {
-      return w3_getStyleAsFloat($Check(Self,"").FHandle$2,"zoom");
+      return w3_getStyleAsFloat($Check(Self,"").FHandle$3,"zoom");
    }
    /// procedure TW3CustomControl.InitializeObject()
    ///  [line: 1602, column: 28, file: w3components]
    ,InitializeObject:function(Self) {
       TW3MovableControl.InitializeObject(Self);
       $Check(Self,"").FNoBehavior=$Event0(Self,TW3Component.CBNoBehavior$);
-      w3_bind2($Check(Self,"").FHandle$2,"onselectstart",$Event0(Self,TW3Component.CBNoBehavior$));
-      w3_bind2($Check(Self,"").FHandle$2,"onfocus",$Event0(Self,TW3CustomControl.CBFocused$));
-      w3_bind2($Check(Self,"").FHandle$2,"onblur",$Event0(Self,TW3CustomControl.CBLostFocus$));
+      w3_bind2($Check(Self,"").FHandle$3,"onselectstart",$Event0(Self,TW3Component.CBNoBehavior$));
+      w3_bind2($Check(Self,"").FHandle$3,"onfocus",$Event0(Self,TW3CustomControl.CBFocused$));
+      w3_bind2($Check(Self,"").FHandle$3,"onblur",$Event0(Self,TW3CustomControl.CBLostFocus$));
    }
    /// procedure TW3CustomControl.Invalidate()
    ///  [line: 2301, column: 28, file: w3components]
@@ -1932,35 +1932,35 @@ var TW3CustomControl= {
       if (Value$5!=$Check(Self,"").FAngle) {
          $Check(Self,"").FAngle=Value$5;
          mStyle="rotate("+FloatToStr(Value$5,2)+"deg)";
-         w3_setStyle($Check(Self,"").FHandle$2,w3_CSSPrefix("Transform"),mStyle);
+         w3_setStyle($Check(Self,"").FHandle$3,w3_CSSPrefix("Transform"),mStyle);
       }
    }
    /// procedure TW3CustomControl.setBorderRadius(aNewRadius: Integer)
    ///  [line: 2343, column: 28, file: w3components]
    ,setBorderRadius:function(Self, aNewRadius) {
       TW3TagObj.BeginUpdate(Self);
-      w3_setStyle($Check(Self,"").FHandle$2,"borderRadius",TInteger.toPxStr(TInteger,aNewRadius));
+      w3_setStyle($Check(Self,"").FHandle$3,"borderRadius",TInteger.toPxStr(TInteger,aNewRadius));
       TW3MovableControl.setWasSized(Self);
       TW3TagObj.EndUpdate$($Check(Self,""));
    }
    /// procedure TW3CustomControl.setEnabled(aValue: Boolean)
    ///  [line: 1690, column: 28, file: w3components]
-   ,setEnabled:function(Self, aValue$6) {
+   ,setEnabled$1:function(Self, aValue$6) {
       if (aValue$6) {
-         $Check(Self,"").FHandle$2.disabled=false;
+         $Check(Self,"").FHandle$3.disabled=false;
       } else {
-         $Check(Self,"").FHandle$2.disabled=true;
+         $Check(Self,"").FHandle$3.disabled=true;
       }
    }
    /// procedure TW3CustomControl.setStyleClass(aStyle: String)
    ///  [line: 1783, column: 28, file: w3components]
    ,setStyleClass:function(Self, aStyle) {
-      w3_setAttrib($Check(Self,"").FHandle$2,"class",aStyle);
+      w3_setAttrib($Check(Self,"").FHandle$3,"class",aStyle);
    }
    /// procedure TW3CustomControl.setZoom(aValue: Float)
    ///  [line: 1666, column: 28, file: w3components]
    ,setZoom:function(Self, aValue$7) {
-      w3_setStyle($Check(Self,"").FHandle$2,"zoom",aValue$7);
+      w3_setStyle($Check(Self,"").FHandle$3,"zoom",aValue$7);
    }
    /// procedure TW3CustomControl.StyleTagObject()
    ///  [line: 1647, column: 28, file: w3components]
@@ -1973,7 +1973,7 @@ var TW3CustomControl= {
    ///  [line: 2063, column: 28, file: w3components]
    ,_setAnimationBegins:function(Self, aValue$8) {
       var mObj$3=undefined;
-      mObj$3=$Check(Self,"").FHandle$2;
+      mObj$3=$Check(Self,"").FHandle$3;
       switch ((aValue$8!==null)) {
          case true :
             mObj$3["webkitAnimationStart"]=$Event1(Self,TW3CustomControl.CBAnimationBegins$);
@@ -1988,7 +1988,7 @@ var TW3CustomControl= {
    ///  [line: 2082, column: 28, file: w3components]
    ,_setAnimationEnds:function(Self, aValue$9) {
       var mObj$4=undefined;
-      mObj$4=$Check(Self,"").FHandle$2;
+      mObj$4=$Check(Self,"").FHandle$3;
       switch ((aValue$9!==null)) {
          case true :
             mObj$4[w3_CSSPrefix("AnimationEnd")]=$Event1(Self,TW3CustomControl.CBAnimationEnds$);
@@ -2003,7 +2003,7 @@ var TW3CustomControl= {
    ///  [line: 2100, column: 28, file: w3components]
    ,_setChanged:function(Self, aValue$10) {
       var mObj$5=undefined;
-      mObj$5=$Check(Self,"").FHandle$2;
+      mObj$5=$Check(Self,"").FHandle$3;
       switch ((aValue$10!==null)) {
          case true :
             mObj$5["onchange"]=$Event1(Self,TW3CustomControl.CBChanged$);
@@ -2018,36 +2018,36 @@ var TW3CustomControl= {
    ///  [line: 2234, column: 28, file: w3components]
    ,_setGestureChange:function(Self, aValue$11) {
       if ($Check(Self,"").FOnGestureChange!==null) {
-         w3_RemoveEvent($Check(Self,"").FHandle$2,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange$));
+         w3_RemoveEvent($Check(Self,"").FHandle$3,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange$));
          $Check(Self,"").FOnGestureChange=null;
       }
       if (aValue$11!==null) {
          $Check(Self,"").FOnGestureChange=aValue$11;
-         w3_AddEvent($Check(Self,"").FHandle$2,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange$));
+         w3_AddEvent($Check(Self,"").FHandle$3,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange$));
       }
    }
    /// procedure TW3CustomControl._setGestureEnd(aValue: TGestureEndEvent)
    ///  [line: 2263, column: 28, file: w3components]
    ,_setGestureEnd:function(Self, aValue$12) {
       if ($Check(Self,"").FOnGestureEnd!==null) {
-         w3_RemoveEvent($Check(Self,"").FHandle$2,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureEnd$));
+         w3_RemoveEvent($Check(Self,"").FHandle$3,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureEnd$));
          $Check(Self,"").FOnGestureEnd=null;
       }
       if (aValue$12!==null) {
          $Check(Self,"").FOnGestureEnd=aValue$12;
-         w3_AddEvent($Check(Self,"").FHandle$2,"gestureend",$Event0(Self,TW3CustomControl.CMGestureEnd$));
+         w3_AddEvent($Check(Self,"").FHandle$3,"gestureend",$Event0(Self,TW3CustomControl.CMGestureEnd$));
       }
    }
    /// procedure TW3CustomControl._setGestureStart(aValue: TGestureStartEvent)
    ///  [line: 2205, column: 28, file: w3components]
    ,_setGestureStart:function(Self, aValue$13) {
       if ($Check(Self,"").FOnGestureStart!==null) {
-         w3_RemoveEvent($Check(Self,"").FHandle$2,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart$));
+         w3_RemoveEvent($Check(Self,"").FHandle$3,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart$));
          $Check(Self,"").FOnGestureStart=null;
       }
       if (aValue$13!==null) {
          $Check(Self,"").FOnGestureStart=aValue$13;
-         w3_AddEvent($Check(Self,"").FHandle$2,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart$));
+         w3_AddEvent($Check(Self,"").FHandle$3,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart$));
       }
    }
    /// procedure TW3CustomControl._setGotFocus(const aValue: TGotFocusEvent)
@@ -2059,7 +2059,7 @@ var TW3CustomControl= {
    ///  [line: 2008, column: 28, file: w3components]
    ,_setKeyDown:function(Self, aValue$15) {
       var mObj$6=undefined;
-      mObj$6=$Check(Self,"").FHandle$2;
+      mObj$6=$Check(Self,"").FHandle$3;
       switch ((aValue$15!==null)) {
          case true :
             mObj$6["onkeydown"]=$Event1(Self,TW3CustomControl.CBKeyDown$);
@@ -2074,7 +2074,7 @@ var TW3CustomControl= {
    ///  [line: 2044, column: 28, file: w3components]
    ,_setKeyPress:function(Self, aValue$16) {
       var mObj$7=undefined;
-      mObj$7=$Check(Self,"").FHandle$2;
+      mObj$7=$Check(Self,"").FHandle$3;
       switch ((aValue$16!==null)) {
          case true :
             mObj$7["onkeypress"]=$Event1(Self,TW3CustomControl.CBKeyPress$);
@@ -2089,7 +2089,7 @@ var TW3CustomControl= {
    ///  [line: 2026, column: 28, file: w3components]
    ,_setKeyUp:function(Self, aValue$17) {
       var mObj$8=undefined;
-      mObj$8=$Check(Self,"").FHandle$2;
+      mObj$8=$Check(Self,"").FHandle$3;
       switch ((aValue$17!==null)) {
          case true :
             mObj$8["onkeyup"]=$Event1(Self,TW3CustomControl.CBKeyUp$);
@@ -2109,7 +2109,7 @@ var TW3CustomControl= {
    ///  [line: 1958, column: 28, file: w3components]
    ,_setMouseClick:function(Self, aValue$19) {
       var mObj$9=undefined;
-      mObj$9=$Check(Self,"").FHandle$2;
+      mObj$9=$Check(Self,"").FHandle$3;
       switch ((aValue$19!==null)) {
          case true :
             mObj$9["onclick"]=$Event1(Self,TW3CustomControl.CBClick$);
@@ -2124,7 +2124,7 @@ var TW3CustomControl= {
    ///  [line: 1984, column: 28, file: w3components]
    ,_setMouseDblClick:function(Self, aValue$20) {
       var mObj$10=undefined;
-      mObj$10=$Check(Self,"").FHandle$2;
+      mObj$10=$Check(Self,"").FHandle$3;
       switch ((aValue$20!==null)) {
          case true :
             mObj$10["ondblclick"]=$Event1(Self,TW3CustomControl.CBDblClick$);
@@ -2139,7 +2139,7 @@ var TW3CustomControl= {
    ///  [line: 1829, column: 28, file: w3components]
    ,_setMouseDown:function(Self, aValue$21) {
       var mObj$11=undefined;
-      mObj$11=$Check(Self,"").FHandle$2;
+      mObj$11=$Check(Self,"").FHandle$3;
       switch ((aValue$21!==null)) {
          case true :
             mObj$11["onmousedown"]=$Event1(Self,TW3CustomControl.CBMouseDown$);
@@ -2154,7 +2154,7 @@ var TW3CustomControl= {
    ///  [line: 1913, column: 28, file: w3components]
    ,_setMouseEnter:function(Self, aValue$22) {
       var mObj$12=undefined;
-      mObj$12=$Check(Self,"").FHandle$2;
+      mObj$12=$Check(Self,"").FHandle$3;
       switch ((aValue$22!==null)) {
          case true :
             mObj$12["onmouseover"]=$Event1(Self,TW3CustomControl.CBMouseEnter$);
@@ -2169,7 +2169,7 @@ var TW3CustomControl= {
    ///  [line: 1935, column: 28, file: w3components]
    ,_setMouseExit:function(Self, aValue$23) {
       var mObj$13=undefined;
-      mObj$13=$Check(Self,"").FHandle$2;
+      mObj$13=$Check(Self,"").FHandle$3;
       switch ((aValue$23!==null)) {
          case true :
             mObj$13["onmouseout"]=$Event1(Self,TW3CustomControl.CBMouseExit$);
@@ -2184,7 +2184,7 @@ var TW3CustomControl= {
    ///  [line: 1891, column: 28, file: w3components]
    ,_setMouseMove:function(Self, aValue$24) {
       var mObj$14=undefined;
-      mObj$14=$Check(Self,"").FHandle$2;
+      mObj$14=$Check(Self,"").FHandle$3;
       switch ((aValue$24!==null)) {
          case true :
             mObj$14["onmousemove"]=$Event1(Self,TW3CustomControl.CBMouseMove$);
@@ -2199,7 +2199,7 @@ var TW3CustomControl= {
    ///  [line: 1860, column: 28, file: w3components]
    ,_setMouseUp:function(Self, aValue$25) {
       var mObj$15=undefined;
-      mObj$15=$Check(Self,"").FHandle$2;
+      mObj$15=$Check(Self,"").FHandle$3;
       switch ((aValue$25!==null)) {
          case true :
             mObj$15["onmouseup"]=$Event1(Self,TW3CustomControl.CBMouseUp$);
@@ -2219,36 +2219,36 @@ var TW3CustomControl= {
    ///  [line: 2118, column: 28, file: w3components]
    ,_setTouchBegins:function(Self, aValue$27) {
       if ($Check(Self,"").FOnTouchBegins!==null) {
-         w3_RemoveEvent($Check(Self,"").FHandle$2,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins$));
+         w3_RemoveEvent($Check(Self,"").FHandle$3,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins$));
          $Check(Self,"").FOnTouchBegins=null;
       }
       if (aValue$27!==null) {
          $Check(Self,"").FOnTouchBegins=aValue$27;
-         w3_AddEvent($Check(Self,"").FHandle$2,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins$));
+         w3_AddEvent($Check(Self,"").FHandle$3,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins$));
       }
    }
    /// procedure TW3CustomControl._setTouchEnds(const aValue: TTouchEndEvent)
    ///  [line: 2176, column: 28, file: w3components]
    ,_setTouchEnds:function(Self, aValue$28) {
       if ($Check(Self,"").FOnTouchEnds!==null) {
-         w3_RemoveEvent($Check(Self,"").FHandle$2,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds$));
+         w3_RemoveEvent($Check(Self,"").FHandle$3,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds$));
          $Check(Self,"").FOnTouchEnds=null;
       }
       if (aValue$28!==null) {
          $Check(Self,"").FOnTouchEnds=aValue$28;
-         w3_AddEvent($Check(Self,"").FHandle$2,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds$));
+         w3_AddEvent($Check(Self,"").FHandle$3,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds$));
       }
    }
    /// procedure TW3CustomControl._setTouchMoves(const aValue: TTouchMoveEvent)
    ///  [line: 2147, column: 28, file: w3components]
    ,_setTouchMoves:function(Self, aValue$29) {
       if ($Check(Self,"").FOnTouchMoves!==null) {
-         w3_RemoveEvent($Check(Self,"").FHandle$2,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove$));
+         w3_RemoveEvent($Check(Self,"").FHandle$3,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove$));
          $Check(Self,"").FOnTouchMoves=null;
       }
       if (aValue$29!==null) {
          $Check(Self,"").FOnTouchMoves=aValue$29;
-         w3_AddEvent($Check(Self,"").FHandle$2,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove$));
+         w3_AddEvent($Check(Self,"").FHandle$3,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove$));
       }
    }
    ,Destroy:TW3TagObj.Destroy
@@ -2260,9 +2260,9 @@ var TW3CustomControl= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -2301,8 +2301,8 @@ var TW3CustomControl= {
    ,CBLostFocus$:function($){return $.ClassType.CBLostFocus($)}
    ,CBAnimationBegins$:function($){return $.ClassType.CBAnimationBegins.apply($.ClassType, arguments)}
    ,CBAnimationEnds$:function($){return $.ClassType.CBAnimationEnds.apply($.ClassType, arguments)}
-   ,getEnabled$:function($){return $.ClassType.getEnabled($)}
-   ,setEnabled$:function($){return $.ClassType.setEnabled.apply($.ClassType, arguments)}
+   ,getEnabled$1$:function($){return $.ClassType.getEnabled$1($)}
+   ,setEnabled$1$:function($){return $.ClassType.setEnabled$1.apply($.ClassType, arguments)}
    ,LayoutChildren$:function($){return $.ClassType.LayoutChildren($)}
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos$:function($){return $.ClassType.getChildrenSortedByYpos($)}
@@ -2401,9 +2401,9 @@ var TW3DisplayView= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -2442,8 +2442,8 @@ var TW3DisplayView= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -2493,7 +2493,7 @@ var TW3Display= {
    ///  [line: 303, column: 22, file: w3application]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
-      $Check(Self,"").FView=TW3Component.Create$22$($New(TW3DisplayView),Self);
+      $Check(Self,"").FView=TW3Component.Create$24$($New(TW3DisplayView),Self);
       TW3MovableControl.setTop$($Check($Check(Self,"").FView,""),5);
    }
    /// procedure TW3Display.PositionFormInView(const aForm: TW3CustomForm)
@@ -2550,9 +2550,9 @@ var TW3Display= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -2591,8 +2591,8 @@ var TW3Display= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -2673,9 +2673,9 @@ var TW3CustomApplication= {
    ///  [line: 413, column: 34, file: w3application]
    ,Create$30:function(Self) {
       TObject.Create(Self);
-      $Check(Self,"").FForms=TObjectList.Create$10$($New(TObjectList));
-      $Check(Self,"").FBody=TW3Component.Create$22$($New(TDocumentBody),null);
-      $Check(Self,"").FDisplay=TW3Component.Create$22$($New(TW3Display),$Check(Self,"").FBody);
+      $Check(Self,"").FForms=TObjectList.Create$12$($New(TObjectList));
+      $Check(Self,"").FBody=TW3Component.Create$24$($New(TDocumentBody),null);
+      $Check(Self,"").FDisplay=TW3Component.Create$24$($New(TW3Display),$Check(Self,"").FBody);
       if (!(Instance!==null)) {
          Instance=Self;
       }
@@ -2887,9 +2887,9 @@ var TW3BlockBox= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -2928,8 +2928,8 @@ var TW3BlockBox= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -3910,7 +3910,7 @@ var TObjectList= {
    }
    /// constructor TObjectList.Create()
    ///  [line: 90, column: 25, file: w3lists]
-   ,Create$10:function(Self) {
+   ,Create$12:function(Self) {
       TObject.Create(Self);
       return Self
    }
@@ -3941,7 +3941,7 @@ var TObjectList= {
       $DIdxW($Check(Self,"").FData,index$2,Value$9,"");
    }
    ,Destroy$:function($){return $.ClassType.Destroy($)}
-   ,Create$10$:function($){return $.ClassType.Create$10($)}
+   ,Create$12$:function($){return $.ClassType.Create$12($)}
 };
 /// TW3CustomForm = class (TW3CustomControl)
 ///  [line: 23, column: 3, file: w3forms]
@@ -3961,7 +3961,7 @@ var TW3CustomForm= {
    ///  [line: 50, column: 25, file: w3forms]
    ,StyleTagObject:function(Self) {
       TW3CustomControl.StyleTagObject(Self);
-      w3_setStyle($Check(Self,"").FHandle$2,w3_CSSPrefix("Transform"),"none");
+      w3_setStyle($Check(Self,"").FHandle$3,w3_CSSPrefix("Transform"),"none");
       TW3CustomControl.setStyleClass(Self,"TW3CustomForm");
    }
    /// procedure TW3CustomForm.FormActivated()
@@ -4001,9 +4001,9 @@ var TW3CustomForm= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -4042,8 +4042,8 @@ var TW3CustomForm= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -4068,9 +4068,9 @@ var TW3Form= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -4109,8 +4109,8 @@ var TW3Form= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -4136,7 +4136,7 @@ var TW3ScrollInfo= {
    ,getScrollHeight:function(Self) {
       var Result=0;
       var mRef$1=undefined;
-      mRef$1=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$1=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$1) {
          Result=TVariant.asInteger(TVariant,mRef$1.scrollHeight);
       } else {
@@ -4149,7 +4149,7 @@ var TW3ScrollInfo= {
    ,getScrollLeft:function(Self) {
       var Result=0;
       var mRef$2=undefined;
-      mRef$2=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$2=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$2) {
          Result=TVariant.asInteger(TVariant,mRef$2.scrollLeft);
       } else {
@@ -4162,7 +4162,7 @@ var TW3ScrollInfo= {
    ,getScrollTop:function(Self) {
       var Result=0;
       var mRef$3=undefined;
-      mRef$3=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$3=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$3) {
          Result=TVariant.asInteger(TVariant,mRef$3.scrollTop);
       } else {
@@ -4175,7 +4175,7 @@ var TW3ScrollInfo= {
    ,getScrollWidth:function(Self) {
       var Result=0;
       var mRef$4=undefined;
-      mRef$4=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$4=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$4) {
          Result=TVariant.asInteger(TVariant,mRef$4.scrollWidth);
       } else {
@@ -4187,7 +4187,7 @@ var TW3ScrollInfo= {
    ///  [line: 1126, column: 25, file: w3components]
    ,ScrollTo:function(Self, aLeft$2, aTop$2) {
       var mRef$5=undefined;
-      mRef$5=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$5=$Check($As($Check(Self,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$5) {
          mRef$5.scrollLeft=aLeft$2;
          mRef$5.scrollTop=aTop$2;
@@ -4352,11 +4352,11 @@ var TW3ControlFont= {
    /// function TW3ControlFont.getHandle() : THandle
    ///  [line: 1033, column: 25, file: w3components]
    ,getHandle$4:function(Self) {
-      return $Check($Check(Self,"").FOwner$4,"").FHandle$2;
+      return $Check($Check(Self,"").FOwner$4,"").FHandle$3;
    }
    /// constructor TW3ControlFont.Create(AOwner: TW3CustomControl)
    ///  [line: 1025, column: 28, file: w3components]
-   ,Create$23:function(Self, AOwner$2) {
+   ,Create$25:function(Self, AOwner$2) {
       TObject.Create(Self);
       if (AOwner$2!==null) {
          $Check(Self,"").FOwner$4=AOwner$2;
@@ -4367,7 +4367,7 @@ var TW3ControlFont= {
    }
    ,Destroy:TObject.Destroy
    ,getHandle$4$:function($){return $.ClassType.getHandle$4($)}
-   ,Create$23$:function($){return $.ClassType.Create$23.apply($.ClassType, arguments)}
+   ,Create$25$:function($){return $.ClassType.Create$25.apply($.ClassType, arguments)}
 };
 /// TW3ControlBackground = class (TW3OwnedObject)
 ///  [line: 185, column: 3, file: w3components]
@@ -4404,7 +4404,7 @@ var TW3Constraints= {
    ,getMaxHeight:function(Self) {
       var Result=0;
       var mRef$12=undefined;
-      mRef$12=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$2;
+      mRef$12=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$3;
       if (mRef$12) {
          Result=w3_getStyleAsInt(mRef$12,"maxHeight");
       }
@@ -4415,7 +4415,7 @@ var TW3Constraints= {
    ,getMaxWidth:function(Self) {
       var Result=0;
       var mRef$13=undefined;
-      mRef$13=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$2;
+      mRef$13=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$3;
       if (mRef$13) {
          Result=w3_getStyleAsInt(mRef$13,"maxWidth");
       }
@@ -4425,7 +4425,7 @@ var TW3Constraints= {
    ///  [line: 512, column: 26, file: w3components]
    ,setMaxHeight:function(Self, aValue$42) {
       var mRef$14=undefined;
-      mRef$14=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$2;
+      mRef$14=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$3;
       if (mRef$14) {
          mRef$14.style["maxWidth"]=TInteger.toPxStr(TInteger,aValue$42);
       }
@@ -4434,7 +4434,7 @@ var TW3Constraints= {
    ///  [line: 502, column: 26, file: w3components]
    ,setMaxWidth:function(Self, aValue$43) {
       var mRef$15=undefined;
-      mRef$15=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$2;
+      mRef$15=$Check($As($Check(Self,"").FOwner,TW3MovableControl),"").FHandle$3;
       if (mRef$15) {
          mRef$15.style["maxWidth"]=TInteger.toPxStr(TInteger,aValue$43);
       }
@@ -4505,9 +4505,9 @@ var TDocumentBody= {
    ,FinalizeObject:TW3Component.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
 };
 /// EW3TagObj = class (EW3Exception)
 ///  [line: 28, column: 3, file: w3components]
@@ -4586,13 +4586,13 @@ var TW3CanvasGradient= {
    $Parent:TObject,
    $Init:function ($) {
       TObject.$Init($);
-      $.FHandle$1=undefined;
+      $.FHandle$2=undefined;
    }
    /// constructor TW3CanvasGradient.Create(const aHandle: THandle)
    ///  [line: 636, column: 31, file: w3graphics]
-   ,Create$14:function(Self, aHandle) {
+   ,Create$16:function(Self, aHandle) {
       TObject.Create(Self);
-      $Check(Self,"").FHandle$1=aHandle;
+      $Check(Self,"").FHandle$2=aHandle;
       return Self
    }
    ,Destroy:TObject.Destroy
@@ -4609,7 +4609,7 @@ var TW3Canvas= {
    }
    /// constructor TW3Canvas.Create(Context: TW3CustomGraphicContext)
    ///  [line: 924, column: 23, file: w3graphics]
-   ,Create$15:function(Self, Context$2) {
+   ,Create$17:function(Self, Context$2) {
       TObject.Create(Self);
       $Check(Self,"").FContext=Context$2;
       if (!($Check(Self,"").FContext!==null)) {
@@ -4624,7 +4624,7 @@ var TW3Canvas= {
    ,Destroy:TObject.Destroy
    // IGNORED: TW3Canvas.Save
    // IGNORED: TW3Canvas.Restore
-   ,Create$15$:function($){return $.ClassType.Create$15.apply($.ClassType, arguments)}
+   ,Create$17$:function($){return $.ClassType.Create$17.apply($.ClassType, arguments)}
 };
 /// TW3CSSClassStyleNames = class (TW3OwnedObject)
 ///  [line: 24, column: 3, file: w3cssnames]
@@ -4711,9 +4711,9 @@ var TW3TouchList= {
    }
    /// constructor TW3TouchList.Create()
    ///  [line: 137, column: 26, file: w3touch]
-   ,Create$17:function(Self) {
+   ,Create$19:function(Self) {
       TObject.Create(Self);
-      $Check(Self,"").FObjects=TObjectList.Create$10$($New(TObjectList));
+      $Check(Self,"").FObjects=TObjectList.Create$12$($New(TObjectList));
       return Self
    }
    /// destructor TW3TouchList.Destroy()
@@ -4724,7 +4724,7 @@ var TW3TouchList= {
       TObject.Destroy(Self);
    }
    ,Destroy$:function($){return $.ClassType.Destroy($)}
-   ,Create$17$:function($){return $.ClassType.Create$17($)}
+   ,Create$19$:function($){return $.ClassType.Create$19($)}
 };
 /// TW3TouchData = class (TObject)
 ///  [line: 73, column: 3, file: w3touch]
@@ -4827,10 +4827,10 @@ var TW3Borders= {
    ///  [line: 90, column: 24, file: w3borders]
    ,Create$3:function(Self, AOwner$4) {
       TW3OwnedObject.Create$3(Self,AOwner$4);
-      $Check(Self,"").FLeft=TW3Border.Create$20($New(TW3Border),Self,0);
-      $Check(Self,"").FTop=TW3Border.Create$20($New(TW3Border),Self,1);
-      $Check(Self,"").FRight=TW3Border.Create$20($New(TW3Border),Self,2);
-      $Check(Self,"").FBottom=TW3Border.Create$20($New(TW3Border),Self,3);
+      $Check(Self,"").FLeft=TW3Border.Create$22($New(TW3Border),Self,0);
+      $Check(Self,"").FTop=TW3Border.Create$22($New(TW3Border),Self,1);
+      $Check(Self,"").FRight=TW3Border.Create$22($New(TW3Border),Self,2);
+      $Check(Self,"").FBottom=TW3Border.Create$22($New(TW3Border),Self,3);
       return Self
    }
    /// destructor TW3Borders.Destroy()
@@ -4882,7 +4882,7 @@ var TW3Border= {
    }
    /// constructor TW3Border.Create(AOwner: TW3Borders; AEdge: TW3BorderEdge)
    ///  [line: 161, column: 23, file: w3borders]
-   ,Create$20:function(Self, AOwner$5, AEdge) {
+   ,Create$22:function(Self, AOwner$5, AEdge) {
       TObject.Create(Self);
       $Check(Self,"").FOwner$2=AOwner$5;
       $Check(Self,"").FEdge=$Check(Self,"").FEdge;
@@ -4909,7 +4909,7 @@ var TW3Border= {
       var mRef$17=undefined;
       var mKey="";
       Result=0;
-      mRef$17=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$17=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$17) {
          mKey="padding-"+$Check(Self,"").FEdgeName;
          Result=w3_getStyleAsInt(mRef$17,mKey);
@@ -4923,7 +4923,7 @@ var TW3Border= {
       var mRef$18=undefined;
       var mKey$1="";
       Result=0;
-      mRef$18=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$18=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$18) {
          mKey$1="border-"+$Check(Self,"").FEdgeName+"-Width";
          Result=w3_getStyleAsInt(mRef$18,mKey$1);
@@ -4935,7 +4935,7 @@ var TW3Border= {
    ,setPadding:function(Self, aValue$44) {
       var mRef$19=undefined;
       var mKey$2="";
-      mRef$19=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$19=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$19) {
          mKey$2="padding"+$Check(Self,"").FEdgeName;
          mRef$19.style[mKey$2]=TInteger.toPxStr(TInteger,aValue$44);
@@ -4948,7 +4948,7 @@ var TW3Border= {
    ,setWidth:function(Self, aValue$45) {
       var mRef$20=undefined;
       var mKey$3="";
-      mRef$20=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$2;
+      mRef$20=$Check($As($Check($Check(Self,"").FOwner$2,"").FOwner,TW3TagObj),"").FHandle$3;
       if (mRef$20) {
          mKey$3="border-"+$Check(Self,"").FEdgeName+"-Width";
          mRef$20.style[mKey$3]=TInteger.toPxStr(TInteger,aValue$45);
@@ -4969,12 +4969,12 @@ var TW3ToolButton= {
    /// function TW3ToolButton.getCaption() : String
    ///  [line: 913, column: 24, file: w3ctrls]
    ,getCaption:function(Self) {
-      return w3_getPropertyAsStr($Check(Self,"").FHandle$2,"innerHTML");
+      return w3_getPropertyAsStr($Check(Self,"").FHandle$3,"innerHTML");
    }
    /// procedure TW3ToolButton.setCaption(aNewCaption: String)
    ///  [line: 918, column: 25, file: w3ctrls]
    ,setCaption:function(Self, aNewCaption) {
-      w3_setProperty($Check(Self,"").FHandle$2,"innerHTML",aNewCaption);
+      w3_setProperty($Check(Self,"").FHandle$3,"innerHTML",aNewCaption);
    }
    /// function TW3ToolButton.makeElementTagObj() : THandle
    ///  [line: 902, column: 24, file: w3ctrls]
@@ -4985,7 +4985,7 @@ var TW3ToolButton= {
    ///  [line: 907, column: 25, file: w3ctrls]
    ,StyleTagObject:function(Self) {
       TW3CustomControl.StyleTagObject(Self);
-      w3_setStyle($Check(Self,"").FHandle$2,"fontSmooth","always");
+      w3_setStyle($Check(Self,"").FHandle$3,"fontSmooth","always");
    }
    /// procedure TW3ToolButton.InitializeObject()
    ///  [line: 895, column: 25, file: w3ctrls]
@@ -5003,9 +5003,9 @@ var TW3ToolButton= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -5044,8 +5044,8 @@ var TW3ToolButton= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -5094,9 +5094,9 @@ var TW3ListMenu= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -5135,8 +5135,8 @@ var TW3ListMenu= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -5170,7 +5170,7 @@ var TW3ListItems= {
    ///  [line: 967, column: 26, file: w3ctrls]
    ,Create$3:function(Self, AOwner$6) {
       TW3OwnedObject.Create$3(Self,AOwner$6);
-      $Check(Self,"").FObjects$1=TObjectList.Create$10$($New(TObjectList));
+      $Check(Self,"").FObjects$1=TObjectList.Create$12$($New(TObjectList));
       return Self
    }
    /// destructor TW3ListItems.Destroy()
@@ -5204,7 +5204,7 @@ var TW3ListItem= {
    }
    /// function TW3ListItem.getEnabled() : Boolean
    ///  [line: 956, column: 22, file: w3ctrls]
-   ,getEnabled:function(Self) {
+   ,getEnabled$1:function(Self) {
       return true;
    }
    ,Destroy:TW3TagObj.Destroy
@@ -5216,9 +5216,9 @@ var TW3ListItem= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -5257,8 +5257,8 @@ var TW3ListItem= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled$:function($){return $.ClassType.getEnabled($)}
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1$:function($){return $.ClassType.getEnabled$1($)}
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -5281,9 +5281,9 @@ var TW3LabelText= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -5322,8 +5322,8 @@ var TW3LabelText= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -5350,11 +5350,11 @@ var TW3Label= {
    ///  [line: 1420, column: 20, file: w3ctrls]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
-      $Check(Self,"").FContainer=TW3Component.Create$22$($New(TW3LabelText),Self);
-      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$2,"textOverflow","ellipsis");
-      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$2,"whiteSpace","nowrap");
-      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$2,"overflow","hidden");
-      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$2,w3_CSSPrefixDef("vertical-align"),"middle");
+      $Check(Self,"").FContainer=TW3Component.Create$24$($New(TW3LabelText),Self);
+      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$3,"textOverflow","ellipsis");
+      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$3,"whiteSpace","nowrap");
+      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$3,"overflow","hidden");
+      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$3,w3_CSSPrefixDef("vertical-align"),"middle");
       TW3Label.setCaption$2$($Check(Self,""),"Label");
       TW3MovableControl.setHeight$($Check(Self,""),12);
    }
@@ -5417,7 +5417,7 @@ var TW3Label= {
             mToWrite="right";
             break;
       }
-      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$2,"text-align",mToWrite);
+      w3_setStyle($Check($Check(Self,"").FContainer,"").FHandle$3,"text-align",mToWrite);
       TW3MovableControl.setWasSized(Self);
       TW3MovableControl.setWasMoved(Self);
       TW3TagObj.EndUpdate$($Check(Self,""));
@@ -5431,9 +5431,9 @@ var TW3Label= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -5472,8 +5472,8 @@ var TW3Label= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -5504,17 +5504,17 @@ var TW3HeaderControl= {
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       $Check(Self,"").FSpacing=4;
-      $Check(Self,"").FLabel=TW3Component.Create$22$($New(TW3Label),Self);
+      $Check(Self,"").FLabel=TW3Component.Create$24$($New(TW3Label),Self);
       TW3CustomFont.setName(TW3CustomControl.getFont$1($Check(Self,"").FLabel),"verdana");
       TW3CustomFont.setColor$1(TW3CustomControl.getFont$1($Check(Self,"").FLabel),RGBToColor(255,255,255));
       TW3CustomFont.setWeight(TW3CustomControl.getFont$1($Check(Self,"").FLabel),"bold");
       TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check(Self,"").FLabel),18);
       TW3Label.setCaption$2$($Check($Check(Self,"").FLabel,""),TObject.ClassName($Check(Self,"").ClassType));
       TW3Label.setTextAlign$1$($Check($Check(Self,"").FLabel,""),0);
-      $Check(Self,"").FBackBtn=TW3Component.Create$22$($New(TW3ToolButton),Self);
+      $Check(Self,"").FBackBtn=TW3Component.Create$24$($New(TW3ToolButton),Self);
       TW3ToolButton.setCaption$($Check($Check(Self,"").FBackBtn,""),"Back");
       TW3MovableControl.setVisible$($Check($Check(Self,"").FBackBtn,""),true);
-      $Check(Self,"").FNextBtn=TW3Component.Create$22$($New(TW3ToolButton),Self);
+      $Check(Self,"").FNextBtn=TW3Component.Create$24$($New(TW3ToolButton),Self);
       TW3ToolButton.setCaption$($Check($Check(Self,"").FNextBtn,""),"Next");
       TW3MovableControl.setVisible$($Check($Check(Self,"").FNextBtn,""),false);
    }
@@ -5560,9 +5560,9 @@ var TW3HeaderControl= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -5601,8 +5601,8 @@ var TW3HeaderControl= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
@@ -5700,7 +5700,7 @@ var TW3CustomAnimation= {
    ,SetupTransition:function(Self) {
       var mCallBack$1=$Event0(Self,TW3CustomAnimation.CBEnds);
       $Check(Self,"").FBusy=true;
-      $Check(Self,"").FInTagRef=$Check($Check(Self,"").FTarget$1,"").FHandle$2;
+      $Check(Self,"").FInTagRef=$Check($Check(Self,"").FTarget$1,"").FHandle$3;
       if (!w3_getIsFirefox()) {
          $Check(Self,"").FInEvName=w3_CSSPrefix("AnimationEnd");
       } else {
@@ -5729,17 +5729,17 @@ var TW3NamedAnimation= {
    ,SetupTransition:function(Self) {
       var mCommand="";
       TW3CustomAnimation.SetupTransition(Self);
-      w3_setStyle($Check($Check(Self,"").FTarget$1,"").FHandle$2,w3_CSSPrefix("AnimationFillMode"),"both");
+      w3_setStyle($Check($Check(Self,"").FTarget$1,"").FHandle$3,w3_CSSPrefix("AnimationFillMode"),"both");
       mCommand=$Check(Self,"").FName$2+" "+FloatToStr($Check(Self,"").FDuration,99)+"s linear";
-      w3_setStyle($Check($Check(Self,"").FTarget$1,"").FHandle$2,w3_CSSPrefix("Animation"),mCommand);
+      w3_setStyle($Check($Check(Self,"").FTarget$1,"").FHandle$3,w3_CSSPrefix("Animation"),mCommand);
    }
    /// procedure TW3NamedAnimation.FinalizeTransition()
    ///  [line: 314, column: 29, file: w3effects]
    ,FinalizeTransition:function(Self) {
       TW3CustomAnimation.FinalizeTransition(Self);
       if ($Check(Self,"").FTarget$1!==null) {
-         $Check($Check(Self,"").FTarget$1,"").FHandle$2.style[w3_CSSPrefix("Animation")]="none";
-         $Check($Check(Self,"").FTarget$1,"").FHandle$2.style[w3_CSSPrefix("AnimationFillMode")]="none";
+         $Check($Check(Self,"").FTarget$1,"").FHandle$3.style[w3_CSSPrefix("Animation")]="none";
+         $Check($Check(Self,"").FTarget$1,"").FHandle$3.style[w3_CSSPrefix("AnimationFillMode")]="none";
       }
    }
    ,Destroy:TW3CustomAnimation.Destroy
@@ -5776,7 +5776,7 @@ var TApplication= {
    /// procedure TApplication.ApplicationStarting()
    ///  [line: 24, column: 24, file: controlsheader]
    ,ApplicationStarting:function(Self) {
-      var mForm=TW3Component.Create$22$($New(TForm1),$Check($Check(Self,"").FDisplay,"").FView);
+      var mForm=TW3Component.Create$24$($New(TForm1),$Check($Check(Self,"").FDisplay,"").FView);
       TW3Component.setName$1(mForm,"Form1");
       TW3CustomApplication.RegisterFormInstance(Self,mForm,true);
       TW3CustomApplication.ApplicationStarting(Self);
@@ -5808,42 +5808,39 @@ var TForm1= {
       TW3MovableControl.setVisible$($Check(Self,""),true);
       TW3MovableControl.SetBounds$($Check(Self,""),0,0,200,64);
       TW3CustomControl.setStyleClass(Self,"TW3Form");
-      TW3CustomControl.setEnabled$($Check(Self,""),true);
-      $Check(Self,"").W3HeaderControl1=TW3Component.Create$22$($New(TW3HeaderControl),Self);
+      TW3CustomControl.setEnabled$1$($Check(Self,""),true);
+      $Check(Self,"").W3HeaderControl1=TW3Component.Create$24$($New(TW3HeaderControl),Self);
       TW3Component.setName$1($Check(Self,"").W3HeaderControl1,"W3HeaderControl1");
       TW3MovableControl.setVisible$($Check($Check(Self,"").W3HeaderControl1,""),true);
       TW3MovableControl.SetBounds$($Check($Check(Self,"").W3HeaderControl1,""),0,0,200,51);
       TW3CustomControl.setStyleClass($Check(Self,"").W3HeaderControl1,"TW3HeaderControl");
-      TW3CustomControl.setEnabled$($Check($Check(Self,"").W3HeaderControl1,""),true);
+      TW3CustomControl.setEnabled$1$($Check($Check(Self,"").W3HeaderControl1,""),true);
       TW3Label.setCaption$2$($Check($Check($Check(Self,"").W3HeaderControl1,"").FLabel,""),"Header");
-      return;
       TW3MovableControl.setVisible$($Check($Check($Check(Self,"").W3HeaderControl1,"").FNextBtn,""),true);
       TW3CustomControl._setMouseClick($Check($Check(Self,"").W3HeaderControl1,"").FNextBtn,function (Sender$2) {
          TW3MovableControl.setVisible$($Check($Check($Check(Self,"").W3HeaderControl1,"").FNextBtn,""),false);
          TW3MovableControl.setVisible$($Check($Check($Check(Self,"").W3HeaderControl1,"").FBackBtn,""),true);
-         TW3MovableControl.setWidth$1$($Check($Check(Self,"").W3HeaderControl1,""),TW3MovableControl.getWidth$6$($Check($Check(Self,"").W3HeaderControl1,""))-1);
-         TW3MovableControl.setWidth$1$($Check($Check(Self,"").W3HeaderControl1,""),TW3MovableControl.getWidth$6$($Check($Check(Self,"").W3HeaderControl1,""))+1);
+         TW3CustomControl.LayoutChildren$($Check($Check(Self,"").W3HeaderControl1,""));
       });
       TW3MovableControl.setVisible$($Check($Check($Check(Self,"").W3HeaderControl1,"").FBackBtn,""),false);
       TW3CustomControl._setMouseClick($Check($Check(Self,"").W3HeaderControl1,"").FBackBtn,function (Sender$3) {
          TW3MovableControl.setVisible$($Check($Check($Check(Self,"").W3HeaderControl1,"").FNextBtn,""),true);
          TW3MovableControl.setVisible$($Check($Check($Check(Self,"").W3HeaderControl1,"").FBackBtn,""),false);
-         TW3MovableControl.setWidth$1$($Check($Check(Self,"").W3HeaderControl1,""),TW3MovableControl.getWidth$6$($Check($Check(Self,"").W3HeaderControl1,""))-1);
-         TW3MovableControl.setWidth$1$($Check($Check(Self,"").W3HeaderControl1,""),TW3MovableControl.getWidth$6$($Check($Check(Self,"").W3HeaderControl1,""))+1);
+         TW3CustomControl.LayoutChildren$($Check($Check(Self,"").W3HeaderControl1,""));
       });
    }
    /// procedure TForm1.FinalizeObject()
-   ///  [line: 54, column: 18, file: form1]
+   ///  [line: 55, column: 18, file: form1]
    ,FinalizeObject:function(Self) {
       TW3CustomControl.FinalizeObject(Self);
    }
    /// procedure TForm1.StyleTagObject()
-   ///  [line: 65, column: 18, file: form1]
+   ///  [line: 66, column: 18, file: form1]
    ,StyleTagObject$10:function(Self) {
       /* null */
    }
    /// procedure TForm1.Resize()
-   ///  [line: 59, column: 18, file: form1]
+   ///  [line: 60, column: 18, file: form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       TW3MovableControl.setWidth$1$($Check($Check(Self,"").W3HeaderControl1,""),TW3MovableControl.ClientWidth(Self));
@@ -5857,9 +5854,9 @@ var TForm1= {
    ,FinalizeObject$:function($){return $.ClassType.FinalizeObject($)}
    ,UnHookEvents:TW3TagObj.UnHookEvents
    ,EndUpdate:TW3TagObj.EndUpdate
-   ,Create$21:TW3TagObj.Create$21
+   ,Create$23:TW3TagObj.Create$23
    ,CBNoBehavior:TW3Component.CBNoBehavior
-   ,Create$22:TW3Component.Create$22
+   ,Create$24:TW3Component.Create$24
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
    ,getLeft:TW3MovableControl.getLeft
@@ -5898,8 +5895,8 @@ var TForm1= {
    ,CBLostFocus:TW3CustomControl.CBLostFocus
    ,CBAnimationBegins:TW3CustomControl.CBAnimationBegins
    ,CBAnimationEnds:TW3CustomControl.CBAnimationEnds
-   ,getEnabled:TW3CustomControl.getEnabled
-   ,setEnabled:TW3CustomControl.setEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
+   ,setEnabled$1:TW3CustomControl.setEnabled$1
    ,LayoutChildren:TW3CustomControl.LayoutChildren
    // IGNORED: TW3CustomControl.getSizeInfo
    ,getChildrenSortedByYpos:TW3CustomControl.getChildrenSortedByYpos
