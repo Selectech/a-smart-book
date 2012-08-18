@@ -5262,52 +5262,53 @@ aoYesNo=2;
 aoOK=3;
 aoCancel=4;
 aoOKCancel=5;
-/// TStorageType enumeration///  [line: 10, column: 3, file: Main]
+/// TStorageType enumeration///  [line: 17, column: 3, file: Main]
 stSession=0;
 stLocal=1;
 stGlobal=2;
 /// TForm1 = class (TW3Form)
-///  [line: 12, column: 3, file: Main]
+///  [line: 19, column: 3, file: Main]
 var TForm1= {
    $ClassName:"TForm1",
    $Parent:TW3Form,
    $Init:function ($) {
       TW3Form.$Init($);
-      $.btnGetCookie=$.btnGetGlobal=$.btnGetLocal=$.btnGetSession=$.btnSetCookie=$.btnSetGlobal=$.btnSetLocal=$.btnSetSession=$.inpCookieStorage=$.inpGlobalStorage=$.inpLocalStorage=$.inpSessionStorage=$.lblCookieStorage=$.lblGlobalStorage=$.lblLocalStorage=$.lblSessionStorage=$.outCookieStorage=$.outGlobalStorage=$.outLocalStorage=$.outSessionStorage=$.pnlCookieStorage=$.pnlGlobalStorage=$.pnlLocalStorage=$.pnlSessionStorage=null;
+      $.btnGetCookie=$.btnGetGlobal=$.btnGetLocal=$.btnGetSession=$.btnSetCookie=$.btnSetGlobal=$.btnSetLocal=$.btnSetSession=$.inpCookieStorage=$.inpGlobalStorage=$.inpLocalStorage=$.inpSessionStorage=$.lblCookieStorage=$.lblGlobalStorage=$.lblLocalStorage=$.lblSessionStorage=$.outCookieStorage=$.outData=$.outGlobalStorage=$.outLocalStorage=$.outSessionStorage=$.pnlCookieStorage=$.pnlGlobalStorage=$.pnlLocalStorage=$.pnlSessionStorage=null;
       $.FStorage=[null,null,null];
    }
    /// procedure TForm1.EnableStorage()
-   ///  [line: 113, column: 18, file: Main]
+   ///  [line: 120, column: 18, file: Main]
    ,EnableStorage:function(Self) {
       function Enable(pnl, st) {
          var comp=null;
          var a$=0;
          var $temp19;
-         for(a$=0,$temp19=TW3CustomControl.getChildrenSortedByYpos($Check(pnl," in Enable [line: 119, column: 21, file: Main]")).length;a$<$temp19;a$++) {
-            comp=$DIdxR(TW3CustomControl.getChildrenSortedByYpos($Check(pnl," in Enable [line: 119, column: 21, file: Main]")),a$," in Enable [line: 119, column: 45, file: Main]");
+         for(a$=0,$temp19=TW3CustomControl.getChildrenSortedByYpos($Check(pnl," in Enable [line: 126, column: 21, file: Main]")).length;a$<$temp19;a$++) {
+            comp=$DIdxR(TW3CustomControl.getChildrenSortedByYpos($Check(pnl," in Enable [line: 126, column: 21, file: Main]")),a$," in Enable [line: 126, column: 45, file: Main]");
             if ($Is(comp,TW3CustomControl)) {
-               TW3CustomControl.setEnabled$1($Check($As(comp,TW3CustomControl)," in Enable [line: 121, column: 32, file: Main]"),$Check(Self," in Enable [line: 121, column: 52, file: Main]").FStorage[$Idx(st,0,2," in Enable [line: 121, column: 63, file: Main]")]!==null);
+               TW3CustomControl.setEnabled$1($Check($As(comp,TW3CustomControl)," in Enable [line: 128, column: 32, file: Main]"),$Check(Self," in Enable [line: 128, column: 52, file: Main]").FStorage[$Idx(st,0,2," in Enable [line: 128, column: 63, file: Main]")]!==null);
             }
          }
-         TW3CustomControl.setEnabled$1($Check(pnl," in Enable [line: 122, column: 9, file: Main]"),$Check(Self," in Enable [line: 122, column: 29, file: Main]").FStorage[$Idx(st,0,2," in Enable [line: 122, column: 40, file: Main]")]!==null);
+         TW3CustomControl.setEnabled$1($Check(pnl," in Enable [line: 129, column: 9, file: Main]"),$Check(Self," in Enable [line: 129, column: 29, file: Main]").FStorage[$Idx(st,0,2," in Enable [line: 129, column: 40, file: Main]")]!==null);
       };
-      Enable($Check(Self," in TForm1.EnableStorage [line: 126, column: 10, file: Main]").pnlSessionStorage,0);
-      Enable($Check(Self," in TForm1.EnableStorage [line: 127, column: 10, file: Main]").pnlLocalStorage,1);
-      Enable($Check(Self," in TForm1.EnableStorage [line: 128, column: 10, file: Main]").pnlGlobalStorage,2);
+      Enable($Check(Self," in TForm1.EnableStorage [line: 133, column: 10, file: Main]").pnlSessionStorage,0);
+      Enable($Check(Self," in TForm1.EnableStorage [line: 134, column: 10, file: Main]").pnlLocalStorage,1);
+      Enable($Check(Self," in TForm1.EnableStorage [line: 135, column: 10, file: Main]").pnlGlobalStorage,2);
    }
    /// procedure TForm1.FinalizeObject()
-   ///  [line: 78, column: 18, file: Main]
+   ///  [line: 84, column: 18, file: Main]
    ,FinalizeObject:function(Self) {
+      TForm1.SetData(Self);
       TForm1.FinalizeStorage(Self);
       TW3CustomControl.FinalizeObject(Self);
    }
    /// procedure TForm1.FinalizeStorage()
-   ///  [line: 101, column: 18, file: Main]
+   ///  [line: 108, column: 18, file: Main]
    ,FinalizeStorage:function(Self) {
       var st$1=null;
       var a$1=0;
       for(a$1=0;a$1<=2;a$1++) {
-         st$1=$Check(Self," in TForm1.FinalizeStorage [line: 105, column: 13, file: Main]").FStorage[$Idx(a$1,0,2," in TForm1.FinalizeStorage [line: 105, column: 22, file: Main]")];
+         st$1=$Check(Self," in TForm1.FinalizeStorage [line: 112, column: 13, file: Main]").FStorage[$Idx(a$1,0,2," in TForm1.FinalizeStorage [line: 112, column: 22, file: Main]")];
          if (st$1!==null) {
             TW3CustomStorage.Close(st$1);
             TObject.Free(st$1);
@@ -5315,17 +5316,34 @@ var TForm1= {
       }
    }
    /// procedure TForm1.GetCookie(output: TW3EditBox)
-   ///  [line: 141, column: 18, file: Main]
+   ///  [line: 148, column: 18, file: Main]
    ,GetCookie:function(Self, output) {
-      TW3EditBox.setText$3($Check(output," in TForm1.GetCookie [line: 143, column: 10, file: Main]"),Cookies.ReadString(Cookies,"ASmartBook-Key"));
+      TW3EditBox.setText$3($Check(output," in TForm1.GetCookie [line: 150, column: 10, file: Main]"),Cookies.ReadString(Cookies,"ASmartBook-Key"));
+   }
+   /// procedure TForm1.GetData()
+   ///  [line: 158, column: 18, file: Main]
+   ,GetData:function(Self) {
+      var sData="";
+      var data={Age:0,Name$3:"",Height$7:0,Male:false};
+      if (!($Check(Self," in TForm1.GetData [line: 163, column: 19, file: Main]").FStorage[1]!==null)) {
+         return;
+      }
+      sData=TW3CustomStorage.getKeyStr($Check(Self," in TForm1.GetData [line: 164, column: 11, file: Main]").FStorage[1],"Data","");
+      try {
+         
+      data = JSON.parse(sData);
+    TW3EditBox.setText$3($Check($Check(Self," in TForm1.GetData [line: 169, column: 5, file: Main]").outData," in TForm1.GetData [line: 169, column: 13, file: Main]"),(data.Name$3.toString()+","+data.Age.toString()+","+data.Height$7.toString()+","+(data.Male?1:0).toString()));
+      } catch ($e) {
+         TW3EditBox.setText$3($Check($Check(Self," in TForm1.GetData [line: 171, column: 5, file: Main]").outData," in TForm1.GetData [line: 171, column: 13, file: Main]"),"(empty)");
+      }
    }
    /// procedure TForm1.GetStorage(st: TStorageType; output: TW3EditBox)
-   ///  [line: 131, column: 18, file: Main]
+   ///  [line: 138, column: 18, file: Main]
    ,GetStorage:function(Self, st$2, output$1) {
-      TW3EditBox.setText$3($Check(output$1," in TForm1.GetStorage [line: 133, column: 10, file: Main]"),TW3CustomStorage.getKeyStr($Check(Self," in TForm1.GetStorage [line: 133, column: 18, file: Main]").FStorage[$Idx(st$2,0,2," in TForm1.GetStorage [line: 133, column: 29, file: Main]")],"Key","(undefined)"));
+      TW3EditBox.setText$3($Check(output$1," in TForm1.GetStorage [line: 140, column: 10, file: Main]"),TW3CustomStorage.getKeyStr($Check(Self," in TForm1.GetStorage [line: 140, column: 18, file: Main]").FStorage[$Idx(st$2,0,2," in TForm1.GetStorage [line: 140, column: 29, file: Main]")],"Key","(undefined)"));
    }
    /// procedure TForm1.InitializeObject()
-   ///  [line: 34, column: 18, file: Main]
+   ///  [line: 39, column: 18, file: Main]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3Component.setName$1(Self,"Main");
@@ -5497,63 +5515,87 @@ var TForm1= {
       TW3CustomControl.setStyleClass($Check(Self," in TForm1.InitializeObject [line: 170, column: 1, file: Main:impl]").lblCookieStorage,"TW3Label");
       TW3CustomControl.setEnabled$1($Check($Check(Self," in TForm1.InitializeObject [line: 171, column: 1, file: Main:impl]").lblCookieStorage," in TForm1.InitializeObject [line: 171, column: 18, file: Main:impl]"),true);
       TW3Label.setCaption$2($Check($Check(Self," in TForm1.InitializeObject [line: 172, column: 1, file: Main:impl]").lblCookieStorage," in TForm1.InitializeObject [line: 172, column: 18, file: Main:impl]"),"Cookie storage");
-      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 38, column: 3, file: Main]").lblSessionStorage," in TForm1.InitializeObject [line: 38, column: 30, file: Main]").FContainer),18);
-      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 39, column: 3, file: Main]").lblLocalStorage," in TForm1.InitializeObject [line: 39, column: 28, file: Main]").FContainer),18);
-      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 40, column: 3, file: Main]").lblGlobalStorage," in TForm1.InitializeObject [line: 40, column: 29, file: Main]").FContainer),18);
-      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 41, column: 3, file: Main]").lblCookieStorage," in TForm1.InitializeObject [line: 41, column: 29, file: Main]").FContainer),18);
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 42, column: 3, file: Main]").btnGetSession,function (Sender$2) {
-         TForm1.GetStorage(Self,0,$Check(Self," in  [line: 44, column: 29, file: Main]").outSessionStorage);
+      $Check(Self," in TForm1.InitializeObject [line: 174, column: 1, file: Main:impl]").outData=TW3Component.Create$24($New(TW3EditBox),Self);
+      TW3Component.setName$1($Check(Self," in TForm1.InitializeObject [line: 175, column: 1, file: Main:impl]").outData,"outData");
+      TW3MovableControl.setVisible($Check($Check(Self," in TForm1.InitializeObject [line: 176, column: 1, file: Main:impl]").outData," in TForm1.InitializeObject [line: 176, column: 9, file: Main:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TForm1.InitializeObject [line: 177, column: 1, file: Main:impl]").outData," in TForm1.InitializeObject [line: 177, column: 9, file: Main:impl]"),0,320,320,24);
+      TW3CustomControl.setStyleClass($Check(Self," in TForm1.InitializeObject [line: 178, column: 1, file: Main:impl]").outData,"TW3EditBox");
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TForm1.InitializeObject [line: 179, column: 1, file: Main:impl]").outData," in TForm1.InitializeObject [line: 179, column: 9, file: Main:impl]"),true);
+      TW3EditBox.setText$3($Check($Check(Self," in TForm1.InitializeObject [line: 180, column: 1, file: Main:impl]").outData," in TForm1.InitializeObject [line: 180, column: 9, file: Main:impl]"),"");
+      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 43, column: 3, file: Main]").lblSessionStorage," in TForm1.InitializeObject [line: 43, column: 30, file: Main]").FContainer),18);
+      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 44, column: 3, file: Main]").lblLocalStorage," in TForm1.InitializeObject [line: 44, column: 28, file: Main]").FContainer),18);
+      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 45, column: 3, file: Main]").lblGlobalStorage," in TForm1.InitializeObject [line: 45, column: 29, file: Main]").FContainer),18);
+      TW3CustomFont.setSize(TW3CustomControl.getFont$1($Check($Check(Self," in TForm1.InitializeObject [line: 46, column: 3, file: Main]").lblCookieStorage," in TForm1.InitializeObject [line: 46, column: 29, file: Main]").FContainer),18);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 47, column: 3, file: Main]").btnGetSession,function (Sender$2) {
+         TForm1.GetStorage(Self,0,$Check(Self," in  [line: 49, column: 29, file: Main]").outSessionStorage);
       });
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 46, column: 3, file: Main]").btnSetSession,function (Sender$3) {
-         TForm1.SetStorage(Self,0,$Check(Self," in  [line: 48, column: 29, file: Main]").inpSessionStorage);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 51, column: 3, file: Main]").btnSetSession,function (Sender$3) {
+         TForm1.SetStorage(Self,0,$Check(Self," in  [line: 53, column: 29, file: Main]").inpSessionStorage);
       });
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 50, column: 3, file: Main]").btnGetLocal,function (Sender$4) {
-         TForm1.GetStorage(Self,1,$Check(Self," in  [line: 52, column: 27, file: Main]").outLocalStorage);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 55, column: 3, file: Main]").btnGetLocal,function (Sender$4) {
+         TForm1.GetStorage(Self,1,$Check(Self," in  [line: 57, column: 27, file: Main]").outLocalStorage);
       });
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 54, column: 3, file: Main]").btnSetLocal,function (Sender$5) {
-         TForm1.SetStorage(Self,1,$Check(Self," in  [line: 56, column: 27, file: Main]").inpLocalStorage);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 59, column: 3, file: Main]").btnSetLocal,function (Sender$5) {
+         TForm1.SetStorage(Self,1,$Check(Self," in  [line: 61, column: 27, file: Main]").inpLocalStorage);
       });
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 58, column: 3, file: Main]").btnGetGlobal,function (Sender$6) {
-         TForm1.GetStorage(Self,2,$Check(Self," in  [line: 60, column: 28, file: Main]").outGlobalStorage);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 63, column: 3, file: Main]").btnGetGlobal,function (Sender$6) {
+         TForm1.GetStorage(Self,2,$Check(Self," in  [line: 65, column: 28, file: Main]").outGlobalStorage);
       });
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 62, column: 3, file: Main]").btnSetGlobal,function (Sender$7) {
-         TForm1.SetStorage(Self,2,$Check(Self," in  [line: 64, column: 28, file: Main]").inpGlobalStorage);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 67, column: 3, file: Main]").btnSetGlobal,function (Sender$7) {
+         TForm1.SetStorage(Self,2,$Check(Self," in  [line: 69, column: 28, file: Main]").inpGlobalStorage);
       });
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 66, column: 3, file: Main]").btnGetCookie,function (Sender$8) {
-         TForm1.GetCookie(Self,$Check(Self," in  [line: 68, column: 17, file: Main]").outCookieStorage);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 71, column: 3, file: Main]").btnGetCookie,function (Sender$8) {
+         TForm1.GetCookie(Self,$Check(Self," in  [line: 73, column: 17, file: Main]").outCookieStorage);
       });
-      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 70, column: 3, file: Main]").btnSetCookie,function (Sender$9) {
-         TForm1.SetCookie(Self,$Check(Self," in  [line: 72, column: 17, file: Main]").inpCookieStorage);
+      TW3CustomControl._setMouseClick($Check(Self," in TForm1.InitializeObject [line: 75, column: 3, file: Main]").btnSetCookie,function (Sender$9) {
+         TForm1.SetCookie(Self,$Check(Self," in  [line: 77, column: 17, file: Main]").inpCookieStorage);
       });
       TForm1.InitializeStorage(Self);
       TForm1.EnableStorage(Self);
+      TForm1.GetData(Self);
    }
    /// procedure TForm1.InitializeStorage()
-   ///  [line: 84, column: 18, file: Main]
+   ///  [line: 91, column: 18, file: Main]
    ,InitializeStorage:function(Self) {
       var st$3=0;
-      $Check(Self," in TForm1.InitializeStorage [line: 88, column: 3, file: Main]").FStorage[0]=TObject.Create($New(TW3SessionStorage));
-      $Check(Self," in TForm1.InitializeStorage [line: 89, column: 3, file: Main]").FStorage[1]=TObject.Create($New(TW3LocalStorage));
-      $Check(Self," in TForm1.InitializeStorage [line: 90, column: 3, file: Main]").FStorage[2]=TObject.Create($New(TW3GlobalStorage));
+      $Check(Self," in TForm1.InitializeStorage [line: 95, column: 3, file: Main]").FStorage[0]=TObject.Create($New(TW3SessionStorage));
+      $Check(Self," in TForm1.InitializeStorage [line: 96, column: 3, file: Main]").FStorage[1]=TObject.Create($New(TW3LocalStorage));
+      $Check(Self," in TForm1.InitializeStorage [line: 97, column: 3, file: Main]").FStorage[2]=TObject.Create($New(TW3GlobalStorage));
       for(st$3=0;st$3<=2;st$3++) {
          try {
-            if (!TW3CustomStorage.Open($Check(Self," in TForm1.InitializeStorage [line: 93, column: 14, file: Main]").FStorage[$Idx(st$3,0,2," in TForm1.InitializeStorage [line: 93, column: 25, file: Main]")],"ASmartBook-StorageTest")) {
+            if (!TW3CustomStorage.Open($Check(Self," in TForm1.InitializeStorage [line: 100, column: 14, file: Main]").FStorage[$Idx(st$3,0,2," in TForm1.InitializeStorage [line: 100, column: 25, file: Main]")],"ASmartBook-StorageTest")) {
                showmessage("Failed to open storage");
             }
          } catch ($e) {
-            $Check(Self," in TForm1.InitializeStorage [line: 97, column: 7, file: Main]").FStorage[$Idx(st$3,0,2," in TForm1.InitializeStorage [line: 97, column: 18, file: Main]")]=null;
+            $Check(Self," in TForm1.InitializeStorage [line: 104, column: 7, file: Main]").FStorage[$Idx(st$3,0,2," in TForm1.InitializeStorage [line: 104, column: 18, file: Main]")]=null;
          }
       }
    }
    /// procedure TForm1.SetCookie(input: TW3EditBox)
-   ///  [line: 146, column: 18, file: Main]
+   ///  [line: 153, column: 18, file: Main]
    ,SetCookie:function(Self, input) {
-      Cookies.WriteString(Cookies,"ASmartBook-Key",TW3EditBox.getText$2($Check(input," in TForm1.SetCookie [line: 148, column: 47, file: Main]")),0.000347222222222222);
+      Cookies.WriteString(Cookies,"ASmartBook-Key",TW3EditBox.getText$2($Check(input," in TForm1.SetCookie [line: 155, column: 47, file: Main]")),0.000347222222222222);
+   }
+   /// procedure TForm1.SetData()
+   ///  [line: 175, column: 18, file: Main]
+   ,SetData:function(Self) {
+      var data$1={Age:0,Name$3:"",Height$7:0,Male:false};
+      var sData$1="";
+      if (!($Check(Self," in TForm1.SetData [line: 180, column: 19, file: Main]").FStorage[1]!==null)) {
+         return;
+      }
+      data$1.Age=43;
+      data$1.Height$7=177.5;
+      data$1.Name$3="Primoz";
+      data$1.Male=true;
+      
+    sData$1 = JSON.stringify(data$1);
+  TW3CustomStorage.setKeyStr($Check(Self," in TForm1.SetData [line: 188, column: 3, file: Main]").FStorage[1],"Data",sData$1);
    }
    /// procedure TForm1.SetStorage(st: TStorageType; input: TW3EditBox)
-   ///  [line: 136, column: 18, file: Main]
+   ///  [line: 143, column: 18, file: Main]
    ,SetStorage:function(Self, st$4, input$1) {
-      TW3CustomStorage.setKeyStr($Check(Self," in TForm1.SetStorage [line: 138, column: 3, file: Main]").FStorage[$Idx(st$4,0,2," in TForm1.SetStorage [line: 138, column: 14, file: Main]")],"Key",TW3EditBox.getText$2($Check(input$1," in TForm1.SetStorage [line: 138, column: 39, file: Main]")));
+      TW3CustomStorage.setKeyStr($Check(Self," in TForm1.SetStorage [line: 145, column: 3, file: Main]").FStorage[$Idx(st$4,0,2," in TForm1.SetStorage [line: 145, column: 14, file: Main]")],"Key",TW3EditBox.getText$2($Check(input$1," in TForm1.SetStorage [line: 145, column: 39, file: Main]")));
    }
    ,Destroy:TW3TagObj.Destroy
    ,makeElementTagId:TW3TagObj.makeElementTagId
@@ -5570,6 +5612,18 @@ var TForm1= {
    ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
+/// TData = record
+///  [line: 10, column: 3, file: Main]
+function Copy$TData(s,d) {
+   d.Age=s.Age;
+   d.Name$3=s.Name$3;
+   d.Height$7=s.Height$7;
+   d.Male=s.Male;
+   return d;
+}
+function Clone$TData($) {
+   return Copy$TData($,{});
+}
 /// TW3CustomStorage = class (TObject)
 ///  [line: 33, column: 3, file: w3storage]
 var TW3CustomStorage= {
@@ -5772,9 +5826,14 @@ var Cookies= {
    $Init:function ($) {
       TObject.$Init($);
    }
+   /// procedure Cookies.DoWriteString(name: String; value: String)
+   ///  [line: 33, column: 25, file: w3cookieStorage]
+   ,DoWriteString:function(Self, name$1, value) {
+      Cookies.WriteString($Check(Self," in Cookies.DoWriteString [line: 35, column: 4, file: w3cookieStorage]"),name$1,value,ExpirationDelayInDays);
+   }
    /// function Cookies.ReadString(name: String) : String
    ///  [line: 62, column: 24, file: w3cookieStorage]
-   ,ReadString:function(Self, name$1) {
+   ,ReadString:function(Self, name$2) {
       var Result={v:""};
       try {
          var nameEQ="";
@@ -5782,7 +5841,7 @@ var Cookies= {
          var c="";
          var cookieArray = [];
          var i=0;
-         nameEQ=name$1+"=";
+         nameEQ=name$2+"=";
          
       allCookies = document.cookie;
    cookieArray=(allCookies).split(";");
@@ -5797,7 +5856,7 @@ var Cookies= {
    }
    /// procedure Cookies.WriteString(name: String; value: String; expireInDays: Float)
    ///  [line: 43, column: 25, file: w3cookieStorage]
-   ,WriteString:function(Self, name$2, value, expireInDays) {
+   ,WriteString:function(Self, name$3, value$1, expireInDays) {
       var expire=undefined;
       var expireMSec=0;
       var cookie="";
@@ -5809,7 +5868,7 @@ var Cookies= {
          cookie=";expires="+expire.toGMTString();
       }
       
-   	document.cookie = name$2+'='+value+cookie+';path=/';
+   	document.cookie = name$3+'='+value$1+cookie+';path=/';
       }
    ,Destroy:TObject.Destroy
 };
