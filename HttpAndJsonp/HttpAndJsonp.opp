@@ -21,6 +21,7 @@
 			<use_assertions>true</use_assertions>
 			<use_optimize>true</use_optimize>
 			<use_closures>true</use_closures>
+			<use_devirtualize>true</use_devirtualize>
 			<use_verbosity>1</use_verbosity>
 			<use_generate_manifest>true</use_generate_manifest>
 			<use_serve_manifest>false</use_serve_manifest>
@@ -101,7 +102,7 @@ DQogIGlmIG5vdCB2YXJJc1ZhbGlkUmVmKFNlbmRlci5EYXRhKSB0aGVuDQogICAgYnVmIDo9ICdO
 byByZXN1bHQnDQogIGVsc2UgYmVnaW4NCiAgICBpdGVtczo9U2VuZGVyLkRhdGEucXVlcnkucmVz
 dWx0cy5pdGVtOw0KICAgIGJ1Zjo9Jyc7DQogICAgZm9yIGk6PTAgdG8gSW50ZWdlcihpdGVtcy5s
 ZW5ndGgtMSkgZG8NCiAgICAgIGJ1Zjo9YnVmKyctICcgKyBpdGVtc1tpXS50aXRsZSsjMTM7DQog
-IGVuZDsNCiAgb3V0UmVzdWx0LlRleHQ6PWJ1ZjsNCmVuZDsNCg0KZW5kLg0K</source>
+IGVuZDsNCiAgb3V0UmVzdWx0LlRleHQ6PWJ1ZjsNCmVuZDsNCg0KZW5kLg0KDQo=</source>
 				<design>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxERk0+DQoJPFczRm9ybSBj
 bHNpZD0iVFczRm9ybSI+DQoJCTxuYW1lPkZvcm0xPC9uYW1lPg0KCQk8bGVmdD4wPC9sZWZ0Pg0K
 CQk8dG9wPjA8L3RvcD4NCgkJPHdpZHRoPjIwMDwvd2lkdGg+DQoJCTxoZWlnaHQ+NjQ8L2hlaWdo
