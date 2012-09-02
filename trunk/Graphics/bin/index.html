@@ -827,7 +827,7 @@ var TW3TagObj= {
    $Parent:TObject,
    $Init:function ($) {
       TObject.$Init($);
-      $.FHandle$2=undefined;
+      $.FHandle$3=undefined;
       $.FObjReady=false;
       $.FOwner$3=undefined;
       $.FTagId="";
@@ -845,19 +845,19 @@ var TW3TagObj= {
    }
    /// constructor TW3TagObj.Create()
    ///  [line: 582, column: 23, file: w3components]
-   ,Create$21:function(Self) {
+   ,Create$23:function(Self) {
       TObject.Create(Self);
       $Check(Self," in TW3TagObj.Create [line: 585, column: 3, file: w3components]").FObjReady=false;
       try {
          $Check(Self," in TW3TagObj.Create [line: 588, column: 5, file: w3components]").FTagId=TW3TagObj.makeElementTagId$($Check(Self," in TW3TagObj.Create [line: 588, column: 13, file: w3components]"));
-         $Check(Self," in TW3TagObj.Create [line: 589, column: 5, file: w3components]").FHandle$2=TW3TagObj.makeElementTagObj$($Check(Self," in TW3TagObj.Create [line: 589, column: 14, file: w3components]"));
+         $Check(Self," in TW3TagObj.Create [line: 589, column: 5, file: w3components]").FHandle$3=TW3TagObj.makeElementTagObj$($Check(Self," in TW3TagObj.Create [line: 589, column: 14, file: w3components]"));
       } catch ($e) {
          var e=$W($e);
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3TagObj.Create",TObject.ClassName($Check(Self," in TW3TagObj.Create [line: 592, column: 63, file: w3components]").ClassType),$Check(e," in TW3TagObj.Create [line: 592, column: 75, file: w3components]").FMessage]);
       }
-      if (TVariant.asObject(TVariant,$Check(Self," in TW3TagObj.Create [line: 596, column: 24, file: w3components]").FHandle$2)!==TVariant.asObject(TVariant,TW3CustomBrowserAPI.getBody($Check(BrowserAPI()," in TW3TagObj.Create [line: 596, column: 63, file: w3components]").ClassType))) {
+      if (TVariant.asObject(TVariant,$Check(Self," in TW3TagObj.Create [line: 596, column: 24, file: w3components]").FHandle$3)!==TVariant.asObject(TVariant,TW3CustomBrowserAPI.getBody($Check(BrowserAPI()," in TW3TagObj.Create [line: 596, column: 63, file: w3components]").ClassType))) {
          if ($Check(Self," in TW3TagObj.Create [line: 599, column: 15, file: w3components]").FTagId.length>0) {
-            w3_setAttrib($Check(Self," in TW3TagObj.Create [line: 600, column: 18, file: w3components]").FHandle$2,"id",$Check(Self," in TW3TagObj.Create [line: 600, column: 31, file: w3components]").FTagId);
+            w3_setAttrib($Check(Self," in TW3TagObj.Create [line: 600, column: 18, file: w3components]").FHandle$3,"id",$Check(Self," in TW3TagObj.Create [line: 600, column: 31, file: w3components]").FTagId);
          }
       }
       TW3TagObj.StyleTagObject$($Check(Self," in TW3TagObj.Create [line: 604, column: 3, file: w3components]"));
@@ -873,14 +873,14 @@ var TW3TagObj= {
    /// destructor TW3TagObj.Destroy()
    ///  [line: 617, column: 22, file: w3components]
    ,Destroy:function(Self) {
-      if ($Check(Self," in TW3TagObj.Destroy [line: 622, column: 7, file: w3components]").FHandle$2) {
+      if ($Check(Self," in TW3TagObj.Destroy [line: 622, column: 7, file: w3components]").FHandle$3) {
          try {
             TW3TagObj.UnHookEvents($Check(Self," in TW3TagObj.Destroy [line: 626, column: 7, file: w3components]"));
             TW3TagObj.RemoveFrom(Self);
          } finally {
             TW3TagObj.FinalizeObject$($Check(Self," in TW3TagObj.Destroy [line: 629, column: 7, file: w3components]"));
             $Check(Self," in TW3TagObj.Destroy [line: 630, column: 7, file: w3components]").FTagId="";
-            $Check(Self," in TW3TagObj.Destroy [line: 631, column: 7, file: w3components]").FHandle$2=null;
+            $Check(Self," in TW3TagObj.Destroy [line: 631, column: 7, file: w3components]").FHandle$3=null;
          }
       }
       TObject.Destroy(Self);
@@ -914,12 +914,12 @@ var TW3TagObj= {
    ///  [line: 768, column: 21, file: w3components]
    ,InsertInto:function(Self, OwnerHandle) {
       if (OwnerHandle) {
-         if ($Check(Self," in TW3TagObj.InsertInto [line: 774, column: 9, file: w3components]").FHandle$2) {
+         if ($Check(Self," in TW3TagObj.InsertInto [line: 774, column: 9, file: w3components]").FHandle$3) {
             try {
                if ($Check(Self," in TW3TagObj.InsertInto [line: 778, column: 13, file: w3components]").FOwner$3) {
                   TW3TagObj.RemoveFrom(Self);
                }
-               w3_setElementParentByRef($Check(Self," in TW3TagObj.InsertInto [line: 780, column: 34, file: w3components]").FHandle$2,OwnerHandle);
+               w3_setElementParentByRef($Check(Self," in TW3TagObj.InsertInto [line: 780, column: 34, file: w3components]").FHandle$3,OwnerHandle);
                $Check(Self," in TW3TagObj.InsertInto [line: 782, column: 9, file: w3components]").FOwner$3=OwnerHandle;
             } catch ($e) {
                var e$1=$W($e);
@@ -953,9 +953,9 @@ var TW3TagObj= {
    ///  [line: 795, column: 21, file: w3components]
    ,RemoveFrom:function(Self) {
       if ($Check(Self," in TW3TagObj.RemoveFrom [line: 797, column: 7, file: w3components]").FOwner$3) {
-         if ($Check(Self," in TW3TagObj.RemoveFrom [line: 800, column: 9, file: w3components]").FHandle$2) {
+         if ($Check(Self," in TW3TagObj.RemoveFrom [line: 800, column: 9, file: w3components]").FHandle$3) {
             try {
-               w3_RemoveElementByRef($Check(Self," in TW3TagObj.RemoveFrom [line: 805, column: 31, file: w3components]").FHandle$2,$Check(Self," in TW3TagObj.RemoveFrom [line: 805, column: 39, file: w3components]").FOwner$3);
+               w3_RemoveElementByRef($Check(Self," in TW3TagObj.RemoveFrom [line: 805, column: 31, file: w3components]").FHandle$3,$Check(Self," in TW3TagObj.RemoveFrom [line: 805, column: 39, file: w3components]").FOwner$3);
             } catch ($e) {
                var e$3=$W($e);
                throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3TagObj.RemoveFrom",TObject.ClassName($Check(Self," in TW3TagObj.RemoveFrom [line: 808, column: 67, file: w3components]").ClassType),$Check(e$3," in TW3TagObj.RemoveFrom [line: 808, column: 79, file: w3components]").FMessage]);
@@ -969,36 +969,36 @@ var TW3TagObj= {
    /// procedure TW3TagObj.StyleTagObject()
    ///  [line: 725, column: 21, file: w3components]
    ,StyleTagObject:function(Self) {
-      if ($Check(Self," in TW3TagObj.StyleTagObject [line: 735, column: 7, file: w3components]").FHandle$2) {
-         $Check(Self," in TW3TagObj.StyleTagObject [line: 737, column: 5, file: w3components]").FHandle$2.style["visibility"]="hidden";
-         $Check(Self," in TW3TagObj.StyleTagObject [line: 738, column: 5, file: w3components]").FHandle$2.style["display"]="none";
-         $Check(Self," in TW3TagObj.StyleTagObject [line: 740, column: 5, file: w3components]").FHandle$2.style["position"]="absolute";
-         $Check(Self," in TW3TagObj.StyleTagObject [line: 741, column: 5, file: w3components]").FHandle$2.style["overflow"]="hidden";
-         $Check(Self," in TW3TagObj.StyleTagObject [line: 743, column: 5, file: w3components]").FHandle$2.style["left"]="0px";
-         $Check(Self," in TW3TagObj.StyleTagObject [line: 744, column: 5, file: w3components]").FHandle$2.style["top"]="0px";
+      if ($Check(Self," in TW3TagObj.StyleTagObject [line: 735, column: 7, file: w3components]").FHandle$3) {
+         $Check(Self," in TW3TagObj.StyleTagObject [line: 737, column: 5, file: w3components]").FHandle$3.style["visibility"]="hidden";
+         $Check(Self," in TW3TagObj.StyleTagObject [line: 738, column: 5, file: w3components]").FHandle$3.style["display"]="none";
+         $Check(Self," in TW3TagObj.StyleTagObject [line: 740, column: 5, file: w3components]").FHandle$3.style["position"]="absolute";
+         $Check(Self," in TW3TagObj.StyleTagObject [line: 741, column: 5, file: w3components]").FHandle$3.style["overflow"]="hidden";
+         $Check(Self," in TW3TagObj.StyleTagObject [line: 743, column: 5, file: w3components]").FHandle$3.style["left"]="0px";
+         $Check(Self," in TW3TagObj.StyleTagObject [line: 744, column: 5, file: w3components]").FHandle$3.style["top"]="0px";
       }
    }
    /// procedure TW3TagObj.UnHookEvents()
    ///  [line: 661, column: 21, file: w3components]
    ,UnHookEvents:function(Self) {
-      if ($Check(Self," in TW3TagObj.UnHookEvents [line: 663, column: 7, file: w3components]").FHandle$2) {
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 666, column: 5, file: w3components]").FHandle$2.onresize=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 667, column: 5, file: w3components]").FHandle$2.onselectstart=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 668, column: 5, file: w3components]").FHandle$2.onfocus=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 669, column: 5, file: w3components]").FHandle$2.onblur=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 670, column: 5, file: w3components]").FHandle$2.onchange=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 671, column: 5, file: w3components]").FHandle$2.onmousedown=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 672, column: 5, file: w3components]").FHandle$2.onmouseup=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 673, column: 5, file: w3components]").FHandle$2.onmousemove=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 674, column: 5, file: w3components]").FHandle$2.onmouseover=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 675, column: 5, file: w3components]").FHandle$2.onmouseout=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 676, column: 5, file: w3components]").FHandle$2.onclick=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 677, column: 5, file: w3components]").FHandle$2.ondblclick=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 678, column: 5, file: w3components]").FHandle$2.onkeydown=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 679, column: 5, file: w3components]").FHandle$2.onkeyup=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 680, column: 5, file: w3components]").FHandle$2.onkeypress=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 681, column: 5, file: w3components]").FHandle$2.webkitAnimationStart=null;
-         $Check(Self," in TW3TagObj.UnHookEvents [line: 682, column: 5, file: w3components]").FHandle$2.webkitAnimationEnd=null;
+      if ($Check(Self," in TW3TagObj.UnHookEvents [line: 663, column: 7, file: w3components]").FHandle$3) {
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 666, column: 5, file: w3components]").FHandle$3.onresize=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 667, column: 5, file: w3components]").FHandle$3.onselectstart=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 668, column: 5, file: w3components]").FHandle$3.onfocus=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 669, column: 5, file: w3components]").FHandle$3.onblur=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 670, column: 5, file: w3components]").FHandle$3.onchange=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 671, column: 5, file: w3components]").FHandle$3.onmousedown=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 672, column: 5, file: w3components]").FHandle$3.onmouseup=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 673, column: 5, file: w3components]").FHandle$3.onmousemove=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 674, column: 5, file: w3components]").FHandle$3.onmouseover=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 675, column: 5, file: w3components]").FHandle$3.onmouseout=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 676, column: 5, file: w3components]").FHandle$3.onclick=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 677, column: 5, file: w3components]").FHandle$3.ondblclick=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 678, column: 5, file: w3components]").FHandle$3.onkeydown=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 679, column: 5, file: w3components]").FHandle$3.onkeyup=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 680, column: 5, file: w3components]").FHandle$3.onkeypress=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 681, column: 5, file: w3components]").FHandle$3.webkitAnimationStart=null;
+         $Check(Self," in TW3TagObj.UnHookEvents [line: 682, column: 5, file: w3components]").FHandle$3.webkitAnimationEnd=null;
       }
    }
    ,Destroy$:function($){return $.ClassType.Destroy($)}
@@ -1029,9 +1029,9 @@ var TW3Component= {
      }
    /// constructor TW3Component.Create(AOwner: TW3Component)
    ///  [line: 824, column: 26, file: w3components]
-   ,Create$22:function(Self, AOwner) {
+   ,Create$24:function(Self, AOwner) {
       $Check(Self," in TW3Component.Create [line: 827, column: 3, file: w3components]").FParent=AOwner;
-      TW3TagObj.Create$21(Self);
+      TW3TagObj.Create$23(Self);
       if ($Check(Self," in TW3Component.Create [line: 834, column: 6, file: w3components]").FParent!==null) {
          TW3Component.RegisterChild($Check(Self," in TW3Component.Create [line: 835, column: 3, file: w3components]").FParent,Self);
       }
@@ -1079,7 +1079,7 @@ var TW3Component= {
       if (aChild!==null) {
          if ($Check(Self," in TW3Component.RegisterChild [line: 904, column: 8, file: w3components]").FChildren.indexOf(aChild)<0) {
             $Check(Self," in TW3Component.RegisterChild [line: 906, column: 7, file: w3components]").FChildren.push(aChild);
-            TW3TagObj.InsertInto(aChild,$Check(Self," in TW3Component.RegisterChild [line: 907, column: 30, file: w3components]").FHandle$2);
+            TW3TagObj.InsertInto(aChild,$Check(Self," in TW3Component.RegisterChild [line: 907, column: 30, file: w3components]").FHandle$3);
          }
       }
    }
@@ -1129,7 +1129,7 @@ var TW3MovableControl= {
       var dy=0;
       var mChild=null;
       var mCtrl=null;
-      if ($Check(Self," in TW3MovableControl.AdjustToParentBox [line: 1242, column: 7, file: w3components]").FHandle$2) {
+      if ($Check(Self," in TW3MovableControl.AdjustToParentBox [line: 1242, column: 7, file: w3components]").FHandle$3) {
          if (!$Check(Self," in TW3MovableControl.AdjustToParentBox [line: 1244, column: 12, file: w3components]").FAdjusted) {
             $Check(Self," in TW3MovableControl.AdjustToParentBox [line: 1246, column: 7, file: w3components]").FAdjusted=true;
             dx=TW3Borders.getHSpace(TW3MovableControl.getBorder(Self));
@@ -1191,23 +1191,23 @@ var TW3MovableControl= {
    /// function TW3MovableControl.getHeight() : Integer
    ///  [line: 1421, column: 28, file: w3components]
    ,getHeight$5:function(Self) {
-      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getHeight [line: 1423, column: 28, file: w3components]").FHandle$2,"height");
+      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getHeight [line: 1423, column: 28, file: w3components]").FHandle$3,"height");
    }
    /// function TW3MovableControl.getLeft() : Integer
    ///  [line: 1377, column: 28, file: w3components]
    ,getLeft:function(Self) {
-      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getLeft [line: 1379, column: 28, file: w3components]").FHandle$2,"left");
+      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getLeft [line: 1379, column: 28, file: w3components]").FHandle$3,"left");
    }
    /// function TW3MovableControl.getTop() : Integer
    ///  [line: 1390, column: 28, file: w3components]
    ,getTop:function(Self) {
-      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getTop [line: 1392, column: 28, file: w3components]").FHandle$2,"top");
+      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getTop [line: 1392, column: 28, file: w3components]").FHandle$3,"top");
    }
    /// function TW3MovableControl.getVisible() : Boolean
    ///  [line: 1338, column: 28, file: w3components]
    ,getVisible:function(Self) {
       var Result=false;
-      var mValue$2=w3_getStyleAsStr($Check(Self," in TW3MovableControl.getVisible [line: 1342, column: 28, file: w3components]").FHandle$2,"visibility");
+      var mValue$2=w3_getStyleAsStr($Check(Self," in TW3MovableControl.getVisible [line: 1342, column: 28, file: w3components]").FHandle$3,"visibility");
       Result=(mValue$2).toLowerCase()=="visible";
       return Result
    }
@@ -1224,7 +1224,7 @@ var TW3MovableControl= {
    /// function TW3MovableControl.getWidth() : Integer
    ///  [line: 1403, column: 28, file: w3components]
    ,getWidth$6:function(Self) {
-      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getWidth [line: 1405, column: 28, file: w3components]").FHandle$2,"width");
+      return w3_getStyleAsInt($Check(Self," in TW3MovableControl.getWidth [line: 1405, column: 28, file: w3components]").FHandle$3,"width");
    }
    /// procedure TW3MovableControl.InitializeObject()
    ///  [line: 1226, column: 29, file: w3components]
@@ -1238,8 +1238,8 @@ var TW3MovableControl= {
    ///  [line: 1467, column: 29, file: w3components]
    ,MoveTo:function(Self, aLeft, aTop) {
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self," in TW3MovableControl.MoveTo [line: 1470, column: 9, file: w3components]").FHandle$2.style["left"]=TInteger.toPxStr(TInteger,aLeft);
-      $Check(Self," in TW3MovableControl.MoveTo [line: 1471, column: 9, file: w3components]").FHandle$2.style["top"]=TInteger.toPxStr(TInteger,aTop);
+      $Check(Self," in TW3MovableControl.MoveTo [line: 1470, column: 9, file: w3components]").FHandle$3.style["left"]=TInteger.toPxStr(TInteger,aLeft);
+      $Check(Self," in TW3MovableControl.MoveTo [line: 1471, column: 9, file: w3components]").FHandle$3.style["top"]=TInteger.toPxStr(TInteger,aTop);
       TW3MovableControl.setWasMoved(Self);
       TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.MoveTo [line: 1473, column: 3, file: w3components]"));
    }
@@ -1261,7 +1261,7 @@ var TW3MovableControl= {
          mBlend=0;
       }
       if ($Check(Self," in TW3MovableControl.setAlpha [line: 1549, column: 6, file: w3components]").FUseAlpha) {
-         $Check(Self," in TW3MovableControl.setAlpha [line: 1550, column: 9, file: w3components]").FHandle$2.style["opacity"]=mBlend;
+         $Check(Self," in TW3MovableControl.setAlpha [line: 1550, column: 9, file: w3components]").FHandle$3.style["opacity"]=mBlend;
       }
       var $temp2;
       for(x$5=0,$temp2=TW3Component.getChildCount(Self);x$5<$temp2;x$5++) {
@@ -1281,10 +1281,10 @@ var TW3MovableControl= {
       mMoved=(aLeft$1!=TW3MovableControl.getLeft($Check(Self," in TW3MovableControl.SetBounds [line: 1485, column: 19, file: w3components]")))||(aTop$1!=TW3MovableControl.getTop($Check(Self," in TW3MovableControl.SetBounds [line: 1485, column: 38, file: w3components]")));
       mSized=(aWidth!=TW3MovableControl.getWidth$6$($Check(Self," in TW3MovableControl.SetBounds [line: 1488, column: 20, file: w3components]")))||(aHeight!=TW3MovableControl.getHeight$5$($Check(Self," in TW3MovableControl.SetBounds [line: 1488, column: 43, file: w3components]")));
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self," in TW3MovableControl.SetBounds [line: 1491, column: 9, file: w3components]").FHandle$2.style["left"]=TInteger.toPxStr(TInteger,aLeft$1);
-      $Check(Self," in TW3MovableControl.SetBounds [line: 1492, column: 9, file: w3components]").FHandle$2.style["top"]=TInteger.toPxStr(TInteger,aTop$1);
-      $Check(Self," in TW3MovableControl.SetBounds [line: 1493, column: 9, file: w3components]").FHandle$2.style["width"]=TInteger.toPxStr(TInteger,aWidth);
-      $Check(Self," in TW3MovableControl.SetBounds [line: 1494, column: 9, file: w3components]").FHandle$2.style["height"]=TInteger.toPxStr(TInteger,aHeight);
+      $Check(Self," in TW3MovableControl.SetBounds [line: 1491, column: 9, file: w3components]").FHandle$3.style["left"]=TInteger.toPxStr(TInteger,aLeft$1);
+      $Check(Self," in TW3MovableControl.SetBounds [line: 1492, column: 9, file: w3components]").FHandle$3.style["top"]=TInteger.toPxStr(TInteger,aTop$1);
+      $Check(Self," in TW3MovableControl.SetBounds [line: 1493, column: 9, file: w3components]").FHandle$3.style["width"]=TInteger.toPxStr(TInteger,aWidth);
+      $Check(Self," in TW3MovableControl.SetBounds [line: 1494, column: 9, file: w3components]").FHandle$3.style["height"]=TInteger.toPxStr(TInteger,aHeight);
       if (mMoved) {
          TW3MovableControl.setWasMoved(Self);
       }
@@ -1307,7 +1307,7 @@ var TW3MovableControl= {
                mText=ColorToWebStr($Check(Self," in TW3MovableControl.setColor [line: 1590, column: 34, file: w3components]").FColor);
                break;
          }
-         $Check(Self," in TW3MovableControl.setColor [line: 1592, column: 11, file: w3components]").FHandle$2.style["backgroundColor"]=mText;
+         $Check(Self," in TW3MovableControl.setColor [line: 1592, column: 11, file: w3components]").FHandle$3.style["backgroundColor"]=mText;
       }
    }
    /// procedure TW3MovableControl.setHeight(aValue: Integer)
@@ -1322,7 +1322,7 @@ var TW3MovableControl= {
       }
       if (aValue!=TW3MovableControl.getHeight$5$($Check(Self," in TW3MovableControl.setHeight [line: 1430, column: 14, file: w3components]"))) {
          TW3TagObj.BeginUpdate(Self);
-         $Check(Self," in TW3MovableControl.setHeight [line: 1433, column: 11, file: w3components]").FHandle$2.style["height"]=TInteger.toPxStr(TInteger,aValue);
+         $Check(Self," in TW3MovableControl.setHeight [line: 1433, column: 11, file: w3components]").FHandle$3.style["height"]=TInteger.toPxStr(TInteger,aValue);
          TW3MovableControl.setWasSized(Self);
          TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.setHeight [line: 1435, column: 5, file: w3components]"));
       }
@@ -1331,7 +1331,7 @@ var TW3MovableControl= {
    ///  [line: 1382, column: 29, file: w3components]
    ,setLeft:function(Self, aValue$1) {
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self," in TW3MovableControl.setLeft [line: 1385, column: 9, file: w3components]").FHandle$2.style["left"]=TInteger.toPxStr(TInteger,aValue$1);
+      $Check(Self," in TW3MovableControl.setLeft [line: 1385, column: 9, file: w3components]").FHandle$3.style["left"]=TInteger.toPxStr(TInteger,aValue$1);
       TW3MovableControl.setWasMoved(Self);
       TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.setLeft [line: 1387, column: 3, file: w3components]"));
    }
@@ -1342,8 +1342,8 @@ var TW3MovableControl= {
       aHeight$1=TInteger.EnsureRange(TInteger,aHeight$1,0,2147483647);
       if ((aWidth$1!=TW3MovableControl.getWidth$6$($Check(Self," in TW3MovableControl.SetSize [line: 1504, column: 15, file: w3components]")))||(aHeight$1!=TW3MovableControl.getHeight$5$($Check(Self," in TW3MovableControl.SetSize [line: 1505, column: 16, file: w3components]")))) {
          TW3TagObj.BeginUpdate(Self);
-         $Check(Self," in TW3MovableControl.SetSize [line: 1508, column: 11, file: w3components]").FHandle$2.style["width"]=TInteger.toPxStr(TInteger,aWidth$1);
-         $Check(Self," in TW3MovableControl.SetSize [line: 1509, column: 11, file: w3components]").FHandle$2.style["height"]=TInteger.toPxStr(TInteger,aHeight$1);
+         $Check(Self," in TW3MovableControl.SetSize [line: 1508, column: 11, file: w3components]").FHandle$3.style["width"]=TInteger.toPxStr(TInteger,aWidth$1);
+         $Check(Self," in TW3MovableControl.SetSize [line: 1509, column: 11, file: w3components]").FHandle$3.style["height"]=TInteger.toPxStr(TInteger,aHeight$1);
          TW3MovableControl.setWasSized(Self);
          TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.SetSize [line: 1511, column: 5, file: w3components]"));
       }
@@ -1352,7 +1352,7 @@ var TW3MovableControl= {
    ///  [line: 1395, column: 29, file: w3components]
    ,setTop:function(Self, aValue$2) {
       TW3TagObj.BeginUpdate(Self);
-      $Check(Self," in TW3MovableControl.setTop [line: 1398, column: 9, file: w3components]").FHandle$2.style["top"]=TInteger.toPxStr(TInteger,aValue$2);
+      $Check(Self," in TW3MovableControl.setTop [line: 1398, column: 9, file: w3components]").FHandle$3.style["top"]=TInteger.toPxStr(TInteger,aValue$2);
       TW3MovableControl.setWasMoved(Self);
       TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.setTop [line: 1400, column: 3, file: w3components]"));
    }
@@ -1371,7 +1371,7 @@ var TW3MovableControl= {
                mText$1=ColorToWebStr($Check(Self," in TW3MovableControl.setTransparent [line: 1573, column: 34, file: w3components]").FColor);
                break;
          }
-         $Check(Self," in TW3MovableControl.setTransparent [line: 1575, column: 11, file: w3components]").FHandle$2.style["backgroundColor"]=mText$1;
+         $Check(Self," in TW3MovableControl.setTransparent [line: 1575, column: 11, file: w3components]").FHandle$3.style["backgroundColor"]=mText$1;
          TW3MovableControl.setWasMoved(Self);
          TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.setTransparent [line: 1577, column: 5, file: w3components]"));
       }
@@ -1391,9 +1391,9 @@ var TW3MovableControl= {
                break;
          }
          if ($Check(Self," in TW3MovableControl.setUseAlpha [line: 1526, column: 8, file: w3components]").FUseAlpha) {
-            $Check(Self," in TW3MovableControl.setUseAlpha [line: 1527, column: 11, file: w3components]").FHandle$2.style["opacity"]=mBlend$1;
+            $Check(Self," in TW3MovableControl.setUseAlpha [line: 1527, column: 11, file: w3components]").FHandle$3.style["opacity"]=mBlend$1;
          } else {
-            $Check(Self," in TW3MovableControl.setUseAlpha [line: 1528, column: 11, file: w3components]").FHandle$2.style["opacity"]=1;
+            $Check(Self," in TW3MovableControl.setUseAlpha [line: 1528, column: 11, file: w3components]").FHandle$3.style["opacity"]=1;
          }
       }
    }
@@ -1403,13 +1403,13 @@ var TW3MovableControl= {
       TW3TagObj.BeginUpdate(Self);
       switch (aValue$3) {
          case true :
-            $Check(Self," in TW3MovableControl.setVisible [line: 1352, column: 13, file: w3components]").FHandle$2.style["display"]="inline";
-            $Check(Self," in TW3MovableControl.setVisible [line: 1353, column: 13, file: w3components]").FHandle$2.style["visibility"]="visible";
+            $Check(Self," in TW3MovableControl.setVisible [line: 1352, column: 13, file: w3components]").FHandle$3.style["display"]="inline";
+            $Check(Self," in TW3MovableControl.setVisible [line: 1353, column: 13, file: w3components]").FHandle$3.style["visibility"]="visible";
             TW3MovableControl.setWasSized(Self);
             break;
          case false :
-            $Check(Self," in TW3MovableControl.setVisible [line: 1362, column: 13, file: w3components]").FHandle$2.style["display"]="none";
-            $Check(Self," in TW3MovableControl.setVisible [line: 1363, column: 13, file: w3components]").FHandle$2.style["visibility"]="hidden";
+            $Check(Self," in TW3MovableControl.setVisible [line: 1362, column: 13, file: w3components]").FHandle$3.style["display"]="none";
+            $Check(Self," in TW3MovableControl.setVisible [line: 1363, column: 13, file: w3components]").FHandle$3.style["visibility"]="hidden";
             break;
       }
       TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.setVisible [line: 1366, column: 3, file: w3components]"));
@@ -1436,7 +1436,7 @@ var TW3MovableControl= {
       }
       if (aValue$4!=TW3MovableControl.getWidth$6$($Check(Self," in TW3MovableControl.setWidth [line: 1412, column: 14, file: w3components]"))) {
          TW3TagObj.BeginUpdate(Self);
-         $Check(Self," in TW3MovableControl.setWidth [line: 1415, column: 11, file: w3components]").FHandle$2.style["width"]=TInteger.toPxStr(TInteger,aValue$4);
+         $Check(Self," in TW3MovableControl.setWidth [line: 1415, column: 11, file: w3components]").FHandle$3.style["width"]=TInteger.toPxStr(TInteger,aValue$4);
          TW3MovableControl.setWasSized(Self);
          TW3TagObj.EndUpdate($Check(Self," in TW3MovableControl.setWidth [line: 1417, column: 5, file: w3components]"));
       }
@@ -1486,8 +1486,8 @@ var TW3CustomControl= {
    /// procedure TW3CustomControl.bringToFront()
    ///  [line: 1728, column: 28, file: w3components]
    ,bringToFront:function(Self) {
-      if ($Check(Self," in TW3CustomControl.bringToFront [line: 1731, column: 7, file: w3components]").FHandle$2) {
-         $Check(Self," in TW3CustomControl.bringToFront [line: 1732, column: 9, file: w3components]").FHandle$2.style["zIndex"]=1;
+      if ($Check(Self," in TW3CustomControl.bringToFront [line: 1731, column: 7, file: w3components]").FHandle$3) {
+         $Check(Self," in TW3CustomControl.bringToFront [line: 1732, column: 9, file: w3components]").FHandle$3.style["zIndex"]=1;
       }
    }
    /// procedure TW3CustomControl.CBAnimationBegins(const eventObj: Variant)
@@ -1726,7 +1726,7 @@ var TW3CustomControl= {
    /// function TW3CustomControl.getBorderRadius() : Integer
    ///  [line: 2332, column: 27, file: w3components]
    ,getBorderRadius:function(Self) {
-      return w3_getStyleAsInt($Check(Self," in TW3CustomControl.getBorderRadius [line: 2334, column: 28, file: w3components]").FHandle$2,"bordertopleftRadius");
+      return w3_getStyleAsInt($Check(Self," in TW3CustomControl.getBorderRadius [line: 2334, column: 28, file: w3components]").FHandle$3,"bordertopleftRadius");
    }
    /// function TW3CustomControl.getChildrenSortedByYpos() : TW3ComponentArray
    ///  [line: 1735, column: 27, file: w3components]
@@ -1767,15 +1767,15 @@ var TW3CustomControl= {
    }
    /// function TW3CustomControl.getEnabled() : Boolean
    ///  [line: 1685, column: 27, file: w3components]
-   ,getEnabled:function(Self) {
-      return $Check(Self," in TW3CustomControl.getEnabled [line: 1687, column: 11, file: w3components]").FHandle$2.disabled==false;
+   ,getEnabled$1:function(Self) {
+      return $Check(Self," in TW3CustomControl.getEnabled [line: 1687, column: 11, file: w3components]").FHandle$3.disabled==false;
    }
    /// function TW3CustomControl.gethasFocus() : Boolean
    ///  [line: 1807, column: 27, file: w3components]
    ,gethasFocus:function(Self) {
       var Result=false;
-      if ($Check(Self," in TW3CustomControl.gethasFocus [line: 1810, column: 7, file: w3components]").FHandle$2) {
-         Result=($Check(Self," in TW3CustomControl.gethasFocus [line: 1811, column: 11, file: w3components]").FHandle$2.focused()?true:false);
+      if ($Check(Self," in TW3CustomControl.gethasFocus [line: 1810, column: 7, file: w3components]").FHandle$3) {
+         Result=($Check(Self," in TW3CustomControl.gethasFocus [line: 1811, column: 11, file: w3components]").FHandle$3.focused()?true:false);
       }
       return Result
    }
@@ -1792,21 +1792,21 @@ var TW3CustomControl= {
    /// function TW3CustomControl.getStyleClass() : String
    ///  [line: 1778, column: 27, file: w3components]
    ,getStyleClass:function(Self) {
-      return w3_getAttribAsStr($Check(Self," in TW3CustomControl.getStyleClass [line: 1780, column: 29, file: w3components]").FHandle$2,"class");
+      return w3_getAttribAsStr($Check(Self," in TW3CustomControl.getStyleClass [line: 1780, column: 29, file: w3components]").FHandle$3,"class");
    }
    /// function TW3CustomControl.getZoom() : Float
    ///  [line: 1661, column: 27, file: w3components]
    ,getZoom:function(Self) {
-      return w3_getStyleAsFloat($Check(Self," in TW3CustomControl.getZoom [line: 1663, column: 30, file: w3components]").FHandle$2,"zoom");
+      return w3_getStyleAsFloat($Check(Self," in TW3CustomControl.getZoom [line: 1663, column: 30, file: w3components]").FHandle$3,"zoom");
    }
    /// procedure TW3CustomControl.InitializeObject()
    ///  [line: 1602, column: 28, file: w3components]
    ,InitializeObject:function(Self) {
       TW3MovableControl.InitializeObject(Self);
       $Check(Self," in TW3CustomControl.InitializeObject [line: 1607, column: 3, file: w3components]").FNoBehavior=$Event0(Self,TW3Component.CBNoBehavior);
-      w3_bind2($Check(Self," in TW3CustomControl.InitializeObject [line: 1611, column: 12, file: w3components]").FHandle$2,"onselectstart",$Event0(Self,TW3Component.CBNoBehavior));
-      w3_bind2($Check(Self," in TW3CustomControl.InitializeObject [line: 1612, column: 12, file: w3components]").FHandle$2,"onfocus",$Event0(Self,TW3CustomControl.CBFocused));
-      w3_bind2($Check(Self," in TW3CustomControl.InitializeObject [line: 1613, column: 12, file: w3components]").FHandle$2,"onblur",$Event0(Self,TW3CustomControl.CBLostFocus));
+      w3_bind2($Check(Self," in TW3CustomControl.InitializeObject [line: 1611, column: 12, file: w3components]").FHandle$3,"onselectstart",$Event0(Self,TW3Component.CBNoBehavior));
+      w3_bind2($Check(Self," in TW3CustomControl.InitializeObject [line: 1612, column: 12, file: w3components]").FHandle$3,"onfocus",$Event0(Self,TW3CustomControl.CBFocused));
+      w3_bind2($Check(Self," in TW3CustomControl.InitializeObject [line: 1613, column: 12, file: w3components]").FHandle$3,"onblur",$Event0(Self,TW3CustomControl.CBLostFocus));
    }
    /// procedure TW3CustomControl.Invalidate()
    ///  [line: 2301, column: 28, file: w3components]
@@ -1839,35 +1839,35 @@ var TW3CustomControl= {
       if (Value$5!=$Check(Self," in TW3CustomControl.setAngle [line: 1792, column: 13, file: w3components]").FAngle) {
          $Check(Self," in TW3CustomControl.setAngle [line: 1794, column: 5, file: w3components]").FAngle=Value$5;
          mStyle="rotate("+(Value$5).toFixed(2)+"deg)";
-         w3_setStyle($Check(Self," in TW3CustomControl.setAngle [line: 1796, column: 17, file: w3components]").FHandle$2,w3_CSSPrefix("Transform"),mStyle);
+         w3_setStyle($Check(Self," in TW3CustomControl.setAngle [line: 1796, column: 17, file: w3components]").FHandle$3,w3_CSSPrefix("Transform"),mStyle);
       }
    }
    /// procedure TW3CustomControl.setBorderRadius(aNewRadius: Integer)
    ///  [line: 2343, column: 28, file: w3components]
    ,setBorderRadius:function(Self, aNewRadius) {
       TW3TagObj.BeginUpdate(Self);
-      w3_setStyle($Check(Self," in TW3CustomControl.setBorderRadius [line: 2346, column: 15, file: w3components]").FHandle$2,"borderRadius",TInteger.toPxStr(TInteger,aNewRadius));
+      w3_setStyle($Check(Self," in TW3CustomControl.setBorderRadius [line: 2346, column: 15, file: w3components]").FHandle$3,"borderRadius",TInteger.toPxStr(TInteger,aNewRadius));
       TW3MovableControl.setWasSized(Self);
       TW3TagObj.EndUpdate($Check(Self," in TW3CustomControl.setBorderRadius [line: 2348, column: 3, file: w3components]"));
    }
    /// procedure TW3CustomControl.setEnabled(aValue: Boolean)
    ///  [line: 1690, column: 28, file: w3components]
-   ,setEnabled:function(Self, aValue$5) {
+   ,setEnabled$1:function(Self, aValue$5) {
       if (aValue$5) {
-         $Check(Self," in TW3CustomControl.setEnabled [line: 1697, column: 9, file: w3components]").FHandle$2.disabled=false;
+         $Check(Self," in TW3CustomControl.setEnabled [line: 1697, column: 9, file: w3components]").FHandle$3.disabled=false;
       } else {
-         $Check(Self," in TW3CustomControl.setEnabled [line: 1698, column: 9, file: w3components]").FHandle$2.disabled=true;
+         $Check(Self," in TW3CustomControl.setEnabled [line: 1698, column: 9, file: w3components]").FHandle$3.disabled=true;
       }
    }
    /// procedure TW3CustomControl.setStyleClass(aStyle: String)
    ///  [line: 1783, column: 28, file: w3components]
    ,setStyleClass:function(Self, aStyle) {
-      w3_setAttrib($Check(Self," in TW3CustomControl.setStyleClass [line: 1785, column: 16, file: w3components]").FHandle$2,"class",aStyle);
+      w3_setAttrib($Check(Self," in TW3CustomControl.setStyleClass [line: 1785, column: 16, file: w3components]").FHandle$3,"class",aStyle);
    }
    /// procedure TW3CustomControl.setZoom(aValue: Float)
    ///  [line: 1666, column: 28, file: w3components]
    ,setZoom:function(Self, aValue$6) {
-      w3_setStyle($Check(Self," in TW3CustomControl.setZoom [line: 1668, column: 15, file: w3components]").FHandle$2,"zoom",aValue$6);
+      w3_setStyle($Check(Self," in TW3CustomControl.setZoom [line: 1668, column: 15, file: w3components]").FHandle$3,"zoom",aValue$6);
    }
    /// procedure TW3CustomControl.StyleTagObject()
    ///  [line: 1647, column: 28, file: w3components]
@@ -1880,7 +1880,7 @@ var TW3CustomControl= {
    ///  [line: 2063, column: 28, file: w3components]
    ,_setAnimationBegins:function(Self, aValue$7) {
       var mObj$3=undefined;
-      mObj$3=$Check(Self," in TW3CustomControl._setAnimationBegins [line: 2068, column: 9, file: w3components]").FHandle$2;
+      mObj$3=$Check(Self," in TW3CustomControl._setAnimationBegins [line: 2068, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$7!==null)) {
          case true :
             mObj$3["webkitAnimationStart"]=$Event1(Self,TW3CustomControl.CBAnimationBegins);
@@ -1895,7 +1895,7 @@ var TW3CustomControl= {
    ///  [line: 2082, column: 28, file: w3components]
    ,_setAnimationEnds:function(Self, aValue$8) {
       var mObj$4=undefined;
-      mObj$4=$Check(Self," in TW3CustomControl._setAnimationEnds [line: 2086, column: 9, file: w3components]").FHandle$2;
+      mObj$4=$Check(Self," in TW3CustomControl._setAnimationEnds [line: 2086, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$8!==null)) {
          case true :
             mObj$4[w3_CSSPrefix("AnimationEnd")]=$Event1(Self,TW3CustomControl.CBAnimationEnds);
@@ -1910,7 +1910,7 @@ var TW3CustomControl= {
    ///  [line: 2100, column: 28, file: w3components]
    ,_setChanged:function(Self, aValue$9) {
       var mObj$5=undefined;
-      mObj$5=$Check(Self," in TW3CustomControl._setChanged [line: 2104, column: 9, file: w3components]").FHandle$2;
+      mObj$5=$Check(Self," in TW3CustomControl._setChanged [line: 2104, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$9!==null)) {
          case true :
             mObj$5["onchange"]=$Event1(Self,TW3CustomControl.CBChanged);
@@ -1925,36 +1925,36 @@ var TW3CustomControl= {
    ///  [line: 2234, column: 28, file: w3components]
    ,_setGestureChange:function(Self, aValue$10) {
       if ($Check(Self," in TW3CustomControl._setGestureChange [line: 2236, column: 15, file: w3components]").FOnGestureChange!==null) {
-         w3_RemoveEvent($Check(Self," in TW3CustomControl._setGestureChange [line: 2238, column: 20, file: w3components]").FHandle$2,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange));
+         w3_RemoveEvent($Check(Self," in TW3CustomControl._setGestureChange [line: 2238, column: 20, file: w3components]").FHandle$3,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange));
          $Check(Self," in TW3CustomControl._setGestureChange [line: 2239, column: 5, file: w3components]").FOnGestureChange=null;
       }
       if (aValue$10!==null) {
          $Check(Self," in TW3CustomControl._setGestureChange [line: 2244, column: 5, file: w3components]").FOnGestureChange=aValue$10;
-         w3_AddEvent($Check(Self," in TW3CustomControl._setGestureChange [line: 2245, column: 17, file: w3components]").FHandle$2,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange));
+         w3_AddEvent($Check(Self," in TW3CustomControl._setGestureChange [line: 2245, column: 17, file: w3components]").FHandle$3,"gesturechange",$Event0(Self,TW3CustomControl.CMGestureChange));
       }
    }
    /// procedure TW3CustomControl._setGestureEnd(aValue: TGestureEndEvent)
    ///  [line: 2263, column: 28, file: w3components]
    ,_setGestureEnd:function(Self, aValue$11) {
       if ($Check(Self," in TW3CustomControl._setGestureEnd [line: 2265, column: 15, file: w3components]").FOnGestureEnd!==null) {
-         w3_RemoveEvent($Check(Self," in TW3CustomControl._setGestureEnd [line: 2267, column: 20, file: w3components]").FHandle$2,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureEnd));
+         w3_RemoveEvent($Check(Self," in TW3CustomControl._setGestureEnd [line: 2267, column: 20, file: w3components]").FHandle$3,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureEnd));
          $Check(Self," in TW3CustomControl._setGestureEnd [line: 2268, column: 5, file: w3components]").FOnGestureEnd=null;
       }
       if (aValue$11!==null) {
          $Check(Self," in TW3CustomControl._setGestureEnd [line: 2273, column: 5, file: w3components]").FOnGestureEnd=aValue$11;
-         w3_AddEvent($Check(Self," in TW3CustomControl._setGestureEnd [line: 2274, column: 17, file: w3components]").FHandle$2,"gestureend",$Event0(Self,TW3CustomControl.CMGestureEnd));
+         w3_AddEvent($Check(Self," in TW3CustomControl._setGestureEnd [line: 2274, column: 17, file: w3components]").FHandle$3,"gestureend",$Event0(Self,TW3CustomControl.CMGestureEnd));
       }
    }
    /// procedure TW3CustomControl._setGestureStart(aValue: TGestureStartEvent)
    ///  [line: 2205, column: 28, file: w3components]
    ,_setGestureStart:function(Self, aValue$12) {
       if ($Check(Self," in TW3CustomControl._setGestureStart [line: 2207, column: 15, file: w3components]").FOnGestureStart!==null) {
-         w3_RemoveEvent($Check(Self," in TW3CustomControl._setGestureStart [line: 2209, column: 20, file: w3components]").FHandle$2,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart));
+         w3_RemoveEvent($Check(Self," in TW3CustomControl._setGestureStart [line: 2209, column: 20, file: w3components]").FHandle$3,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart));
          $Check(Self," in TW3CustomControl._setGestureStart [line: 2210, column: 5, file: w3components]").FOnGestureStart=null;
       }
       if (aValue$12!==null) {
          $Check(Self," in TW3CustomControl._setGestureStart [line: 2215, column: 5, file: w3components]").FOnGestureStart=aValue$12;
-         w3_AddEvent($Check(Self," in TW3CustomControl._setGestureStart [line: 2216, column: 17, file: w3components]").FHandle$2,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart));
+         w3_AddEvent($Check(Self," in TW3CustomControl._setGestureStart [line: 2216, column: 17, file: w3components]").FHandle$3,"gesturestart",$Event0(Self,TW3CustomControl.CMGestureStart));
       }
    }
    /// procedure TW3CustomControl._setGotFocus(const aValue: TGotFocusEvent)
@@ -1966,7 +1966,7 @@ var TW3CustomControl= {
    ///  [line: 2008, column: 28, file: w3components]
    ,_setKeyDown:function(Self, aValue$14) {
       var mObj$6=undefined;
-      mObj$6=$Check(Self," in TW3CustomControl._setKeyDown [line: 2012, column: 9, file: w3components]").FHandle$2;
+      mObj$6=$Check(Self," in TW3CustomControl._setKeyDown [line: 2012, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$14!==null)) {
          case true :
             mObj$6["onkeydown"]=$Event1(Self,TW3CustomControl.CBKeyDown);
@@ -1981,7 +1981,7 @@ var TW3CustomControl= {
    ///  [line: 2044, column: 28, file: w3components]
    ,_setKeyPress:function(Self, aValue$15) {
       var mObj$7=undefined;
-      mObj$7=$Check(Self," in TW3CustomControl._setKeyPress [line: 2048, column: 9, file: w3components]").FHandle$2;
+      mObj$7=$Check(Self," in TW3CustomControl._setKeyPress [line: 2048, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$15!==null)) {
          case true :
             mObj$7["onkeypress"]=$Event1(Self,TW3CustomControl.CBKeyPress);
@@ -1996,7 +1996,7 @@ var TW3CustomControl= {
    ///  [line: 2026, column: 28, file: w3components]
    ,_setKeyUp:function(Self, aValue$16) {
       var mObj$8=undefined;
-      mObj$8=$Check(Self," in TW3CustomControl._setKeyUp [line: 2030, column: 9, file: w3components]").FHandle$2;
+      mObj$8=$Check(Self," in TW3CustomControl._setKeyUp [line: 2030, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$16!==null)) {
          case true :
             mObj$8["onkeyup"]=$Event1(Self,TW3CustomControl.CBKeyUp);
@@ -2016,7 +2016,7 @@ var TW3CustomControl= {
    ///  [line: 1958, column: 28, file: w3components]
    ,_setMouseClick:function(Self, aValue$18) {
       var mObj$9=undefined;
-      mObj$9=$Check(Self," in TW3CustomControl._setMouseClick [line: 1964, column: 9, file: w3components]").FHandle$2;
+      mObj$9=$Check(Self," in TW3CustomControl._setMouseClick [line: 1964, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$18!==null)) {
          case true :
             mObj$9["onclick"]=$Event1(Self,TW3CustomControl.CBClick);
@@ -2031,7 +2031,7 @@ var TW3CustomControl= {
    ///  [line: 1984, column: 28, file: w3components]
    ,_setMouseDblClick:function(Self, aValue$19) {
       var mObj$10=undefined;
-      mObj$10=$Check(Self," in TW3CustomControl._setMouseDblClick [line: 1988, column: 9, file: w3components]").FHandle$2;
+      mObj$10=$Check(Self," in TW3CustomControl._setMouseDblClick [line: 1988, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$19!==null)) {
          case true :
             mObj$10["ondblclick"]=$Event1(Self,TW3CustomControl.CBDblClick);
@@ -2046,7 +2046,7 @@ var TW3CustomControl= {
    ///  [line: 1829, column: 28, file: w3components]
    ,_setMouseDown:function(Self, aValue$20) {
       var mObj$11=undefined;
-      mObj$11=$Check(Self," in TW3CustomControl._setMouseDown [line: 1833, column: 9, file: w3components]").FHandle$2;
+      mObj$11=$Check(Self," in TW3CustomControl._setMouseDown [line: 1833, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$20!==null)) {
          case true :
             mObj$11["onmousedown"]=$Event1(Self,TW3CustomControl.CBMouseDown);
@@ -2061,7 +2061,7 @@ var TW3CustomControl= {
    ///  [line: 1913, column: 28, file: w3components]
    ,_setMouseEnter:function(Self, aValue$21) {
       var mObj$12=undefined;
-      mObj$12=$Check(Self," in TW3CustomControl._setMouseEnter [line: 1917, column: 9, file: w3components]").FHandle$2;
+      mObj$12=$Check(Self," in TW3CustomControl._setMouseEnter [line: 1917, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$21!==null)) {
          case true :
             mObj$12["onmouseover"]=$Event1(Self,TW3CustomControl.CBMouseEnter);
@@ -2076,7 +2076,7 @@ var TW3CustomControl= {
    ///  [line: 1935, column: 28, file: w3components]
    ,_setMouseExit:function(Self, aValue$22) {
       var mObj$13=undefined;
-      mObj$13=$Check(Self," in TW3CustomControl._setMouseExit [line: 1939, column: 9, file: w3components]").FHandle$2;
+      mObj$13=$Check(Self," in TW3CustomControl._setMouseExit [line: 1939, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$22!==null)) {
          case true :
             mObj$13["onmouseout"]=$Event1(Self,TW3CustomControl.CBMouseExit);
@@ -2091,7 +2091,7 @@ var TW3CustomControl= {
    ///  [line: 1891, column: 28, file: w3components]
    ,_setMouseMove:function(Self, aValue$23) {
       var mObj$14=undefined;
-      mObj$14=$Check(Self," in TW3CustomControl._setMouseMove [line: 1895, column: 9, file: w3components]").FHandle$2;
+      mObj$14=$Check(Self," in TW3CustomControl._setMouseMove [line: 1895, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$23!==null)) {
          case true :
             mObj$14["onmousemove"]=$Event1(Self,TW3CustomControl.CBMouseMove);
@@ -2106,7 +2106,7 @@ var TW3CustomControl= {
    ///  [line: 1860, column: 28, file: w3components]
    ,_setMouseUp:function(Self, aValue$24) {
       var mObj$15=undefined;
-      mObj$15=$Check(Self," in TW3CustomControl._setMouseUp [line: 1864, column: 9, file: w3components]").FHandle$2;
+      mObj$15=$Check(Self," in TW3CustomControl._setMouseUp [line: 1864, column: 9, file: w3components]").FHandle$3;
       switch ((aValue$24!==null)) {
          case true :
             mObj$15["onmouseup"]=$Event1(Self,TW3CustomControl.CBMouseUp);
@@ -2126,36 +2126,36 @@ var TW3CustomControl= {
    ///  [line: 2118, column: 28, file: w3components]
    ,_setTouchBegins:function(Self, aValue$26) {
       if ($Check(Self," in TW3CustomControl._setTouchBegins [line: 2120, column: 15, file: w3components]").FOnTouchBegins!==null) {
-         w3_RemoveEvent($Check(Self," in TW3CustomControl._setTouchBegins [line: 2122, column: 20, file: w3components]").FHandle$2,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins));
+         w3_RemoveEvent($Check(Self," in TW3CustomControl._setTouchBegins [line: 2122, column: 20, file: w3components]").FHandle$3,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins));
          $Check(Self," in TW3CustomControl._setTouchBegins [line: 2123, column: 5, file: w3components]").FOnTouchBegins=null;
       }
       if (aValue$26!==null) {
          $Check(Self," in TW3CustomControl._setTouchBegins [line: 2128, column: 5, file: w3components]").FOnTouchBegins=aValue$26;
-         w3_AddEvent($Check(Self," in TW3CustomControl._setTouchBegins [line: 2129, column: 17, file: w3components]").FHandle$2,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins));
+         w3_AddEvent($Check(Self," in TW3CustomControl._setTouchBegins [line: 2129, column: 17, file: w3components]").FHandle$3,"touchstart",$Event0(Self,TW3CustomControl.CMTouchBegins));
       }
    }
    /// procedure TW3CustomControl._setTouchEnds(const aValue: TTouchEndEvent)
    ///  [line: 2176, column: 28, file: w3components]
    ,_setTouchEnds:function(Self, aValue$27) {
       if ($Check(Self," in TW3CustomControl._setTouchEnds [line: 2178, column: 15, file: w3components]").FOnTouchEnds!==null) {
-         w3_RemoveEvent($Check(Self," in TW3CustomControl._setTouchEnds [line: 2180, column: 20, file: w3components]").FHandle$2,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds));
+         w3_RemoveEvent($Check(Self," in TW3CustomControl._setTouchEnds [line: 2180, column: 20, file: w3components]").FHandle$3,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds));
          $Check(Self," in TW3CustomControl._setTouchEnds [line: 2181, column: 5, file: w3components]").FOnTouchEnds=null;
       }
       if (aValue$27!==null) {
          $Check(Self," in TW3CustomControl._setTouchEnds [line: 2186, column: 5, file: w3components]").FOnTouchEnds=aValue$27;
-         w3_AddEvent($Check(Self," in TW3CustomControl._setTouchEnds [line: 2187, column: 17, file: w3components]").FHandle$2,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds));
+         w3_AddEvent($Check(Self," in TW3CustomControl._setTouchEnds [line: 2187, column: 17, file: w3components]").FHandle$3,"touchend",$Event0(Self,TW3CustomControl.CMTouchEnds));
       }
    }
    /// procedure TW3CustomControl._setTouchMoves(const aValue: TTouchMoveEvent)
    ///  [line: 2147, column: 28, file: w3components]
    ,_setTouchMoves:function(Self, aValue$28) {
       if ($Check(Self," in TW3CustomControl._setTouchMoves [line: 2149, column: 15, file: w3components]").FOnTouchMoves!==null) {
-         w3_RemoveEvent($Check(Self," in TW3CustomControl._setTouchMoves [line: 2151, column: 20, file: w3components]").FHandle$2,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove));
+         w3_RemoveEvent($Check(Self," in TW3CustomControl._setTouchMoves [line: 2151, column: 20, file: w3components]").FHandle$3,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove));
          $Check(Self," in TW3CustomControl._setTouchMoves [line: 2152, column: 5, file: w3components]").FOnTouchMoves=null;
       }
       if (aValue$28!==null) {
          $Check(Self," in TW3CustomControl._setTouchMoves [line: 2157, column: 5, file: w3components]").FOnTouchMoves=aValue$28;
-         w3_AddEvent($Check(Self," in TW3CustomControl._setTouchMoves [line: 2158, column: 17, file: w3components]").FHandle$2,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove));
+         w3_AddEvent($Check(Self," in TW3CustomControl._setTouchMoves [line: 2158, column: 17, file: w3components]").FHandle$3,"touchmove",$Event0(Self,TW3CustomControl.CMTouchMove));
       }
    }
    ,Destroy:TW3TagObj.Destroy
@@ -2170,7 +2170,7 @@ var TW3CustomControl= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled$:function($){return $.ClassType.getEnabled($)}
+   ,getEnabled$1$:function($){return $.ClassType.getEnabled$1($)}
    ,Invalidate$:function($){return $.ClassType.Invalidate($)}
 };
 /// TW3DisplayView = class (TW3CustomControl)
@@ -2269,7 +2269,7 @@ var TW3DisplayView= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize$:function($){return $.ClassType.Resize($)}
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TW3Display = class (TW3CustomControl)
@@ -2316,7 +2316,7 @@ var TW3Display= {
    ///  [line: 317, column: 22, file: w3application]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
-      $Check(Self," in TW3Display.InitializeObject [line: 320, column: 3, file: w3application]").FView=TW3Component.Create$22($New(TW3DisplayView),Self);
+      $Check(Self," in TW3Display.InitializeObject [line: 320, column: 3, file: w3application]").FView=TW3Component.Create$24($New(TW3DisplayView),Self);
       TW3MovableControl.setTop($Check($Check(Self," in TW3Display.InitializeObject [line: 321, column: 3, file: w3application]").FView," in TW3Display.InitializeObject [line: 321, column: 9, file: w3application]"),5);
    }
    /// procedure TW3Display.PositionFormInView(const aForm: TW3CustomForm)
@@ -2376,7 +2376,7 @@ var TW3Display= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize$:function($){return $.ClassType.Resize($)}
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TW3CustomApplication = class (TObject)
@@ -2473,9 +2473,9 @@ var TW3CustomApplication= {
    ///  [line: 427, column: 34, file: w3application]
    ,Create$30:function(Self) {
       TObject.Create(Self);
-      $Check(Self," in TW3CustomApplication.Create [line: 430, column: 3, file: w3application]").FForms=TObjectList.Create$15($New(TObjectList));
-      $Check(Self," in TW3CustomApplication.Create [line: 431, column: 3, file: w3application]").FBody=TW3Component.Create$22($New(TDocumentBody),null);
-      $Check(Self," in TW3CustomApplication.Create [line: 432, column: 3, file: w3application]").FDisplay=TW3Component.Create$22($New(TW3Display),$Check(Self," in TW3CustomApplication.Create [line: 432, column: 31, file: w3application]").FBody);
+      $Check(Self," in TW3CustomApplication.Create [line: 430, column: 3, file: w3application]").FForms=TObjectList.Create$17($New(TObjectList));
+      $Check(Self," in TW3CustomApplication.Create [line: 431, column: 3, file: w3application]").FBody=TW3Component.Create$24($New(TDocumentBody),null);
+      $Check(Self," in TW3CustomApplication.Create [line: 432, column: 3, file: w3application]").FDisplay=TW3Component.Create$24($New(TW3Display),$Check(Self," in TW3CustomApplication.Create [line: 432, column: 31, file: w3application]").FBody);
       if (!(Instance!==null)) {
          Instance=Self;
       }
@@ -2685,7 +2685,7 @@ var TW3BlockBox= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TFormEntryEffect enumeration///  [line: 27, column: 3, file: w3application]
@@ -3431,6 +3431,9 @@ function showmessage(aText$1) {
    
     alert(aText$1);
   };
+function RGBToColor(aRed, aGreen, aBlue) {
+   return (aBlue|(aGreen<<8))|(aRed<<16);
+};
 function InitVendorInfo() {
    if (w3_getIsAndroid()) {
       Vendor=2;
@@ -3550,7 +3553,7 @@ var TObjectList= {
    }
    /// constructor TObjectList.Create()
    ///  [line: 90, column: 25, file: w3lists]
-   ,Create$15:function(Self) {
+   ,Create$17:function(Self) {
       TObject.Create(Self);
       return Self
    }
@@ -3600,7 +3603,7 @@ var TW3CustomForm= {
    ///  [line: 50, column: 25, file: w3forms]
    ,StyleTagObject:function(Self) {
       TW3CustomControl.StyleTagObject(Self);
-      w3_setStyle($Check(Self," in TW3CustomForm.StyleTagObject [line: 54, column: 15, file: w3forms]").FHandle$2,w3_CSSPrefix("Transform"),"none");
+      w3_setStyle($Check(Self," in TW3CustomForm.StyleTagObject [line: 54, column: 15, file: w3forms]").FHandle$3,w3_CSSPrefix("Transform"),"none");
       TW3CustomControl.setStyleClass(Self,"TW3CustomForm");
    }
    /// procedure TW3CustomForm.FormActivated()
@@ -3643,7 +3646,7 @@ var TW3CustomForm= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TW3Form = class (TW3CustomForm)
@@ -3666,7 +3669,7 @@ var TW3Form= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TW3ScrollInfo = class (TW3OwnedObject)
@@ -3687,7 +3690,7 @@ var TW3ScrollInfo= {
    ,getScrollLeft:function(Self) {
       var Result=0;
       var mRef$1=undefined;
-      mRef$1=$Check($As($Check(Self," in TW3ScrollInfo.getScrollLeft [line: 1108, column: 19, file: w3components]").FOwner,TW3TagObj)," in TW3ScrollInfo.getScrollLeft [line: 1108, column: 26, file: w3components]").FHandle$2;
+      mRef$1=$Check($As($Check(Self," in TW3ScrollInfo.getScrollLeft [line: 1108, column: 19, file: w3components]").FOwner,TW3TagObj)," in TW3ScrollInfo.getScrollLeft [line: 1108, column: 26, file: w3components]").FHandle$3;
       if (mRef$1) {
          Result=TVariant.asInteger(TVariant,mRef$1.scrollLeft);
       } else {
@@ -3700,7 +3703,7 @@ var TW3ScrollInfo= {
    ,getScrollTop:function(Self) {
       var Result=0;
       var mRef$2=undefined;
-      mRef$2=$Check($As($Check(Self," in TW3ScrollInfo.getScrollTop [line: 1119, column: 19, file: w3components]").FOwner,TW3TagObj)," in TW3ScrollInfo.getScrollTop [line: 1119, column: 26, file: w3components]").FHandle$2;
+      mRef$2=$Check($As($Check(Self," in TW3ScrollInfo.getScrollTop [line: 1119, column: 19, file: w3components]").FOwner,TW3TagObj)," in TW3ScrollInfo.getScrollTop [line: 1119, column: 26, file: w3components]").FHandle$3;
       if (mRef$2) {
          Result=TVariant.asInteger(TVariant,mRef$2.scrollTop);
       } else {
@@ -3712,7 +3715,7 @@ var TW3ScrollInfo= {
    ///  [line: 1126, column: 25, file: w3components]
    ,ScrollTo:function(Self, aLeft$2, aTop$2) {
       var mRef$3=undefined;
-      mRef$3=$Check($As($Check(Self," in TW3ScrollInfo.ScrollTo [line: 1130, column: 19, file: w3components]").FOwner,TW3TagObj)," in TW3ScrollInfo.ScrollTo [line: 1130, column: 26, file: w3components]").FHandle$2;
+      mRef$3=$Check($As($Check(Self," in TW3ScrollInfo.ScrollTo [line: 1130, column: 19, file: w3components]").FOwner,TW3TagObj)," in TW3ScrollInfo.ScrollTo [line: 1130, column: 26, file: w3components]").FHandle$3;
       if (mRef$3) {
          mRef$3.scrollLeft=aLeft$2;
          mRef$3.scrollTop=aTop$2;
@@ -3744,7 +3747,7 @@ var TW3GraphicControl= {
    ///  [line: 1146, column: 29, file: w3components]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
-      $Check(Self," in TW3GraphicControl.InitializeObject [line: 1149, column: 3, file: w3components]").FContext$2=TW3ControlGraphicContext.Create$11($New(TW3ControlGraphicContext),$Check(Self," in TW3GraphicControl.InitializeObject [line: 1149, column: 45, file: w3components]").FHandle$2);
+      $Check(Self," in TW3GraphicControl.InitializeObject [line: 1149, column: 3, file: w3components]").FContext$2=TW3ControlGraphicContext.Create$11($New(TW3ControlGraphicContext),$Check(Self," in TW3GraphicControl.InitializeObject [line: 1149, column: 45, file: w3components]").FHandle$3);
       $Check(Self," in TW3GraphicControl.InitializeObject [line: 1150, column: 3, file: w3components]").FCanvas=TW3Canvas.Create$13($New(TW3Canvas),$Check(Self," in TW3GraphicControl.InitializeObject [line: 1150, column: 29, file: w3components]").FContext$2);
    }
    /// procedure TW3GraphicControl.Invalidate()
@@ -3772,15 +3775,15 @@ var TW3GraphicControl= {
    ///  [line: 1199, column: 29, file: w3components]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
-      w3_setAttrib($Check(Self," in TW3GraphicControl.Resize [line: 1203, column: 16, file: w3components]").FHandle$2,"width",w3_getStyle($Check(Self," in TW3GraphicControl.Resize [line: 1203, column: 43, file: w3components]").FHandle$2,"width"));
-      w3_setAttrib($Check(Self," in TW3GraphicControl.Resize [line: 1204, column: 16, file: w3components]").FHandle$2,"height",w3_getStyle($Check(Self," in TW3GraphicControl.Resize [line: 1204, column: 44, file: w3components]").FHandle$2,"height"));
+      w3_setAttrib($Check(Self," in TW3GraphicControl.Resize [line: 1203, column: 16, file: w3components]").FHandle$3,"width",w3_getStyle($Check(Self," in TW3GraphicControl.Resize [line: 1203, column: 43, file: w3components]").FHandle$3,"width"));
+      w3_setAttrib($Check(Self," in TW3GraphicControl.Resize [line: 1204, column: 16, file: w3components]").FHandle$3,"height",w3_getStyle($Check(Self," in TW3GraphicControl.Resize [line: 1204, column: 44, file: w3components]").FHandle$3,"height"));
    }
    /// procedure TW3GraphicControl.setHeight(aValue: Integer)
    ///  [line: 1178, column: 29, file: w3components]
    ,setHeight:function(Self, aValue$40) {
       TW3MovableControl.setHeight(Self,aValue$40);
-      if ($Check(Self," in TW3GraphicControl.setHeight [line: 1182, column: 7, file: w3components]").FHandle$2) {
-         w3_setAttrib($Check(Self," in TW3GraphicControl.setHeight [line: 1183, column: 16, file: w3components]").FHandle$2,"height",TInteger.toPxStr(TInteger,aValue$40));
+      if ($Check(Self," in TW3GraphicControl.setHeight [line: 1182, column: 7, file: w3components]").FHandle$3) {
+         w3_setAttrib($Check(Self," in TW3GraphicControl.setHeight [line: 1183, column: 16, file: w3components]").FHandle$3,"height",TInteger.toPxStr(TInteger,aValue$40));
       } else {
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3GraphicControl.setHeight",TObject.ClassName($Check(Self," in TW3GraphicControl.setHeight [line: 1185, column: 61, file: w3components]").ClassType),"invalid control handle error"]);
       }
@@ -3789,8 +3792,8 @@ var TW3GraphicControl= {
    ///  [line: 1168, column: 29, file: w3components]
    ,setWidth$1:function(Self, aValue$41) {
       TW3MovableControl.setWidth$1(Self,aValue$41);
-      if ($Check(Self," in TW3GraphicControl.setWidth [line: 1172, column: 7, file: w3components]").FHandle$2) {
-         w3_setAttrib($Check(Self," in TW3GraphicControl.setWidth [line: 1173, column: 16, file: w3components]").FHandle$2,"width",TInteger.toPxStr(TInteger,aValue$41));
+      if ($Check(Self," in TW3GraphicControl.setWidth [line: 1172, column: 7, file: w3components]").FHandle$3) {
+         w3_setAttrib($Check(Self," in TW3GraphicControl.setWidth [line: 1173, column: 16, file: w3components]").FHandle$3,"width",TInteger.toPxStr(TInteger,aValue$41));
       } else {
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3GraphicControl.setWidth",TObject.ClassName($Check(Self," in TW3GraphicControl.setWidth [line: 1175, column: 61, file: w3components]").ClassType),"invalid control handle error"]);
       }
@@ -3807,7 +3810,7 @@ var TW3GraphicControl= {
    ,setWidth$1$:function($){return $.ClassType.setWidth$1.apply($.ClassType, arguments)}
    ,setHeight$:function($){return $.ClassType.setHeight.apply($.ClassType, arguments)}
    ,Resize$:function($){return $.ClassType.Resize($)}
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate$:function($){return $.ClassType.Invalidate($)}
 };
 /// TW3ControlSizeInfo = record
@@ -3850,7 +3853,7 @@ var TW3ControlFont= {
    // IGNORED: TW3ControlFont.getHandle
    /// constructor TW3ControlFont.Create(AOwner: TW3CustomControl)
    ///  [line: 1025, column: 28, file: w3components]
-   ,Create$23:function(Self, AOwner$2) {
+   ,Create$25:function(Self, AOwner$2) {
       TObject.Create(Self);
       if (AOwner$2!==null) {
          $Check(Self," in TW3ControlFont.Create [line: 1029, column: 3, file: w3components]").FOwner$4=AOwner$2;
@@ -3897,7 +3900,7 @@ var TW3Constraints= {
    ,getMaxHeight:function(Self) {
       var Result=0;
       var mRef$4=undefined;
-      mRef$4=$Check($As($Check(Self," in TW3Constraints.getMaxHeight [line: 496, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.getMaxHeight [line: 496, column: 34, file: w3components]").FHandle$2;
+      mRef$4=$Check($As($Check(Self," in TW3Constraints.getMaxHeight [line: 496, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.getMaxHeight [line: 496, column: 34, file: w3components]").FHandle$3;
       if (mRef$4) {
          Result=w3_getStyleAsInt(mRef$4,"maxHeight");
       }
@@ -3908,7 +3911,7 @@ var TW3Constraints= {
    ,getMaxWidth:function(Self) {
       var Result=0;
       var mRef$5=undefined;
-      mRef$5=$Check($As($Check(Self," in TW3Constraints.getMaxWidth [line: 486, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.getMaxWidth [line: 486, column: 34, file: w3components]").FHandle$2;
+      mRef$5=$Check($As($Check(Self," in TW3Constraints.getMaxWidth [line: 486, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.getMaxWidth [line: 486, column: 34, file: w3components]").FHandle$3;
       if (mRef$5) {
          Result=w3_getStyleAsInt(mRef$5,"maxWidth");
       }
@@ -3918,7 +3921,7 @@ var TW3Constraints= {
    ///  [line: 512, column: 26, file: w3components]
    ,setMaxHeight:function(Self, aValue$42) {
       var mRef$6=undefined;
-      mRef$6=$Check($As($Check(Self," in TW3Constraints.setMaxHeight [line: 516, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.setMaxHeight [line: 516, column: 34, file: w3components]").FHandle$2;
+      mRef$6=$Check($As($Check(Self," in TW3Constraints.setMaxHeight [line: 516, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.setMaxHeight [line: 516, column: 34, file: w3components]").FHandle$3;
       if (mRef$6) {
          mRef$6.style["maxWidth"]=TInteger.toPxStr(TInteger,aValue$42);
       }
@@ -3927,7 +3930,7 @@ var TW3Constraints= {
    ///  [line: 502, column: 26, file: w3components]
    ,setMaxWidth:function(Self, aValue$43) {
       var mRef$7=undefined;
-      mRef$7=$Check($As($Check(Self," in TW3Constraints.setMaxWidth [line: 506, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.setMaxWidth [line: 506, column: 34, file: w3components]").FHandle$2;
+      mRef$7=$Check($As($Check(Self," in TW3Constraints.setMaxWidth [line: 506, column: 27, file: w3components]").FOwner,TW3MovableControl)," in TW3Constraints.setMaxWidth [line: 506, column: 34, file: w3components]").FHandle$3;
       if (mRef$7) {
          mRef$7.style["maxWidth"]=TInteger.toPxStr(TInteger,aValue$43);
       }
@@ -4100,6 +4103,21 @@ var TW3CanvasGradient= {
       TObject.$Init($);
       $.FHandle$1=undefined;
    }
+   /// procedure TW3CanvasGradient.addColorStop(const offset: Float; const Color: TColor)
+   ///  [line: 647, column: 29, file: w3graphics]
+   ,addColorStop$3:function(Self, offset, Color$3) {
+      $Check(Self," in TW3CanvasGradient.addColorStop [line: 649, column: 3, file: w3graphics]").FHandle$1.addColorStop(offset,ColorToWebStr(Color$3));
+   }
+   /// procedure TW3CanvasGradient.addColorStop(const offset: Float; const R: Integer; const G: Integer; const B: Integer)
+   ///  [line: 652, column: 29, file: w3graphics]
+   ,addColorStop$2:function(Self, offset$1, R$2, G$2, B$2) {
+      $Check(Self," in TW3CanvasGradient.addColorStop [line: 654, column: 3, file: w3graphics]").FHandle$1.addColorStop(offset$1,ColorToWebStr(RGBToColor(R$2,G$2,B$2)));
+   }
+   /// procedure TW3CanvasGradient.addColorStop(const offset: Float; const R: Integer; const G: Integer; const B: Integer; const A: Integer)
+   ///  [line: 657, column: 29, file: w3graphics]
+   ,addColorStop$1:function(Self, offset$2, R$3, G$3, B$3, A$2) {
+      $Check(Self," in TW3CanvasGradient.addColorStop [line: 659, column: 3, file: w3graphics]").FHandle$1.addColorStop(offset$2,ColorToStrA(RGBToColor(R$3,G$3,B$3),A$2));
+   }
    /// constructor TW3CanvasGradient.Create(const aHandle: THandle)
    ///  [line: 636, column: 31, file: w3graphics]
    ,Create$12:function(Self, aHandle) {
@@ -4151,6 +4169,31 @@ var TW3Canvas= {
       }
       return Self
    }
+   /// function TW3Canvas.CreateLinearGradientF(x0: Float; y0: Float; x1: Float; y1: Float) : TW3CanvasGradient
+   ///  [line: 1101, column: 20, file: w3graphics]
+   ,CreateLinearGradientF:function(Self, x0, y0, x1, y1) {
+      var Result=null;
+      var mTemp$13=undefined;
+      mTemp$13=$Check(Self," in TW3Canvas.CreateLinearGradientF [line: 1105, column: 12, file: w3graphics]").FDC.createLinearGradient(x0,y0,x1,y1);
+      if (mTemp$13) {
+         Result=TW3CanvasGradient.Create$12($New(TW3CanvasGradient),mTemp$13);
+      }
+      return Result
+   }
+   /// function TW3Canvas.CreateRadialGradientF(x0: Float; y0: Float; r0: Float; x1: Float; y1: Float; r1: Float) : TW3CanvasGradient
+   ///  [line: 1081, column: 20, file: w3graphics]
+   ,CreateRadialGradientF:function(Self, x0$1, y0$1, r0, x1$1, y1$1, r1) {
+      var Result=null;
+      var mTemp$14=undefined;
+      try {
+         mTemp$14=$Check(Self," in TW3Canvas.CreateRadialGradientF [line: 1086, column: 12, file: w3graphics]").FDC.createRadialGradient(x0$1,y0$1,r0,x1$1,y1$1,r1);
+      } catch ($e) {
+         var e$6=$W($e);
+         throw Exception.Create$1($New(Exception),"Failed to create gradient object:"+$Check(e$6," in TW3Canvas.CreateRadialGradientF [line: 1089, column: 68, file: w3graphics]").FMessage);
+      }
+      Result=TW3CanvasGradient.Create$12($New(TW3CanvasGradient),mTemp$14);
+      return Result
+   }
    /// procedure TW3Canvas.Fill()
    ///  [line: 1018, column: 21, file: w3graphics]
    ,Fill:function(Self) {
@@ -4165,6 +4208,26 @@ var TW3Canvas= {
    ///  [line: 1353, column: 20, file: w3graphics]
    ,getFillStyle:function(Self) {
       return $Check(Self," in TW3Canvas.getFillStyle [line: 1355, column: 11, file: w3graphics]").FDC.fillStyle.toString();
+   }
+   /// function TW3Canvas.getGlobalAlpha() : Float
+   ///  [line: 1243, column: 20, file: w3graphics]
+   ,getGlobalAlpha:function(Self) {
+      return Number($Check(Self," in TW3Canvas.getGlobalAlpha [line: 1245, column: 13, file: w3graphics]").FDC.globalAlpha);
+   }
+   /// function TW3Canvas.getLineCap() : String
+   ///  [line: 1333, column: 20, file: w3graphics]
+   ,getLineCap:function(Self) {
+      return $Check(Self," in TW3Canvas.getLineCap [line: 1335, column: 13, file: w3graphics]").FDC.lineCap.toString();
+   }
+   /// function TW3Canvas.getLineJoin() : String
+   ///  [line: 1323, column: 20, file: w3graphics]
+   ,getLineJoin:function(Self) {
+      return $Check(Self," in TW3Canvas.getLineJoin [line: 1325, column: 13, file: w3graphics]").FDC.lineJoin.toString();
+   }
+   /// function TW3Canvas.getLineWidth() : Float
+   ///  [line: 1313, column: 20, file: w3graphics]
+   ,getLineWidth:function(Self) {
+      return Number($Check(Self," in TW3Canvas.getLineWidth [line: 1315, column: 13, file: w3graphics]").FDC.lineWidth);
    }
    /// function TW3Canvas.getStrokeStyle() : String
    ///  [line: 1213, column: 20, file: w3graphics]
@@ -4191,10 +4254,30 @@ var TW3Canvas= {
    ,setFillStyle:function(Self, aValue$44) {
       $Check(Self," in TW3Canvas.setFillStyle [line: 1360, column: 3, file: w3graphics]").FDC.fillStyle=aValue$44;
    }
+   /// procedure TW3Canvas.setGlobalAlpha(aValue: Float)
+   ///  [line: 1248, column: 21, file: w3graphics]
+   ,setGlobalAlpha:function(Self, aValue$45) {
+      $Check(Self," in TW3Canvas.setGlobalAlpha [line: 1250, column: 3, file: w3graphics]").FDC.globalAlpha=aValue$45;
+   }
+   /// procedure TW3Canvas.setLineCap(aValue: String)
+   ///  [line: 1338, column: 21, file: w3graphics]
+   ,setLineCap:function(Self, aValue$46) {
+      $Check(Self," in TW3Canvas.setLineCap [line: 1340, column: 3, file: w3graphics]").FDC.lineCap=aValue$46;
+   }
+   /// procedure TW3Canvas.setLineJoin(aValue: String)
+   ///  [line: 1328, column: 21, file: w3graphics]
+   ,setLineJoin:function(Self, aValue$47) {
+      $Check(Self," in TW3Canvas.setLineJoin [line: 1330, column: 3, file: w3graphics]").FDC.lineJoin=aValue$47;
+   }
+   /// procedure TW3Canvas.setLineWidth(aValue: Float)
+   ///  [line: 1318, column: 21, file: w3graphics]
+   ,setLineWidth:function(Self, aValue$48) {
+      $Check(Self," in TW3Canvas.setLineWidth [line: 1320, column: 3, file: w3graphics]").FDC.lineWidth=aValue$48;
+   }
    /// procedure TW3Canvas.setStrokeStyle(aValue: String)
    ///  [line: 1218, column: 21, file: w3graphics]
-   ,setStrokeStyle:function(Self, aValue$45) {
-      $Check(Self," in TW3Canvas.setStrokeStyle [line: 1220, column: 3, file: w3graphics]").FDC.strokeStyle=aValue$45;
+   ,setStrokeStyle:function(Self, aValue$49) {
+      $Check(Self," in TW3Canvas.setStrokeStyle [line: 1220, column: 3, file: w3graphics]").FDC.strokeStyle=aValue$49;
    }
    /// procedure TW3Canvas.Stroke()
    ///  [line: 1031, column: 21, file: w3graphics]
@@ -4205,6 +4288,15 @@ var TW3Canvas= {
    ///  [line: 953, column: 21, file: w3graphics]
    ,StrokeRectF:function(Self, aLeft$4, aTop$4, aWidth$3, aHeight$3) {
       $Check(Self," in TW3Canvas.StrokeRectF [line: 955, column: 3, file: w3graphics]").FDC.strokeRect(aLeft$4,aTop$4,aWidth$3,aHeight$3);
+   }
+   /// procedure TW3Canvas.UseGradient(const aGradient: TW3CanvasGradient)
+   ///  [line: 1094, column: 21, file: w3graphics]
+   ,UseGradient:function(Self, aGradient) {
+      if (aGradient!==null) {
+         $Check(Self," in TW3Canvas.UseGradient [line: 1097, column: 3, file: w3graphics]").FDC.fillStyle=$Check(aGradient," in TW3Canvas.UseGradient [line: 1097, column: 28, file: w3graphics]").FHandle$1;
+      } else {
+         throw Exception.Create$1($New(Exception),"Failed to use gradient, object was NIL error");
+      }
    }
    ,Destroy:TObject.Destroy
 };
@@ -4293,9 +4385,9 @@ var TW3TouchList= {
    }
    /// constructor TW3TouchList.Create()
    ///  [line: 137, column: 26, file: w3touch]
-   ,Create$17:function(Self) {
+   ,Create$19:function(Self) {
       TObject.Create(Self);
-      $Check(Self," in TW3TouchList.Create [line: 141, column: 3, file: w3touch]").FObjects=TObjectList.Create$15($New(TObjectList));
+      $Check(Self," in TW3TouchList.Create [line: 141, column: 3, file: w3touch]").FObjects=TObjectList.Create$17($New(TObjectList));
       return Self
    }
    /// destructor TW3TouchList.Destroy()
@@ -4404,10 +4496,10 @@ var TW3Borders= {
    ///  [line: 90, column: 24, file: w3borders]
    ,Create$3:function(Self, AOwner$4) {
       TW3OwnedObject.Create$3(Self,AOwner$4);
-      $Check(Self," in TW3Borders.Create [line: 93, column: 3, file: w3borders]").FLeft=TW3Border.Create$20($New(TW3Border),Self,0);
-      $Check(Self," in TW3Borders.Create [line: 94, column: 3, file: w3borders]").FTop=TW3Border.Create$20($New(TW3Border),Self,1);
-      $Check(Self," in TW3Borders.Create [line: 95, column: 3, file: w3borders]").FRight=TW3Border.Create$20($New(TW3Border),Self,2);
-      $Check(Self," in TW3Borders.Create [line: 96, column: 3, file: w3borders]").FBottom=TW3Border.Create$20($New(TW3Border),Self,3);
+      $Check(Self," in TW3Borders.Create [line: 93, column: 3, file: w3borders]").FLeft=TW3Border.Create$22($New(TW3Border),Self,0);
+      $Check(Self," in TW3Borders.Create [line: 94, column: 3, file: w3borders]").FTop=TW3Border.Create$22($New(TW3Border),Self,1);
+      $Check(Self," in TW3Borders.Create [line: 95, column: 3, file: w3borders]").FRight=TW3Border.Create$22($New(TW3Border),Self,2);
+      $Check(Self," in TW3Borders.Create [line: 96, column: 3, file: w3borders]").FBottom=TW3Border.Create$22($New(TW3Border),Self,3);
       return Self
    }
    /// destructor TW3Borders.Destroy()
@@ -4459,7 +4551,7 @@ var TW3Border= {
    }
    /// constructor TW3Border.Create(AOwner: TW3Borders; AEdge: TW3BorderEdge)
    ///  [line: 161, column: 23, file: w3borders]
-   ,Create$20:function(Self, AOwner$5, AEdge) {
+   ,Create$22:function(Self, AOwner$5, AEdge) {
       TObject.Create(Self);
       $Check(Self," in TW3Border.Create [line: 164, column: 3, file: w3borders]").FOwner$2=AOwner$5;
       $Check(Self," in TW3Border.Create [line: 165, column: 3, file: w3borders]").FEdge=$Check(Self," in TW3Border.Create [line: 165, column: 10, file: w3borders]").FEdge;
@@ -4486,7 +4578,7 @@ var TW3Border= {
       var mRef$9=undefined;
       var mKey="";
       Result=0;
-      mRef$9=$Check($As($Check($Check(Self," in TW3Border.getPadding [line: 207, column: 19, file: w3borders]").FOwner$2," in TW3Border.getPadding [line: 207, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.getPadding [line: 207, column: 33, file: w3borders]").FHandle$2;
+      mRef$9=$Check($As($Check($Check(Self," in TW3Border.getPadding [line: 207, column: 19, file: w3borders]").FOwner$2," in TW3Border.getPadding [line: 207, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.getPadding [line: 207, column: 33, file: w3borders]").FHandle$3;
       if (mRef$9) {
          mKey="padding-"+$Check(Self," in TW3Border.getPadding [line: 211, column: 24, file: w3borders]").FEdgeName;
          Result=w3_getStyleAsInt(mRef$9,mKey);
@@ -4500,7 +4592,7 @@ var TW3Border= {
       var mRef$10=undefined;
       var mKey$1="";
       Result=0;
-      mRef$10=$Check($As($Check($Check(Self," in TW3Border.getWidth [line: 268, column: 19, file: w3borders]").FOwner$2," in TW3Border.getWidth [line: 268, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.getWidth [line: 268, column: 33, file: w3borders]").FHandle$2;
+      mRef$10=$Check($As($Check($Check(Self," in TW3Border.getWidth [line: 268, column: 19, file: w3borders]").FOwner$2," in TW3Border.getWidth [line: 268, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.getWidth [line: 268, column: 33, file: w3borders]").FHandle$3;
       if (mRef$10) {
          mKey$1="border-"+$Check(Self," in TW3Border.getWidth [line: 272, column: 23, file: w3borders]").FEdgeName+"-Width";
          Result=w3_getStyleAsInt(mRef$10,mKey$1);
@@ -4509,26 +4601,26 @@ var TW3Border= {
    }
    /// procedure TW3Border.setPadding(aValue: Integer)
    ///  [line: 216, column: 21, file: w3borders]
-   ,setPadding:function(Self, aValue$46) {
+   ,setPadding:function(Self, aValue$50) {
       var mRef$11=undefined;
       var mKey$2="";
-      mRef$11=$Check($As($Check($Check(Self," in TW3Border.setPadding [line: 221, column: 19, file: w3borders]").FOwner$2," in TW3Border.setPadding [line: 221, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.setPadding [line: 221, column: 33, file: w3borders]").FHandle$2;
+      mRef$11=$Check($As($Check($Check(Self," in TW3Border.setPadding [line: 221, column: 19, file: w3borders]").FOwner$2," in TW3Border.setPadding [line: 221, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.setPadding [line: 221, column: 33, file: w3borders]").FHandle$3;
       if (mRef$11) {
          mKey$2="padding"+$Check(Self," in TW3Border.setPadding [line: 225, column: 23, file: w3borders]").FEdgeName;
-         mRef$11.style[mKey$2]=TInteger.toPxStr(TInteger,aValue$46);
+         mRef$11.style[mKey$2]=TInteger.toPxStr(TInteger,aValue$50);
       } else {
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3Border.setPadding",TObject.ClassName($Check(Self," in TW3Border.setPadding [line: 228, column: 61, file: w3borders]").ClassType),"invalid owner handle error"]);
       }
    }
    /// procedure TW3Border.setWidth(aValue: Integer)
    ///  [line: 277, column: 21, file: w3borders]
-   ,setWidth:function(Self, aValue$47) {
+   ,setWidth:function(Self, aValue$51) {
       var mRef$12=undefined;
       var mKey$3="";
-      mRef$12=$Check($As($Check($Check(Self," in TW3Border.setWidth [line: 282, column: 19, file: w3borders]").FOwner$2," in TW3Border.setWidth [line: 282, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.setWidth [line: 282, column: 33, file: w3borders]").FHandle$2;
+      mRef$12=$Check($As($Check($Check(Self," in TW3Border.setWidth [line: 282, column: 19, file: w3borders]").FOwner$2," in TW3Border.setWidth [line: 282, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.setWidth [line: 282, column: 33, file: w3borders]").FHandle$3;
       if (mRef$12) {
          mKey$3="border-"+$Check(Self," in TW3Border.setWidth [line: 286, column: 23, file: w3borders]").FEdgeName+"-Width";
-         mRef$12.style[mKey$3]=TInteger.toPxStr(TInteger,aValue$47);
+         mRef$12.style[mKey$3]=TInteger.toPxStr(TInteger,aValue$51);
       } else {
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3Border.setWidth",TObject.ClassName($Check(Self," in TW3Border.setWidth [line: 289, column: 61, file: w3borders]").ClassType),"invalid owner handle error"]);
       }
@@ -4555,7 +4647,7 @@ var TW3PaintBox= {
    ,setWidth$1:TW3GraphicControl.setWidth$1
    ,setHeight:TW3GraphicControl.setHeight
    ,Resize:TW3GraphicControl.Resize
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3GraphicControl.Invalidate
 };
 /// TW3ListMenu = class (TW3CustomControl)
@@ -4602,7 +4694,7 @@ var TW3ListMenu= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TW3ListItems = class (TW3OwnedObject)
@@ -4633,7 +4725,7 @@ var TW3ListItems= {
    ///  [line: 974, column: 26, file: w3ctrls]
    ,Create$3:function(Self, AOwner$6) {
       TW3OwnedObject.Create$3(Self,AOwner$6);
-      $Check(Self," in TW3ListItems.Create [line: 977, column: 3, file: w3ctrls]").FObjects$1=TObjectList.Create$15($New(TObjectList));
+      $Check(Self," in TW3ListItems.Create [line: 977, column: 3, file: w3ctrls]").FObjects$1=TObjectList.Create$17($New(TObjectList));
       return Self
    }
    /// destructor TW3ListItems.Destroy()
@@ -4667,7 +4759,7 @@ var TW3ListItem= {
    }
    /// function TW3ListItem.getEnabled() : Boolean
    ///  [line: 963, column: 22, file: w3ctrls]
-   ,getEnabled:function(Self) {
+   ,getEnabled$1:function(Self) {
       return true;
    }
    ,Destroy:TW3TagObj.Destroy
@@ -4682,7 +4774,7 @@ var TW3ListItem= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled$:function($){return $.ClassType.getEnabled($)}
+   ,getEnabled$1$:function($){return $.ClassType.getEnabled$1($)}
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TW3Button = class (TW3CustomControl)
@@ -4697,16 +4789,16 @@ var TW3Button= {
    ///  [line: 1185, column: 20, file: w3ctrls]
    ,getCaption$2:function(Self) {
       var Result="";
-      if ($Check(Self," in TW3Button.getCaption [line: 1188, column: 7, file: w3ctrls]").FHandle$2) {
-         Result=$Check(Self," in TW3Button.getCaption [line: 1189, column: 11, file: w3ctrls]").FHandle$2.innerHTML.toString();
+      if ($Check(Self," in TW3Button.getCaption [line: 1188, column: 7, file: w3ctrls]").FHandle$3) {
+         Result=$Check(Self," in TW3Button.getCaption [line: 1189, column: 11, file: w3ctrls]").FHandle$3.innerHTML.toString();
       }
       return Result
    }
    /// procedure TW3Button.setCaption(Value: String)
    ///  [line: 1192, column: 21, file: w3ctrls]
    ,setCaption$4:function(Self, Value$11) {
-      if ($Check(Self," in TW3Button.setCaption [line: 1195, column: 7, file: w3ctrls]").FHandle$2) {
-         $Check(Self," in TW3Button.setCaption [line: 1196, column: 11, file: w3ctrls]").FHandle$2.innerHTML=Value$11;
+      if ($Check(Self," in TW3Button.setCaption [line: 1195, column: 7, file: w3ctrls]").FHandle$3) {
+         $Check(Self," in TW3Button.setCaption [line: 1196, column: 11, file: w3ctrls]").FHandle$3.innerHTML=Value$11;
       }
    }
    /// function TW3Button.makeElementTagObj() : THandle
@@ -4733,7 +4825,7 @@ var TW3Button= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
 };
 /// TW3CustomAnimation = class (TObject)
@@ -4781,7 +4873,7 @@ var TW3CustomAnimation= {
          try {
             TW3CustomAnimation.FinalizeTransition$($Check(Self," in TW3CustomAnimation.Destroy [line: 394, column: 7, file: w3effects]"));
          } catch ($e) {
-            var e$6=$W($e);
+            var e$7=$W($e);
             /* null */
          }
       }
@@ -4824,7 +4916,7 @@ var TW3CustomAnimation= {
    ,SetupTransition:function(Self) {
       var mCallBack$1=$Event0(Self,TW3CustomAnimation.CBEnds);
       $Check(Self," in TW3CustomAnimation.SetupTransition [line: 419, column: 3, file: w3effects]").FBusy=true;
-      $Check(Self," in TW3CustomAnimation.SetupTransition [line: 422, column: 3, file: w3effects]").FInTagRef=$Check($Check(Self," in TW3CustomAnimation.SetupTransition [line: 422, column: 14, file: w3effects]").FTarget$1," in TW3CustomAnimation.SetupTransition [line: 422, column: 22, file: w3effects]").FHandle$2;
+      $Check(Self," in TW3CustomAnimation.SetupTransition [line: 422, column: 3, file: w3effects]").FInTagRef=$Check($Check(Self," in TW3CustomAnimation.SetupTransition [line: 422, column: 14, file: w3effects]").FTarget$1," in TW3CustomAnimation.SetupTransition [line: 422, column: 22, file: w3effects]").FHandle$3;
       if (!w3_getIsFirefox()) {
          $Check(Self," in TW3CustomAnimation.SetupTransition [line: 426, column: 3, file: w3effects]").FInEvName=w3_CSSPrefix("AnimationEnd");
       } else {
@@ -4853,17 +4945,17 @@ var TW3NamedAnimation= {
    ,SetupTransition:function(Self) {
       var mCommand="";
       TW3CustomAnimation.SetupTransition(Self);
-      w3_setStyle($Check($Check(Self," in TW3NamedAnimation.SetupTransition [line: 309, column: 17, file: w3effects]").FTarget$1," in TW3NamedAnimation.SetupTransition [line: 309, column: 24, file: w3effects]").FHandle$2,w3_CSSPrefix("AnimationFillMode"),"both");
+      w3_setStyle($Check($Check(Self," in TW3NamedAnimation.SetupTransition [line: 309, column: 17, file: w3effects]").FTarget$1," in TW3NamedAnimation.SetupTransition [line: 309, column: 24, file: w3effects]").FHandle$3,w3_CSSPrefix("AnimationFillMode"),"both");
       mCommand=$Check(Self," in TW3NamedAnimation.SetupTransition [line: 310, column: 15, file: w3effects]").FName$2+" "+($Check(Self," in TW3NamedAnimation.SetupTransition [line: 310, column: 40, file: w3effects]").FDuration).toString()+"s linear";
-      w3_setStyle($Check($Check(Self," in TW3NamedAnimation.SetupTransition [line: 311, column: 17, file: w3effects]").FTarget$1," in TW3NamedAnimation.SetupTransition [line: 311, column: 24, file: w3effects]").FHandle$2,w3_CSSPrefix("Animation"),mCommand);
+      w3_setStyle($Check($Check(Self," in TW3NamedAnimation.SetupTransition [line: 311, column: 17, file: w3effects]").FTarget$1," in TW3NamedAnimation.SetupTransition [line: 311, column: 24, file: w3effects]").FHandle$3,w3_CSSPrefix("Animation"),mCommand);
    }
    /// procedure TW3NamedAnimation.FinalizeTransition()
    ///  [line: 314, column: 29, file: w3effects]
    ,FinalizeTransition:function(Self) {
       TW3CustomAnimation.FinalizeTransition(Self);
       if ($Check(Self," in TW3NamedAnimation.FinalizeTransition [line: 317, column: 6, file: w3effects]").FTarget$1!==null) {
-         $Check($Check(Self," in TW3NamedAnimation.FinalizeTransition [line: 319, column: 11, file: w3effects]").FTarget$1," in TW3NamedAnimation.FinalizeTransition [line: 319, column: 18, file: w3effects]").FHandle$2.style[w3_CSSPrefix("Animation")]="none";
-         $Check($Check(Self," in TW3NamedAnimation.FinalizeTransition [line: 320, column: 11, file: w3effects]").FTarget$1," in TW3NamedAnimation.FinalizeTransition [line: 320, column: 18, file: w3effects]").FHandle$2.style[w3_CSSPrefix("AnimationFillMode")]="none";
+         $Check($Check(Self," in TW3NamedAnimation.FinalizeTransition [line: 319, column: 11, file: w3effects]").FTarget$1," in TW3NamedAnimation.FinalizeTransition [line: 319, column: 18, file: w3effects]").FHandle$3.style[w3_CSSPrefix("Animation")]="none";
+         $Check($Check(Self," in TW3NamedAnimation.FinalizeTransition [line: 320, column: 11, file: w3effects]").FTarget$1," in TW3NamedAnimation.FinalizeTransition [line: 320, column: 18, file: w3effects]").FHandle$3.style[w3_CSSPrefix("AnimationFillMode")]="none";
       }
    }
    ,Destroy:TW3CustomAnimation.Destroy
@@ -4900,7 +4992,7 @@ var TApplication= {
    /// procedure TApplication.ApplicationStarting()
    ///  [line: 23, column: 24, file: graphics]
    ,ApplicationStarting:function(Self) {
-      var mForm=TW3Component.Create$22($New(TPaintForm),$Check($Check(Self," in TApplication.ApplicationStarting [line: 28, column: 30, file: graphics]").FDisplay," in TApplication.ApplicationStarting [line: 28, column: 38, file: graphics]").FView);
+      var mForm=TW3Component.Create$24($New(TPaintForm),$Check($Check(Self," in TApplication.ApplicationStarting [line: 28, column: 30, file: graphics]").FDisplay," in TApplication.ApplicationStarting [line: 28, column: 38, file: graphics]").FView);
       TW3Component.setName$1(mForm,"PaintForm");
       TW3CustomApplication.RegisterFormInstance(Self,mForm,true);
       TW3CustomApplication.ApplicationStarting(Self);
@@ -4915,102 +5007,129 @@ var TPaintForm= {
    $Parent:TW3Form,
    $Init:function ($) {
       TW3Form.$Init($);
-      $.btnCircle=$.btnClear=$.btnCurves=$.btnLines=$.btnLines05=$.btnRectangles=$.btnRoundedRect=$.PaintBox=null;
+      $.btnCircle=$.btnClear=$.btnCurves=$.btnGlobalAlpha=$.btnGradients=$.btnLineProperties=$.btnLines=$.btnLines05=$.btnRectangles=$.btnRoundedRect=$.PaintBox=null;
    }
    /// function TPaintForm.Canvas() : TW3Canvas
-   ///  [line: 72, column: 21, file: PaintForm]
+   ///  [line: 79, column: 21, file: PaintForm]
    ,Canvas$1:function(Self) {
-      return $Check($Check(Self," in TPaintForm.Canvas [line: 74, column: 13, file: PaintForm]").PaintBox," in TPaintForm.Canvas [line: 74, column: 22, file: PaintForm]").FCanvas;
+      return $Check($Check(Self," in TPaintForm.Canvas [line: 81, column: 13, file: PaintForm]").PaintBox," in TPaintForm.Canvas [line: 81, column: 22, file: PaintForm]").FCanvas;
    }
    /// procedure TPaintForm.ClearCanvas()
-   ///  [line: 77, column: 22, file: PaintForm]
+   ///  [line: 84, column: 22, file: PaintForm]
    ,ClearCanvas:function(Self) {
       TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"rgb(255,255,255)");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),0,0,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 80, column: 33, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 80, column: 41, file: PaintForm]")),TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 80, column: 55, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 80, column: 63, file: PaintForm]")));
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),0,0,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 87, column: 33, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 87, column: 41, file: PaintForm]")),TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 87, column: 55, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 87, column: 63, file: PaintForm]")));
       TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0,0,0)");
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),0.5,0.5,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 82, column: 39, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 82, column: 47, file: PaintForm]"))-1,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 82, column: 65, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 82, column: 73, file: PaintForm]"))-1);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),0.5,0.5,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 89, column: 39, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 89, column: 47, file: PaintForm]"))-1,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 89, column: 65, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 89, column: 73, file: PaintForm]"))-1);
    }
    /// procedure TPaintForm.InitializeObject()
-   ///  [line: 54, column: 22, file: PaintForm]
+   ///  [line: 57, column: 22, file: PaintForm]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
-      TW3Component.setName$1(Self,"Form1");
+      TW3Component.setName$1(Self,"PaintForm");
       TW3MovableControl.setVisible($Check(Self," in TPaintForm.InitializeObject [line: 2, column: 6, file: PaintForm:impl]"),true);
       TW3MovableControl.SetBounds($Check(Self," in TPaintForm.InitializeObject [line: 3, column: 6, file: PaintForm:impl]"),0,0,200,64);
       TW3CustomControl.setStyleClass(Self,"TW3Form");
-      TW3CustomControl.setEnabled($Check(Self," in TPaintForm.InitializeObject [line: 5, column: 6, file: PaintForm:impl]"),true);
-      $Check(Self," in TPaintForm.InitializeObject [line: 6, column: 1, file: PaintForm:impl]").btnLines=TW3Component.Create$22($New(TW3Button),Self);
+      TW3CustomControl.setEnabled$1($Check(Self," in TPaintForm.InitializeObject [line: 5, column: 6, file: PaintForm:impl]"),true);
+      $Check(Self," in TPaintForm.InitializeObject [line: 6, column: 1, file: PaintForm:impl]").btnLines=TW3Component.Create$24($New(TW3Button),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 7, column: 1, file: PaintForm:impl]").btnLines,"btnLines");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 8, column: 1, file: PaintForm:impl]").btnLines," in TPaintForm.InitializeObject [line: 8, column: 10, file: PaintForm:impl]"),true);
       TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 9, column: 1, file: PaintForm:impl]").btnLines," in TPaintForm.InitializeObject [line: 9, column: 10, file: PaintForm:impl]"),0,32,210,32);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 10, column: 1, file: PaintForm:impl]").btnLines,"TW3Button");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 11, column: 1, file: PaintForm:impl]").btnLines," in TPaintForm.InitializeObject [line: 11, column: 10, file: PaintForm:impl]"),true);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 11, column: 1, file: PaintForm:impl]").btnLines," in TPaintForm.InitializeObject [line: 11, column: 10, file: PaintForm:impl]"),true);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 12, column: 1, file: PaintForm:impl]").btnLines,"Lines");
-      $Check(Self," in TPaintForm.InitializeObject [line: 13, column: 1, file: PaintForm:impl]").PaintBox=TW3Component.Create$22($New(TW3PaintBox),Self);
+      $Check(Self," in TPaintForm.InitializeObject [line: 13, column: 1, file: PaintForm:impl]").PaintBox=TW3Component.Create$24($New(TW3PaintBox),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 14, column: 1, file: PaintForm:impl]").PaintBox,"PaintBox");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 15, column: 1, file: PaintForm:impl]").PaintBox," in TPaintForm.InitializeObject [line: 15, column: 10, file: PaintForm:impl]"),true);
       TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 16, column: 1, file: PaintForm:impl]").PaintBox," in TPaintForm.InitializeObject [line: 16, column: 10, file: PaintForm:impl]"),211,0,480,480);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 17, column: 1, file: PaintForm:impl]").PaintBox,"TW3PaintBox");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 18, column: 1, file: PaintForm:impl]").PaintBox," in TPaintForm.InitializeObject [line: 18, column: 10, file: PaintForm:impl]"),true);
-      $Check(Self," in TPaintForm.InitializeObject [line: 20, column: 1, file: PaintForm:impl]").btnLines05=TW3Component.Create$22($New(TW3Button),Self);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 18, column: 1, file: PaintForm:impl]").PaintBox," in TPaintForm.InitializeObject [line: 18, column: 10, file: PaintForm:impl]"),true);
+      $Check(Self," in TPaintForm.InitializeObject [line: 20, column: 1, file: PaintForm:impl]").btnLines05=TW3Component.Create$24($New(TW3Button),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 21, column: 1, file: PaintForm:impl]").btnLines05,"btnLines05");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 22, column: 1, file: PaintForm:impl]").btnLines05," in TPaintForm.InitializeObject [line: 22, column: 12, file: PaintForm:impl]"),true);
       TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 23, column: 1, file: PaintForm:impl]").btnLines05," in TPaintForm.InitializeObject [line: 23, column: 12, file: PaintForm:impl]"),0,64,210,32);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 24, column: 1, file: PaintForm:impl]").btnLines05,"TW3Button");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 25, column: 1, file: PaintForm:impl]").btnLines05," in TPaintForm.InitializeObject [line: 25, column: 12, file: PaintForm:impl]"),true);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 25, column: 1, file: PaintForm:impl]").btnLines05," in TPaintForm.InitializeObject [line: 25, column: 12, file: PaintForm:impl]"),true);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 26, column: 1, file: PaintForm:impl]").btnLines05,"Lines + 0.5");
-      $Check(Self," in TPaintForm.InitializeObject [line: 27, column: 1, file: PaintForm:impl]").btnClear=TW3Component.Create$22($New(TW3Button),Self);
+      $Check(Self," in TPaintForm.InitializeObject [line: 27, column: 1, file: PaintForm:impl]").btnClear=TW3Component.Create$24($New(TW3Button),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 28, column: 1, file: PaintForm:impl]").btnClear,"btnClear");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 29, column: 1, file: PaintForm:impl]").btnClear," in TPaintForm.InitializeObject [line: 29, column: 10, file: PaintForm:impl]"),true);
       TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 30, column: 1, file: PaintForm:impl]").btnClear," in TPaintForm.InitializeObject [line: 30, column: 10, file: PaintForm:impl]"),0,0,210,32);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 31, column: 1, file: PaintForm:impl]").btnClear,"TW3Button");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 32, column: 1, file: PaintForm:impl]").btnClear," in TPaintForm.InitializeObject [line: 32, column: 10, file: PaintForm:impl]"),true);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 32, column: 1, file: PaintForm:impl]").btnClear," in TPaintForm.InitializeObject [line: 32, column: 10, file: PaintForm:impl]"),true);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 33, column: 1, file: PaintForm:impl]").btnClear,"Clear");
-      $Check(Self," in TPaintForm.InitializeObject [line: 34, column: 1, file: PaintForm:impl]").btnCircle=TW3Component.Create$22($New(TW3Button),Self);
+      $Check(Self," in TPaintForm.InitializeObject [line: 34, column: 1, file: PaintForm:impl]").btnCircle=TW3Component.Create$24($New(TW3Button),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 35, column: 1, file: PaintForm:impl]").btnCircle,"btnCircle");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 36, column: 1, file: PaintForm:impl]").btnCircle," in TPaintForm.InitializeObject [line: 36, column: 11, file: PaintForm:impl]"),true);
-      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 37, column: 1, file: PaintForm:impl]").btnCircle," in TPaintForm.InitializeObject [line: 37, column: 11, file: PaintForm:impl]"),0,96,210,32);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 37, column: 1, file: PaintForm:impl]").btnCircle," in TPaintForm.InitializeObject [line: 37, column: 11, file: PaintForm:impl]"),0,128,210,32);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 38, column: 1, file: PaintForm:impl]").btnCircle,"TW3Button");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 39, column: 1, file: PaintForm:impl]").btnCircle," in TPaintForm.InitializeObject [line: 39, column: 11, file: PaintForm:impl]"),true);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 39, column: 1, file: PaintForm:impl]").btnCircle," in TPaintForm.InitializeObject [line: 39, column: 11, file: PaintForm:impl]"),true);
       TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 40, column: 1, file: PaintForm:impl]").btnCircle,253);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 41, column: 1, file: PaintForm:impl]").btnCircle,"Circle");
-      $Check(Self," in TPaintForm.InitializeObject [line: 42, column: 1, file: PaintForm:impl]").btnRectangles=TW3Component.Create$22($New(TW3Button),Self);
+      $Check(Self," in TPaintForm.InitializeObject [line: 42, column: 1, file: PaintForm:impl]").btnRectangles=TW3Component.Create$24($New(TW3Button),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 43, column: 1, file: PaintForm:impl]").btnRectangles,"btnRectangles");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 44, column: 1, file: PaintForm:impl]").btnRectangles," in TPaintForm.InitializeObject [line: 44, column: 15, file: PaintForm:impl]"),true);
-      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 45, column: 1, file: PaintForm:impl]").btnRectangles," in TPaintForm.InitializeObject [line: 45, column: 15, file: PaintForm:impl]"),0,128,210,32);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 45, column: 1, file: PaintForm:impl]").btnRectangles," in TPaintForm.InitializeObject [line: 45, column: 15, file: PaintForm:impl]"),0,160,210,32);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 46, column: 1, file: PaintForm:impl]").btnRectangles,"TW3Button");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 47, column: 1, file: PaintForm:impl]").btnRectangles," in TPaintForm.InitializeObject [line: 47, column: 15, file: PaintForm:impl]"),true);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 47, column: 1, file: PaintForm:impl]").btnRectangles," in TPaintForm.InitializeObject [line: 47, column: 15, file: PaintForm:impl]"),true);
       TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 48, column: 1, file: PaintForm:impl]").btnRectangles,253);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 49, column: 1, file: PaintForm:impl]").btnRectangles,"Rectangles");
-      $Check(Self," in TPaintForm.InitializeObject [line: 50, column: 1, file: PaintForm:impl]").btnCurves=TW3Component.Create$22($New(TW3Button),Self);
+      $Check(Self," in TPaintForm.InitializeObject [line: 50, column: 1, file: PaintForm:impl]").btnCurves=TW3Component.Create$24($New(TW3Button),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 51, column: 1, file: PaintForm:impl]").btnCurves,"btnCurves");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 52, column: 1, file: PaintForm:impl]").btnCurves," in TPaintForm.InitializeObject [line: 52, column: 11, file: PaintForm:impl]"),true);
-      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 53, column: 1, file: PaintForm:impl]").btnCurves," in TPaintForm.InitializeObject [line: 53, column: 11, file: PaintForm:impl]"),0,160,210,32);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 53, column: 1, file: PaintForm:impl]").btnCurves," in TPaintForm.InitializeObject [line: 53, column: 11, file: PaintForm:impl]"),0,192,210,32);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 54, column: 1, file: PaintForm:impl]").btnCurves,"TW3Button");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 55, column: 1, file: PaintForm:impl]").btnCurves," in TPaintForm.InitializeObject [line: 55, column: 11, file: PaintForm:impl]"),true);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 55, column: 1, file: PaintForm:impl]").btnCurves," in TPaintForm.InitializeObject [line: 55, column: 11, file: PaintForm:impl]"),true);
       TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 56, column: 1, file: PaintForm:impl]").btnCurves,253);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 57, column: 1, file: PaintForm:impl]").btnCurves,"Curves");
-      $Check(Self," in TPaintForm.InitializeObject [line: 58, column: 1, file: PaintForm:impl]").btnRoundedRect=TW3Component.Create$22($New(TW3Button),Self);
+      $Check(Self," in TPaintForm.InitializeObject [line: 58, column: 1, file: PaintForm:impl]").btnRoundedRect=TW3Component.Create$24($New(TW3Button),Self);
       TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 59, column: 1, file: PaintForm:impl]").btnRoundedRect,"btnRoundedRect");
       TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 60, column: 1, file: PaintForm:impl]").btnRoundedRect," in TPaintForm.InitializeObject [line: 60, column: 16, file: PaintForm:impl]"),true);
-      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 61, column: 1, file: PaintForm:impl]").btnRoundedRect," in TPaintForm.InitializeObject [line: 61, column: 16, file: PaintForm:impl]"),0,192,210,32);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 61, column: 1, file: PaintForm:impl]").btnRoundedRect," in TPaintForm.InitializeObject [line: 61, column: 16, file: PaintForm:impl]"),0,224,210,32);
       TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 62, column: 1, file: PaintForm:impl]").btnRoundedRect,"TW3Button");
-      TW3CustomControl.setEnabled($Check($Check(Self," in TPaintForm.InitializeObject [line: 63, column: 1, file: PaintForm:impl]").btnRoundedRect," in TPaintForm.InitializeObject [line: 63, column: 16, file: PaintForm:impl]"),true);
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 63, column: 1, file: PaintForm:impl]").btnRoundedRect," in TPaintForm.InitializeObject [line: 63, column: 16, file: PaintForm:impl]"),true);
       TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 64, column: 1, file: PaintForm:impl]").btnRoundedRect,253);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 65, column: 1, file: PaintForm:impl]").btnRoundedRect,"Rounded Rectangle");
-      $Check($Check(Self," in TPaintForm.InitializeObject [line: 58, column: 3, file: PaintForm]").PaintBox," in TPaintForm.InitializeObject [line: 58, column: 20, file: PaintForm]").FOnPaint=function (Sender$2, Canvas$2) {
+      $Check(Self," in TPaintForm.InitializeObject [line: 66, column: 1, file: PaintForm:impl]").btnGlobalAlpha=TW3Component.Create$24($New(TW3Button),Self);
+      TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 67, column: 1, file: PaintForm:impl]").btnGlobalAlpha,"btnGlobalAlpha");
+      TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 68, column: 1, file: PaintForm:impl]").btnGlobalAlpha," in TPaintForm.InitializeObject [line: 68, column: 16, file: PaintForm:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 69, column: 1, file: PaintForm:impl]").btnGlobalAlpha," in TPaintForm.InitializeObject [line: 69, column: 16, file: PaintForm:impl]"),0,256,210,32);
+      TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 70, column: 1, file: PaintForm:impl]").btnGlobalAlpha,"TW3Button");
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 71, column: 1, file: PaintForm:impl]").btnGlobalAlpha," in TPaintForm.InitializeObject [line: 71, column: 16, file: PaintForm:impl]"),true);
+      TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 72, column: 1, file: PaintForm:impl]").btnGlobalAlpha,253);
+      TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 73, column: 1, file: PaintForm:impl]").btnGlobalAlpha,"GlobalAlpha");
+      $Check(Self," in TPaintForm.InitializeObject [line: 74, column: 1, file: PaintForm:impl]").btnLineProperties=TW3Component.Create$24($New(TW3Button),Self);
+      TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 75, column: 1, file: PaintForm:impl]").btnLineProperties,"btnLineProperties");
+      TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 76, column: 1, file: PaintForm:impl]").btnLineProperties," in TPaintForm.InitializeObject [line: 76, column: 19, file: PaintForm:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 77, column: 1, file: PaintForm:impl]").btnLineProperties," in TPaintForm.InitializeObject [line: 77, column: 19, file: PaintForm:impl]"),0,96,210,32);
+      TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 78, column: 1, file: PaintForm:impl]").btnLineProperties,"TW3Button");
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 79, column: 1, file: PaintForm:impl]").btnLineProperties," in TPaintForm.InitializeObject [line: 79, column: 19, file: PaintForm:impl]"),true);
+      TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 80, column: 1, file: PaintForm:impl]").btnLineProperties,"Line properties");
+      $Check(Self," in TPaintForm.InitializeObject [line: 81, column: 1, file: PaintForm:impl]").btnGradients=TW3Component.Create$24($New(TW3Button),Self);
+      TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 82, column: 1, file: PaintForm:impl]").btnGradients,"btnGradients");
+      TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 83, column: 1, file: PaintForm:impl]").btnGradients," in TPaintForm.InitializeObject [line: 83, column: 14, file: PaintForm:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 84, column: 1, file: PaintForm:impl]").btnGradients," in TPaintForm.InitializeObject [line: 84, column: 14, file: PaintForm:impl]"),0,288,210,32);
+      TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 85, column: 1, file: PaintForm:impl]").btnGradients,"TW3Button");
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 86, column: 1, file: PaintForm:impl]").btnGradients," in TPaintForm.InitializeObject [line: 86, column: 14, file: PaintForm:impl]"),true);
+      TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 87, column: 1, file: PaintForm:impl]").btnGradients,253);
+      TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 88, column: 1, file: PaintForm:impl]").btnGradients,"Gradients");
+      $Check($Check(Self," in TPaintForm.InitializeObject [line: 61, column: 3, file: PaintForm]").PaintBox," in TPaintForm.InitializeObject [line: 61, column: 20, file: PaintForm]").FOnPaint=function (Sender$2, Canvas$2) {
          TPaintForm.ClearCanvas(Self);
       };
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 63, column: 3, file: PaintForm]").btnClear,Handler($Event0(Self,TPaintForm.ClearCanvas)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 64, column: 3, file: PaintForm]").btnLines,Handler($Event0(Self,TPaintForm.PaintLines)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 65, column: 3, file: PaintForm]").btnLines05,Handler($Event0(Self,TPaintForm.PaintLines05)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 66, column: 3, file: PaintForm]").btnCircle,Handler($Event0(Self,TPaintForm.PaintCircle)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 67, column: 3, file: PaintForm]").btnRectangles,Handler($Event0(Self,TPaintForm.PaintRectangles)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 68, column: 3, file: PaintForm]").btnCurves,Handler($Event0(Self,TPaintForm.PaintCurves)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 69, column: 3, file: PaintForm]").btnRoundedRect,Handler($Event0(Self,TPaintForm.PaintRoundedRect)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 66, column: 3, file: PaintForm]").btnClear,Handler($Event0(Self,TPaintForm.ClearCanvas)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 67, column: 3, file: PaintForm]").btnLines,Handler($Event0(Self,TPaintForm.PaintLines)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 68, column: 3, file: PaintForm]").btnLines05,Handler($Event0(Self,TPaintForm.PaintLines05)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 69, column: 3, file: PaintForm]").btnLineProperties,Handler($Event0(Self,TPaintForm.PaintLineProperties)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 70, column: 3, file: PaintForm]").btnCircle,Handler($Event0(Self,TPaintForm.PaintCircle)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 71, column: 3, file: PaintForm]").btnRectangles,Handler($Event0(Self,TPaintForm.PaintRectangles)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 72, column: 3, file: PaintForm]").btnCurves,Handler($Event0(Self,TPaintForm.PaintCurves)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 73, column: 3, file: PaintForm]").btnRoundedRect,Handler($Event0(Self,TPaintForm.PaintRoundedRect)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 74, column: 3, file: PaintForm]").btnGlobalAlpha,Handler($Event0(Self,TPaintForm.PaintGlobalAlpha)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 75, column: 3, file: PaintForm]").btnLineProperties,Handler($Event0(Self,TPaintForm.PaintLineProperties)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 76, column: 3, file: PaintForm]").btnGradients,Handler($Event0(Self,TPaintForm.PaintGradients)));
    }
    /// procedure TPaintForm.PaintCircle()
-   ///  [line: 113, column: 22, file: PaintForm]
+   ///  [line: 169, column: 22, file: PaintForm]
    ,PaintCircle:function(Self) {
       TPaintForm.ClearCanvas(Self);
       TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"#000000");
@@ -5031,7 +5150,7 @@ var TPaintForm= {
       TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
    }
    /// procedure TPaintForm.PaintCurves()
-   ///  [line: 145, column: 22, file: PaintForm]
+   ///  [line: 201, column: 22, file: PaintForm]
    ,PaintCurves:function(Self) {
       TPaintForm.ClearCanvas(Self);
       TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),ColorToWebStr(16716947));
@@ -5055,52 +5174,158 @@ var TPaintForm= {
       TW3Canvas.BezierCurveToF(TPaintForm.Canvas$1(Self),85,25,75,37,75,40);
       TW3Canvas.Fill(TPaintForm.Canvas$1(Self));
    }
-   /// procedure TPaintForm.PaintLines()
-   ///  [line: 85, column: 22, file: PaintForm]
-   ,PaintLines:function(Self) {
+   /// procedure TPaintForm.PaintGlobalAlpha()
+   ///  [line: 239, column: 22, file: PaintForm]
+   ,PaintGlobalAlpha:function(Self) {
       var i=0;
+      TPaintForm.ClearCanvas(Self);
+      for(i=0;i<=10;i++) {
+         TW3Canvas.setGlobalAlpha(TPaintForm.Canvas$1(Self),i/10);
+         TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"darkviolet");
+         TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"#000000");
+         TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),(20*i)+0.5,0.5,19.5,399.5);
+         TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"orange");
+         TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),0.5,(20*i)+0.5,399.5,19.5);
+      }
+   }
+   /// procedure TPaintForm.PaintGradients()
+   ///  [line: 254, column: 22, file: PaintForm]
+   ,PaintGradients:function(Self) {
+      var circGrad=null;
+      var linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),0,20,0,100);
+      TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
+      TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
+      TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10.5,10.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),10.5,10.5,100,100);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),120.5,0.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),120.5,0.5,100,100);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),230.5,20.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),230.5,20.5,100,100);
+      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),10,0,110,0);
+      TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
+      TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
+      TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10.5,130.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),10.5,130.5,100,100);
+      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),120,130,220,230);
+      TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
+      TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
+      TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),120.5,130.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),120.5,130.5,100,100);
+      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),230,230,330,130);
+      TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
+      TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
+      TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),230.5,130.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),230.5,130.5,100,100);
+      circGrad=TW3Canvas.CreateRadialGradientF(TPaintForm.Canvas$1(Self),60,300,25,110,350,100);
+      TW3CanvasGradient.addColorStop$2(circGrad,0,255,0,0);
+      TW3CanvasGradient.addColorStop$2(circGrad,1,0,255,0);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),circGrad);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10,250,200,200);
+      circGrad=TW3Canvas.CreateRadialGradientF(TPaintForm.Canvas$1(Self),300,300,25,350,350,100);
+      TW3CanvasGradient.addColorStop$2(circGrad,0,255,0,0);
+      TW3CanvasGradient.addColorStop$2(circGrad,0.9,0,255,0);
+      TW3CanvasGradient.addColorStop$1(circGrad,1,0,255,0,0);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),circGrad);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),250,250,200,200);
+   }
+   /// procedure TPaintForm.PaintLineProperties()
+   ///  [line: 120, column: 22, file: PaintForm]
+   ,PaintLineProperties:function(Self) {
+      var i$1=0;
+      var cap=["butt","round","square"].slice();
+      var join=["round","bevel","miter"].slice();
+      function ZigZag(x$21, y$7) {
+         Line(x$21,y$7,50,50);
+         LineTo(x$21+100,y$7);
+         LineTo(x$21+150,y$7+50);
+         LineTo(x$21+200,y$7);
+      };
+      function Line(x$22, y$8, w, h) {
+         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),x$22+0.5,y$8+0.5);
+         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),x$22+w,y$8+h);
+      };
+      function LineTo(x$23, y$9) {
+         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),x$23+0.5,y$9+0.5);
+      };
+      TPaintForm.ClearCanvas(Self);
+      for(i$1=1;i$1<=10;i$1++) {
+         TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
+         TW3Canvas.setLineWidth(TPaintForm.Canvas$1(Self),i$1);
+         Line(20*i$1,10,0,90);
+         TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+      }
+      TW3Canvas.setLineWidth(TPaintForm.Canvas$1(Self),10);
+      for(i$1=0;i$1<=2;i$1++) {
+         TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
+         TW3Canvas.setLineCap(TPaintForm.Canvas$1(Self),$DIdxR(cap,i$1," in TPaintForm.PaintLineProperties [line: 157, column: 29, file: PaintForm]"));
+         Line(20*(i$1+1),130,0,90);
+         TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+      }
+      for(i$1=0;i$1<=2;i$1++) {
+         TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
+         TW3Canvas.setLineJoin(TPaintForm.Canvas$1(Self),$DIdxR(join,i$1," in TPaintForm.PaintLineProperties [line: 163, column: 31, file: PaintForm]"));
+         ZigZag(20,250+(30*i$1));
+         TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+      }
+   }
+   /// procedure TPaintForm.PaintLines()
+   ///  [line: 92, column: 22, file: PaintForm]
+   ,PaintLines:function(Self) {
+      var i$2=0;
       TPaintForm.ClearCanvas(Self);
       TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0,0,0)");
       TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
       var $temp19;
-      for(i=3,$temp19=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines [line: 92, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 92, column: 32, file: PaintForm]"))-3;i<=$temp19;i+=4) {
-         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),i,3);
-         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),i,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines [line: 94, column: 30, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 94, column: 38, file: PaintForm]"))-3);
+      for(i$2=3,$temp19=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines [line: 99, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 99, column: 32, file: PaintForm]"))-3;i$2<=$temp19;i$2+=4) {
+         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),i$2,3);
+         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),i$2,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines [line: 101, column: 30, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 101, column: 38, file: PaintForm]"))-3);
       }
       TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
    }
    /// procedure TPaintForm.PaintLines05()
-   ///  [line: 99, column: 22, file: PaintForm]
+   ///  [line: 106, column: 22, file: PaintForm]
    ,PaintLines05:function(Self) {
-      var i$1=0;
+      var i$3=0;
       TPaintForm.ClearCanvas(Self);
       TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0,0,0)");
       TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
       var $temp20;
-      for(i$1=3,$temp20=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines05 [line: 106, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 106, column: 32, file: PaintForm]"))-3;i$1<=$temp20;i$1+=4) {
-         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),i$1+0.5,3.5);
-         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),i$1+0.5,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines05 [line: 108, column: 34, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 108, column: 42, file: PaintForm]"))-3.5);
+      for(i$3=3,$temp20=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines05 [line: 113, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 113, column: 32, file: PaintForm]"))-3;i$3<=$temp20;i$3+=4) {
+         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),i$3+0.5,3.5);
+         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),i$3+0.5,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines05 [line: 115, column: 34, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 115, column: 42, file: PaintForm]"))-3.5);
       }
       TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
    }
    /// procedure TPaintForm.PaintRectangles()
-   ///  [line: 136, column: 22, file: PaintForm]
+   ///  [line: 192, column: 22, file: PaintForm]
    ,PaintRectangles:function(Self) {
       TPaintForm.ClearCanvas(Self);
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"rgb(200,0,0)");
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"orange");
       TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10,10,250,200);
       TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"rgba(0,0,200,0.5)");
       TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),150,150,250,200);
    }
    /// procedure TPaintForm.PaintRoundedRect()
-   ///  [line: 172, column: 22, file: PaintForm]
+   ///  [line: 228, column: 22, file: PaintForm]
    ,PaintRoundedRect:function(Self) {
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"#FFFFFF");
+      TPaintForm.ClearCanvas(Self);
       TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0, 0, 255)");
       RoundedRect(TPaintForm.Canvas$1(Self),20.5,20.5,160,60,3);
       TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(255, 0, 0)");
       RoundedRect(TPaintForm.Canvas$1(Self),20.5,120.5,160,60,10);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0, 255, 0)");
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"hsl(120, 100%, 50%)");
       RoundedRect(TPaintForm.Canvas$1(Self),20.5,220.5,160,60,30);
    }
    ,Destroy:TW3TagObj.Destroy
@@ -5115,28 +5340,28 @@ var TPaintForm= {
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
-   ,getEnabled:TW3CustomControl.getEnabled
+   ,getEnabled$1:TW3CustomControl.getEnabled$1
    ,Invalidate:TW3CustomControl.Invalidate
-};
-function RoundedRect(Canvas$3, x$21, y$7, width, height, radius$1) {
-   TW3Canvas.BeginPath(Canvas$3);
-   TW3Canvas.MoveToF(Canvas$3,x$21,y$7+radius$1);
-   TW3Canvas.LineToF(Canvas$3,x$21,(y$7+height)-radius$1);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$21,y$7+height,x$21+radius$1,y$7+height);
-   TW3Canvas.LineToF(Canvas$3,(x$21+width)-radius$1,y$7+height);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$21+width,y$7+height,x$21+width,(y$7+height)-radius$1);
-   TW3Canvas.LineToF(Canvas$3,x$21+width,y$7+radius$1);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$21+width,y$7,(x$21+width)-radius$1,y$7);
-   TW3Canvas.LineToF(Canvas$3,x$21+radius$1,y$7);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$21,y$7,x$21,y$7+radius$1);
-   TW3Canvas.Stroke(Canvas$3);
 };
 function Handler(paint) {
    var Result=null;
    Result=function (Sender$3) {
-      $CheckFunc(paint," in  [line: 34, column: 12, file: PaintForm]")();
+      $CheckFunc(paint," in  [line: 53, column: 12, file: PaintForm]")();
    };
    return Result
+};
+function RoundedRect(Canvas$3, x$24, y$10, width, height, radius$1) {
+   TW3Canvas.BeginPath(Canvas$3);
+   TW3Canvas.MoveToF(Canvas$3,x$24,y$10+radius$1);
+   TW3Canvas.LineToF(Canvas$3,x$24,(y$10+height)-radius$1);
+   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24,y$10+height,x$24+radius$1,y$10+height);
+   TW3Canvas.LineToF(Canvas$3,(x$24+width)-radius$1,y$10+height);
+   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24+width,y$10+height,x$24+width,(y$10+height)-radius$1);
+   TW3Canvas.LineToF(Canvas$3,x$24+width,y$10+radius$1);
+   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24+width,y$10,(x$24+width)-radius$1,y$10);
+   TW3Canvas.LineToF(Canvas$3,x$24+radius$1,y$10);
+   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24,y$10,x$24,y$10+radius$1);
+   TW3Canvas.Stroke(Canvas$3);
 };
 var DefaultDuration=2;
 var Instance=null;
@@ -5150,8 +5375,8 @@ var $Graphics= function() {
       mTemp$11=TW3CustomApplication.Create$30($New(TApplication));
       TW3CustomApplication.RunApp(mTemp$11);
    } catch ($e) {
-      var e$7=$W($e);
-      showmessage($Check(e$7," [line: 9, column: 17]").FMessage);
+      var e$8=$W($e);
+      showmessage($Check(e$8," [line: 9, column: 17]").FMessage);
    }
 }
 $Graphics();
