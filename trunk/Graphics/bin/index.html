@@ -4026,6 +4026,30 @@ var TW3ImageData= {
    $Parent:TObject,
    $Init:function ($) {
       TObject.$Init($);
+      $.FHandle=undefined;
+   }
+   /// procedure TW3ImageData.fromImageData(const aImageDataRef: THandle)
+   ///  [line: 460, column: 24, file: w3graphics]
+   ,fromImageData:function(Self, aImageDataRef) {
+      if (aImageDataRef) {
+         $Check(Self," in TW3ImageData.fromImageData [line: 466, column: 3, file: w3graphics]").FHandle=aImageDataRef;
+      } else {
+         throw Exception.Create$1($New(Exception),"Failed to initialize from graphics-context: reference was NIL error");
+      }
+   }
+   /// function TW3ImageData.getWidth() : Integer
+   ///  [line: 470, column: 23, file: w3graphics]
+   ,getWidth:function(Self) {
+      return parseInt($Check(Self," in TW3ImageData.getWidth [line: 472, column: 11, file: w3graphics]").FHandle.width,10);
+   }
+   /// procedure TW3ImageData.setPixelEx(x: Integer; y: Integer; R: Integer; G: Integer; B: Integer; A: Integer)
+   ///  [line: 502, column: 24, file: w3graphics]
+   ,setPixelEx:function(Self, x$13, y$2, R$2, G$2, B$2, A$2) {
+      var mIndex$2=parseInt((($Check(Self," in TW3ImageData.setPixelEx [line: 506, column: 17, file: w3graphics]").FHandle.width*4*y$2)+(x$13*4)),10);
+      $Check(Self," in TW3ImageData.setPixelEx [line: 507, column: 3, file: w3graphics]").FHandle.data[mIndex$2+0]=R$2;
+      $Check(Self," in TW3ImageData.setPixelEx [line: 508, column: 3, file: w3graphics]").FHandle.data[mIndex$2+1]=G$2;
+      $Check(Self," in TW3ImageData.setPixelEx [line: 509, column: 3, file: w3graphics]").FHandle.data[mIndex$2+2]=B$2;
+      $Check(Self," in TW3ImageData.setPixelEx [line: 510, column: 3, file: w3graphics]").FHandle.data[mIndex$2+3]=A$2;
    }
    ,Destroy:TObject.Destroy
 };
@@ -4037,14 +4061,135 @@ var TW3CustomGraphicContext= {
    $Init:function ($) {
       TObject.$Init($);
    }
+   /// procedure TW3CustomGraphicContext.Allocate(const aWidth: Integer; const aHeight: Integer)
+   ///  [line: 806, column: 35, file: w3graphics]
+   ,Allocate:function(Self, aWidth$2, aHeight$2) {
+      if (TW3CustomGraphicContext.getOwnsReference$($Check(Self," in TW3CustomGraphicContext.Allocate [line: 808, column: 6, file: w3graphics]"))) {
+         if (varIsValidRef(TW3CustomGraphicContext.getDC$($Check(Self," in TW3CustomGraphicContext.Allocate [line: 810, column: 22, file: w3graphics]")))) {
+            TW3CustomGraphicContext.Release($Check(Self," in TW3CustomGraphicContext.Allocate [line: 811, column: 5, file: w3graphics]"));
+         }
+         TW3CustomGraphicContext.SetSize$($Check(Self," in TW3CustomGraphicContext.Allocate [line: 812, column: 5, file: w3graphics]"),aWidth$2,aHeight$2);
+      } else {
+         throw Exception.Create$1($New(Exception),"Cannot modify current graphics context");
+      }
+   }
+   /// procedure TW3CustomGraphicContext.Release()
+   ///  [line: 817, column: 35, file: w3graphics]
+   ,Release:function(Self) {
+      if (TW3CustomGraphicContext.getOwnsReference$($Check(Self," in TW3CustomGraphicContext.Release [line: 819, column: 6, file: w3graphics]"))) {
+         if (varIsValidRef(TW3CustomGraphicContext.getDC$($Check(Self," in TW3CustomGraphicContext.Release [line: 821, column: 22, file: w3graphics]")))) {
+            TW3CustomGraphicContext.ReleaseDC$($Check(Self," in TW3CustomGraphicContext.Release [line: 822, column: 5, file: w3graphics]"));
+         }
+      } else {
+         throw Exception.Create$1($New(Exception),"Cannot modify current graphics context");
+      }
+   }
    ,Destroy:TObject.Destroy
    ,getDC$:function($){return $.ClassType.getDC($)}
    // IGNORED: TW3CustomGraphicContext.getHandle
    ,getWidth$1$:function($){return $.ClassType.getWidth$1($)}
    ,getHeight$1$:function($){return $.ClassType.getHeight$1($)}
-   // IGNORED: TW3CustomGraphicContext.getOwnsReference
-   // IGNORED: TW3CustomGraphicContext.SetSize
-   // IGNORED: TW3CustomGraphicContext.ReleaseDC
+   ,getOwnsReference$:function($){return $.ClassType.getOwnsReference($)}
+   ,SetSize$:function($){return $.ClassType.SetSize.apply($.ClassType, arguments)}
+   ,ReleaseDC$:function($){return $.ClassType.ReleaseDC($)}
+};
+/// TW3GraphicContext = class (TW3CustomGraphicContext)
+///  [line: 241, column: 3, file: w3graphics]
+var TW3GraphicContext= {
+   $ClassName:"TW3GraphicContext",
+   $Parent:TW3CustomGraphicContext,
+   $Init:function ($) {
+      TW3CustomGraphicContext.$Init($);
+      $.FObjId="";
+      $.FObjRef=undefined;
+      $.FOwner$1=undefined;
+   }
+   /// constructor TW3GraphicContext.Create(const AOwner: THandle)
+   ///  [line: 831, column: 31, file: w3graphics]
+   ,Create$10:function(Self, AOwner$3) {
+      TObject.Create(Self);
+      $Check(Self," in TW3GraphicContext.Create [line: 836, column: 3, file: w3graphics]").FObjRef=w3_createHtmlElement("canvas");
+      $Check(Self," in TW3GraphicContext.Create [line: 839, column: 3, file: w3graphics]").FObjId=w3_getUniqueObjId();
+      $Check(Self," in TW3GraphicContext.Create [line: 840, column: 3, file: w3graphics]").FObjRef.id=$Check(Self," in TW3GraphicContext.Create [line: 840, column: 15, file: w3graphics]").FObjId;
+      $Check(Self," in TW3GraphicContext.Create [line: 843, column: 3, file: w3graphics]").FOwner$1=AOwner$3;
+      if ($Check(Self," in TW3GraphicContext.Create [line: 847, column: 7, file: w3graphics]").FOwner$1) {
+         w3_setElementParentByRef($Check(Self," in TW3GraphicContext.Create [line: 848, column: 28, file: w3graphics]").FObjRef,$Check(Self," in TW3GraphicContext.Create [line: 848, column: 36, file: w3graphics]").FOwner$1);
+      }
+      return Self
+   }
+   /// destructor TW3GraphicContext.Destroy()
+   ///  [line: 851, column: 30, file: w3graphics]
+   ,Destroy:function(Self) {
+      if ($Check(Self," in TW3GraphicContext.Destroy [line: 855, column: 7, file: w3graphics]").FOwner$1) {
+         w3_RemoveElementByRef($Check(Self," in TW3GraphicContext.Destroy [line: 856, column: 25, file: w3graphics]").FObjRef,$Check(Self," in TW3GraphicContext.Destroy [line: 856, column: 33, file: w3graphics]").FOwner$1);
+      }
+      $Check(Self," in TW3GraphicContext.Destroy [line: 858, column: 3, file: w3graphics]").FOwner$1=null;
+      $Check(Self," in TW3GraphicContext.Destroy [line: 859, column: 3, file: w3graphics]").FObjRef=null;
+      TObject.Destroy(Self);
+   }
+   /// function TW3GraphicContext.getDC() : THandle
+   ///  [line: 874, column: 28, file: w3graphics]
+   ,getDC:function(Self) {
+      var Result=undefined;
+      if ($Check(Self," in TW3GraphicContext.getDC [line: 877, column: 7, file: w3graphics]").FObjRef) {
+         Result=$Check(Self," in TW3GraphicContext.getDC [line: 878, column: 11, file: w3graphics]").FObjRef.getContext("2d");
+      } else {
+         Result=null;
+      }
+      return Result
+   }
+   // IGNORED: TW3GraphicContext.getHandle
+   /// function TW3GraphicContext.getHeight() : Integer
+   ///  [line: 900, column: 28, file: w3graphics]
+   ,getHeight$1:function(Self) {
+      var Result=0;
+      if ($Check(Self," in TW3GraphicContext.getHeight [line: 902, column: 7, file: w3graphics]").FObjRef) {
+         Result=parseInt($Check(Self," in TW3GraphicContext.getHeight [line: 904, column: 11, file: w3graphics]").FObjRef.height,10);
+      } else {
+         Result=0;
+      }
+      return Result
+   }
+   /// function TW3GraphicContext.getOwnsReference() : Boolean
+   ///  [line: 869, column: 28, file: w3graphics]
+   ,getOwnsReference:function(Self) {
+      return true;
+   }
+   /// function TW3GraphicContext.getWidth() : Integer
+   ///  [line: 892, column: 28, file: w3graphics]
+   ,getWidth$1:function(Self) {
+      var Result=0;
+      if ($Check(Self," in TW3GraphicContext.getWidth [line: 895, column: 7, file: w3graphics]").FObjRef) {
+         Result=parseInt($Check(Self," in TW3GraphicContext.getWidth [line: 896, column: 11, file: w3graphics]").FObjRef.width,10);
+      } else {
+         Result=0;
+      }
+      return Result
+   }
+   /// procedure TW3GraphicContext.ReleaseDC()
+   ///  [line: 908, column: 29, file: w3graphics]
+   ,ReleaseDC:function(Self) {
+      if ($Check(Self," in TW3GraphicContext.ReleaseDC [line: 911, column: 7, file: w3graphics]").FObjRef) {
+         $Check(Self," in TW3GraphicContext.ReleaseDC [line: 913, column: 5, file: w3graphics]").FObjRef.width=0;
+         $Check(Self," in TW3GraphicContext.ReleaseDC [line: 914, column: 5, file: w3graphics]").FObjRef.height=0;
+      }
+   }
+   /// procedure TW3GraphicContext.SetSize(aNewWidth: Integer; aNewHeight: Integer)
+   ///  [line: 882, column: 29, file: w3graphics]
+   ,SetSize:function(Self, aNewWidth, aNewHeight) {
+      if ($Check(Self," in TW3GraphicContext.SetSize [line: 885, column: 7, file: w3graphics]").FObjRef) {
+         $Check(Self," in TW3GraphicContext.SetSize [line: 887, column: 5, file: w3graphics]").FObjRef.width=aNewWidth;
+         $Check(Self," in TW3GraphicContext.SetSize [line: 888, column: 5, file: w3graphics]").FObjRef.height=aNewHeight;
+      }
+   }
+   ,Destroy$:function($){return $.ClassType.Destroy($)}
+   ,getDC$:function($){return $.ClassType.getDC($)}
+   // IGNORED: TW3GraphicContext.getHandle
+   ,getWidth$1$:function($){return $.ClassType.getWidth$1($)}
+   ,getHeight$1$:function($){return $.ClassType.getHeight$1($)}
+   ,getOwnsReference$:function($){return $.ClassType.getOwnsReference($)}
+   ,SetSize$:function($){return $.ClassType.SetSize.apply($.ClassType, arguments)}
+   ,ReleaseDC$:function($){return $.ClassType.ReleaseDC($)}
 };
 /// TW3ControlGraphicContext = class (TW3CustomGraphicContext)
 ///  [line: 204, column: 3, file: w3graphics]
@@ -4077,22 +4222,34 @@ var TW3ControlGraphicContext= {
    ,getHeight$1:function(Self) {
       return w3_getPropertyAsInt($Check(Self," in TW3ControlGraphicContext.getHeight [line: 784, column: 31, file: w3graphics]").FCtrlTag,"height");
    }
-   // IGNORED: TW3ControlGraphicContext.getOwnsReference
+   /// function TW3ControlGraphicContext.getOwnsReference() : Boolean
+   ///  [line: 787, column: 35, file: w3graphics]
+   ,getOwnsReference:function(Self) {
+      return false;
+   }
    /// function TW3ControlGraphicContext.getWidth() : Integer
    ///  [line: 777, column: 35, file: w3graphics]
    ,getWidth$1:function(Self) {
       return w3_getPropertyAsInt($Check(Self," in TW3ControlGraphicContext.getWidth [line: 779, column: 31, file: w3graphics]").FCtrlTag,"width");
    }
-   // IGNORED: TW3ControlGraphicContext.ReleaseDC
-   // IGNORED: TW3ControlGraphicContext.SetSize
+   /// procedure TW3ControlGraphicContext.ReleaseDC()
+   ///  [line: 797, column: 36, file: w3graphics]
+   ,ReleaseDC:function(Self) {
+      /* null */
+   }
+   /// procedure TW3ControlGraphicContext.SetSize(aNewWidth: Integer; aNewHeight: Integer)
+   ///  [line: 792, column: 36, file: w3graphics]
+   ,SetSize:function(Self, aNewWidth$1, aNewHeight$1) {
+      /* null */
+   }
    ,Destroy:TObject.Destroy
    ,getDC$:function($){return $.ClassType.getDC($)}
    // IGNORED: TW3ControlGraphicContext.getHandle
    ,getWidth$1$:function($){return $.ClassType.getWidth$1($)}
    ,getHeight$1$:function($){return $.ClassType.getHeight$1($)}
-   // IGNORED: TW3ControlGraphicContext.getOwnsReference
-   // IGNORED: TW3ControlGraphicContext.SetSize
-   // IGNORED: TW3ControlGraphicContext.ReleaseDC
+   ,getOwnsReference$:function($){return $.ClassType.getOwnsReference($)}
+   ,SetSize$:function($){return $.ClassType.SetSize.apply($.ClassType, arguments)}
+   ,ReleaseDC$:function($){return $.ClassType.ReleaseDC($)}
 };
 /// TW3CanvasGradient = class (TObject)
 ///  [line: 265, column: 3, file: w3graphics]
@@ -4110,13 +4267,13 @@ var TW3CanvasGradient= {
    }
    /// procedure TW3CanvasGradient.addColorStop(const offset: Float; const R: Integer; const G: Integer; const B: Integer)
    ///  [line: 652, column: 29, file: w3graphics]
-   ,addColorStop$2:function(Self, offset$1, R$2, G$2, B$2) {
-      $Check(Self," in TW3CanvasGradient.addColorStop [line: 654, column: 3, file: w3graphics]").FHandle$1.addColorStop(offset$1,ColorToWebStr(RGBToColor(R$2,G$2,B$2)));
+   ,addColorStop$2:function(Self, offset$1, R$3, G$3, B$3) {
+      $Check(Self," in TW3CanvasGradient.addColorStop [line: 654, column: 3, file: w3graphics]").FHandle$1.addColorStop(offset$1,ColorToWebStr(RGBToColor(R$3,G$3,B$3)));
    }
    /// procedure TW3CanvasGradient.addColorStop(const offset: Float; const R: Integer; const G: Integer; const B: Integer; const A: Integer)
    ///  [line: 657, column: 29, file: w3graphics]
-   ,addColorStop$1:function(Self, offset$2, R$3, G$3, B$3, A$2) {
-      $Check(Self," in TW3CanvasGradient.addColorStop [line: 659, column: 3, file: w3graphics]").FHandle$1.addColorStop(offset$2,ColorToStrA(RGBToColor(R$3,G$3,B$3),A$2));
+   ,addColorStop$1:function(Self, offset$2, R$4, G$4, B$4, A$3) {
+      $Check(Self," in TW3CanvasGradient.addColorStop [line: 659, column: 3, file: w3graphics]").FHandle$1.addColorStop(offset$2,ColorToStrA(RGBToColor(R$4,G$4,B$4),A$3));
    }
    /// constructor TW3CanvasGradient.Create(const aHandle: THandle)
    ///  [line: 636, column: 31, file: w3graphics]
@@ -4139,8 +4296,8 @@ var TW3Canvas= {
    }
    /// procedure TW3Canvas.ArcF(x: Float; y: Float; radius: Float; startAngle: Float; endAngle: Float; anticlockwise: Boolean)
    ///  [line: 978, column: 21, file: w3graphics]
-   ,ArcF:function(Self, x$13, y$2, radius, startAngle, endAngle, anticlockwise) {
-      $Check(Self," in TW3Canvas.ArcF [line: 980, column: 3, file: w3graphics]").FDC.arc(x$13,y$2,radius,startAngle,endAngle,anticlockwise);
+   ,ArcF:function(Self, x$14, y$3, radius, startAngle, endAngle, anticlockwise) {
+      $Check(Self," in TW3Canvas.ArcF [line: 980, column: 3, file: w3graphics]").FDC.arc(x$14,y$3,radius,startAngle,endAngle,anticlockwise);
    }
    /// procedure TW3Canvas.BeginPath()
    ///  [line: 988, column: 21, file: w3graphics]
@@ -4149,8 +4306,8 @@ var TW3Canvas= {
    }
    /// procedure TW3Canvas.BezierCurveToF(cp1x: Float; cp1y: Float; cp2x: Float; cp2y: Float; x: Float; y: Float)
    ///  [line: 998, column: 21, file: w3graphics]
-   ,BezierCurveToF:function(Self, cp1x, cp1y, cp2x, cp2y, x$14, y$3) {
-      $Check(Self," in TW3Canvas.BezierCurveToF [line: 1000, column: 3, file: w3graphics]").FDC.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x$14,y$3);
+   ,BezierCurveToF:function(Self, cp1x, cp1y, cp2x, cp2y, x$15, y$4) {
+      $Check(Self," in TW3Canvas.BezierCurveToF [line: 1000, column: 3, file: w3graphics]").FDC.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x$15,y$4);
    }
    /// procedure TW3Canvas.ClosePath()
    ///  [line: 993, column: 21, file: w3graphics]
@@ -4169,14 +4326,26 @@ var TW3Canvas= {
       }
       return Self
    }
+   /// function TW3Canvas.CreateImageData(sw: Float; sh: Float) : TW3ImageData
+   ///  [line: 1116, column: 20, file: w3graphics]
+   ,CreateImageData:function(Self, sw, sh) {
+      var Result=null;
+      var mTemp$13=undefined;
+      mTemp$13=$Check(Self," in TW3Canvas.CreateImageData [line: 1120, column: 12, file: w3graphics]").FDC.createImageData(sw,sh);
+      if (mTemp$13) {
+         Result=TObject.Create($New(TW3ImageData));
+         TW3ImageData.fromImageData(Result,mTemp$13);
+      }
+      return Result
+   }
    /// function TW3Canvas.CreateLinearGradientF(x0: Float; y0: Float; x1: Float; y1: Float) : TW3CanvasGradient
    ///  [line: 1101, column: 20, file: w3graphics]
    ,CreateLinearGradientF:function(Self, x0, y0, x1, y1) {
       var Result=null;
-      var mTemp$13=undefined;
-      mTemp$13=$Check(Self," in TW3Canvas.CreateLinearGradientF [line: 1105, column: 12, file: w3graphics]").FDC.createLinearGradient(x0,y0,x1,y1);
-      if (mTemp$13) {
-         Result=TW3CanvasGradient.Create$12($New(TW3CanvasGradient),mTemp$13);
+      var mTemp$14=undefined;
+      mTemp$14=$Check(Self," in TW3Canvas.CreateLinearGradientF [line: 1105, column: 12, file: w3graphics]").FDC.createLinearGradient(x0,y0,x1,y1);
+      if (mTemp$14) {
+         Result=TW3CanvasGradient.Create$12($New(TW3CanvasGradient),mTemp$14);
       }
       return Result
    }
@@ -4184,15 +4353,30 @@ var TW3Canvas= {
    ///  [line: 1081, column: 20, file: w3graphics]
    ,CreateRadialGradientF:function(Self, x0$1, y0$1, r0, x1$1, y1$1, r1) {
       var Result=null;
-      var mTemp$14=undefined;
+      var mTemp$15=undefined;
       try {
-         mTemp$14=$Check(Self," in TW3Canvas.CreateRadialGradientF [line: 1086, column: 12, file: w3graphics]").FDC.createRadialGradient(x0$1,y0$1,r0,x1$1,y1$1,r1);
+         mTemp$15=$Check(Self," in TW3Canvas.CreateRadialGradientF [line: 1086, column: 12, file: w3graphics]").FDC.createRadialGradient(x0$1,y0$1,x1$1,y1$1,r1);
       } catch ($e) {
          var e$6=$W($e);
          throw Exception.Create$1($New(Exception),"Failed to create gradient object:"+$Check(e$6," in TW3Canvas.CreateRadialGradientF [line: 1089, column: 68, file: w3graphics]").FMessage);
       }
-      Result=TW3CanvasGradient.Create$12($New(TW3CanvasGradient),mTemp$14);
+      Result=TW3CanvasGradient.Create$12($New(TW3CanvasGradient),mTemp$15);
       return Result
+   }
+   /// procedure TW3Canvas.DrawImageF(imageHandle: Variant; sx: Float; sy: Float; sw: Float; sh: Float; dx: Float; dy: Float; dw: Float; dh: Float)
+   ///  [line: 1046, column: 21, file: w3graphics]
+   ,DrawImageF$2:function(Self, imageHandle, sx, sy, sw$1, sh$1, dx$3, dy$4, dw, dh) {
+      $Check(Self," in TW3Canvas.DrawImageF [line: 1048, column: 3, file: w3graphics]").FDC.drawImage(imageHandle,sx,sy,sw$1,sh$1,dx$3,dy$4,dw,dh);
+   }
+   /// procedure TW3Canvas.DrawImageF(imageHandle: Variant; x: Float; y: Float; ow: Float; oh: Float)
+   ///  [line: 1041, column: 21, file: w3graphics]
+   ,DrawImageF$1:function(Self, imageHandle$1, x$16, y$5, ow, oh) {
+      $Check(Self," in TW3Canvas.DrawImageF [line: 1043, column: 3, file: w3graphics]").FDC.drawImage(imageHandle$1,x$16,y$5,ow,oh);
+   }
+   /// procedure TW3Canvas.DrawImageF(imageHandle: Variant; x: Float; y: Float)
+   ///  [line: 1036, column: 21, file: w3graphics]
+   ,DrawImageF:function(Self, imageHandle$2, x$17, y$6) {
+      $Check(Self," in TW3Canvas.DrawImageF [line: 1038, column: 3, file: w3graphics]").FDC.drawImage(imageHandle$2,x$17,y$6);
    }
    /// procedure TW3Canvas.Fill()
    ///  [line: 1018, column: 21, file: w3graphics]
@@ -4201,18 +4385,40 @@ var TW3Canvas= {
    }
    /// procedure TW3Canvas.FillRectF(aLeft: Float; aTop: Float; aWidth: Float; aHeight: Float)
    ///  [line: 943, column: 21, file: w3graphics]
-   ,FillRectF:function(Self, aLeft$3, aTop$3, aWidth$2, aHeight$2) {
-      $Check(Self," in TW3Canvas.FillRectF [line: 945, column: 3, file: w3graphics]").FDC.fillRect(aLeft$3,aTop$3,aWidth$2,aHeight$2);
+   ,FillRectF:function(Self, aLeft$3, aTop$3, aWidth$3, aHeight$3) {
+      $Check(Self," in TW3Canvas.FillRectF [line: 945, column: 3, file: w3graphics]").FDC.fillRect(aLeft$3,aTop$3,aWidth$3,aHeight$3);
+   }
+   /// procedure TW3Canvas.FillTextF(text: String; x: Float; y: Float; maxWidth: Float)
+   ///  [line: 1066, column: 21, file: w3graphics]
+   ,FillTextF:function(Self, text, x$18, y$7, maxWidth) {
+      $Check(Self," in TW3Canvas.FillTextF [line: 1068, column: 3, file: w3graphics]").FDC.fillText(text,x$18,y$7,maxWidth);
    }
    /// function TW3Canvas.getFillStyle() : String
    ///  [line: 1353, column: 20, file: w3graphics]
    ,getFillStyle:function(Self) {
       return $Check(Self," in TW3Canvas.getFillStyle [line: 1355, column: 11, file: w3graphics]").FDC.fillStyle.toString();
    }
+   /// function TW3Canvas.getFont() : String
+   ///  [line: 1273, column: 20, file: w3graphics]
+   ,getFont:function(Self) {
+      return $Check(Self," in TW3Canvas.getFont [line: 1275, column: 13, file: w3graphics]").FDC.font.toString();
+   }
    /// function TW3Canvas.getGlobalAlpha() : Float
    ///  [line: 1243, column: 20, file: w3graphics]
    ,getGlobalAlpha:function(Self) {
       return Number($Check(Self," in TW3Canvas.getGlobalAlpha [line: 1245, column: 13, file: w3graphics]").FDC.globalAlpha);
+   }
+   /// function TW3Canvas.GetImageData(sx: Float; sy: Float; sw: Float; sh: Float) : TW3ImageData
+   ///  [line: 1156, column: 20, file: w3graphics]
+   ,GetImageData:function(Self, sx$1, sy$1, sw$2, sh$2) {
+      var Result=null;
+      var mTemp$16=undefined;
+      mTemp$16=$Check(Self," in TW3Canvas.GetImageData [line: 1160, column: 11, file: w3graphics]").FDC.getImageData(sx$1,sy$1,sw$2,sh$2);
+      if (mTemp$16) {
+         Result=TObject.Create($New(TW3ImageData));
+         TW3ImageData.fromImageData(Result,mTemp$16);
+      }
+      return Result
    }
    /// function TW3Canvas.getLineCap() : String
    ///  [line: 1333, column: 20, file: w3graphics]
@@ -4236,48 +4442,62 @@ var TW3Canvas= {
    }
    /// procedure TW3Canvas.LineToF(x: Float; y: Float)
    ///  [line: 1013, column: 21, file: w3graphics]
-   ,LineToF:function(Self, x$15, y$4) {
-      $Check(Self," in TW3Canvas.LineToF [line: 1015, column: 3, file: w3graphics]").FDC.lineTo(x$15,y$4);
+   ,LineToF:function(Self, x$19, y$8) {
+      $Check(Self," in TW3Canvas.LineToF [line: 1015, column: 3, file: w3graphics]").FDC.lineTo(x$19,y$8);
    }
    /// procedure TW3Canvas.MoveToF(x: Float; y: Float)
    ///  [line: 1071, column: 21, file: w3graphics]
-   ,MoveToF:function(Self, x$16, y$5) {
-      $Check(Self," in TW3Canvas.MoveToF [line: 1073, column: 3, file: w3graphics]").FDC.moveTo(x$16,y$5);
+   ,MoveToF:function(Self, x$20, y$9) {
+      $Check(Self," in TW3Canvas.MoveToF [line: 1073, column: 3, file: w3graphics]").FDC.moveTo(x$20,y$9);
+   }
+   /// procedure TW3Canvas.PutImageData(ImageData: TW3ImageData; x: Float; y: Float)
+   ///  [line: 1169, column: 21, file: w3graphics]
+   ,PutImageData:function(Self, ImageData, x$21, y$10) {
+      if (ImageData!==null) {
+         $Check(Self," in TW3Canvas.PutImageData [line: 1173, column: 5, file: w3graphics]").FDC.putImageData($Check(ImageData," in TW3Canvas.PutImageData [line: 1173, column: 32, file: w3graphics]").FHandle,x$21,y$10);
+      } else {
+         throw Exception.Create$1($New(Exception),"ImageData was NIL error");
+      }
    }
    /// procedure TW3Canvas.QuadraticCurveToF(cpx: Float; cpy: Float; x: Float; y: Float)
    ///  [line: 1076, column: 21, file: w3graphics]
-   ,QuadraticCurveToF:function(Self, cpx, cpy, x$17, y$6) {
-      $Check(Self," in TW3Canvas.QuadraticCurveToF [line: 1078, column: 3, file: w3graphics]").FDC.quadraticCurveTo(cpx,cpy,x$17,y$6);
+   ,QuadraticCurveToF:function(Self, cpx, cpy, x$22, y$11) {
+      $Check(Self," in TW3Canvas.QuadraticCurveToF [line: 1078, column: 3, file: w3graphics]").FDC.quadraticCurveTo(cpx,cpy,x$22,y$11);
    }
    /// procedure TW3Canvas.setFillStyle(aValue: String)
    ///  [line: 1358, column: 21, file: w3graphics]
    ,setFillStyle:function(Self, aValue$44) {
       $Check(Self," in TW3Canvas.setFillStyle [line: 1360, column: 3, file: w3graphics]").FDC.fillStyle=aValue$44;
    }
+   /// procedure TW3Canvas.setFont(aValue: String)
+   ///  [line: 1278, column: 21, file: w3graphics]
+   ,setFont:function(Self, aValue$45) {
+      $Check(Self," in TW3Canvas.setFont [line: 1280, column: 3, file: w3graphics]").FDC.font=aValue$45;
+   }
    /// procedure TW3Canvas.setGlobalAlpha(aValue: Float)
    ///  [line: 1248, column: 21, file: w3graphics]
-   ,setGlobalAlpha:function(Self, aValue$45) {
-      $Check(Self," in TW3Canvas.setGlobalAlpha [line: 1250, column: 3, file: w3graphics]").FDC.globalAlpha=aValue$45;
+   ,setGlobalAlpha:function(Self, aValue$46) {
+      $Check(Self," in TW3Canvas.setGlobalAlpha [line: 1250, column: 3, file: w3graphics]").FDC.globalAlpha=aValue$46;
    }
    /// procedure TW3Canvas.setLineCap(aValue: String)
    ///  [line: 1338, column: 21, file: w3graphics]
-   ,setLineCap:function(Self, aValue$46) {
-      $Check(Self," in TW3Canvas.setLineCap [line: 1340, column: 3, file: w3graphics]").FDC.lineCap=aValue$46;
+   ,setLineCap:function(Self, aValue$47) {
+      $Check(Self," in TW3Canvas.setLineCap [line: 1340, column: 3, file: w3graphics]").FDC.lineCap=aValue$47;
    }
    /// procedure TW3Canvas.setLineJoin(aValue: String)
    ///  [line: 1328, column: 21, file: w3graphics]
-   ,setLineJoin:function(Self, aValue$47) {
-      $Check(Self," in TW3Canvas.setLineJoin [line: 1330, column: 3, file: w3graphics]").FDC.lineJoin=aValue$47;
+   ,setLineJoin:function(Self, aValue$48) {
+      $Check(Self," in TW3Canvas.setLineJoin [line: 1330, column: 3, file: w3graphics]").FDC.lineJoin=aValue$48;
    }
    /// procedure TW3Canvas.setLineWidth(aValue: Float)
    ///  [line: 1318, column: 21, file: w3graphics]
-   ,setLineWidth:function(Self, aValue$48) {
-      $Check(Self," in TW3Canvas.setLineWidth [line: 1320, column: 3, file: w3graphics]").FDC.lineWidth=aValue$48;
+   ,setLineWidth:function(Self, aValue$49) {
+      $Check(Self," in TW3Canvas.setLineWidth [line: 1320, column: 3, file: w3graphics]").FDC.lineWidth=aValue$49;
    }
    /// procedure TW3Canvas.setStrokeStyle(aValue: String)
    ///  [line: 1218, column: 21, file: w3graphics]
-   ,setStrokeStyle:function(Self, aValue$49) {
-      $Check(Self," in TW3Canvas.setStrokeStyle [line: 1220, column: 3, file: w3graphics]").FDC.strokeStyle=aValue$49;
+   ,setStrokeStyle:function(Self, aValue$50) {
+      $Check(Self," in TW3Canvas.setStrokeStyle [line: 1220, column: 3, file: w3graphics]").FDC.strokeStyle=aValue$50;
    }
    /// procedure TW3Canvas.Stroke()
    ///  [line: 1031, column: 21, file: w3graphics]
@@ -4286,8 +4506,13 @@ var TW3Canvas= {
    }
    /// procedure TW3Canvas.StrokeRectF(aLeft: Float; aTop: Float; aWidth: Float; aHeight: Float)
    ///  [line: 953, column: 21, file: w3graphics]
-   ,StrokeRectF:function(Self, aLeft$4, aTop$4, aWidth$3, aHeight$3) {
-      $Check(Self," in TW3Canvas.StrokeRectF [line: 955, column: 3, file: w3graphics]").FDC.strokeRect(aLeft$4,aTop$4,aWidth$3,aHeight$3);
+   ,StrokeRectF:function(Self, aLeft$4, aTop$4, aWidth$4, aHeight$4) {
+      $Check(Self," in TW3Canvas.StrokeRectF [line: 955, column: 3, file: w3graphics]").FDC.strokeRect(aLeft$4,aTop$4,aWidth$4,aHeight$4);
+   }
+   /// procedure TW3Canvas.StrokeTextF(text: String; x: Float; y: Float; maxWidth: Float)
+   ///  [line: 938, column: 21, file: w3graphics]
+   ,StrokeTextF:function(Self, text$1, x$23, y$12, maxWidth$1) {
+      $Check(Self," in TW3Canvas.StrokeTextF [line: 940, column: 3, file: w3graphics]").FDC.strokeText(text$1,x$23,y$12,maxWidth$1);
    }
    /// procedure TW3Canvas.UseGradient(const aGradient: TW3CanvasGradient)
    ///  [line: 1094, column: 21, file: w3graphics]
@@ -4317,8 +4542,8 @@ var TW3CSSClassStyleNames= {
    }
    /// constructor TW3CSSClassStyleNames.Create(AOwner: TObject)
    ///  [line: 63, column: 35, file: w3cssnames]
-   ,Create$3:function(Self, AOwner$3) {
-      TW3OwnedObject.Create$3(Self,AOwner$3);
+   ,Create$3:function(Self, AOwner$4) {
+      TW3OwnedObject.Create$3(Self,AOwner$4);
       $Check(Self," in TW3CSSClassStyleNames.Create [line: 66, column: 3, file: w3cssnames]").FToken="class";
       $Check(Self," in TW3CSSClassStyleNames.Create [line: 67, column: 3, file: w3cssnames]").FCache=$NewArray(0,"");
       return Self
@@ -4345,10 +4570,10 @@ var TW3TouchList= {
    /// procedure TW3TouchList.Clear()
    ///  [line: 152, column: 24, file: w3touch]
    ,Clear$3:function(Self) {
-      var x$18=0;
+      var x$24=0;
       var $temp15;
-      for(x$18=0,$temp15=TObjectList.getCount($Check(Self," in TW3TouchList.Clear [line: 156, column: 17, file: w3touch]").FObjects);x$18<$temp15;x$18++) {
-         TObject.Free($As(TObjectList.getItem($Check(Self," in TW3TouchList.Clear [line: 157, column: 14, file: w3touch]").FObjects,x$18),TW3Touch));
+      for(x$24=0,$temp15=TObjectList.getCount($Check(Self," in TW3TouchList.Clear [line: 156, column: 17, file: w3touch]").FObjects);x$24<$temp15;x$24++) {
+         TObject.Free($As(TObjectList.getItem($Check(Self," in TW3TouchList.Clear [line: 157, column: 14, file: w3touch]").FObjects,x$24),TW3Touch));
       }
       TObjectList.Clear$1($Check(Self," in TW3TouchList.Clear [line: 159, column: 3, file: w3touch]").FObjects);
    }
@@ -4357,7 +4582,7 @@ var TW3TouchList= {
    ,Consume:function(Self, refEntry, refObj) {
       var mCount$4=0;
       var mRef$8=undefined;
-      var x$19=0;
+      var x$25=0;
       var mObj$20=null;
       TW3TouchList.Clear$3(Self);
       mRef$8=null;
@@ -4366,17 +4591,17 @@ var TW3TouchList= {
     mCount$4 = (refObj)[refEntry].length;
   if (mCount$4==TObjectList.getCount($Check(Self," in TW3TouchList.Consume [line: 189, column: 13, file: w3touch]").FObjects)) {
          var $temp16;
-         for(x$19=0,$temp16=TObjectList.getCount($Check(Self," in TW3TouchList.Consume [line: 191, column: 19, file: w3touch]").FObjects);x$19<$temp16;x$19++) {
-            mObj$20=$As(TObjectList.getItem($Check(Self," in TW3TouchList.Consume [line: 193, column: 22, file: w3touch]").FObjects,x$19),TW3Touch);
+         for(x$25=0,$temp16=TObjectList.getCount($Check(Self," in TW3TouchList.Consume [line: 191, column: 19, file: w3touch]").FObjects);x$25<$temp16;x$25++) {
+            mObj$20=$As(TObjectList.getItem($Check(Self," in TW3TouchList.Consume [line: 193, column: 22, file: w3touch]").FObjects,x$25),TW3Touch);
             
-        mRef$8 = (refObj)[refEntry][x$19];
+        mRef$8 = (refObj)[refEntry][x$25];
       TW3Touch.Consume$1(mObj$20,mRef$8);
          }
       } else {
          var $temp17;
-         for(x$19=0,$temp17=mCount$4;x$19<$temp17;x$19++) {
+         for(x$25=0,$temp17=mCount$4;x$25<$temp17;x$25++) {
             
-        mRef$8 = (refObj)[refEntry][x$19];
+        mRef$8 = (refObj)[refEntry][x$25];
       mObj$20=TObject.Create($New(TW3Touch));
             TW3Touch.Consume$1(mObj$20,mRef$8);
             TObjectList.Add($Check(Self," in TW3TouchList.Consume [line: 209, column: 7, file: w3touch]").FObjects,mObj$20);
@@ -4494,8 +4719,8 @@ var TW3Borders= {
    }
    /// constructor TW3Borders.Create(AOwner: TObject)
    ///  [line: 90, column: 24, file: w3borders]
-   ,Create$3:function(Self, AOwner$4) {
-      TW3OwnedObject.Create$3(Self,AOwner$4);
+   ,Create$3:function(Self, AOwner$5) {
+      TW3OwnedObject.Create$3(Self,AOwner$5);
       $Check(Self," in TW3Borders.Create [line: 93, column: 3, file: w3borders]").FLeft=TW3Border.Create$22($New(TW3Border),Self,0);
       $Check(Self," in TW3Borders.Create [line: 94, column: 3, file: w3borders]").FTop=TW3Border.Create$22($New(TW3Border),Self,1);
       $Check(Self," in TW3Borders.Create [line: 95, column: 3, file: w3borders]").FRight=TW3Border.Create$22($New(TW3Border),Self,2);
@@ -4551,9 +4776,9 @@ var TW3Border= {
    }
    /// constructor TW3Border.Create(AOwner: TW3Borders; AEdge: TW3BorderEdge)
    ///  [line: 161, column: 23, file: w3borders]
-   ,Create$22:function(Self, AOwner$5, AEdge) {
+   ,Create$22:function(Self, AOwner$6, AEdge) {
       TObject.Create(Self);
-      $Check(Self," in TW3Border.Create [line: 164, column: 3, file: w3borders]").FOwner$2=AOwner$5;
+      $Check(Self," in TW3Border.Create [line: 164, column: 3, file: w3borders]").FOwner$2=AOwner$6;
       $Check(Self," in TW3Border.Create [line: 165, column: 3, file: w3borders]").FEdge=$Check(Self," in TW3Border.Create [line: 165, column: 10, file: w3borders]").FEdge;
       switch (AEdge) {
          case 0 :
@@ -4601,26 +4826,26 @@ var TW3Border= {
    }
    /// procedure TW3Border.setPadding(aValue: Integer)
    ///  [line: 216, column: 21, file: w3borders]
-   ,setPadding:function(Self, aValue$50) {
+   ,setPadding:function(Self, aValue$51) {
       var mRef$11=undefined;
       var mKey$2="";
       mRef$11=$Check($As($Check($Check(Self," in TW3Border.setPadding [line: 221, column: 19, file: w3borders]").FOwner$2," in TW3Border.setPadding [line: 221, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.setPadding [line: 221, column: 33, file: w3borders]").FHandle$3;
       if (mRef$11) {
          mKey$2="padding"+$Check(Self," in TW3Border.setPadding [line: 225, column: 23, file: w3borders]").FEdgeName;
-         mRef$11.style[mKey$2]=TInteger.toPxStr(TInteger,aValue$50);
+         mRef$11.style[mKey$2]=TInteger.toPxStr(TInteger,aValue$51);
       } else {
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3Border.setPadding",TObject.ClassName($Check(Self," in TW3Border.setPadding [line: 228, column: 61, file: w3borders]").ClassType),"invalid owner handle error"]);
       }
    }
    /// procedure TW3Border.setWidth(aValue: Integer)
    ///  [line: 277, column: 21, file: w3borders]
-   ,setWidth:function(Self, aValue$51) {
+   ,setWidth:function(Self, aValue$52) {
       var mRef$12=undefined;
       var mKey$3="";
       mRef$12=$Check($As($Check($Check(Self," in TW3Border.setWidth [line: 282, column: 19, file: w3borders]").FOwner$2," in TW3Border.setWidth [line: 282, column: 26, file: w3borders]").FOwner,TW3TagObj)," in TW3Border.setWidth [line: 282, column: 33, file: w3borders]").FHandle$3;
       if (mRef$12) {
          mKey$3="border-"+$Check(Self," in TW3Border.setWidth [line: 286, column: 23, file: w3borders]").FEdgeName+"-Width";
-         mRef$12.style[mKey$3]=TInteger.toPxStr(TInteger,aValue$51);
+         mRef$12.style[mKey$3]=TInteger.toPxStr(TInteger,aValue$52);
       } else {
          throw EW3Exception.CreateFmt($New(EW3TagObj),"Method %s in class %s threw exception [%s]",["TW3Border.setWidth",TObject.ClassName($Check(Self," in TW3Border.setWidth [line: 289, column: 61, file: w3borders]").ClassType),"invalid owner handle error"]);
       }
@@ -4714,17 +4939,17 @@ var TW3ListItems= {
    /// procedure TW3ListItems.Clear()
    ///  [line: 992, column: 24, file: w3ctrls]
    ,Clear$5:function(Self) {
-      var x$20=0;
+      var x$26=0;
       var $temp18;
-      for(x$20=0,$temp18=TObjectList.getCount($Check(Self," in TW3ListItems.Clear [line: 996, column: 15, file: w3ctrls]").FObjects$1);x$20<$temp18;x$20++) {
-         TObject.Free($As(TObjectList.getItem($Check(Self," in TW3ListItems.Clear [line: 997, column: 17, file: w3ctrls]").FObjects$1,x$20),TW3ListItem));
+      for(x$26=0,$temp18=TObjectList.getCount($Check(Self," in TW3ListItems.Clear [line: 996, column: 15, file: w3ctrls]").FObjects$1);x$26<$temp18;x$26++) {
+         TObject.Free($As(TObjectList.getItem($Check(Self," in TW3ListItems.Clear [line: 997, column: 17, file: w3ctrls]").FObjects$1,x$26),TW3ListItem));
       }
       TObjectList.Clear$1($Check(Self," in TW3ListItems.Clear [line: 998, column: 3, file: w3ctrls]").FObjects$1);
    }
    /// constructor TW3ListItems.Create(AOwner: TObject)
    ///  [line: 974, column: 26, file: w3ctrls]
-   ,Create$3:function(Self, AOwner$6) {
-      TW3OwnedObject.Create$3(Self,AOwner$6);
+   ,Create$3:function(Self, AOwner$7) {
+      TW3OwnedObject.Create$3(Self,AOwner$7);
       $Check(Self," in TW3ListItems.Create [line: 977, column: 3, file: w3ctrls]").FObjects$1=TObjectList.Create$17($New(TObjectList));
       return Self
    }
@@ -4771,6 +4996,95 @@ var TW3ListItem= {
    ,FinalizeObject:TW3CustomControl.FinalizeObject
    ,getWidth$6:TW3MovableControl.getWidth$6
    ,getHeight$5:TW3MovableControl.getHeight$5
+   ,setWidth$1:TW3MovableControl.setWidth$1
+   ,setHeight:TW3MovableControl.setHeight
+   ,Resize:TW3MovableControl.Resize
+   ,getEnabled$1$:function($){return $.ClassType.getEnabled$1($)}
+   ,Invalidate:TW3CustomControl.Invalidate
+};
+/// TW3Image = class (TW3CustomControl)
+///  [line: 76, column: 3, file: w3ctrls]
+var TW3Image= {
+   $ClassName:"TW3Image",
+   $Parent:TW3CustomControl,
+   $Init:function ($) {
+      TW3CustomControl.$Init($);
+      $.FOnLoad=null;
+   }
+   /// procedure TW3Image.CBOnLoad()
+   ///  [line: 1274, column: 20, file: w3ctrls]
+   ,CBOnLoad:function(Self) {
+      if ($Check(Self," in TW3Image.CBOnLoad [line: 1276, column: 15, file: w3ctrls]").FOnLoad!==null) {
+         $CheckFunc($Check(Self," in TW3Image.CBOnLoad [line: 1277, column: 3, file: w3ctrls]").FOnLoad," in TW3Image.CBOnLoad [line: 1277, column: 10, file: w3ctrls]")(Self);
+      }
+   }
+   /// function TW3Image.getEnabled() : Boolean
+   ///  [line: 1226, column: 19, file: w3ctrls]
+   ,getEnabled$1:function(Self) {
+      return true;
+   }
+   /// function TW3Image.getHeight() : Integer
+   ///  [line: 1249, column: 19, file: w3ctrls]
+   ,getHeight$5:function(Self) {
+      var Result=0;
+      Result=TW3MovableControl.getHeight$5(Self);
+      if (TVariant.isNAN(TVariant,Result)) {
+         if ($Check(Self," in TW3Image.getHeight [line: 1256, column: 9, file: w3ctrls]").FHandle$3) {
+            Result=parseInt($Check(Self," in TW3Image.getHeight [line: 1257, column: 13, file: w3ctrls]").FHandle$3.height,10);
+         } else {
+            Result=0;
+         }
+      }
+      return Result
+   }
+   /// function TW3Image.getWidth() : Integer
+   ///  [line: 1233, column: 19, file: w3ctrls]
+   ,getWidth$6:function(Self) {
+      var Result=0;
+      Result=TW3MovableControl.getWidth$6(Self);
+      if (TVariant.isNAN(TVariant,Result)) {
+         if ($Check(Self," in TW3Image.getWidth [line: 1243, column: 9, file: w3ctrls]").FHandle$3) {
+            Result=parseInt($Check(Self," in TW3Image.getWidth [line: 1244, column: 13, file: w3ctrls]").FHandle$3.width,10);
+         } else {
+            Result=0;
+         }
+      }
+      return Result
+   }
+   /// procedure TW3Image.LoadFromURL(aURL: String)
+   ///  [line: 1280, column: 20, file: w3ctrls]
+   ,LoadFromURL:function(Self, aURL) {
+      w3_setAttrib($Check(Self," in TW3Image.LoadFromURL [line: 1282, column: 16, file: w3ctrls]").FHandle$3,"src",aURL);
+   }
+   /// function TW3Image.makeElementTagObj() : THandle
+   ///  [line: 1205, column: 19, file: w3ctrls]
+   ,makeElementTagObj:function(Self) {
+      return w3_createHtmlElement("img");
+   }
+   /// procedure TW3Image._setOnLoad(aValue: TNotifyEvent)
+   ///  [line: 1262, column: 20, file: w3ctrls]
+   ,_setOnLoad:function(Self, aValue$53) {
+      var mRef$13=null;
+      $Check(Self," in TW3Image._setOnLoad [line: 1266, column: 3, file: w3ctrls]").FOnLoad=aValue$53;
+      switch ((aValue$53!==null)) {
+         case true :
+            mRef$13=$Event0(Self,TW3Image.CBOnLoad);
+            break;
+         case false :
+            mRef$13=$Event0(Self,TW3Component.CBNoBehavior);
+            break;
+      }
+      w3_bind2($Check(Self," in TW3Image._setOnLoad [line: 1271, column: 12, file: w3ctrls]").FHandle$3,"onload",mRef$13);
+   }
+   ,Destroy:TW3TagObj.Destroy
+   ,makeElementTagId:TW3TagObj.makeElementTagId
+   ,makeElementTagObj$:function($){return $.ClassType.makeElementTagObj($)}
+   ,StyleTagObject:TW3CustomControl.StyleTagObject
+   ,AfterUpdate:TW3CustomControl.AfterUpdate
+   ,InitializeObject:TW3CustomControl.InitializeObject
+   ,FinalizeObject:TW3CustomControl.FinalizeObject
+   ,getWidth$6$:function($){return $.ClassType.getWidth$6($)}
+   ,getHeight$5$:function($){return $.ClassType.getHeight$5($)}
    ,setWidth$1:TW3MovableControl.setWidth$1
    ,setHeight:TW3MovableControl.setHeight
    ,Resize:TW3MovableControl.Resize
@@ -5001,29 +5315,29 @@ var TApplication= {
    ,ApplicationStarting$:function($){return $.ClassType.ApplicationStarting($)}
 };
 /// TPaintForm = class (TW3Form)
-///  [line: 9, column: 3, file: PaintForm]
+///  [line: 10, column: 3, file: PaintForm]
 var TPaintForm= {
    $ClassName:"TPaintForm",
    $Parent:TW3Form,
    $Init:function ($) {
       TW3Form.$Init($);
-      $.btnCircle=$.btnClear=$.btnCurves=$.btnGlobalAlpha=$.btnGradients=$.btnLineProperties=$.btnLines=$.btnLines05=$.btnRectangles=$.btnRoundedRect=$.PaintBox=null;
+      $.btnCircle=$.btnClear=$.btnCurves=$.btnGlobalAlpha=$.btnGradients=$.btnImage=$.btnImageData=$.btnLineProperties=$.btnLines=$.btnLines05=$.btnRectangles=$.btnRoundedRect=$.btnText=$.PaintBox=null;
    }
    /// function TPaintForm.Canvas() : TW3Canvas
-   ///  [line: 79, column: 21, file: PaintForm]
-   ,Canvas$1:function(Self) {
-      return $Check($Check(Self," in TPaintForm.Canvas [line: 81, column: 13, file: PaintForm]").PaintBox," in TPaintForm.Canvas [line: 81, column: 22, file: PaintForm]").FCanvas;
+   ///  [line: 89, column: 21, file: PaintForm]
+   ,Canvas$2:function(Self) {
+      return $Check($Check(Self," in TPaintForm.Canvas [line: 91, column: 13, file: PaintForm]").PaintBox," in TPaintForm.Canvas [line: 91, column: 22, file: PaintForm]").FCanvas;
    }
    /// procedure TPaintForm.ClearCanvas()
-   ///  [line: 84, column: 22, file: PaintForm]
+   ///  [line: 94, column: 22, file: PaintForm]
    ,ClearCanvas:function(Self) {
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"rgb(255,255,255)");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),0,0,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 87, column: 33, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 87, column: 41, file: PaintForm]")),TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 87, column: 55, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 87, column: 63, file: PaintForm]")));
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0,0,0)");
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),0.5,0.5,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 89, column: 39, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 89, column: 47, file: PaintForm]"))-1,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.ClearCanvas [line: 89, column: 65, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 89, column: 73, file: PaintForm]"))-1);
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"rgb(255,255,255)");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),0,0,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.ClearCanvas [line: 97, column: 33, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 97, column: 41, file: PaintForm]")),TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.ClearCanvas [line: 97, column: 55, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 97, column: 63, file: PaintForm]")));
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"rgb(0,0,0)");
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$2(Self),0.5,0.5,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.ClearCanvas [line: 99, column: 39, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 99, column: 47, file: PaintForm]"))-1,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.ClearCanvas [line: 99, column: 65, file: PaintForm]").FContext," in TPaintForm.ClearCanvas [line: 99, column: 73, file: PaintForm]"))-1);
    }
    /// procedure TPaintForm.InitializeObject()
-   ///  [line: 57, column: 22, file: PaintForm]
+   ///  [line: 64, column: 22, file: PaintForm]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3Component.setName$1(Self,"PaintForm");
@@ -5113,220 +5427,314 @@ var TPaintForm= {
       TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 86, column: 1, file: PaintForm:impl]").btnGradients," in TPaintForm.InitializeObject [line: 86, column: 14, file: PaintForm:impl]"),true);
       TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 87, column: 1, file: PaintForm:impl]").btnGradients,253);
       TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 88, column: 1, file: PaintForm:impl]").btnGradients,"Gradients");
-      $Check($Check(Self," in TPaintForm.InitializeObject [line: 61, column: 3, file: PaintForm]").PaintBox," in TPaintForm.InitializeObject [line: 61, column: 20, file: PaintForm]").FOnPaint=function (Sender$2, Canvas$2) {
+      $Check(Self," in TPaintForm.InitializeObject [line: 89, column: 1, file: PaintForm:impl]").btnImage=TW3Component.Create$24($New(TW3Button),Self);
+      TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 90, column: 1, file: PaintForm:impl]").btnImage,"btnImage");
+      TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 91, column: 1, file: PaintForm:impl]").btnImage," in TPaintForm.InitializeObject [line: 91, column: 10, file: PaintForm:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 92, column: 1, file: PaintForm:impl]").btnImage," in TPaintForm.InitializeObject [line: 92, column: 10, file: PaintForm:impl]"),0,320,210,32);
+      TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 93, column: 1, file: PaintForm:impl]").btnImage,"TW3Button");
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 94, column: 1, file: PaintForm:impl]").btnImage," in TPaintForm.InitializeObject [line: 94, column: 10, file: PaintForm:impl]"),true);
+      TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 95, column: 1, file: PaintForm:impl]").btnImage,253);
+      TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 96, column: 1, file: PaintForm:impl]").btnImage,"Image");
+      $Check(Self," in TPaintForm.InitializeObject [line: 97, column: 1, file: PaintForm:impl]").btnImageData=TW3Component.Create$24($New(TW3Button),Self);
+      TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 98, column: 1, file: PaintForm:impl]").btnImageData,"btnImageData");
+      TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 99, column: 1, file: PaintForm:impl]").btnImageData," in TPaintForm.InitializeObject [line: 99, column: 14, file: PaintForm:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 100, column: 1, file: PaintForm:impl]").btnImageData," in TPaintForm.InitializeObject [line: 100, column: 14, file: PaintForm:impl]"),0,352,210,32);
+      TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 101, column: 1, file: PaintForm:impl]").btnImageData,"TW3Button");
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 102, column: 1, file: PaintForm:impl]").btnImageData," in TPaintForm.InitializeObject [line: 102, column: 14, file: PaintForm:impl]"),true);
+      TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 103, column: 1, file: PaintForm:impl]").btnImageData,253);
+      TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 104, column: 1, file: PaintForm:impl]").btnImageData,"ImageData");
+      $Check(Self," in TPaintForm.InitializeObject [line: 105, column: 1, file: PaintForm:impl]").btnText=TW3Component.Create$24($New(TW3Button),Self);
+      TW3Component.setName$1($Check(Self," in TPaintForm.InitializeObject [line: 106, column: 1, file: PaintForm:impl]").btnText,"btnText");
+      TW3MovableControl.setVisible($Check($Check(Self," in TPaintForm.InitializeObject [line: 107, column: 1, file: PaintForm:impl]").btnText," in TPaintForm.InitializeObject [line: 107, column: 9, file: PaintForm:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TPaintForm.InitializeObject [line: 108, column: 1, file: PaintForm:impl]").btnText," in TPaintForm.InitializeObject [line: 108, column: 9, file: PaintForm:impl]"),0,384,210,32);
+      TW3CustomControl.setStyleClass($Check(Self," in TPaintForm.InitializeObject [line: 109, column: 1, file: PaintForm:impl]").btnText,"TW3Button");
+      TW3CustomControl.setEnabled$1($Check($Check(Self," in TPaintForm.InitializeObject [line: 110, column: 1, file: PaintForm:impl]").btnText," in TPaintForm.InitializeObject [line: 110, column: 9, file: PaintForm:impl]"),true);
+      TW3MovableControl.setAlpha($Check(Self," in TPaintForm.InitializeObject [line: 111, column: 1, file: PaintForm:impl]").btnText,253);
+      TW3Button.setCaption$4($Check(Self," in TPaintForm.InitializeObject [line: 112, column: 1, file: PaintForm:impl]").btnText,"Text");
+      $Check($Check(Self," in TPaintForm.InitializeObject [line: 68, column: 3, file: PaintForm]").PaintBox," in TPaintForm.InitializeObject [line: 68, column: 20, file: PaintForm]").FOnPaint=function (Sender$2, Canvas$3) {
          TPaintForm.ClearCanvas(Self);
       };
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 66, column: 3, file: PaintForm]").btnClear,Handler($Event0(Self,TPaintForm.ClearCanvas)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 67, column: 3, file: PaintForm]").btnLines,Handler($Event0(Self,TPaintForm.PaintLines)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 68, column: 3, file: PaintForm]").btnLines05,Handler($Event0(Self,TPaintForm.PaintLines05)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 69, column: 3, file: PaintForm]").btnLineProperties,Handler($Event0(Self,TPaintForm.PaintLineProperties)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 70, column: 3, file: PaintForm]").btnCircle,Handler($Event0(Self,TPaintForm.PaintCircle)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 71, column: 3, file: PaintForm]").btnRectangles,Handler($Event0(Self,TPaintForm.PaintRectangles)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 72, column: 3, file: PaintForm]").btnCurves,Handler($Event0(Self,TPaintForm.PaintCurves)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 73, column: 3, file: PaintForm]").btnRoundedRect,Handler($Event0(Self,TPaintForm.PaintRoundedRect)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 74, column: 3, file: PaintForm]").btnGlobalAlpha,Handler($Event0(Self,TPaintForm.PaintGlobalAlpha)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 75, column: 3, file: PaintForm]").btnLineProperties,Handler($Event0(Self,TPaintForm.PaintLineProperties)));
-      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 76, column: 3, file: PaintForm]").btnGradients,Handler($Event0(Self,TPaintForm.PaintGradients)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 73, column: 3, file: PaintForm]").btnClear,Handler($Event0(Self,TPaintForm.ClearCanvas)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 74, column: 3, file: PaintForm]").btnLines,Handler($Event0(Self,TPaintForm.PaintLines)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 75, column: 3, file: PaintForm]").btnLines05,Handler($Event0(Self,TPaintForm.PaintLines05)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 76, column: 3, file: PaintForm]").btnLineProperties,Handler($Event0(Self,TPaintForm.PaintLineProperties)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 77, column: 3, file: PaintForm]").btnCircle,Handler($Event0(Self,TPaintForm.PaintCircle)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 78, column: 3, file: PaintForm]").btnRectangles,Handler($Event0(Self,TPaintForm.PaintRectangles)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 79, column: 3, file: PaintForm]").btnCurves,Handler($Event0(Self,TPaintForm.PaintCurves)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 80, column: 3, file: PaintForm]").btnRoundedRect,Handler($Event0(Self,TPaintForm.PaintRoundedRect)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 81, column: 3, file: PaintForm]").btnGlobalAlpha,Handler($Event0(Self,TPaintForm.PaintGlobalAlpha)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 82, column: 3, file: PaintForm]").btnLineProperties,Handler($Event0(Self,TPaintForm.PaintLineProperties)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 83, column: 3, file: PaintForm]").btnGradients,Handler($Event0(Self,TPaintForm.PaintGradients)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 84, column: 3, file: PaintForm]").btnImage,Handler($Event0(Self,TPaintForm.PaintImage)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 85, column: 3, file: PaintForm]").btnImageData,Handler($Event0(Self,TPaintForm.PaintImageData)));
+      TW3CustomControl._setMouseClick($Check(Self," in TPaintForm.InitializeObject [line: 86, column: 3, file: PaintForm]").btnText,Handler($Event0(Self,TPaintForm.PaintText)));
    }
    /// procedure TPaintForm.PaintCircle()
-   ///  [line: 169, column: 22, file: PaintForm]
+   ///  [line: 183, column: 22, file: PaintForm]
    ,PaintCircle:function(Self) {
       TPaintForm.ClearCanvas(Self);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"#000000");
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"#FFFF00");
-      TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-      TW3Canvas.ArcF(TPaintForm.Canvas$1(Self),200,200,100,0,6.28318530717959,true);
-      TW3Canvas.ClosePath(TPaintForm.Canvas$1(Self));
-      TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
-      TW3Canvas.Fill(TPaintForm.Canvas$1(Self));
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"#00FFFF");
-      TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-      TW3Canvas.ArcF(TPaintForm.Canvas$1(Self),400,300,50,0,3.14159265358979,true);
-      TW3Canvas.ClosePath(TPaintForm.Canvas$1(Self));
-      TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"#FF00FF");
-      TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-      TW3Canvas.ArcF(TPaintForm.Canvas$1(Self),300,400,50,1.5707963267949,4.71238898038469,true);
-      TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"#000000");
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"#FFFF00");
+      TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+      TW3Canvas.ArcF(TPaintForm.Canvas$2(Self),200,200,100,0,6.28318530717959,true);
+      TW3Canvas.ClosePath(TPaintForm.Canvas$2(Self));
+      TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
+      TW3Canvas.Fill(TPaintForm.Canvas$2(Self));
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"#00FFFF");
+      TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+      TW3Canvas.ArcF(TPaintForm.Canvas$2(Self),400,300,50,0,3.14159265358979,true);
+      TW3Canvas.ClosePath(TPaintForm.Canvas$2(Self));
+      TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"#FF00FF");
+      TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+      TW3Canvas.ArcF(TPaintForm.Canvas$2(Self),300,400,50,1.5707963267949,4.71238898038469,true);
+      TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
    }
    /// procedure TPaintForm.PaintCurves()
-   ///  [line: 201, column: 22, file: PaintForm]
+   ///  [line: 215, column: 22, file: PaintForm]
    ,PaintCurves:function(Self) {
       TPaintForm.ClearCanvas(Self);
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),ColorToWebStr(16716947));
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),ColorToWebStr(0));
-      TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-      TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),275,25);
-      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$1(Self),225,25,225,62.5);
-      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$1(Self),225,100,250,100);
-      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$1(Self),250,120,230,125);
-      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$1(Self),260,120,265,100);
-      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$1(Self),325,100,325,62.5);
-      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$1(Self),325,25,275,25);
-      TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
-      TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-      TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),75,40);
-      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$1(Self),75,37,70,25,50,25);
-      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$1(Self),20,25,20,62.5,20,62.5);
-      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$1(Self),20,80,40,102,75,120);
-      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$1(Self),110,102,130,80,130,62.5);
-      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$1(Self),130,62.5,130,25,100,25);
-      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$1(Self),85,25,75,37,75,40);
-      TW3Canvas.Fill(TPaintForm.Canvas$1(Self));
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),ColorToWebStr(16716947));
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),ColorToWebStr(0));
+      TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+      TW3Canvas.MoveToF(TPaintForm.Canvas$2(Self),275,25);
+      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$2(Self),225,25,225,62.5);
+      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$2(Self),225,100,250,100);
+      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$2(Self),250,120,230,125);
+      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$2(Self),260,120,265,100);
+      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$2(Self),325,100,325,62.5);
+      TW3Canvas.QuadraticCurveToF(TPaintForm.Canvas$2(Self),325,25,275,25);
+      TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
+      TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+      TW3Canvas.MoveToF(TPaintForm.Canvas$2(Self),75,40);
+      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$2(Self),75,37,70,25,50,25);
+      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$2(Self),20,25,20,62.5,20,62.5);
+      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$2(Self),20,80,40,102,75,120);
+      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$2(Self),110,102,130,80,130,62.5);
+      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$2(Self),130,62.5,130,25,100,25);
+      TW3Canvas.BezierCurveToF(TPaintForm.Canvas$2(Self),85,25,75,37,75,40);
+      TW3Canvas.Fill(TPaintForm.Canvas$2(Self));
    }
    /// procedure TPaintForm.PaintGlobalAlpha()
-   ///  [line: 239, column: 22, file: PaintForm]
+   ///  [line: 253, column: 22, file: PaintForm]
    ,PaintGlobalAlpha:function(Self) {
       var i=0;
       TPaintForm.ClearCanvas(Self);
       for(i=0;i<=10;i++) {
-         TW3Canvas.setGlobalAlpha(TPaintForm.Canvas$1(Self),i/10);
-         TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"darkviolet");
-         TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"#000000");
-         TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),(20*i)+0.5,0.5,19.5,399.5);
-         TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"orange");
-         TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),0.5,(20*i)+0.5,399.5,19.5);
+         TW3Canvas.setGlobalAlpha(TPaintForm.Canvas$2(Self),i/10);
+         TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"darkviolet");
+         TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"#000000");
+         TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),(20*i)+0.5,0.5,19.5,399.5);
+         TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"orange");
+         TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),0.5,(20*i)+0.5,399.5,19.5);
       }
    }
    /// procedure TPaintForm.PaintGradients()
-   ///  [line: 254, column: 22, file: PaintForm]
+   ///  [line: 268, column: 22, file: PaintForm]
    ,PaintGradients:function(Self) {
       var circGrad=null;
-      var linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),0,20,0,100);
+      var linGrad=null;
+      TPaintForm.ClearCanvas(Self);
+      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$2(Self),0,20,0,100);
       TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
       TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
       TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
-      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10.5,10.5,100,100);
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),10.5,10.5,100,100);
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),120.5,0.5,100,100);
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),120.5,0.5,100,100);
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),230.5,20.5,100,100);
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),230.5,20.5,100,100);
-      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),10,0,110,0);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$2(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),10.5,10.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$2(Self),10.5,10.5,100,100);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),120.5,0.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$2(Self),120.5,0.5,100,100);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),230.5,20.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$2(Self),230.5,20.5,100,100);
+      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$2(Self),10,0,110,0);
       TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
       TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
       TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
-      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10.5,130.5,100,100);
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),10.5,130.5,100,100);
-      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),120,130,220,230);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$2(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),10.5,130.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$2(Self),10.5,130.5,100,100);
+      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$2(Self),120,130,220,230);
       TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
       TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
       TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
-      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),120.5,130.5,100,100);
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),120.5,130.5,100,100);
-      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$1(Self),230,230,330,130);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$2(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),120.5,130.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$2(Self),120.5,130.5,100,100);
+      linGrad=TW3Canvas.CreateLinearGradientF(TPaintForm.Canvas$2(Self),230,230,330,130);
       TW3CanvasGradient.addColorStop$3(linGrad,0,8900331);
       TW3CanvasGradient.addColorStop$3(linGrad,0.5,0);
       TW3CanvasGradient.addColorStop$3(linGrad,1,10025880);
-      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),linGrad);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"orange");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),230.5,130.5,100,100);
-      TW3Canvas.StrokeRectF(TPaintForm.Canvas$1(Self),230.5,130.5,100,100);
-      circGrad=TW3Canvas.CreateRadialGradientF(TPaintForm.Canvas$1(Self),60,300,25,110,350,100);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$2(Self),linGrad);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),230.5,130.5,100,100);
+      TW3Canvas.StrokeRectF(TPaintForm.Canvas$2(Self),230.5,130.5,100,100);
+      circGrad=TW3Canvas.CreateRadialGradientF(TPaintForm.Canvas$2(Self),60,300,25,110,350,100);
       TW3CanvasGradient.addColorStop$2(circGrad,0,255,0,0);
       TW3CanvasGradient.addColorStop$2(circGrad,1,0,255,0);
-      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),circGrad);
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10,250,200,200);
-      circGrad=TW3Canvas.CreateRadialGradientF(TPaintForm.Canvas$1(Self),300,300,25,350,350,100);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$2(Self),circGrad);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),10,250,200,200);
+      circGrad=TW3Canvas.CreateRadialGradientF(TPaintForm.Canvas$2(Self),300,300,25,350,350,100);
       TW3CanvasGradient.addColorStop$2(circGrad,0,255,0,0);
       TW3CanvasGradient.addColorStop$2(circGrad,0.9,0,255,0);
       TW3CanvasGradient.addColorStop$1(circGrad,1,0,255,0,0);
-      TW3Canvas.UseGradient(TPaintForm.Canvas$1(Self),circGrad);
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),250,250,200,200);
+      TW3Canvas.UseGradient(TPaintForm.Canvas$2(Self),circGrad);
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),250,250,200,200);
+   }
+   /// procedure TPaintForm.PaintImage()
+   ///  [line: 327, column: 22, file: PaintForm]
+   ,PaintImage:function(Self) {
+      var image=TW3Component.Create$24($New(TW3Image),null);
+      var image2=TW3Component.Create$24($New(TW3Image),null);
+      TPaintForm.ClearCanvas(Self);
+      TW3Image._setOnLoad(image,function (Sender$3) {
+         TW3Canvas.DrawImageF(TPaintForm.Canvas$2(Self),$Check(image," in  [line: 336, column: 31, file: PaintForm]").FHandle$3,10,10);
+         TW3Canvas.DrawImageF$1(TPaintForm.Canvas$2(Self),$Check(image," in  [line: 337, column: 31, file: PaintForm]").FHandle$3,300,10,100,100);
+         TW3Canvas.DrawImageF$2(TPaintForm.Canvas$2(Self),$Check(image," in  [line: 338, column: 31, file: PaintForm]").FHandle$3,50,30,80,100,300,150,80,100);
+      });
+      TW3Image.LoadFromURL(image,"res\\title_page_small.jpg");
+      TW3Image._setOnLoad(image2,function (Sender$4) {
+         TW3Canvas.DrawImageF$1(TPaintForm.Canvas$2(Self),$Check(image2," in  [line: 344, column: 32, file: PaintForm]").FHandle$3,300,300,125,162);
+      });
+      TW3Image.LoadFromURL(image2,"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEARwBHAAD/4RpfRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAMAAAExAAIAAAAcAAAAcgEyAAIAAAAUAAAAjodpAAQAAAABAAAApAAAANAABFNJAAAnEAAEU0kAACcQQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzADIwMTI6MDY6MDcgMTI6Mjg6MDkAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAA+qADAAQAAAABAAABRAAAAAAAAAAGAQMAAwAAAAEABgAAARoABQAAAAEAAAEeARsABQAAAAEAAAEmASgAAwAAAAEAAgAAAgEABAAAAAEAAAEuAgIABAAAAAEAABkpAAAAAAAAAEgAAAABAAAASAAAAAH/2P/gABBKRklGAAECAABIAEgAAP/tAAxBZG9iZV9DTQAB/+4ADkFkb2JlAGSAAAAAAf/bAIQADAgICAkIDAkJDBELCgsRFQ8MDA8VGBMTFRMTGBEMDAwMDAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAENCwsNDg0QDg4QFA4ODhQUDg4ODhQRDAwMDAwREQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM/8AAEQgAoAB8AwEiAAIRAQMRAf/dAAQACP/EAT8AAAEFAQEBAQEBAAAAAAAAAAMAAQIEBQYHCAkKCwEAAQUBAQEBAQEAAAAAAAAAAQACAwQFBgcICQoLEAABBAEDAgQCBQcGCAUDDDMBAAIRAwQhEjEFQVFhEyJxgTIGFJGhsUIjJBVSwWIzNHKC0UMHJZJT8OHxY3M1FqKygyZEk1RkRcKjdDYX0lXiZfKzhMPTdePzRieUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9jdHV2d3h5ent8fX5/cRAAICAQIEBAMEBQYHBwYFNQEAAhEDITESBEFRYXEiEwUygZEUobFCI8FS0fAzJGLhcoKSQ1MVY3M08SUGFqKygwcmNcLSRJNUoxdkRVU2dGXi8rOEw9N14/NGlKSFtJXE1OT0pbXF1eX1VmZ2hpamtsbW5vYnN0dXZ3eHl6e3x//aAAwDAQACEQMRAD8A4tpgjyJQ7YEnsGD/AKtSadfvKhdGwjyj/pFUhu2wysEh48R+WQnfpUR2BI/Fii/h3mNE7zNA8z/ckkM9+ytruJMfjt/78lTe5w51bA/go/SaGu4EEfGVCoEWOaP3h+VChR7s0DW7o4OW5hbLoLDu18SrrOovLqztn0w4DzJP/mKwy4tGukNb98qzTk7DrwI+9yinDqA2BCEtJd9/rF0D1X06n1+nqW7AfIbv/JqB6o/e/wBvLBX97/Un8FTe4Plw8Py+5O8e8nx/vQER2a8oRBNN89XdsczZ9Lb/ANGP/IpWdWJawbdGWNf/AJpn/v6oO8U35g8v7whwx7K4Aqy8AOfGp2afAiVas6gHXts2/Qa6sfNm1Z9vZvmB9xRHH3fM/kKkIH4FYB+YbWPfj2XMNogOcXfINIC0fSwdm/SJWC4fR+CbfZt2bjt8E3hFgruE93//0OJY123d2kN+ZhRsre8Pa0e5ocSP6pcU4LtrviD+LE1rnM3me0n5h396pattTgdvmWtj57lN1b/s7XRpuA+ZG5QPI8mtA+9yluJx2ifzifuMJLm1X07Jea4A9/EnwHqf9Sh/ZLKrGufH6Xa9sa6H3apB7wGwTLTIE/BqKyxzXQ+C1hmT4RwlCF/NLhB0j6fFcZkaiHGI6z9XD9n9aSn4xc3ae/8AehHCc4ENdEkf9A6/9Uis6jYxxOwOLPaJ8i3/AMkrvTmuvsjgMrsIPiTtcn+zCMeL3SI9fRtrH/vlfeyJGP3bW9P13zfp/u/1OH/qjRFTthj90O/6oKT2OALj2Ad96NTaXUvAAEsFY/6SAMyyyogtH0QyfIDd/FEcvAiMvc1kDL5f3P0f+ag8yRKcDy/yERkfc/zvqjPb+unHTshzgzcyXQRr2c/0wpnpd+17t7Ia7bz35/gqfucA5pO5oEj4n81Jr3EukmJ1+8KtKBG0vwXiR2Iohf7HbZexgIl7iNTp7XFv/fVau6Lm13+k/aHGv1ufzXB21Zr3H1G6mZUzZYXElziYiSTxHCJB79EC/wAW47pOT64q3M3S5szp7BLlH9kZExvZ96qbnzMmfj8Ut745KbUu/wCC6zT/AP/R4fe1rXkmBE/dtcVq5n1ay68S+5uViXWUYtedfiVvf67KLAxwtcyyllLvTbax1uy5Y7q3PY7t7XD/ADhtC2+s/WrPzKqcFj7GdLqpxa78P9HWbTjhrLWuyqWOyfStex3pbrfZ/o1ViI9S2ZcVaBpO6P1ll9VD+n5bb7Ky6uk49oe8M2+o6uvZvf6e73pm9K6p6DHPw8iqp17sf17KbG1NsNgxtltxZtZsu/Rv/wCE/R/zi28v62YReX4dOTWW19RFbyKmPD86qqupxsof6ttmNZX+ly8i27Myf6R6vqfoFXo+snTquhMwm49/2gU1VWvJrsaX4+TXnvtZk3E5vp5O3+iN9HFxLf8AA3+r61buCHdHFLs1srovVcM11ioZd992VjVU4wfZY6zCe2nKPp+m13p6+pV/wf8AOemgZ2LmV9Hu6nY0VUszP2e+pwc24XMrGQ/1KXsbsY1ns+n6nq/4NbI+umGbLmux7m05H7UFzoqe5tfULqMqpzKLi6i99P2f08ii53pWf6VZ/wBZfrPV1bp2XhCq5tj+oV5rbbTWT6YxqunV12DHZUz1v0fqfo6/TZ/N+pancMLJvwXe5kqMSKEfV9ZfpLP+rfUWYz8xmRiXWMw29UfhMfZ67cV/p2es5tlLMfdUx2+2v7R/U/MR+nUdZx3+j+zcv7UW2ltRx7N5Z7K3Went3+kx52ep++q/WfrX1LPwKelYlz8fBqxMfDuq21g2PoDa7neuxnr/AGd/+idd/YWx+2mdSy+qW5NWeMHql1OXVbjPa2+sYpLqaHvsd9n9F272bbv1e307P0qbkEDARJoFbDiMiatwMOnqtrHW4mFk30Mea7bKqXva0tG53qOY07HtZ9NDrwOs2mk0dPynjJl9IbRYd9exjvUqhn6Sr9JX72/vrscPrXT7tvUup3UYVmLb1K1tFWUzc1ma17tmVh+l6nULvVcz0fsb/wDhMj0vR9CzExesYV+VV6lGdmMr6Zj4NddbWPYx1DaWWWfZr7LsTIx7r6v+1VPp02frH2ezI2J1DhAvQbJkZnLM8PqlXEOvp2cqvE608WW09PyntoLhc5tFhDH1A+tXdDP0b6XbfVY/+bRaun9Xsvtx/wBmZjsitrXW1Nps3s3y9jbKwzcz1WVv9Lctm762UM6jR1OqvIbXZkZucaw5oLXZOM3ptbJY/a5+PdU+31f9Bd/pE1f1qr+w0Y4xrt2Pj9Joe4PaA49Ouuybvzt22/1m+h/U/SIGEDdmrTx5KiavhFfRxT0zNNm67Htxh9nsy2G+u1m+upgssdUW1P8Azf8ACP2Uf6a6pK7Czsdtd2R0/KoqtIrrNldjQ+xw3Mrrc9nvstb/ADdbPprZd1xmY7OAqsDrB1d43ubAb1JtYx2/T/7T+l+nYz/rPqq3X1pr+vXO2x6t/S8ioXvHpVtxK/QtbY+v1tnq+rvrdTVZ6X85aoyMW3FqFwlk34Q8zmY9+Dt+3YWRiby7YL2vqLoA0Z6rWb/T3s37f31W+04sTsPMfSXU/WHpHT8vA6T0rDzA9mCc6xz7MhuQ4i26n09+Rjt9D1LPfZ6TP5v/AAn6RYX/ADSrn0vtdcRv3SY/c28JtYePh4jafcycN8If/9LiGuea3tlp3ANOnES7+z9FNa20neDJg8Ds09/6qOzMzAxuxzWhrHVDQDSwem939b3fTQX33vYai/ZXYza8gaw07/8ApOVMb9G1rTEm17WSZBaYMaQIdDf85Txcc2McbHewlwA4JMjv+63ap0HJte2x1kNbV6P9Wvbs2N/d9jVbpr3uDY21gccQ393+vZ/r/NqeEOCAyEC5HhwwP6cv0p/7PGuxYxkmeI1ixDjzzH6MemOP+syoPsYrofkWOBa0cRG4AQwfyfUf7k1fTg+y0VUPyfRcG33WPFNYfw32fo3sb+56mR/22p9UyA79A0jY3Ww9tx/N/sq10+yoX3OyXhlWViA3WPO0B4jHdvn851jLvZ9NNjHWhrwjX6fMv9MiZSHD7pqEf3I/ofN/gqxem3xLzVhlrvTuYyousZY/b6e57vUft93q72ZH83+kW23p1LsXHsy3WW/og3IbY7UBzHuY/cCfdvur+i78xVcPNpycqz0yRblihjXVCTvbIssbvj2NdZ6f0f0ldS3uogV419jA1s1hha4hrRrs8vzbNqh5uRHBEjh4hxx6+k8PCf8Apr8McRmIxkZaiF6/znu8Pyx9H8y8+zGwcPqGKwVM3vsspsr+n7Ic/GueLd/pP0qZv/w36REsZbRl9OvseXsrNuFe94IbBG5hc6f+B3KpkWusymXvva210hox2Emdljm+5/pN3/y971DqnovpOQWPyGuLXh1thjX2Ollfu+i+n/CqXFj48Upg/L/0f5SZOb5gYObhiMR6+HhN16jLHw6f9Q/57Qfi1DHspa8ObiXlge0hwNVg9j2ub/4VUK2urc8gbnNAlh4IHtT05Bc70g1jGEhwYxsNLiCxhe4l73+72e9/+GTw5hBbqWxE+ESP+3Kv+nWn5IcWGOWO8TUmLCYDNPDIemYuP/ej+X7jYsqpqbVfUz1KHHdaJ1I/0f8A3xQrvr9RoFX6VoPqP7Ekj0hH5rKWt/tqWJY2t5rJ/V7vHgOd/wB9eoXY5xsjcYFbtA49iI9rlVnEEcY+vmjhljn7ctwbif3opG31vE1s2kyWk/uk/wDVPd7k258T5IFdjGxLmiGx2/elT9auPpt+/soq12X/AKL/AP/T4drTHPOn3yptxjY7VxDG/Sd8eyeio2xrDWwXO7ABaNVQ2B0RW36DT3/4RyhxY4gHNlNYo7Drll+6P6v77dhjnlmMWIXM/MemOKsB+Hj5NRy6PVwxLLqmwXbXtNf6Hf7ftNW716v+HZWty7r3ScfEyG1YZxfXDmwxjHgXW0Zld7msL2tdVj5OXRVjfuYdP/W7MllIaBcdHHSkHt+9c7+qs3LtFlgFelbPawflef6yUs05n3JaXpjj+5j/AEYsuXFjEhy+Ikwx65p3/O5ev/euxk/WHpl3Xsfq9WK+s12ZbshzGVMsPrvv+w5VbQ59NudhVXss9S3+cyKf57/DKxlfWDpjsZuPfQ7qWXTT6Qz86iq22xwryXUW2i2y30/Tzr8P2b8j9Tx/0ln6T0Fg49bWNNjtQzWPE/mBNj1m3MG7UwHu+H0lPCJEID/KZpAR8IX6pf8Ac/47TyEGc6+TFE/a9x0nqXSX5bqsbDdj0sL3U+nXXW5psfnVBlj6Htc6v0M7AY2p29n6nb/17R6h1mj7I52Y1+TQ4YtV1VgFm4MLjlbG2v8AbZbu/RXfzn/FrE6BVtZbf+cTA8IY0/8AoyxWeutY3AY0Dm0T/ZDln8/lrmpxhpGBEAP7seGX/O4mXkI8eXCJWTKQN/4XE57+qfV1tJbdge4PxWssbTXv2sbS292/1GbL/WbmXeo/1vtrL68fK/RfzV+vq/Rm15LsTFdSSwshtNTCdopqds2W/qdfq4dtvpU/0j7R+k/m1ynUBtxXOGkbfvBWrghpe6YIeQ/5WNbZ/wCTV/4b+tEoy2+XT+sx/wDGEfd80JQ1PCJ3L1fJLhXo630bGvzr2fabBm5F1r3WY9ZDBk05Vfp24rsuyrMZXZk0v9+z1fTt/wCuXBn/AFa+02B3TWjF2WioCmp7y99t1nvte9tjWVYrsf7N6dn6vZ6zGLl8isU5D2O+iTtP36K9jHdRH5zXQfvcm8uSZyxS0ux4fyhJkzRHBDNG9gQf+dFu25nR7+nZTq8Oiu8enj4DPTYyxocykdQyMquqd2y6h/2TKsf6nrZtv+j/AEYQ+t1+5lYdUdpDHCRx7mQf3XbmqkWGt7nRMt2vHjKsY9grv2uMsJEnzj2v/tfnqpm4seaUJDb01+9H/vm77Uc/LRyY9/mGt8Jj80P+6bmFjY+gNbHRUASWjnc9F9Cj149JkTEbR+7u8EKqw1kEiA8DcPAom/8ATx5z8tu1VzgrPGyfblZEvL1cLAM14zp646GP7X//1OXorDgGARQzn+UQr9FYtdudpW3n+5DqqLoYwQ0K1aW0UHsANVXMjzE+KQrFDSMR8unyx/uu3mlDkcPsYjefL88/0hxbyafU79rNsw5+gA/NYFlsBc4NAUr7XW2Osd3/AACnT+jrNhGvZSYoe7k10iPVI9ohpTPsYa/Tl/0iyu9xFLOByfMj/vqsYNU22WjjRjfgNFTrJDvF21xPxIWx0qnc6ph/OIJ+A1Vjl5cfMTzS0x8vAy8v3R/zWpmHBhjD9LKXq8HG9DDYxo1LAD8XGXKn9YZFFLeAXEx962Nu2qr4iflqsT6xWEipncf3NXPmZnkMjvImR+urf+Gx/pOIDpf4ReczGbsV7fKfuEo/T7YrpeDxUz/oGP8AqUK+fQf4wfyIXSXufi1lx+iXMPwkrX+FyIlIBb/xmgCccjtVf9JP1ehpueYiSHT8YUcF7SPDfH+cNyJ1B7vsrLAN0j0n+PtO5p/6Kyqr3V6DgHcPiJ/8kjzETj5mUhtxe5H+7k9UmHkZDNyUYE6xHty88fyuoG75LudsH/vqD9G1w8ND9yJTYH+6eW/kUbw71HWeI1+6FY+J8v7mIcxDUwAGT+7+jJk+FcwceU8vPQTPo8J9m7iWttZtfq4AD4hSg7o/N4ny8FQpsLXSDqI/Irnqj09/8pZQy+iQ67j+LdlygHMwNeiROnlHi4X/1aFFYYz8qyuq5W53pNOg5Whn2mikkcrB22WkuPc6qKdRAhFu4uLLklzGTvYWrbud5d0W53AHDfyp/T2M05P5UerpeVk1n0h8/NTTrBhIkalPWX9391gnI5sumojt/FpVOa+9rWSXOPu04AXWfV/G9TJ3HhgDR/FYeL0fKxLnGwfS0+Urrvq/hW11byNTLvvTJ5Y4/huSQI4s8q/wQx5AZZog7Y4utaQSB4An+H/flzv1jd+ssA/lflAXRml5sJ+A/Fcz1xj3ZQ+B/KsKBHEHU+FR/pMT2B/Jx7RNbvNVeiOBosZ3D3flcr5x7Xja0anhD6b0bLxXPLtWuduHwWp8OzQhlqUgOL+C/wD4x4jPFAxFmP8AFMazbRdUeCNzVhWS15HfgrqacR7D7uCC0/ArF6hgWNsc7sT+K0efjE4seUG6Jxy/6UXC+E5SM2TCdOICY/6KHDs02nnsre42NcO8LOoDg8R4rTZS8kOHEaqfkMsJ4TjybD0S/uSbHOQljzCcND80f74awsInThP9oft29pn5olmJYXlzfuQ/stm3esn7lXODlr3l83+r+bi/xHb++xPJfea9UY7f635H/9bF6i71H7PBAbU2qs+IH4lCfkF15+Knc/2AfP71BggZ5DOXyx9TfzH28UcY3IQ1gvsjw0C7bomMyvGbLRwuT6dT6mS0ea7jGaK8cfBV/imUyIj3NsXLQoEtLPDHWhoaBJhbmCwNoAA8lzxf6uc1vmulxmxUPNR86DjwYcZ7X9qwUZk+KTQLl+tgfaAQOxXUnhcz1eDd8is+O4dL4Z/PX4Ofjn9K0R3W46o+k0ho4WNit/WGfFdRsb9nbopI/wA7E+LY+LVUfEFxLmnZx2hZmezfQ4xrAd8wt69o28cErLyGTWRHiF0kcZy8lkjuYnji8pHKMXO4pdD6C8i07Mlze0yPmtzDcHQCOdPvWTk1hl0/Efcr2FbwP9dNVT5WXrr94U7nNxvGJfum3Tqp2vLXDlA9I7/QjXdHyV4vbDXj84D70oZ63q+UI5OP7xizfperGfPhlFgxzA5fLj6HhkP8eL//1+RoBdbJRridwCDj2t3EpWXA2qbDAR5YnrM0zczMyzEfuh3OgVbrt3guqudsp+S536vObAK2OoZAbSfgsXKPc5uI6cTNH04vo0+nH1M4uPZdbUIY0Lj+j2tN5K6+oudWHNG4caant+b9P85qsfGh+vEY7RiBp4BrYCeGz1JZP+iVy/ViTefgukte4MPsdwSNDx4/iub6lXd69ks/mzscCRu3aSyuufUuc3ezd6LbPprKjE3s6/wsgZCSejWxdL2/FdTXrjhc1TVe25hNT2gt3yWkDafztx9v8ldJjmw4wOwwIGojnjR3wUgieMaFm+KEERIIaOQ0w/71nXNMOWrkPDXPY4Q4SHDwI0WdZYzX4Lp+QPolH96LxvO6ZIS/dk8t1Osix2neULDc4PHktXqDWFzjGkFU8Y1tt81lwPBm8pPSCQny48Yumzc6iPBPvPpefCt4r6jXpH0Ru+7VA9Wndt03cx5wtMcJs1sRMOZxG67+l//Q8+pySJ1TOySbJlU2PhRL/cn8f6uMexTI3OR7vYdBztrRqr/U+oTUQD2XJ9MySzSVazMsuas8Y/6UJeLbv9T9HX6RnRdz4LraurWtqDGvIYJO3sS4bHT/AGV5v0vIIt58F0bMswNeyZ8TuWawejHgiDB609XsfW5z8mlhcSXV2t8D9Ia7XbvUf7HLFvz7W5TjVm4brLyXgOBcBJHrtaXn2ss9Gn+d/wCMp9JZN+Ydp17FYWVfutKgwAk69PF0eThEEm+nYPaVdav+01vsz8SyS99np7mgkN9Njnbm7tzmu9uxv+C/64tkdYym7g+xj3sJG8DSfz9uv568wpyHB41W7Rln0olOyCQIq9+6/nIQMYkVoK2D0GRnhz3GQJkwOB5BZl2Zrz21WbbkmTqqduUddVs8nLhA8nmuaxiRPgW5mZYnU6QfyLN+1Q9pB76qnk3ku5VX1TuCqGP6wnxdXFOsUR4PUYubFf0vxQ/tv6XnVY9V5DRrwo+v7plXhL0y8g1P0h5v/9n/4R6raHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA0LjIuMi1jMDYzIDUzLjM1MjYyNCwgMjAwOC8wNy8zMC0xODoxMjoxOCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxMi0wNi0wN1QwOTowNjowMyswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxMi0wNi0wN1QxMjoyODowOSswMjowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTItMDYtMDdUMTI6Mjg6MDkrMDI6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvanBlZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGODlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxQjczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjFCNzM0MTNFNkZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiB0aWZmOk9yaWVudGF0aW9uPSIxIiB0aWZmOlhSZXNvbHV0aW9uPSIyODM0NjUvMTAwMDAiIHRpZmY6WVJlc29sdXRpb249IjI4MzQ2NS8xMDAwMCIgdGlmZjpSZXNvbHV0aW9uVW5pdD0iMyIgdGlmZjpOYXRpdmVEaWdlc3Q9IjI1NiwyNTcsMjU4LDI1OSwyNjIsMjc0LDI3NywyODQsNTMwLDUzMSwyODIsMjgzLDI5NiwzMDEsMzE4LDMxOSw1MjksNTMyLDMwNiwyNzAsMjcxLDI3MiwzMDUsMzE1LDMzNDMyOzAyOTQ5MzI0QzQ1Q0M1NzZDODE0RTFFRDhFNEQwMDA4IiBleGlmOlBpeGVsWERpbWVuc2lvbj0iMjU1MCIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjMzMDAiIGV4aWY6Q29sb3JTcGFjZT0iMSIgZXhpZjpOYXRpdmVEaWdlc3Q9IjM2ODY0LDQwOTYwLDQwOTYxLDM3MTIxLDM3MTIyLDQwOTYyLDQwOTYzLDM3NTEwLDQwOTY0LDM2ODY3LDM2ODY4LDMzNDM0LDMzNDM3LDM0ODUwLDM0ODUyLDM0ODU1LDM0ODU2LDM3Mzc3LDM3Mzc4LDM3Mzc5LDM3MzgwLDM3MzgxLDM3MzgyLDM3MzgzLDM3Mzg0LDM3Mzg1LDM3Mzg2LDM3Mzk2LDQxNDgzLDQxNDg0LDQxNDg2LDQxNDg3LDQxNDg4LDQxNDkyLDQxNDkzLDQxNDk1LDQxNzI4LDQxNzI5LDQxNzMwLDQxOTg1LDQxOTg2LDQxOTg3LDQxOTg4LDQxOTg5LDQxOTkwLDQxOTkxLDQxOTkyLDQxOTkzLDQxOTk0LDQxOTk1LDQxOTk2LDQyMDE2LDAsMiw0LDUsNiw3LDgsOSwxMCwxMSwxMiwxMywxNCwxNSwxNiwxNywxOCwyMCwyMiwyMywyNCwyNSwyNiwyNywyOCwzMDtGNDNGNzhCMkU0NUIwNjFBMDk3MzZEQjM3NzE5ODk4RCIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxQjczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOTowNjowMyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxQzczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOTowNjoyMSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToxODo1MSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRTczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToxOTowOCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRjczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyMDowNSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMDczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyMDoyNiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMzczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyNzo0MyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNDczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyODozMyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozM0IwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyOToxOCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozNEIwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOTozMDozNCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozN0IwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMDo0MiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozOEIwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMDo0MiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozQkIwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMTo1MjoxOCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMzlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMTo1MzoyMSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpGNDlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMjowOToyNyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpGNzlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMjoyODowOSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjb252ZXJ0ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImZyb20gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9qcGVnIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJkZXJpdmVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJjb252ZXJ0ZWQgZnJvbSBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIHRvIGltYWdlL2pwZWciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOkY4OUM4NzlEODZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiBzdEV2dDp3aGVuPSIyMDEyLTA2LTA3VDEyOjI4OjA5KzAyOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ1M0IFdpbmRvd3MiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkY3OUM4NzlEODZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjFCNzM0MTNFNkZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiBzdFJlZjpvcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MUI3MzQxM0U2RkIwRTExMUFCNjhBRjYxMTdGMkMzMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/Pv/tH1JQaG90b3Nob3AgMy4wADhCSU0EBAAAAAAABxwCAAACAAYAOEJJTQQlAAAAAAAQ1V2gUW9j+ZmtCDtgqKvXCzhCSU0D7QAAAAAAEABH//8AAgACAEf//wACAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAHg4QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0nEAAAAAAACgABAAAAAAAAAAI4QklNA/UAAAAAAEgAL2ZmAAEAbGZmAAYAAAAAAAEAL2ZmAAEAoZmaAAYAAAAAAAEAMgAAAAEAWgAAAAYAAAAAAAEANQAAAAEALQAAAAYAAAAAAAE4QklNA/gAAAAAAHAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAOEJJTQQAAAAAAAACAAM4QklNBAIAAAAAAAoAAAAAAAAAAAAAOEJJTQQwAAAAAAAFAQEBAQEAOEJJTQQtAAAAAAAKAAIAAAAHAAAABDhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAANLAAAABgAAAAAAAAAAAAAM5AAACfYAAAALAHQAaQB0AGwAZQBfAHAAYQBnAGUAMgAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAJ9gAADOQAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAG51bGwA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");
+   }
+   /// procedure TPaintForm.PaintImageData()
+   ///  [line: 349, column: 22, file: PaintForm]
+   ,PaintImageData:function(Self) {
+      var image$1=TW3Component.Create$24($New(TW3Image),null);
+      var line=null;
+      var x$27=0;
+      var y$13=0;
+      TPaintForm.ClearCanvas(Self);
+      TW3Image._setOnLoad(image$1,function (Sender$5) {
+         var id=null;
+         TW3Canvas.DrawImageF(TPaintForm.Canvas$2(Self),$Check(image$1," in  [line: 361, column: 31, file: PaintForm]").FHandle$3,10,10);
+         id=TW3Canvas.GetImageData(TPaintForm.Canvas$2(Self),50,30,120,160);
+         TW3Canvas.PutImageData(TPaintForm.Canvas$2(Self),id,300,10);
+      });
+      TW3Image.LoadFromURL(image$1,"data:image/jpeg;base64,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bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxMi0wNi0wN1QwOTowNjowMyswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxMi0wNi0wN1QxMjoyODowOSswMjowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTItMDYtMDdUMTI6Mjg6MDkrMDI6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvanBlZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGODlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxQjczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjFCNzM0MTNFNkZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiB0aWZmOk9yaWVudGF0aW9uPSIxIiB0aWZmOlhSZXNvbHV0aW9uPSIyODM0NjUvMTAwMDAiIHRpZmY6WVJlc29sdXRpb249IjI4MzQ2NS8xMDAwMCIgdGlmZjpSZXNvbHV0aW9uVW5pdD0iMyIgdGlmZjpOYXRpdmVEaWdlc3Q9IjI1NiwyNTcsMjU4LDI1OSwyNjIsMjc0LDI3NywyODQsNTMwLDUzMSwyODIsMjgzLDI5NiwzMDEsMzE4LDMxOSw1MjksNTMyLDMwNiwyNzAsMjcxLDI3MiwzMDUsMzE1LDMzNDMyOzAyOTQ5MzI0QzQ1Q0M1NzZDODE0RTFFRDhFNEQwMDA4IiBleGlmOlBpeGVsWERpbWVuc2lvbj0iMjU1MCIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjMzMDAiIGV4aWY6Q29sb3JTcGFjZT0iMSIgZXhpZjpOYXRpdmVEaWdlc3Q9IjM2ODY0LDQwOTYwLDQwOTYxLDM3MTIxLDM3MTIyLDQwOTYyLDQwOTYzLDM3NTEwLDQwOTY0LDM2ODY3LDM2ODY4LDMzNDM0LDMzNDM3LDM0ODUwLDM0ODUyLDM0ODU1LDM0ODU2LDM3Mzc3LDM3Mzc4LDM3Mzc5LDM3MzgwLDM3MzgxLDM3MzgyLDM3MzgzLDM3Mzg0LDM3Mzg1LDM3Mzg2LDM3Mzk2LDQxNDgzLDQxNDg0LDQxNDg2LDQxNDg3LDQxNDg4LDQxNDkyLDQxNDkzLDQxNDk1LDQxNzI4LDQxNzI5LDQxNzMwLDQxOTg1LDQxOTg2LDQxOTg3LDQxOTg4LDQxOTg5LDQxOTkwLDQxOTkxLDQxOTkyLDQxOTkzLDQxOTk0LDQxOTk1LDQxOTk2LDQyMDE2LDAsMiw0LDUsNiw3LDgsOSwxMCwxMSwxMiwxMywxNCwxNSwxNiwxNywxOCwyMCwyMiwyMywyNCwyNSwyNiwyNywyOCwzMDtGNDNGNzhCMkU0NUIwNjFBMDk3MzZEQjM3NzE5ODk4RCIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxQjczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOTowNjowMyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxQzczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOTowNjoyMSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToxODo1MSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRTczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToxOTowOCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRjczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyMDowNSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMDczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyMDoyNiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMzczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyNzo0MyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNDczNDEzRTZGQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyODozMyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozM0IwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOToyOToxOCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozNEIwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QwOTozMDozNCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozN0IwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMDo0MiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozOEIwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMDo0MiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozQkIwQTI3MDcyQjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMTo1MjoxOCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMzlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMTo1MzoyMSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpGNDlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMjowOToyNyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpGNzlDODc5RDg2QjBFMTExQUI2OEFGNjExN0YyQzMxQSIgc3RFdnQ6d2hlbj0iMjAxMi0wNi0wN1QxMjoyODowOSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENTNCBXaW5kb3dzIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjb252ZXJ0ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImZyb20gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9qcGVnIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJkZXJpdmVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJjb252ZXJ0ZWQgZnJvbSBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIHRvIGltYWdlL2pwZWciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOkY4OUM4NzlEODZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiBzdEV2dDp3aGVuPSIyMDEyLTA2LTA3VDEyOjI4OjA5KzAyOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ1M0IFdpbmRvd3MiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkY3OUM4NzlEODZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjFCNzM0MTNFNkZCMEUxMTFBQjY4QUY2MTE3RjJDMzFBIiBzdFJlZjpvcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MUI3MzQxM0U2RkIwRTExMUFCNjhBRjYxMTdGMkMzMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/Pv/tH1JQaG90b3Nob3AgMy4wADhCSU0EBAAAAAAABxwCAAACAAYAOEJJTQQlAAAAAAAQ1V2gUW9j+ZmtCDtgqKvXCzhCSU0D7QAAAAAAEABH//8AAgACAEf//wACAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAHg4QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0nEAAAAAAACgABAAAAAAAAAAI4QklNA/UAAAAAAEgAL2ZmAAEAbGZmAAYAAAAAAAEAL2ZmAAEAoZmaAAYAAAAAAAEAMgAAAAEAWgAAAAYAAAAAAAEANQAAAAEALQAAAAYAAAAAAAE4QklNA/gAAAAAAHAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAOEJJTQQAAAAAAAACAAM4QklNBAIAAAAAAAoAAAAAAAAAAAAAOEJJTQQwAAAAAAAFAQEBAQEAOEJJTQQtAAAAAAAKAAIAAAAHAAAABDhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAANLAAAABgAAAAAAAAAAAAAM5AAACfYAAAALAHQAaQB0AGwAZQBfAHAAYQBnAGUAMgAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAJ9gAADOQAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAG51bGwA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");
+      line=TW3Canvas.CreateImageData(TPaintForm.Canvas$2(Self),TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintImageData [line: 366, column: 41, file: PaintForm]").FContext," in TPaintForm.PaintImageData [line: 366, column: 49, file: PaintForm]")),1);
+      var $temp19;
+      for(x$27=0,$temp19=TW3ImageData.getWidth(line);x$27<$temp19;x$27++) {
+         TW3ImageData.setPixelEx(line,x$27,0,x$27%256,128,128,255);
+      }
+      for(y$13=400;y$13<=450;y$13++) {
+         TW3Canvas.PutImageData(TPaintForm.Canvas$2(Self),line,y$13-425,y$13);
+      }
    }
    /// procedure TPaintForm.PaintLineProperties()
-   ///  [line: 120, column: 22, file: PaintForm]
+   ///  [line: 130, column: 22, file: PaintForm]
    ,PaintLineProperties:function(Self) {
       var i$1=0;
       var cap=["butt","round","square"].slice();
       var join=["round","bevel","miter"].slice();
-      function ZigZag(x$21, y$7) {
-         Line(x$21,y$7,50,50);
-         LineTo(x$21+100,y$7);
-         LineTo(x$21+150,y$7+50);
-         LineTo(x$21+200,y$7);
+      var oldWidth=TW3Canvas.getLineWidth(TPaintForm.Canvas$2(Self));
+      var oldCap=TW3Canvas.getLineCap(TPaintForm.Canvas$2(Self));
+      var oldJoin=TW3Canvas.getLineJoin(TPaintForm.Canvas$2(Self));
+      function ZigZag(x$28, y$14) {
+         Line(x$28,y$14,50,50);
+         LineTo(x$28+100,y$14);
+         LineTo(x$28+150,y$14+50);
+         LineTo(x$28+200,y$14);
       };
-      function Line(x$22, y$8, w, h) {
-         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),x$22+0.5,y$8+0.5);
-         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),x$22+w,y$8+h);
+      function LineTo(x$29, y$15) {
+         TW3Canvas.LineToF(TPaintForm.Canvas$2(Self),x$29+0.5,y$15+0.5);
       };
-      function LineTo(x$23, y$9) {
-         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),x$23+0.5,y$9+0.5);
+      function Line(x$30, y$16, w, h) {
+         TW3Canvas.MoveToF(TPaintForm.Canvas$2(Self),x$30+0.5,y$16+0.5);
+         TW3Canvas.LineToF(TPaintForm.Canvas$2(Self),x$30+w,y$16+h);
       };
       TPaintForm.ClearCanvas(Self);
       for(i$1=1;i$1<=10;i$1++) {
-         TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-         TW3Canvas.setLineWidth(TPaintForm.Canvas$1(Self),i$1);
+         TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+         TW3Canvas.setLineWidth(TPaintForm.Canvas$2(Self),i$1);
          Line(20*i$1,10,0,90);
-         TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+         TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
       }
-      TW3Canvas.setLineWidth(TPaintForm.Canvas$1(Self),10);
+      TW3Canvas.setLineWidth(TPaintForm.Canvas$2(Self),10);
       for(i$1=0;i$1<=2;i$1++) {
-         TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-         TW3Canvas.setLineCap(TPaintForm.Canvas$1(Self),$DIdxR(cap,i$1," in TPaintForm.PaintLineProperties [line: 157, column: 29, file: PaintForm]"));
+         TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+         TW3Canvas.setLineCap(TPaintForm.Canvas$2(Self),$DIdxR(cap,i$1," in TPaintForm.PaintLineProperties [line: 170, column: 29, file: PaintForm]"));
          Line(20*(i$1+1),130,0,90);
-         TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+         TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
       }
       for(i$1=0;i$1<=2;i$1++) {
-         TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-         TW3Canvas.setLineJoin(TPaintForm.Canvas$1(Self),$DIdxR(join,i$1," in TPaintForm.PaintLineProperties [line: 163, column: 31, file: PaintForm]"));
+         TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+         TW3Canvas.setLineJoin(TPaintForm.Canvas$2(Self),$DIdxR(join,i$1," in TPaintForm.PaintLineProperties [line: 176, column: 31, file: PaintForm]"));
          ZigZag(20,250+(30*i$1));
-         TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+         TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
       }
+      TW3Canvas.setLineWidth(TPaintForm.Canvas$2(Self),oldWidth);
+      TW3Canvas.setLineCap(TPaintForm.Canvas$2(Self),oldCap);
+      TW3Canvas.setLineJoin(TPaintForm.Canvas$2(Self),oldJoin);
    }
    /// procedure TPaintForm.PaintLines()
-   ///  [line: 92, column: 22, file: PaintForm]
+   ///  [line: 102, column: 22, file: PaintForm]
    ,PaintLines:function(Self) {
       var i$2=0;
       TPaintForm.ClearCanvas(Self);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0,0,0)");
-      TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-      var $temp19;
-      for(i$2=3,$temp19=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines [line: 99, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 99, column: 32, file: PaintForm]"))-3;i$2<=$temp19;i$2+=4) {
-         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),i$2,3);
-         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),i$2,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines [line: 101, column: 30, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 101, column: 38, file: PaintForm]"))-3);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"rgb(0,0,0)");
+      TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+      var $temp20;
+      for(i$2=3,$temp20=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintLines [line: 109, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 109, column: 32, file: PaintForm]"))-3;i$2<=$temp20;i$2+=4) {
+         TW3Canvas.MoveToF(TPaintForm.Canvas$2(Self),i$2,3);
+         TW3Canvas.LineToF(TPaintForm.Canvas$2(Self),i$2,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintLines [line: 111, column: 30, file: PaintForm]").FContext," in TPaintForm.PaintLines [line: 111, column: 38, file: PaintForm]"))-3);
       }
-      TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+      TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
    }
    /// procedure TPaintForm.PaintLines05()
-   ///  [line: 106, column: 22, file: PaintForm]
+   ///  [line: 116, column: 22, file: PaintForm]
    ,PaintLines05:function(Self) {
       var i$3=0;
       TPaintForm.ClearCanvas(Self);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0,0,0)");
-      TW3Canvas.BeginPath(TPaintForm.Canvas$1(Self));
-      var $temp20;
-      for(i$3=3,$temp20=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines05 [line: 113, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 113, column: 32, file: PaintForm]"))-3;i$3<=$temp20;i$3+=4) {
-         TW3Canvas.MoveToF(TPaintForm.Canvas$1(Self),i$3+0.5,3.5);
-         TW3Canvas.LineToF(TPaintForm.Canvas$1(Self),i$3+0.5,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$1(Self)," in TPaintForm.PaintLines05 [line: 115, column: 34, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 115, column: 42, file: PaintForm]"))-3.5);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"rgb(0,0,0)");
+      TW3Canvas.BeginPath(TPaintForm.Canvas$2(Self));
+      var $temp21;
+      for(i$3=3,$temp21=TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintLines05 [line: 123, column: 24, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 123, column: 32, file: PaintForm]"))-3;i$3<=$temp21;i$3+=4) {
+         TW3Canvas.MoveToF(TPaintForm.Canvas$2(Self),i$3+0.5,3.5);
+         TW3Canvas.LineToF(TPaintForm.Canvas$2(Self),i$3+0.5,TW3CustomGraphicContext.getHeight$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintLines05 [line: 125, column: 34, file: PaintForm]").FContext," in TPaintForm.PaintLines05 [line: 125, column: 42, file: PaintForm]"))-3.5);
       }
-      TW3Canvas.Stroke(TPaintForm.Canvas$1(Self));
+      TW3Canvas.Stroke(TPaintForm.Canvas$2(Self));
    }
    /// procedure TPaintForm.PaintRectangles()
-   ///  [line: 192, column: 22, file: PaintForm]
+   ///  [line: 206, column: 22, file: PaintForm]
    ,PaintRectangles:function(Self) {
       TPaintForm.ClearCanvas(Self);
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"orange");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),10,10,250,200);
-      TW3Canvas.setFillStyle(TPaintForm.Canvas$1(Self),"rgba(0,0,200,0.5)");
-      TW3Canvas.FillRectF(TPaintForm.Canvas$1(Self),150,150,250,200);
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"orange");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),10,10,250,200);
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"rgba(0,0,200,0.5)");
+      TW3Canvas.FillRectF(TPaintForm.Canvas$2(Self),150,150,250,200);
    }
    /// procedure TPaintForm.PaintRoundedRect()
-   ///  [line: 228, column: 22, file: PaintForm]
+   ///  [line: 242, column: 22, file: PaintForm]
    ,PaintRoundedRect:function(Self) {
       TPaintForm.ClearCanvas(Self);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(0, 0, 255)");
-      RoundedRect(TPaintForm.Canvas$1(Self),20.5,20.5,160,60,3);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"rgb(255, 0, 0)");
-      RoundedRect(TPaintForm.Canvas$1(Self),20.5,120.5,160,60,10);
-      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$1(Self),"hsl(120, 100%, 50%)");
-      RoundedRect(TPaintForm.Canvas$1(Self),20.5,220.5,160,60,30);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"rgb(0, 0, 255)");
+      RoundedRect(TPaintForm.Canvas$2(Self),20.5,20.5,160,60,3);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"rgb(255, 0, 0)");
+      RoundedRect(TPaintForm.Canvas$2(Self),20.5,120.5,160,60,10);
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"hsl(120, 100%, 50%)");
+      RoundedRect(TPaintForm.Canvas$2(Self),20.5,220.5,160,60,30);
+   }
+   /// procedure TPaintForm.PaintText()
+   ///  [line: 373, column: 22, file: PaintForm]
+   ,PaintText:function(Self) {
+      var oldWidth$1=0;
+      TPaintForm.ClearCanvas(Self);
+      TW3Canvas.setFillStyle(TPaintForm.Canvas$2(Self),"#FF0000");
+      TW3Canvas.setStrokeStyle(TPaintForm.Canvas$2(Self),"#000000");
+      TW3Canvas.setFont(TPaintForm.Canvas$2(Self),"24pt Helvetica");
+      TW3Canvas.StrokeTextF(TPaintForm.Canvas$2(Self),"Stroked",10,40,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintText [line: 381, column: 48, file: PaintForm]").FContext," in TPaintForm.PaintText [line: 381, column: 56, file: PaintForm]"))-20);
+      TW3Canvas.setFont(TPaintForm.Canvas$2(Self),"30pt Times");
+      TW3Canvas.FillTextF(TPaintForm.Canvas$2(Self),"Filled",10,100,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintText [line: 383, column: 46, file: PaintForm]").FContext," in TPaintForm.PaintText [line: 383, column: 54, file: PaintForm]"))-20);
+      TW3Canvas.setFont(TPaintForm.Canvas$2(Self),"bold 36pt monospace");
+      oldWidth$1=TW3Canvas.getLineWidth(TPaintForm.Canvas$2(Self));
+      TW3Canvas.setLineWidth(TPaintForm.Canvas$2(Self),2.5);
+      TW3Canvas.FillTextF(TPaintForm.Canvas$2(Self),"Combined",10,160,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintText [line: 387, column: 48, file: PaintForm]").FContext," in TPaintForm.PaintText [line: 387, column: 56, file: PaintForm]"))-20);
+      TW3Canvas.StrokeTextF(TPaintForm.Canvas$2(Self),"Combined",10,160,TW3CustomGraphicContext.getWidth$1$($Check($Check(TPaintForm.Canvas$2(Self)," in TPaintForm.PaintText [line: 388, column: 50, file: PaintForm]").FContext," in TPaintForm.PaintText [line: 388, column: 58, file: PaintForm]"))-20);
+      TW3Canvas.setLineWidth(TPaintForm.Canvas$2(Self),oldWidth$1);
    }
    ,Destroy:TW3TagObj.Destroy
    ,makeElementTagId:TW3TagObj.makeElementTagId
@@ -5345,23 +5753,52 @@ var TPaintForm= {
 };
 function Handler(paint) {
    var Result=null;
-   Result=function (Sender$3) {
-      $CheckFunc(paint," in  [line: 53, column: 12, file: PaintForm]")();
+   Result=function (Sender$6) {
+      $CheckFunc(paint," in  [line: 60, column: 12, file: PaintForm]")();
    };
    return Result
 };
-function RoundedRect(Canvas$3, x$24, y$10, width, height, radius$1) {
-   TW3Canvas.BeginPath(Canvas$3);
-   TW3Canvas.MoveToF(Canvas$3,x$24,y$10+radius$1);
-   TW3Canvas.LineToF(Canvas$3,x$24,(y$10+height)-radius$1);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24,y$10+height,x$24+radius$1,y$10+height);
-   TW3Canvas.LineToF(Canvas$3,(x$24+width)-radius$1,y$10+height);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24+width,y$10+height,x$24+width,(y$10+height)-radius$1);
-   TW3Canvas.LineToF(Canvas$3,x$24+width,y$10+radius$1);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24+width,y$10,(x$24+width)-radius$1,y$10);
-   TW3Canvas.LineToF(Canvas$3,x$24+radius$1,y$10);
-   TW3Canvas.QuadraticCurveToF(Canvas$3,x$24,y$10,x$24,y$10+radius$1);
-   TW3Canvas.Stroke(Canvas$3);
+function RoundedRect(Canvas$4, x$31, y$17, width, height, radius$1) {
+   TW3Canvas.BeginPath(Canvas$4);
+   TW3Canvas.MoveToF(Canvas$4,x$31,y$17+radius$1);
+   TW3Canvas.LineToF(Canvas$4,x$31,(y$17+height)-radius$1);
+   TW3Canvas.QuadraticCurveToF(Canvas$4,x$31,y$17+height,x$31+radius$1,y$17+height);
+   TW3Canvas.LineToF(Canvas$4,(x$31+width)-radius$1,y$17+height);
+   TW3Canvas.QuadraticCurveToF(Canvas$4,x$31+width,y$17+height,x$31+width,(y$17+height)-radius$1);
+   TW3Canvas.LineToF(Canvas$4,x$31+width,y$17+radius$1);
+   TW3Canvas.QuadraticCurveToF(Canvas$4,x$31+width,y$17,(x$31+width)-radius$1,y$17);
+   TW3Canvas.LineToF(Canvas$4,x$31+radius$1,y$17);
+   TW3Canvas.QuadraticCurveToF(Canvas$4,x$31,y$17,x$31,y$17+radius$1);
+   TW3Canvas.Stroke(Canvas$4);
+};
+/// TW3BufferedImage = class (TObject)
+///  [line: 20, column: 4, file: w3bufferedImage]
+var TW3BufferedImage= {
+   $ClassName:"TW3BufferedImage",
+   $Parent:TObject,
+   $Init:function ($) {
+      TObject.$Init($);
+      $.FCanvas$1=$.FGraphicContext=null;
+      $.FHeight$1=$.FWidth$1=0;
+   }
+   /// constructor TW3BufferedImage.Create(aWidth: Integer; aHeight: Integer)
+   ///  [line: 53, column: 30, file: w3bufferedImage]
+   ,Create$31:function(Self, aWidth$5, aHeight$5) {
+      $Check(Self," in TW3BufferedImage.Create [line: 55, column: 4, file: w3bufferedImage]").FWidth$1=aWidth$5;
+      $Check(Self," in TW3BufferedImage.Create [line: 56, column: 4, file: w3bufferedImage]").FHeight$1=aHeight$5;
+      $Check(Self," in TW3BufferedImage.Create [line: 57, column: 4, file: w3bufferedImage]").FGraphicContext=TW3GraphicContext.Create$10($New(TW3GraphicContext),null);
+      TW3CustomGraphicContext.Allocate($Check($Check(Self," in TW3BufferedImage.Create [line: 58, column: 4, file: w3bufferedImage]").FGraphicContext," in TW3BufferedImage.Create [line: 58, column: 20, file: w3bufferedImage]"),aWidth$5,aHeight$5);
+      $Check(Self," in TW3BufferedImage.Create [line: 59, column: 4, file: w3bufferedImage]").FCanvas$1=TW3Canvas.Create$13($New(TW3Canvas),$Check(Self," in TW3BufferedImage.Create [line: 59, column: 30, file: w3bufferedImage]").FGraphicContext);
+      return Self
+   }
+   /// destructor TW3BufferedImage.Destroy()
+   ///  [line: 62, column: 29, file: w3bufferedImage]
+   ,Destroy:function(Self) {
+      TObject.Free($Check(Self," in TW3BufferedImage.Destroy [line: 64, column: 4, file: w3bufferedImage]").FCanvas$1);
+      TObject.Free($Check(Self," in TW3BufferedImage.Destroy [line: 65, column: 4, file: w3bufferedImage]").FGraphicContext);
+      TObject.Destroy(Self);
+   }
+   ,Destroy$:function($){return $.ClassType.Destroy($)}
 };
 var DefaultDuration=2;
 var Instance=null;
