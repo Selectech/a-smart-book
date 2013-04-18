@@ -6219,10 +6219,10 @@ var TForm1= {
    $Parent:TW3Form,
    $Init:function ($) {
       TW3Form.$Init($);
-      $.W3HorizontalScrollbar1=$.W3Label1=$.W3Label2=$.W3VerticalScrollbar1=null;
+      $.W3HorizontalScrollbar1=$.W3HorizontalScrollbar2=$.W3Label1=$.W3Label2=$.W3VerticalScrollbar1=null;
    }
    /// procedure TForm1.FinalizeObject()
-   ///  [line: 42, column: 18, file: form1]
+   ///  [line: 47, column: 18, file: form1]
    ,FinalizeObject:function(Self) {
       TW3CustomControl.FinalizeObject(Self);
    }
@@ -6267,21 +6267,34 @@ var TForm1= {
       TW3CustomControl.setZoom($Check(Self," in TForm1.InitializeObject [line: 37, column: 1, file: Form1:impl]").W3Label2,1);
       TW3CustomControl.setEnabled($Check($Check(Self," in TForm1.InitializeObject [line: 38, column: 1, file: Form1:impl]").W3Label2," in TForm1.InitializeObject [line: 38, column: 10, file: Form1:impl]"),true);
       TW3Label.setCaption$1($Check($Check(Self," in TForm1.InitializeObject [line: 39, column: 1, file: Form1:impl]").W3Label2," in TForm1.InitializeObject [line: 39, column: 10, file: Form1:impl]"),"");
+      $Check(Self," in TForm1.InitializeObject [line: 40, column: 1, file: Form1:impl]").W3HorizontalScrollbar2=TW3Component.Create$16($New(TW3HorizontalScrollbar),Self);
+      TW3Component.SetName($Check(Self," in TForm1.InitializeObject [line: 41, column: 1, file: Form1:impl]").W3HorizontalScrollbar2,"W3HorizontalScrollbar2");
+      TW3MovableControl.SetVisible($Check($Check(Self," in TForm1.InitializeObject [line: 42, column: 1, file: Form1:impl]").W3HorizontalScrollbar2," in TForm1.InitializeObject [line: 42, column: 24, file: Form1:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TForm1.InitializeObject [line: 43, column: 1, file: Form1:impl]").W3HorizontalScrollbar2," in TForm1.InitializeObject [line: 43, column: 24, file: Form1:impl]"),72,64,224,32);
+      TW3CustomControl.setStyleClass($Check(Self," in TForm1.InitializeObject [line: 44, column: 1, file: Form1:impl]").W3HorizontalScrollbar2,"TW3HorizontalScrollbar");
+      TW3CustomControl.setZoom($Check(Self," in TForm1.InitializeObject [line: 45, column: 1, file: Form1:impl]").W3HorizontalScrollbar2,1);
+      TW3CustomControl.setEnabled($Check($Check(Self," in TForm1.InitializeObject [line: 46, column: 1, file: Form1:impl]").W3HorizontalScrollbar2," in TForm1.InitializeObject [line: 46, column: 24, file: Form1:impl]"),true);
       TW3CustomScrollBar.setTotal($Check($Check(Self," in TForm1.InitializeObject [line: 30, column: 3, file: form1]").W3HorizontalScrollbar1," in TForm1.InitializeObject [line: 30, column: 26, file: form1]"),100);
       TW3CustomScrollBar.setPosition($Check($Check(Self," in TForm1.InitializeObject [line: 31, column: 3, file: form1]").W3HorizontalScrollbar1," in TForm1.InitializeObject [line: 31, column: 26, file: form1]"),50);
       TW3CustomScrollBar.setPageSize($Check($Check(Self," in TForm1.InitializeObject [line: 32, column: 3, file: form1]").W3HorizontalScrollbar1," in TForm1.InitializeObject [line: 32, column: 26, file: form1]"),10);
       TW3CustomControl._setChanged($Check(Self," in TForm1.InitializeObject [line: 33, column: 3, file: form1]").W3HorizontalScrollbar1,function (_implicit_Sender) {
          TW3Label.setCaption$1($Check($Check(Self," in  [line: 34, column: 12, file: form1]").W3Label1," in  [line: 34, column: 21, file: form1]"),("Horizontal: "+$Check($Check(Self," in  [line: 34, column: 58, file: form1]").W3HorizontalScrollbar1," in  [line: 34, column: 81, file: form1]").FPosition.toString()));
       });
-      TW3CustomScrollBar.setTotal($Check($Check(Self," in TForm1.InitializeObject [line: 35, column: 3, file: form1]").W3VerticalScrollbar1," in TForm1.InitializeObject [line: 35, column: 24, file: form1]"),10);
-      TW3CustomScrollBar.setPosition($Check($Check(Self," in TForm1.InitializeObject [line: 36, column: 3, file: form1]").W3VerticalScrollbar1," in TForm1.InitializeObject [line: 36, column: 24, file: form1]"),3);
-      TW3CustomScrollBar.setPageSize($Check($Check(Self," in TForm1.InitializeObject [line: 37, column: 3, file: form1]").W3VerticalScrollbar1," in TForm1.InitializeObject [line: 37, column: 24, file: form1]"),1);
-      TW3CustomControl._setChanged($Check(Self," in TForm1.InitializeObject [line: 38, column: 3, file: form1]").W3VerticalScrollbar1,function (_implicit_Sender$1) {
-         TW3Label.setCaption$1($Check($Check(Self," in  [line: 39, column: 12, file: form1]").W3Label2," in  [line: 39, column: 21, file: form1]"),("Vertical: "+$Check($Check(Self," in  [line: 39, column: 56, file: form1]").W3VerticalScrollbar1," in  [line: 39, column: 77, file: form1]").FPosition.toString()));
+      TW3CustomScrollBar.setTotal($Check($Check(Self," in TForm1.InitializeObject [line: 35, column: 3, file: form1]").W3HorizontalScrollbar2," in TForm1.InitializeObject [line: 35, column: 26, file: form1]"),20);
+      TW3CustomScrollBar.setPosition($Check($Check(Self," in TForm1.InitializeObject [line: 36, column: 3, file: form1]").W3HorizontalScrollbar2," in TForm1.InitializeObject [line: 36, column: 26, file: form1]"),9);
+      TW3CustomScrollBar.setPageSize($Check($Check(Self," in TForm1.InitializeObject [line: 37, column: 3, file: form1]").W3HorizontalScrollbar2," in TForm1.InitializeObject [line: 37, column: 26, file: form1]"),10);
+      TW3CustomControl._setChanged($Check(Self," in TForm1.InitializeObject [line: 38, column: 3, file: form1]").W3HorizontalScrollbar2,function (_implicit_Sender$1) {
+         TW3Label.setCaption$1($Check($Check(Self," in  [line: 39, column: 12, file: form1]").W3Label1," in  [line: 39, column: 21, file: form1]"),("Horizontal: "+$Check($Check(Self," in  [line: 39, column: 58, file: form1]").W3HorizontalScrollbar2," in  [line: 39, column: 81, file: form1]").FPosition.toString()));
+      });
+      TW3CustomScrollBar.setTotal($Check($Check(Self," in TForm1.InitializeObject [line: 40, column: 3, file: form1]").W3VerticalScrollbar1," in TForm1.InitializeObject [line: 40, column: 24, file: form1]"),10);
+      TW3CustomScrollBar.setPosition($Check($Check(Self," in TForm1.InitializeObject [line: 41, column: 3, file: form1]").W3VerticalScrollbar1," in TForm1.InitializeObject [line: 41, column: 24, file: form1]"),3);
+      TW3CustomScrollBar.setPageSize($Check($Check(Self," in TForm1.InitializeObject [line: 42, column: 3, file: form1]").W3VerticalScrollbar1," in TForm1.InitializeObject [line: 42, column: 24, file: form1]"),1);
+      TW3CustomControl._setChanged($Check(Self," in TForm1.InitializeObject [line: 43, column: 3, file: form1]").W3VerticalScrollbar1,function (_implicit_Sender$2) {
+         TW3Label.setCaption$1($Check($Check(Self," in  [line: 44, column: 12, file: form1]").W3Label2," in  [line: 44, column: 21, file: form1]"),("Vertical: "+$Check($Check(Self," in  [line: 44, column: 56, file: form1]").W3VerticalScrollbar1," in  [line: 44, column: 77, file: form1]").FPosition.toString()));
       });
    }
    /// procedure TForm1.Resize()
-   ///  [line: 47, column: 18, file: form1]
+   ///  [line: 52, column: 18, file: form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
    }

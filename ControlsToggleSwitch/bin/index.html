@@ -6111,21 +6111,22 @@ var TApplication= {
    ,ApplicationStarting$:function($){return $.ClassType.ApplicationStarting($)}
 };
 /// TForm1 = class (TW3Form)
-///  [line: 9, column: 3, file: form1]
+///  [line: 10, column: 3, file: form1]
 var TForm1= {
    $ClassName:"TForm1",
    $Parent:TW3Form,
    $Init:function ($) {
       TW3Form.$Init($);
+      $.FFirst=false;
       $.W3ToggleSwitch1=$.W3ToggleSwitch2=$.W3ToggleSwitch3=null;
    }
    /// procedure TForm1.FinalizeObject()
-   ///  [line: 34, column: 18, file: form1]
+   ///  [line: 46, column: 18, file: form1]
    ,FinalizeObject:function(Self) {
       TW3CustomControl.FinalizeObject(Self);
    }
    /// procedure TForm1.InitializeObject()
-   ///  [line: 25, column: 18, file: form1]
+   ///  [line: 27, column: 18, file: form1]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3Component.SetName(Self,"Form1");
@@ -6144,28 +6145,33 @@ var TForm1= {
       $Check(Self," in TForm1.InitializeObject [line: 15, column: 1, file: Form1:impl]").W3ToggleSwitch2=TW3Component.Create$36($New(TW3ToggleSwitch),Self);
       TW3Component.SetName($Check(Self," in TForm1.InitializeObject [line: 16, column: 1, file: Form1:impl]").W3ToggleSwitch2,"W3ToggleSwitch2");
       TW3MovableControl.SetVisible($Check($Check(Self," in TForm1.InitializeObject [line: 17, column: 1, file: Form1:impl]").W3ToggleSwitch2," in TForm1.InitializeObject [line: 17, column: 17, file: Form1:impl]"),true);
-      TW3MovableControl.SetBounds($Check($Check(Self," in TForm1.InitializeObject [line: 18, column: 1, file: Form1:impl]").W3ToggleSwitch2," in TForm1.InitializeObject [line: 18, column: 17, file: Form1:impl]"),32,96,128,48);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TForm1.InitializeObject [line: 18, column: 1, file: Form1:impl]").W3ToggleSwitch2," in TForm1.InitializeObject [line: 18, column: 17, file: Form1:impl]"),176,96,128,48);
       TW3CustomControl.setStyleClass($Check(Self," in TForm1.InitializeObject [line: 19, column: 1, file: Form1:impl]").W3ToggleSwitch2,"TW3ToggleSwitch");
       TW3CustomControl.setZoom($Check(Self," in TForm1.InitializeObject [line: 20, column: 1, file: Form1:impl]").W3ToggleSwitch2,1);
       TW3CustomControl.setEnabled($Check($Check(Self," in TForm1.InitializeObject [line: 21, column: 1, file: Form1:impl]").W3ToggleSwitch2," in TForm1.InitializeObject [line: 21, column: 17, file: Form1:impl]"),true);
-      TW3MovableControl.setColor$3($Check(Self," in TForm1.InitializeObject [line: 22, column: 1, file: Form1:impl]").W3ToggleSwitch2,32768);
-      $Check(Self," in TForm1.InitializeObject [line: 24, column: 1, file: Form1:impl]").W3ToggleSwitch3=TW3Component.Create$36($New(TW3ToggleSwitch),Self);
-      TW3Component.SetName($Check(Self," in TForm1.InitializeObject [line: 25, column: 1, file: Form1:impl]").W3ToggleSwitch3,"W3ToggleSwitch3");
-      TW3MovableControl.SetVisible($Check($Check(Self," in TForm1.InitializeObject [line: 26, column: 1, file: Form1:impl]").W3ToggleSwitch3," in TForm1.InitializeObject [line: 26, column: 17, file: Form1:impl]"),true);
-      TW3MovableControl.SetBounds($Check($Check(Self," in TForm1.InitializeObject [line: 27, column: 1, file: Form1:impl]").W3ToggleSwitch3," in TForm1.InitializeObject [line: 27, column: 17, file: Form1:impl]"),32,160,128,48);
-      TW3CustomControl.setStyleClass($Check(Self," in TForm1.InitializeObject [line: 28, column: 1, file: Form1:impl]").W3ToggleSwitch3,"TW3ToggleSwitch");
-      TW3CustomControl.setZoom($Check(Self," in TForm1.InitializeObject [line: 29, column: 1, file: Form1:impl]").W3ToggleSwitch3,1);
-      TW3CustomControl.setEnabled($Check($Check(Self," in TForm1.InitializeObject [line: 30, column: 1, file: Form1:impl]").W3ToggleSwitch3," in TForm1.InitializeObject [line: 30, column: 17, file: Form1:impl]"),true);
-      TW3MovableControl.setTransparent($Check(Self," in TForm1.InitializeObject [line: 29, column: 3, file: form1]").W3ToggleSwitch3,true);
-      TW3ToggleSwitch.setChecked($Check(Self," in TForm1.InitializeObject [line: 30, column: 3, file: form1]").W3ToggleSwitch3,true);
-      TW3CustomControl._setChanged($Check(Self," in TForm1.InitializeObject [line: 31, column: 3, file: form1]").W3ToggleSwitch1,function (_implicit_Sender) {
-         TW3ToggleSwitch.Toggle($Check(Self," in  [line: 31, column: 39, file: form1]").W3ToggleSwitch2);
+      TW3CustomControl.setAngle($Check(Self," in TForm1.InitializeObject [line: 22, column: 1, file: Form1:impl]").W3ToggleSwitch2,90);
+      TW3MovableControl.setColor$3($Check(Self," in TForm1.InitializeObject [line: 23, column: 1, file: Form1:impl]").W3ToggleSwitch2,32768);
+      $Check(Self," in TForm1.InitializeObject [line: 25, column: 1, file: Form1:impl]").W3ToggleSwitch3=TW3Component.Create$36($New(TW3ToggleSwitch),Self);
+      TW3Component.SetName($Check(Self," in TForm1.InitializeObject [line: 26, column: 1, file: Form1:impl]").W3ToggleSwitch3,"W3ToggleSwitch3");
+      TW3MovableControl.SetVisible($Check($Check(Self," in TForm1.InitializeObject [line: 27, column: 1, file: Form1:impl]").W3ToggleSwitch3," in TForm1.InitializeObject [line: 27, column: 17, file: Form1:impl]"),true);
+      TW3MovableControl.SetBounds($Check($Check(Self," in TForm1.InitializeObject [line: 28, column: 1, file: Form1:impl]").W3ToggleSwitch3," in TForm1.InitializeObject [line: 28, column: 17, file: Form1:impl]"),32,160,128,48);
+      TW3CustomControl.setStyleClass($Check(Self," in TForm1.InitializeObject [line: 29, column: 1, file: Form1:impl]").W3ToggleSwitch3,"TW3ToggleSwitch");
+      TW3CustomControl.setZoom($Check(Self," in TForm1.InitializeObject [line: 30, column: 1, file: Form1:impl]").W3ToggleSwitch3,1);
+      TW3CustomControl.setEnabled($Check($Check(Self," in TForm1.InitializeObject [line: 31, column: 1, file: Form1:impl]").W3ToggleSwitch3," in TForm1.InitializeObject [line: 31, column: 17, file: Form1:impl]"),true);
+      TW3MovableControl.setTransparent($Check(Self," in TForm1.InitializeObject [line: 31, column: 3, file: form1]").W3ToggleSwitch3,true);
+      TW3CustomControl._setChanged($Check(Self," in TForm1.InitializeObject [line: 33, column: 3, file: form1]").W3ToggleSwitch1,function (_implicit_Sender) {
+         TW3ToggleSwitch.Toggle($Check(Self," in  [line: 33, column: 39, file: form1]").W3ToggleSwitch2);
       });
+      $Check(Self," in TForm1.InitializeObject [line: 34, column: 3, file: form1]").FFirst=true;
    }
    /// procedure TForm1.Resize()
-   ///  [line: 39, column: 18, file: form1]
+   ///  [line: 37, column: 18, file: form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
+      if ($Check(Self," in TForm1.Resize [line: 40, column: 6, file: form1]").FFirst) {
+         $Check(Self," in TForm1.Resize [line: 41, column: 5, file: form1]").FFirst=false;
+         TW3ToggleSwitch.setChecked($Check(Self," in TForm1.Resize [line: 42, column: 5, file: form1]").W3ToggleSwitch3,true);
+      }
    }
    ,Destroy:TW3TagObj.Destroy
    ,makeElementTagId:TW3TagObj.makeElementTagId
