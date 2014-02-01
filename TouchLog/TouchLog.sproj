@@ -1,0 +1,621 @@
+<SMART>
+  <project version="2" subversion="0" type="visual">
+    <name>PaintBox</name>
+    <version>
+      <major>0</major>
+      <minor>0</minor>
+      <revision>0</revision>
+    </version>
+    <apple_specific>
+      <format_detection>1</format_detection>
+      <statusbar_style>default</statusbar_style>
+      <webapp_capable>1</webapp_capable>
+    </apple_specific>
+    <options>
+      <use_obfuscation>0</use_obfuscation>
+      <use_codepacking>0</use_codepacking>
+      <use_rangechecking>0</use_rangechecking>
+      <use_instancechecking>0</use_instancechecking>
+      <use_conditionchecking>0</use_conditionchecking>
+      <use_loopchecking>0</use_loopchecking>
+      <use_noinlinemagics>0</use_noinlinemagics>
+      <use_nosourcelocation>0</use_nosourcelocation>
+      <use_nortti>0</use_nortti>
+      <use_smartlinking>1</use_smartlinking>
+      <use_sourcemap>0</use_sourcemap>
+      <use_compresscss>1</use_compresscss>
+      <use_assertions>0</use_assertions>
+      <use_optimize>0</use_optimize>
+      <use_closures>0</use_closures>
+      <use_devirtualize>1</use_devirtualize>
+      <use_generate_manifest>1</use_generate_manifest>
+      <use_serve_manifest>0</use_serve_manifest>
+      <use_server>1</use_server>
+      <pause_after_execution>0</pause_after_execution>
+      <use_css_external>0</use_css_external>
+      <use_verbosity>1</use_verbosity>
+      <use_css_theme>iOS.css</use_css_theme>
+      <use_ro_rodl></use_ro_rodl>
+      <use_hints_level>1</use_hints_level>
+      <use_main_body>1</use_main_body>
+      <javascript_only>0</javascript_only>
+      <use_custom_template>1</use_custom_template>
+      <use_custom_theme>1</use_custom_theme>
+      <output_name></output_name>
+      <execute_type>0</execute_type>
+      <executeable_name></executeable_name>
+      <executeable_params></executeable_params>
+      <use_pre-build_script>0</use_pre-build_script>
+      <pre-build_script></pre-build_script>
+      <use_pre-link_script>0</use_pre-link_script>
+      <pre-link_script></pre-link_script>
+      <use_post-build_script>0</use_post-build_script>
+      <post-build_script></post-build_script>
+      <conditional_defines></conditional_defines>
+      <handle_exceptions>1</handle_exceptions>
+      <auto_refresh>0</auto_refresh>
+    </options>
+    <globals />
+    <files>
+      <file type="unit">
+        <name>TouchLog</name>
+        <created>2012-01-10T20:56:11.000Z</created>
+        <source>
+          <![CDATA[unit TouchLog;
+
+interface
+
+uses w3system, w3ctrls, w3forms, w3application,
+     Main;
+
+type
+
+TApplication=class(TW3CustomApplication)
+private
+  { Private methods }
+public
+  { protected methods }
+  procedure ApplicationStarting;override;
+end;
+
+Implementation
+
+//############################################################################
+// TApplication
+//############################################################################
+
+procedure TApplication.ApplicationStarting;
+var
+  mForm: TW3CustomForm;
+Begin
+  //Add code above this line 
+  mForm:=TPaintBoxForm.Create(display.view);
+  mForm.name:='TouchLog';
+  RegisterFormInstance(mForm,true);
+  inherited;
+End;
+
+
+end.
+]]>
+        </source>
+      </file>
+      <file type="form">
+        <name>Main</name>
+        <created>2012-01-10T20:56:11.000Z</created>
+        <source>
+          <![CDATA[unit Main;
+
+interface
+
+uses w3system, w3graphics, w3ctrls, w3components, w3forms, w3application,
+     w3touch, w3dictionaries;
+
+type
+  TPaintBoxForm=class(TW3form)
+  private
+    FCanvas: TW3GraphicControl;
+    FTextPos: integer;
+  protected
+    procedure InitializeObject; override;
+    procedure FinalizeObject; override;
+    procedure HandleTouchBegins(Sender: TObject; info: TW3TouchData);
+    procedure HandleTouchMoves(Sender: TObject; info: TW3TouchData);
+    procedure HandleTouchEnds(Sender: TObject; info: TW3TouchData);
+    procedure Paint(Sender: TObject; canvas: TW3Canvas);
+    procedure Resize; override;
+    procedure ShowMessage(msg: string);
+    procedure StyleTagObject; override;
+    function  TouchDataToStr(info: TW3TouchData): string;
+    function  TouchListToStr(list: TW3TouchList; shortLog: boolean): string;
+  end;
+
+implementation
+
+procedure TPaintBoxForm.FinalizeObject;
+begin
+  FCanvas.Free;
+  inherited;
+end;
+
+procedure TPaintBoxForm.InitializeObject;
+begin
+  inherited;
+  FTextPos := 12;
+  FCanvas := TW3GraphicControl.Create(Self);
+  FCanvas.OnTouchBegin := HandleTouchBegins;
+  FCanvas.OnTouchMove := HandleTouchMoves;
+  FCanvas.OnTouchEnd := HandleTouchEnds;
+  FCanvas.OnPaint := Paint;
+end;
+
+procedure TPaintBoxForm.HandleTouchBegins(Sender: TObject; info: TW3TouchData);
+begin
+  ShowMessage('B ' + TouchDataToStr(info));
+end;
+
+procedure TPaintBoxForm.HandleTouchMoves(Sender: TObject; info: TW3TouchData);
+begin
+  ShowMessage('M ' + TouchDataToStr(info));
+end;
+
+procedure TPaintBoxForm.HandleTouchEnds(Sender: TObject; info: TW3TouchData);
+begin
+  ShowMessage('E ' + TouchDataToStr(info));
+end;
+
+procedure TPaintBoxForm.Paint(Sender: TObject; canvas: TW3Canvas);
+begin
+  canvas.FillStyle := '#FFFFFF';
+  canvas.FillRectF(0, 0, FCanvas.Width, FCanvas.Height);
+end;
+
+procedure TPaintBoxForm.Resize;
+begin
+  FCanvas.SetBounds(0, 0, Width, Height);
+end;
+
+procedure TPaintBoxForm.ShowMessage(msg: string);
+begin
+  if FTextPos > (FCanvas.Height - 13) then begin
+    FTextPos := 12;
+    FCanvas.Invalidate;
+  end;
+  FCanvas.Canvas.FillStyle := '#000000';
+  FCanvas.Canvas.FillTextF(msg, 10, FTextPos, FCanvas.Canvas.MeasureText(msg).Width);
+  Inc(FTextPos, 13);
+end;
+
+procedure TPaintBoxForm.StyleTagObject;
+begin
+  inherited;
+  StyleClass := 'TW3CustomForm';
+end;
+
+function TPaintBoxForm.TouchDataToStr(info: TW3TouchData): string;
+begin
+  Result :=
+    'T: ' + TouchListToStr(info.Touches, true) + '; ' +
+    'M: ' + TouchListToStr(info.ChangedTouches, false);
+end;
+
+function TPaintBoxForm.TouchListToStr(list: TW3TouchList; shortLog: boolean): string;
+var
+  iTouch: integer;
+begin
+  Result := '';
+  for iTouch := 0 to list.Count - 1 do begin
+    if Result <> '' then
+      Result := Result + ', ';
+    Result := Result + Format('%d:%d,%d', [list[iTouch].Identifier,
+      list[iTouch].ScreenX, list[iTouch].ScreenY]);
+    if not shortLog then
+      Result := Result + Format('/%d,%d/%d,%d',
+        [list[iTouch].ClientX, list[iTouch].ClientY,
+         list[iTouch].PageX, list[iTouch].PageY]);
+  end;
+end;
+
+end.
+]]>
+        </source>
+        <design>
+          <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<DFM>
+	<W3Form clsid="TW3Form">
+		<name>Main</name>
+		<left>0</left>
+		<top>0</top>
+		<width>200</width>
+		<height>64</height>
+		<enabled>true</enabled>
+		<visible>true</visible>
+		<angle>0</angle>
+		<border.radius>0</border.radius>
+		<alpha.blend>false</alpha.blend>
+		<opacity>255</opacity>
+		<zoom>1</zoom>
+		<style.name>TW3Form</style.name>
+		<tag.value>0</tag.value>
+		<color>clNone</color>
+	</W3Form>
+</DFM>
+]]>
+        </design>
+      </file>
+      <file type="html" template="1">
+        <name>index.html</name>
+        <created>2012-01-10T20:56:11.000Z</created>
+        <source>
+          <![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html manifest="app.manifest">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+  <link rel="apple-touch-startup-image" href="%appbootimage%"/>
+  <link rel="apple-touch-icon" href="%appicon%"/>
+
+  <meta name="format-detection" content="telephone=yes"/>
+
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no"/>
+
+  <style>%stylecode%</style>
+  <title>%apptitle%</title>
+
+  <script type="text/javascript">
+  /* This prevents the window being moved by touches,
+     to give the impression of a native app */
+  document.ontouchmove = function(e)
+  { e.preventDefault(); }
+  </script>
+
+  <script type="text/javascript">
+    window.onload = function()
+    {
+      function myApp() {
+        %appcode%
+      };
+      myApp();
+    }
+  </script>
+</head>
+
+<body></body>
+
+
+
+</html>
+]]>
+        </source>
+      </file>
+      <file type="css">
+        <name>app.css</name>
+        <created>2012-01-10T20:56:11.000Z</created>
+        <source>
+          <![CDATA[
+html, body
+{
+  background-color: #000000;
+  overflow: hidden;
+  font: Helvetica, Sans-serif;
+  -webkit-text-size-adjust:none; /* Turn off font resizing */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.TW3ScrollContentIndicator {
+  margin: 0px;
+  padding: 0px;
+  background-color: #222222;
+	border: solid 1px #9A9A9A;
+}
+
+@-webkit-keyframes MOVE-LEFT {
+    0% {
+        -webkit-transform: translateX(100%);
+    }
+    100% {
+        -webkit-transform: translateX(0px);
+    }
+}
+
+
+@-webkit-keyframes MOVE-OUT-LEFT {
+    0% {
+        -webkit-transform: translateX(0%);
+    }
+    100% {
+        -webkit-transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes MOVE-RIGHT {
+    0% {
+        -webkit-transform: translateX(-100%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes MOVE-OUT-RIGHT {
+    0% {
+        -webkit-transform: translateX(0%);
+    }
+    100% {
+        -webkit-transform: translateX(100%);
+        visibility: none;
+    }
+}
+
+
+@-webkit-keyframes ROTATE-FOREVER {
+  from {
+    -webkit-transform: current;
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes STAR-MOVE {
+	from {
+		left: 0;
+		top: 0;
+	}
+	to {
+		left: -10000px;
+		top: -2000px;
+	}
+}
+
+
+.TW3ToolButton
+{
+	/* display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center; */
+
+	-webkit-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
+	border: solid 1px #54617d;
+	border-color: #484e59 #54617d #4c5c7a #54617d;
+
+	cursor: pointer;
+	/* padding: 0px 10px; */
+	font-size: 12px;
+	font-family: Helvetica, Sans-serif;
+	/* line-height: 28px; */
+	height: 30px;
+	/* margin-top: 1px; */
+	/* -webkit-box-sizing: border-box; */
+	-webkit-border-radius: 5px;
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		from(#92a1bf),
+		color-stop(0.25, #798aad),
+		color-stop(0.5, #6276a0),
+		color-stop(0.5, #556a97),
+		color-stop(0.75, #566c98),
+		to(#546993));
+	color: #fff;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.TW3ToolButton:active
+{
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		from(#7d88a5),
+		color-stop(0.25, #58698c),
+		color-stop(0.5, #3a4e78),
+		color-stop(0.5, #253c6a),
+		color-stop(0.75, #273f6d),
+		to(#273f6d));
+	-webkit-tap-highlight-color: transparent;
+}
+
+
+.TW3Panel {
+	background-color: #FFFFFF;
+	-webkit-border-radius: 5px;
+	font-family: Helvetica, Sans-serif;
+	font-size: 12px;
+	border-top: solid 2px #7c7a77;
+	border-right: solid 2px #7c7a77;
+	border-left: solid 2px #7c7a77;
+	border-bottom:solid 2px #7c7a77;
+	-webkit-box-shadow:inset 0 1px rgba(0,0,0,0.1),0 1px rgba(255,255,255,0.3);
+}
+
+.TW3CustomControl
+{
+background-color: #CECECE;
+background-image: -webkit-gradient( linear, left top, left bottom, from(#F2F2F2), to(#7c7a77));
+
+border-top-style: solid;
+border-top-width: 1px;
+border-top: solid 1px #FFFFFF;
+
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom:solid 1px #000000;
+}
+
+
+.TW3Header
+{
+	background-image:-webkit-gradient(linear, left top, left bottom,
+		from(#b2bbca),
+		color-stop(0.25, #a7b0c3),
+		color-stop(0.5, #909cb3),
+		color-stop(0.5, #8593ac),
+		color-stop(0.75, #7c8ba5),
+		to(#73839f));
+	 border-top: 1px solid #cdd5df;
+	 border-bottom: 1px solid #2d3642;
+
+	/* background-image: -webkit-gradient( linear, left top, left bottom, from(rgb(176,188,205)), to(rgb(109,132,162)));
+	 background-image:-webkit-linear-gradient(-90deg, #b0bccd 3px, #879ab3 50%, #8094ae 50%, #6d83a1); */
+
+	-webkit-box-shadow: rgba(33, 33, 33, 0.2) 0px 1px 1px;
+}
+
+.TW3CustomForm
+{
+  -webkit-transform: none;
+	background: #cbd2d8;
+	background-image: -webkit-gradient(linear, left top, right top,
+		from(#c5ccd4),
+		color-stop(0.75, #c5ccd4),
+		color-stop(0.75, transparent),
+		to(transparent));
+	-webkit-background-size: 5px 100%;
+	background-size: 5px 100%;
+	-webkit-user-select: none;
+
+	border-top-color: #8ba2c1;
+  	border-right-color: #5890bf;
+  	border-bottom-color: #4f93ca;
+  	border-left-color: #768fa5;
+  	-webkit-box-shadow: rgba(33, 33, 33, 0.2) 0px 5px 6px
+
+/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAIAAACdaSOZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABdJREFUeNpiPHrmCgMC/GNjYwNSAAEGADdNA3dnzPlQAAAAAElFTkSuQmCC);
+   border-top-color: #8ba2c1;
+  border-right-color: #5890bf;
+  border-bottom-color: #4f93ca;
+  border-left-color: #768fa5;
+  -webkit-box-shadow: rgba(33, 33, 33, 0.2) 0px 5px 6px; */
+}
+
+/* ##########################################################################
+   # TW3Label
+   ########################################################################## */
+
+.TW3Label {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* ##########################################################################
+   # TW3Button
+   ########################################################################## */
+
+.TW3Button {
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 1.1em;
+      font-weight: bold;
+      width: 97%;
+      height: 50px;
+      border: 3px solid #282726;
+      background: -webkit-gradient(linear,left top,left bottom,
+        from(#F2F2F2),
+        to(#8c8a88),
+        color-stop(0.5, #acadae),
+        color-stop(0.5, #82807e) );
+      margin: 0 0 3px 0;
+      text-shadow: 0px 1px 0 #cecece;
+      -webkit-background-origin: padding-box;
+      -webkit-background-clip: border-box;
+      -webkit-border-radius: 8px;
+      -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.TW3Button:active {
+      background: -webkit-gradient(linear,left top,left bottom,
+        from(#8c8a88),
+        to(#F2F2F2),
+        color-stop(0.5, #82807e),
+        color-stop(0.5, #acadae) );
+      color: #FFF
+      text-shadow: none;
+      border-box-shadow: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.TW3Button:disabled {
+	Opacity: 60%;
+	background: #CECECE;
+	color: #444444;
+}
+
+.TW3Button:disabled:active {
+	color: #444444;
+}
+
+
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0;
+}
+ul li {
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background-color: #FFFFFF;
+    border: 1px solid #999999;
+    color: #222222;
+
+    cursor: hand;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: -1px;
+    padding: 12px 12px;
+    text-decoration: none;
+}
+
+ul li:first-child {
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+}
+ul li:last-child {
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+}
+
+ul li:active {
+  color: #FFFFFF;
+  background-image: url(data:image/png;base64,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);
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+}
+]]>
+        </source>
+      </file>
+      <file type="main">
+        <name>TouchLogApplication</name>
+        <created>2014-02-01T18:50:45.012Z</created>
+        <source>
+          <![CDATA[uses TouchLog, Main;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+uses W3System;
+{$ENDIF}
+
+{$IFDEF SMART_INTERNAL_AUTO_REFRESH}
+uses W3AutoRefresh;
+TW3AutoRefresh.Create.Start;
+{$ENDIF}
+
+var Application: TApplication;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+try
+{$ENDIF}
+
+  Application := TApplication.Create;
+  Application.RunApp;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+except
+  on e: Exception do
+    ShowMessage(e.Message);
+end;
+{$ENDIF}
+]]>
+        </source>
+      </file>
+    </files>
+  </project>
+</SMART>
