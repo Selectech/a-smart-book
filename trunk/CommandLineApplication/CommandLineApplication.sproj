@@ -1,0 +1,152 @@
+<SMART>
+  <project version="2" subversion="0" type="console">
+    <name>CommandLineApplication</name>
+    <version>
+      <major>0</major>
+      <minor>0</minor>
+      <revision>0</revision>
+    </version>
+    <apple_specific>
+      <format_detection>0</format_detection>
+      <statusbar_style></statusbar_style>
+      <webapp_capable>0</webapp_capable>
+    </apple_specific>
+    <options>
+      <use_obfuscation>0</use_obfuscation>
+      <use_codepacking>0</use_codepacking>
+      <use_rangechecking>1</use_rangechecking>
+      <use_instancechecking>1</use_instancechecking>
+      <use_conditionchecking>1</use_conditionchecking>
+      <use_loopchecking>1</use_loopchecking>
+      <use_noinlinemagics>0</use_noinlinemagics>
+      <use_nosourcelocation>0</use_nosourcelocation>
+      <use_nortti>0</use_nortti>
+      <use_smartlinking>1</use_smartlinking>
+      <use_sourcemap>0</use_sourcemap>
+      <use_compresscss>0</use_compresscss>
+      <use_assertions>1</use_assertions>
+      <use_optimize>1</use_optimize>
+      <use_closures>0</use_closures>
+      <use_devirtualize>1</use_devirtualize>
+      <use_generate_manifest>1</use_generate_manifest>
+      <use_serve_manifest>0</use_serve_manifest>
+      <use_server>1</use_server>
+      <pause_after_execution>0</pause_after_execution>
+      <use_css_external>0</use_css_external>
+      <use_verbosity>1</use_verbosity>
+      <use_css_theme>iOS.css</use_css_theme>
+      <use_ro_rodl></use_ro_rodl>
+      <use_hints_level>1</use_hints_level>
+      <use_main_body>1</use_main_body>
+      <javascript_only>0</javascript_only>
+      <use_custom_template>0</use_custom_template>
+      <use_custom_theme>0</use_custom_theme>
+      <output_name>index.html</output_name>
+      <execute_type>0</execute_type>
+      <executeable_name></executeable_name>
+      <executeable_params></executeable_params>
+      <use_pre-build_script>0</use_pre-build_script>
+      <pre-build_script></pre-build_script>
+      <use_pre-link_script>0</use_pre-link_script>
+      <pre-link_script></pre-link_script>
+      <use_post-build_script>0</use_post-build_script>
+      <post-build_script></post-build_script>
+      <conditional_defines></conditional_defines>
+      <handle_exceptions>0</handle_exceptions>
+      <auto_refresh>0</auto_refresh>
+    </options>
+    <globals />
+    <files>
+      <file type="unit">
+        <name>CommandLineApplication</name>
+        <created>2014-02-01T18:53:04.998Z</created>
+        <source>
+          <![CDATA[unit CommandLineApplication;
+
+interface
+
+uses
+  w3system, w3scroll, w3console, w3components, w3ctrls, w3application, w3consoleapp, w3lists;
+
+type
+  TApplication = class(TW3CustomConsoleApplication)
+  private
+    { Private methods }
+  protected
+    { Protected methods }
+    procedure ApplicationStarting; override;
+    procedure PopulateConsole; override;
+    procedure ProcessCommand(aCommand: String); override;
+  end;
+
+implementation
+
+//############################################################################
+// TApplication
+//############################################################################
+
+procedure TApplication.ApplicationStarting;
+begin
+  //Initialize objects above inherited;
+  inherited;
+  //UI elements below inherited
+end;
+
+procedure TApplication.PopulateConsole;
+var
+  i: integer;
+  statement: array of string = ["Let's", 'show', 'the', 'scrollbar...'];
+begin
+  Console.WriteLn(Format('The Answer is %d', [42]));
+  Console.Writeln(StrJoin(statement, ' '));
+  for i := 1 to 30 do Console.Writeln(IntToStr(i));
+  Writeln('This will be written to the "console output" window');
+end;
+
+procedure TApplication.ProcessCommand(aCommand: String);
+begin
+  //Handle input string here
+  Console.Writeln('You entered: ' + aCommand);
+end;
+
+
+end.
+]]>
+        </source>
+      </file>
+      <file type="main">
+        <name>CommandLineApplicationApplication</name>
+        <created>2014-02-01T18:53:04.999Z</created>
+        <source>
+          <![CDATA[uses CommandLineApplication;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+uses W3System;
+{$ENDIF}
+
+{$IFDEF SMART_INTERNAL_AUTO_REFRESH}
+uses W3AutoRefresh;
+TW3AutoRefresh.Create.Start;
+{$ENDIF}
+
+var Application: TApplication;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+try
+{$ENDIF}
+
+  Application := TApplication.Create;
+  Application.RunApp;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+except
+  on e: Exception do
+    ShowMessage(e.Message);
+end;
+{$ENDIF}
+]]>
+        </source>
+      </file>
+    </files>
+  </project>
+</SMART>
