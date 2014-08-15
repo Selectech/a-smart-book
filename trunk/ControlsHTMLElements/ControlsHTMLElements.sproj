@@ -1,72 +1,82 @@
 <SMART>
-  <project version="2" subversion="0" type="visual">
-    <name>HTMLElements</name>
-    <version>
-      <major>0</major>
-      <minor>0</minor>
-      <revision>0</revision>
-    </version>
-    <apple_specific>
-      <format_detection>1</format_detection>
-      <statusbar_style>default</statusbar_style>
-      <webapp_capable>1</webapp_capable>
-    </apple_specific>
-    <options>
-      <use_obfuscation>0</use_obfuscation>
-      <use_codepacking>0</use_codepacking>
-      <use_rangechecking>1</use_rangechecking>
-      <use_instancechecking>1</use_instancechecking>
-      <use_conditionchecking>1</use_conditionchecking>
-      <use_loopchecking>1</use_loopchecking>
-      <use_noinlinemagics>0</use_noinlinemagics>
-      <use_nosourcelocation>0</use_nosourcelocation>
-      <use_nortti>0</use_nortti>
-      <use_smartlinking>1</use_smartlinking>
-      <use_sourcemap>0</use_sourcemap>
-      <use_compresscss>1</use_compresscss>
-      <use_assertions>1</use_assertions>
-      <use_optimize>1</use_optimize>
-      <use_closures>1</use_closures>
-      <use_devirtualize>1</use_devirtualize>
-      <use_generate_manifest>1</use_generate_manifest>
-      <use_serve_manifest>0</use_serve_manifest>
-      <use_server>1</use_server>
-      <pause_after_execution>0</pause_after_execution>
-      <use_css_external>0</use_css_external>
-      <use_verbosity>1</use_verbosity>
-      <use_css_theme>iOS.css</use_css_theme>
-      <use_ro_rodl></use_ro_rodl>
-      <use_hints_level>1</use_hints_level>
-      <use_main_body>1</use_main_body>
-      <javascript_only>0</javascript_only>
-      <use_custom_template>1</use_custom_template>
-      <use_custom_theme>1</use_custom_theme>
-      <output_name></output_name>
-      <execute_type>0</execute_type>
-      <executeable_name></executeable_name>
-      <executeable_params></executeable_params>
-      <use_pre-build_script>0</use_pre-build_script>
-      <pre-build_script></pre-build_script>
-      <use_pre-link_script>0</use_pre-link_script>
-      <pre-link_script></pre-link_script>
-      <use_post-build_script>0</use_post-build_script>
-      <post-build_script></post-build_script>
-      <conditional_defines></conditional_defines>
-      <handle_exceptions>1</handle_exceptions>
-      <auto_refresh>0</auto_refresh>
-    </options>
-    <globals />
-    <files>
-      <file type="unit">
-        <name>HTMLElements</name>
-        <created>2013-04-20T18:54:45.000Z</created>
-        <source>
+  <Project version="2" subversion="1">
+    <Name>ControlsHTMLElements</Name>
+    <Created>T00:00:00.000</Created>
+    <Modified>2014-08-14T12:24:36.529</Modified>
+    <Version>
+      <Major>0</Major>
+      <Minor>0</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <Apple>
+      <FormatDetection>1</FormatDetection>
+      <StatusBarStyle>default</StatusBarStyle>
+      <WebAppCapable>1</WebAppCapable>
+    </Apple>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>0</Obfuscation>
+        <RangeChecking>1</RangeChecking>
+        <InstanceChecking>1</InstanceChecking>
+        <ConditionChecking>1</ConditionChecking>
+        <LoopChecking>1</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <EmitSourceLocation>1</EmitSourceLocation>
+        <EmitRTTI>1</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>
+        <HandleExceptions>0</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>1</CompressCSS>
+        <GenerateManifest>1</GenerateManifest>
+        <ExternalCSS>0</ExternalCSS>
+        <Theme>iOS.css</Theme>
+        <CustomTheme>1</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <JavaScriptFileName></JavaScriptFileName>
+        <HtmlFileName>index.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import>
+        <RODLFile></RODLFile>
+        <DataSnapUrl></DataSnapUrl>
+        <DataSnapUnit></DataSnapUnit>
+      </Import>
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>1</Server>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>0</ExecuteType>
+        <ExecuteableName></ExecuteableName>
+        <ExecuteableParams></ExecuteableParams>
+      </Execute>
+    </Options>
+    <Files>
+      <File type="unit">
+        <Name>HTMLElements</Name>
+        <Created>2013-04-20T18:54:45.000Z</Created>
+        <Modified>2014-08-14T12:24:28.221</Modified>
+        <Source>
           <![CDATA[unit HTMLElements;
 
 interface
 
 uses 
-  w3system, w3components, w3forms, w3application, form1;
+  SmartCL.System, SmartCL.Components, SmartCL.Forms, SmartCL.Application, form1;
 
 type
   TApplication = class(TW3CustomApplication)
@@ -95,12 +105,13 @@ end;
 
 end.
 ]]>
-        </source>
-      </file>
-      <file type="html" template="1">
-        <name>default.html</name>
-        <created>2013-04-20T18:54:45.000Z</created>
-        <source>
+        </Source>
+      </File>
+      <File type="html" Template="1">
+        <Name>default.html</Name>
+        <Created>2013-04-20T18:54:45.000Z</Created>
+        <Modified>2014-08-14T12:24:28.221</Modified>
+        <Source>
           <![CDATA[<!DOCTYPE html>
 <html manifest="app.manifest">
 <head>
@@ -138,12 +149,13 @@ end.
 
 </html>
 ]]>
-        </source>
-      </file>
-      <file type="css">
-        <name>Android.css</name>
-        <created>2013-04-20T18:54:45.000Z</created>
-        <source>
+        </Source>
+      </File>
+      <File type="css">
+        <Name>Android.css</Name>
+        <Created>2013-04-20T18:54:45.000Z</Created>
+        <Modified>2014-08-14T12:24:28.222</Modified>
+        <Source>
           <![CDATA[
 html, body
 {
@@ -203,7 +215,7 @@ html, body
 }
 
 /* =============================================
- * TW3ProgressBar:
+ * TSmartCL.Controls.ProgressBar:
  * ============================================= */
 
 
@@ -235,7 +247,7 @@ html, body
 }
 
 
-.TW3ProgressBar {
+.TSmartCL.Controls.ProgressBar {
   border: 2px solid rgba(0,0,0,0.3);
 
   background-color: #FFFFFF;
@@ -322,10 +334,10 @@ html, body
 
 
 /* =============================================
- * TW3Scrollbar
+ * TSmartCL.Scrollbar
  * ============================================= */
 
-.TW3ScrollbarUpBtn {
+.TSmartCL.ScrollbarUpBtn {
   border-top: 1px solid rgba(0,0,0,0.3);
   background-color: #FFFFFF;
   overflow: hidden;
@@ -334,7 +346,7 @@ html, body
 	box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
 }
 
-.TW3ScrollbarDownBtn {
+.TSmartCL.ScrollbarDownBtn {
   border-bottom: 1px solid rgba(0,0,0,0.3);
   background-color: #FFFFFF;
   overflow: hidden;
@@ -343,15 +355,15 @@ html, body
 	box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
 }
 
-.TW3ScrollbarUpBtn:active, .TW3ScrollbarDownBtn:active {
+.TSmartCL.ScrollbarUpBtn:active, .TSmartCL.ScrollbarDownBtn:active {
 	background-color:#E5E5E5;
 }
 
-.TW3ScrollbarDownBtn:hover, .TW3ScrollbarUpBtn:hover {
+.TSmartCL.ScrollbarDownBtn:hover, .TSmartCL.ScrollbarUpBtn:hover {
   cursor: pointer;
 }
 
-.TW3ScrollbarLeftBtn {
+.TSmartCL.ScrollbarLeftBtn {
   border-right: 1px solid rgba(0,0,0,0.3);
   background-color: #FFFFFF;
   overflow: hidden;
@@ -360,7 +372,7 @@ html, body
 	box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
 }
 
-.TW3ScrollbarRightBtn {
+.TSmartCL.ScrollbarRightBtn {
   border-left: 1px solid rgba(0,0,0,0.3);
   background-color: #FFFFFF;
   overflow: hidden;
@@ -369,15 +381,15 @@ html, body
 	box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
 }
 
-.TW3ScrollbarLeftBtn:active, .TW3ScrollbarRightBtn:active {
+.TSmartCL.ScrollbarLeftBtn:active, .TSmartCL.ScrollbarRightBtn:active {
 	background-color:#E5E5E5;
 }
 
-.TW3ScrollbarLeftBtn:hover, .TW3ScrollbarRightBtn:hover {
+.TSmartCL.ScrollbarLeftBtn:hover, .TSmartCL.ScrollbarRightBtn:hover {
   cursor: pointer;
 }
 
-.TW3ScrollbarHandle {
+.TSmartCL.ScrollbarHandle {
   border-radius: 25px;
   border: 1px solid rgba(0,0,0,0.3);
   background-color: #FFFFFF;
@@ -385,11 +397,11 @@ html, body
 	//box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
 }
 
-.TW3ScrollbarHandle:active {
+.TSmartCL.ScrollbarHandle:active {
 	background-color:#E5E5E5;
 }
 
-.TW3ScrollbarHandle:Hover {
+.TSmartCL.ScrollbarHandle:Hover {
   cursor: pointer;
 }
 
@@ -449,10 +461,10 @@ html, body
   }
 
 /* =============================================
- * TW3ScrollContentIndicator
+ * TSmartCL.ScrollContentIndicator
  * ============================================= */
 
-.TW3ScrollContentIndicator
+.TSmartCL.ScrollContentIndicator
   {
     margin: 0px;
     padding: 0px;
@@ -856,16 +868,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TW3Label
+   # TSmartCL.Controls.Label
    ########################################################################## */
 
-.TW3Label, TW3LabelText {
+.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TW3Label:disabled, TW3LabelText:disabled {
+.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }
@@ -1037,18 +1049,19 @@ ul li:active {
 	background:#E5E5E5;
 }
 ]]>
-        </source>
-      </file>
-      <file type="form">
-        <name>Form1</name>
-        <created>2013-04-20T18:54:45.000Z</created>
-        <source>
+        </Source>
+      </File>
+      <File type="form">
+        <Name>Form1</Name>
+        <Created>2013-04-20T18:54:45.000Z</Created>
+        <Modified>2014-08-14T12:24:28.222</Modified>
+        <Source>
           <![CDATA[unit Form1;
 
 interface
 
 uses 
-  w3system, w3graphics, w3components, w3forms, w3fonts, w3borders, w3application, w3elements;
+  SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Elements;
 
 type
   TForm1=class(TW3form)
@@ -1093,97 +1106,73 @@ end;
  
 end.
 ]]>
-        </source>
-        <design>
-          <![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<DFM>
-	<W3Form clsid="TW3Form">
-		<name>Form1</name>
-		<left>0</left>
-		<top>0</top>
-		<width>200</width>
-		<height>64</height>
-		<enabled>true</enabled>
-		<visible>true</visible>
-		<angle>0</angle>
-		<border.radius>0</border.radius>
-		<alpha.blend>false</alpha.blend>
-		<opacity>255</opacity>
-		<zoom>1</zoom>
-		<style.name>TW3Form</style.name>
-		<tag.value>0</tag.value>
-		<color>clNone</color>
-		<children>
-			<W3IFrameHtmlElement clsid="TW3IFrameHtmlElement">
-				<name>W3IFrameHtmlElement1</name>
-				<left>32</left>
-				<top>32</top>
-				<width>256</width>
-				<height>128</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>1</zoom>
-				<style.name>TW3IFrameHtmlElement</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-			</W3IFrameHtmlElement>
-			<W3DIVHtmlElement clsid="TW3DIVHtmlElement">
-				<name>W3DIVHtmlElement1</name>
-				<left>32</left>
-				<top>192</top>
-				<width>256</width>
-				<height>128</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>1</zoom>
-				<style.name>TW3DIVHtmlElement</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-			</W3DIVHtmlElement>
-			<W3PREHtmlElement clsid="TW3PREHtmlElement">
-				<name>W3PREHtmlElement1</name>
-				<left>32</left>
-				<top>352</top>
-				<width>256</width>
-				<height>128</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>1</zoom>
-				<style.name>TW3PREHtmlElement</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-			</W3PREHtmlElement>
-		</children>
-	</W3Form>
-</DFM>
-]]>
-        </design>
-      </file>
-      <file type="main">
-        <name>ControlsHTMLElements</name>
-        <created>2014-02-01T18:45:24.511Z</created>
-        <source>
+        </Source>
+        <Design>
+          <![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Form version="2" subversion="1">
+  <Created>2014-08-14T12:24:28.223</Created>
+  <Modified>2014-08-14T12:24:28.223</Modified>
+  <object type="TW3Form">
+    <Caption>W3Form</Caption>
+    <Width>200</Width>
+    <StyleClass>TW3Form</StyleClass>
+    <Height>64</Height>
+    <BorderRadius>0</BorderRadius>
+    <Color>536870911</Color>
+    <Name>Form1</Name>
+    <object type="TW3IFrameHTMLElement">
+      <Width>256</Width>
+      <Top>32</Top>
+      <StyleClass>TW3IFrameHtmlElement</StyleClass>
+      <Left>32</Left>
+      <Height>128</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>W3IFrameHtmlElement1</Name>
+    </object>
+    <object type="TW3DIVHtmlElement">
+      <Width>256</Width>
+      <Top>192</Top>
+      <StyleClass>TW3DIVHtmlElement</StyleClass>
+      <Left>32</Left>
+      <Height>128</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>W3DIVHtmlElement1</Name>
+    </object>
+    <object type="TW3PREHtmlElement">
+      <Width>256</Width>
+      <Top>352</Top>
+      <StyleClass>TW3PREHtmlElement</StyleClass>
+      <Left>32</Left>
+      <Height>128</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>W3PREHtmlElement1</Name>
+    </object>
+  </object>
+</Form>]]>
+        </Design>
+        <AutoCreate>
+          <IsAutoCreate>0</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>0</Order>
+        </AutoCreate>
+      </File>
+      <File type="main">
+        <Name>ControlsHTMLElements</Name>
+        <Created>2014-02-01T18:45:24.511Z</Created>
+        <Modified>2014-08-14T12:24:28.228</Modified>
+        <Source>
           <![CDATA[uses HTMLElements, Form1;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
-uses W3System;
+uses SmartCL.System;
 {$ENDIF}
 
 {$IFDEF SMART_INTERNAL_AUTO_REFRESH}
-uses W3AutoRefresh;
-TW3AutoRefresh.Create.Start;
+uses SmartCL.AutoRefresh;
+TSmartCL.AutoRefresh.Create.Start;
 {$ENDIF}
 
 var Application: TApplication;
@@ -1202,8 +1191,10 @@ except
 end;
 {$ENDIF}
 ]]>
-        </source>
-      </file>
-    </files>
-  </project>
+        </Source>
+      </File>
+    </Files>
+    <Target>Browser</Target>
+    <Generator>Visual Component Project</Generator>
+  </Project>
 </SMART>
