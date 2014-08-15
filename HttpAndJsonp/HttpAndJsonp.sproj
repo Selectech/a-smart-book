@@ -1,72 +1,82 @@
 <SMART>
-  <project version="2" subversion="0" type="visual">
-    <name>HttpAndJsonp</name>
-    <version>
-      <major>0</major>
-      <minor>0</minor>
-      <revision>0</revision>
-    </version>
-    <apple_specific>
-      <format_detection>1</format_detection>
-      <statusbar_style>default</statusbar_style>
-      <webapp_capable>1</webapp_capable>
-    </apple_specific>
-    <options>
-      <use_obfuscation>0</use_obfuscation>
-      <use_codepacking>0</use_codepacking>
-      <use_rangechecking>1</use_rangechecking>
-      <use_instancechecking>1</use_instancechecking>
-      <use_conditionchecking>1</use_conditionchecking>
-      <use_loopchecking>1</use_loopchecking>
-      <use_noinlinemagics>0</use_noinlinemagics>
-      <use_nosourcelocation>0</use_nosourcelocation>
-      <use_nortti>0</use_nortti>
-      <use_smartlinking>1</use_smartlinking>
-      <use_sourcemap>0</use_sourcemap>
-      <use_compresscss>1</use_compresscss>
-      <use_assertions>1</use_assertions>
-      <use_optimize>1</use_optimize>
-      <use_closures>1</use_closures>
-      <use_devirtualize>1</use_devirtualize>
-      <use_generate_manifest>1</use_generate_manifest>
-      <use_serve_manifest>0</use_serve_manifest>
-      <use_server>1</use_server>
-      <pause_after_execution>0</pause_after_execution>
-      <use_css_external>0</use_css_external>
-      <use_verbosity>1</use_verbosity>
-      <use_css_theme>iOS.css</use_css_theme>
-      <use_ro_rodl></use_ro_rodl>
-      <use_hints_level>1</use_hints_level>
-      <use_main_body>1</use_main_body>
-      <javascript_only>0</javascript_only>
-      <use_custom_template>1</use_custom_template>
-      <use_custom_theme>1</use_custom_theme>
-      <output_name></output_name>
-      <execute_type>0</execute_type>
-      <executeable_name></executeable_name>
-      <executeable_params></executeable_params>
-      <use_pre-build_script>0</use_pre-build_script>
-      <pre-build_script></pre-build_script>
-      <use_pre-link_script>0</use_pre-link_script>
-      <pre-link_script></pre-link_script>
-      <use_post-build_script>0</use_post-build_script>
-      <post-build_script></post-build_script>
-      <conditional_defines></conditional_defines>
-      <handle_exceptions>1</handle_exceptions>
-      <auto_refresh>0</auto_refresh>
-    </options>
-    <globals />
-    <files>
-      <file type="unit">
-        <name>HttpAndJsonp</name>
-        <created>2012-08-27T18:55:19.000Z</created>
-        <source>
+  <Project version="2" subversion="1">
+    <Name>HttpAndJsonp</Name>
+    <Created>T00:00:00.000</Created>
+    <Modified>2014-08-14T12:40:00.082</Modified>
+    <Version>
+      <Major>0</Major>
+      <Minor>0</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <Apple>
+      <FormatDetection>1</FormatDetection>
+      <StatusBarStyle>default</StatusBarStyle>
+      <WebAppCapable>1</WebAppCapable>
+    </Apple>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>0</Obfuscation>
+        <RangeChecking>1</RangeChecking>
+        <InstanceChecking>1</InstanceChecking>
+        <ConditionChecking>1</ConditionChecking>
+        <LoopChecking>1</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <EmitSourceLocation>1</EmitSourceLocation>
+        <EmitRTTI>1</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>
+        <HandleExceptions>0</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>1</CompressCSS>
+        <GenerateManifest>1</GenerateManifest>
+        <ExternalCSS>0</ExternalCSS>
+        <Theme>iOS.css</Theme>
+        <CustomTheme>0</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <JavaScriptFileName></JavaScriptFileName>
+        <HtmlFileName>index.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import>
+        <RODLFile></RODLFile>
+        <DataSnapUrl></DataSnapUrl>
+        <DataSnapUnit></DataSnapUnit>
+      </Import>
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>1</Server>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>0</ExecuteType>
+        <ExecuteableName></ExecuteableName>
+        <ExecuteableParams></ExecuteableParams>
+      </Execute>
+    </Options>
+    <Files>
+      <File type="unit">
+        <Name>HttpAndJsonp</Name>
+        <Created>2012-08-27T18:55:19.000Z</Created>
+        <Modified>2014-08-14T12:39:39.973</Modified>
+        <Source>
           <![CDATA[unit HttpAndJsonp;
 
 interface
 
 uses 
-  w3system, w3ctrls, w3components, w3forms, w3application, form1;
+  SmartCL.System, SmartCL.Controls, SmartCL.Components, SmartCL.Forms, SmartCL.Application, form1;
 
 type
   TApplication = class(TW3CustomApplication)
@@ -98,19 +108,20 @@ end;
 
 end.
 ]]>
-        </source>
-      </file>
-      <file type="form">
-        <name>Form1</name>
-        <created>2012-08-27T18:55:19.000Z</created>
-        <source>
+        </Source>
+      </File>
+      <File type="form">
+        <Name>Form1</Name>
+        <Created>2012-08-27T18:55:19.000Z</Created>
+        <Modified>2014-08-14T12:39:54.057</Modified>
+        <Source>
           <![CDATA[unit Form1;
 
 interface
 
 uses 
-  w3system, w3graphics, w3ctrls, w3components, w3forms, w3fonts, w3borders,
-  w3application, w3inet;
+  SmartCL.System, SmartCL.Graphics, SmartCL.Controls, SmartCL.Components, SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders,
+  SmartCL.Application, SmartCL.Inet;
 
 type
   TForm1=class(TW3form)
@@ -217,217 +228,121 @@ end;
 end.
 
 ]]>
-        </source>
-        <design>
-          <![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<DFM>
-	<W3Form clsid="TW3Form">
-		<name>Form1</name>
-		<left>0</left>
-		<top>0</top>
-		<width>200</width>
-		<height>64</height>
-		<enabled>true</enabled>
-		<visible>true</visible>
-		<angle>0</angle>
-		<border.radius>0</border.radius>
-		<alpha.blend>false</alpha.blend>
-		<opacity>255</opacity>
-		<zoom>0</zoom>
-		<style.name>TW3Form</style.name>
-		<tag.value>0</tag.value>
-		<color>clNone</color>
-		<children>
-			<W3Button clsid="TW3Button">
-				<name>btnGetInetTxt</name>
-				<left>320</left>
-				<top>32</top>
-				<width>256</width>
-				<height>31</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Button</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<caption>Get res/inet.txt</caption>
-			</W3Button>
-			<W3Button clsid="TW3Button">
-				<name>btnGetGoogle</name>
-				<left>32</left>
-				<top>32</top>
-				<width>256</width>
-				<height>31</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Button</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<caption>Get www.google.com</caption>
-			</W3Button>
-			<W3Label clsid="TW3Label">
-				<name>W3Label1</name>
-				<left>32</left>
-				<top>160</top>
-				<width>256</width>
-				<height>24</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Label</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<text>Log</text>
-			</W3Label>
-			<W3Label clsid="TW3Label">
-				<name>W3Label2</name>
-				<left>320</left>
-				<top>160</top>
-				<width>256</width>
-				<height>24</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Label</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<text>Result</text>
-			</W3Label>
-			<W3Memo clsid="TW3Memo">
-				<name>outLog</name>
-				<left>32</left>
-				<top>192</top>
-				<width>256</width>
-				<height>280</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Memo</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<text/>
-			</W3Memo>
-			<W3Memo clsid="TW3Memo">
-				<name>outResult</name>
-				<left>320</left>
-				<top>192</top>
-				<width>256</width>
-				<height>280</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Memo</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<text/>
-			</W3Memo>
-			<W3Button clsid="TW3Button">
-				<name>btnGetInvalidXyz</name>
-				<left>32</left>
-				<top>72</top>
-				<width>256</width>
-				<height>31</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Button</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<caption>Get www.invalid.xyz</caption>
-			</W3Button>
-			<W3Button clsid="TW3Button">
-				<name>btnGetResNotHere</name>
-				<left>320</left>
-				<top>72</top>
-				<width>256</width>
-				<height>31</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Button</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<caption>Get res/not.here</caption>
-			</W3Button>
-			<W3Button clsid="TW3Button">
-				<name>btnJsonpReddit</name>
-				<left>32</left>
-				<top>112</top>
-				<width>256</width>
-				<height>31</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Button</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<caption>JSONP reddit.com</caption>
-			</W3Button>
-			<W3Button clsid="TW3Button">
-				<name>btnJsonpInvalid</name>
-				<left>320</left>
-				<top>112</top>
-				<width>256</width>
-				<height>31</height>
-				<enabled>true</enabled>
-				<visible>true</visible>
-				<angle>0</angle>
-				<border.radius>0</border.radius>
-				<alpha.blend>false</alpha.blend>
-				<opacity>255</opacity>
-				<zoom>0</zoom>
-				<style.name>TW3Button</style.name>
-				<tag.value>0</tag.value>
-				<color>clNone</color>
-				<caption>JSONP invalid.xyz</caption>
-			</W3Button>
-		</children>
-	</W3Form>
-</DFM>
-]]>
-        </design>
-      </file>
-      <file type="html" template="1">
-        <name>index.html</name>
-        <created>2012-08-27T18:55:19.000Z</created>
-        <source>
+        </Source>
+        <Design>
+          <![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Form version="2" subversion="1">
+  <Created>2014-08-14T12:39:39.973</Created>
+  <Modified>2014-08-14T12:39:39.973</Modified>
+  <object type="TW3Form">
+    <Caption>W3Form</Caption>
+    <Zoom>0</Zoom>
+    <Width>200</Width>
+    <StyleClass>TW3Form</StyleClass>
+    <Height>64</Height>
+    <BorderRadius>0</BorderRadius>
+    <Color>536870911</Color>
+    <Name>Form1</Name>
+    <object type="TW3Button">
+      <Caption>Get res/inet.txt</Caption>
+      <Width>256</Width>
+      <Top>32</Top>
+      <StyleClass>TW3Button</StyleClass>
+      <Left>320</Left>
+      <Height>31</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>btnGetInetTxt</Name>
+    </object>
+    <object type="TW3Button">
+      <Caption>Get www.google.com</Caption>
+      <Width>256</Width>
+      <Top>32</Top>
+      <StyleClass>TW3Button</StyleClass>
+      <Left>32</Left>
+      <Height>31</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>btnGetGoogle</Name>
+    </object>
+    <object type="TW3Memo">
+      <Width>256</Width>
+      <Top>192</Top>
+      <StyleClass>TW3Memo</StyleClass>
+      <Left>32</Left>
+      <Height>280</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>outLog</Name>
+    </object>
+    <object type="TW3Memo">
+      <Width>256</Width>
+      <Top>192</Top>
+      <StyleClass>TW3Memo</StyleClass>
+      <Left>320</Left>
+      <Height>280</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>outResult</Name>
+    </object>
+    <object type="TW3Button">
+      <Caption>Get www.invalid.xyz</Caption>
+      <Width>256</Width>
+      <Top>72</Top>
+      <StyleClass>TW3Button</StyleClass>
+      <Left>32</Left>
+      <Height>31</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>btnGetInvalidXyz</Name>
+    </object>
+    <object type="TW3Button">
+      <Caption>Get res/not.here</Caption>
+      <Width>256</Width>
+      <Top>72</Top>
+      <StyleClass>TW3Button</StyleClass>
+      <Left>320</Left>
+      <Height>31</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>btnGetResNotHere</Name>
+    </object>
+    <object type="TW3Button">
+      <Caption>JSONP reddit.com</Caption>
+      <Width>256</Width>
+      <Top>112</Top>
+      <StyleClass>TW3Button</StyleClass>
+      <Left>32</Left>
+      <Height>31</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>btnJsonpReddit</Name>
+    </object>
+    <object type="TW3Button">
+      <Caption>JSONP invalid.xyz</Caption>
+      <Width>256</Width>
+      <Top>112</Top>
+      <StyleClass>TW3Button</StyleClass>
+      <Left>320</Left>
+      <Height>31</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>btnJsonpInvalid</Name>
+    </object>
+  </object>
+</Form>]]>
+        </Design>
+        <AutoCreate>
+          <IsAutoCreate>0</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>1</Order>
+        </AutoCreate>
+      </File>
+      <File type="html" Template="1">
+        <Name>index.html</Name>
+        <Created>2012-08-27T18:55:19.000Z</Created>
+        <Modified>2014-08-14T12:39:39.987</Modified>
+        <Source>
           <![CDATA[<!DOCTYPE html>
 <html manifest="app.manifest">
 <head>
@@ -467,12 +382,13 @@ end.
 
 </html>
 ]]>
-        </source>
-      </file>
-      <file type="css">
-        <name>app.css</name>
-        <created>2012-08-27T18:55:19.000Z</created>
-        <source>
+        </Source>
+      </File>
+      <File type="css">
+        <Name>app.css</Name>
+        <Created>2012-08-27T18:55:19.000Z</Created>
+        <Modified>2014-08-14T12:39:39.987</Modified>
+        <Source>
           <![CDATA[
 html, body
 {
@@ -534,10 +450,10 @@ html, body
   }
 
 /* =============================================
- * TW3ScrollContentIndicator
+ * TSmartCL.ScrollContentIndicator
  * ============================================= */
 
-.TW3ScrollContentIndicator
+.TSmartCL.ScrollContentIndicator
   {
     margin: 0px;
     padding: 0px;
@@ -923,16 +839,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TW3Label
+   # TSmartCL.Controls.Label
    ########################################################################## */
 
-.TW3Label, TW3LabelText {
+.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TW3Label:disabled, TW3LabelText:disabled {
+.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }
@@ -1046,26 +962,28 @@ ul li:active {
   background-repeat: repeat-x;
 }
 ]]>
-        </source>
-      </file>
-      <file type="resource">
-        <name>inet.txt</name>
-        <created>2012-08-27T19:19:00.000Z</created>
-        <data>WW91IHNob3VsZCBhbHdheXMga2VlcCBpbiBtaW5kIHRoYXQgYSBTbWFydCBhcHBsaWNhdGlvbiBy&#13;&#10;dW5zIGluIGEgYnJvd3NlciBhbmQgYXMgc3VjaCBkb2Vzbid0IGhhdmUgYWNjZXNzIHRvIGZpbGVz&#13;&#10;IG9uIHRoZSBsb2NhbCBzeXN0ZW0gKHVubGVzcyB5b3UgYXJlIHVzaW5nIFtQaG9uZUdhcF0oI3Bo&#13;&#10;b25lZ2FwKSB3cmFwcGVycykuIEFsbCByZXNvdXJjZXMgdGhhdCBjb21lIHdpdGggdGhlIGFwcGxp&#13;&#10;Y2F0aW9uIG11c3QgdGhlcmVmb3JlIGVpdGhlciBiZSBjb21waWxlZCBpbiBvciBhY2Nlc3NlZCBh&#13;&#10;cyBhIGZpbGUgb24gdGhlIHNlcnZlciB3aXRoIGEgKmh0dHAqIHJlcXVlc3QuDQoNClRoaXMgc2Vj&#13;&#10;dGlvbiBzaG93cyBob3cgdG8gZXhlY3V0ZSBuZXR3b3JrIHJlcXVlc3RzIGZyb20gYSBTbWFydCBh&#13;&#10;cHBsaWNhdGlvbiwgZWl0aGVyIGFzIGEgcGxhaW4gWypodHRwKl0oI3J0bC1uZXR3b3JraW5nLWh0&#13;&#10;dHApIHJlcXVlc3Qgb3IgYXMgYSBbSlNPTlBdKCNydGwtbmV0d29ya2luZy1qc29ucCkgcmVxdWVz&#13;&#10;dC4gQm90aCBhcmUgaW1wbGVtZW50ZWQgaW4gdGhlICp3M2luZXQqIHVuaXQu</data>
-      </file>
-      <file type="main">
-        <name>HttpAndJsonpApplication</name>
-        <created>2014-02-01T18:49:10.052Z</created>
-        <source>
+        </Source>
+      </File>
+      <File type="resource">
+        <Name>inet.txt</Name>
+        <Created>2012-08-27T19:19:00.000Z</Created>
+        <Modified>2014-08-14T12:39:39.988</Modified>
+        <Data>WW91IHNob3VsZCBhbHdheXMga2VlcCBpbiBtaW5kIHRoYXQgYSBTbWFydCBhcHBsaWNhdGlvbiBydW5zIGluIGEgYnJvd3NlciBhbmQgYXMgc3VjaCBkb2Vzbid0IGhhdmUgYWNjZXNzIHRvIGZpbGVzIG9uIHRoZSBsb2NhbCBzeXN0ZW0gKHVubGVzcyB5b3UgYXJlIHVzaW5nIFtQaG9uZUdhcF0oI3Bob25lZ2FwKSB3cmFwcGVycykuIEFsbCByZXNvdXJjZXMgdGhhdCBjb21lIHdpdGggdGhlIGFwcGxpY2F0aW9uIG11c3QgdGhlcmVmb3JlIGVpdGhlciBiZSBjb21waWxlZCBpbiBvciBhY2Nlc3NlZCBhcyBhIGZpbGUgb24gdGhlIHNlcnZlciB3aXRoIGEgKmh0dHAqIHJlcXVlc3QuDQoNClRoaXMgc2VjdGlvbiBzaG93cyBob3cgdG8gZXhlY3V0ZSBuZXR3b3JrIHJlcXVlc3RzIGZyb20gYSBTbWFydCBhcHBsaWNhdGlvbiwgZWl0aGVyIGFzIGEgcGxhaW4gWypodHRwKl0oI3J0bC1uZXR3b3JraW5nLWh0dHApIHJlcXVlc3Qgb3IgYXMgYSBbSlNPTlBdKCNydGwtbmV0d29ya2luZy1qc29ucCkgcmVxdWVzdC4gQm90aCBhcmUgaW1wbGVtZW50ZWQgaW4gdGhlICp3M2luZXQqIHVuaXQu</Data>
+      </File>
+      <File type="main">
+        <Name>HttpAndJsonpApplication</Name>
+        <Created>2014-02-01T18:49:10.052Z</Created>
+        <Modified>2014-08-14T12:39:39.988</Modified>
+        <Source>
           <![CDATA[uses HttpAndJsonp, Form1;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
-uses W3System;
+uses SmartCL.System;
 {$ENDIF}
 
 {$IFDEF SMART_INTERNAL_AUTO_REFRESH}
-uses W3AutoRefresh;
-TW3AutoRefresh.Create.Start;
+uses SmartCL.AutoRefresh;
+TSmartCL.AutoRefresh.Create.Start;
 {$ENDIF}
 
 var Application: TApplication;
@@ -1084,8 +1002,10 @@ except
 end;
 {$ENDIF}
 ]]>
-        </source>
-      </file>
-    </files>
-  </project>
+        </Source>
+      </File>
+    </Files>
+    <Target>Browser</Target>
+    <Generator>Visual Component Project</Generator>
+  </Project>
 </SMART>
