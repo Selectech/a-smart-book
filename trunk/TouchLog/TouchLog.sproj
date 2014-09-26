@@ -1,8 +1,8 @@
 <SMART>
-  <Project version="2" subversion="1">
+  <Project version="2" subversion="0">
     <Name>TouchLog</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2014-08-14T12:42:53.910</Modified>
+    <Modified>2014-09-23T23:55:41.872</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -30,100 +30,55 @@
         <EmitRTTI>1</EmitRTTI>
         <Devirtualize>1</Devirtualize>
         <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
         <SmartLinking>1</SmartLinking>
         <Verbosity>1</Verbosity>
       </Codegen>
       <ConditionalDefines>
         <HandleExceptions>0</HandleExceptions>
         <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
       </ConditionalDefines>
       <Linker>
         <SourceMap>0</SourceMap>
         <CompressCSS>1</CompressCSS>
-        <GenerateManifest>1</GenerateManifest>
+        <GenerateMobileManifest>1</GenerateMobileManifest>
+        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
         <ExternalCSS>0</ExternalCSS>
         <Theme>iOS.css</Theme>
         <CustomTheme>1</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
       <Output>
-        <JavaScriptFileName></JavaScriptFileName>
         <HtmlFileName>index.html</HtmlFileName>
         <OutputFilePath>www\</OutputFilePath>
       </Output>
-      <Import>
-        <RODLFile></RODLFile>
-        <DataSnapUrl></DataSnapUrl>
-        <DataSnapUnit></DataSnapUnit>
-      </Import>
+      <Import />
       <Execute>
         <ServeManifest>0</ServeManifest>
         <Server>1</Server>
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>0</ExecuteType>
-        <ExecuteableName></ExecuteableName>
-        <ExecuteableParams></ExecuteableParams>
       </Execute>
     </Options>
     <Files>
-      <File type="unit">
-        <Name>TouchLog</Name>
-        <Created>2012-01-10T20:56:11.000Z</Created>
-        <Modified>2014-08-14T12:42:26.698</Modified>
-        <Source>
-          <![CDATA[unit TouchLog;
-
-interface
-
-uses SmartCL.System, SmartCL.Controls, SmartCL.Forms, SmartCL.Application,
-     Main;
-
-type
-
-TApplication=class(TW3CustomApplication)
-private
-  { Private methods }
-public
-  { protected methods }
-  procedure ApplicationStarting;override;
-end;
-
-Implementation
-
-//############################################################################
-// TApplication
-//############################################################################
-
-procedure TApplication.ApplicationStarting;
-var
-  mForm: TW3CustomForm;
-Begin
-  //Add code above this line 
-  mForm:=TPaintBoxForm.Create(display.view);
-  mForm.name:='TouchLog';
-  RegisterFormInstance(mForm,true);
-  inherited;
-End;
-
-
-end.
-]]>
-        </Source>
-      </File>
       <File type="form">
         <Name>Main</Name>
         <Created>2012-01-10T20:56:11.000Z</Created>
-        <Modified>2014-08-14T12:42:46.495</Modified>
+        <Modified>2014-09-23T23:53:39.688</Modified>
         <Source>
           <![CDATA[unit Main;
 
 interface
 
-uses SmartCL.System, SmartCL.Graphics, SmartCL.Controls, SmartCL.Components, SmartCL.Forms, SmartCL.Application,
-     SmartCL.Touch, SmartCL.Dictionaries;
+uses
+  SmartCL.System, SmartCL.Graphics, SmartCL.Controls, SmartCL.Components,
+  SmartCL.Forms, SmartCL.Application, SmartCL.Touch, SmartCL.Dictionaries;
 
 type
-  TPaintBoxForm=class(TW3form)
+  TPaintBoxForm = class(TW3form)
   private
     FCanvas: TW3GraphicControl;
     FTextPos: integer;
@@ -142,6 +97,8 @@ type
   end;
 
 implementation
+
+{ TPaintBoxForm }
 
 procedure TPaintBoxForm.FinalizeObject;
 begin
@@ -227,12 +184,11 @@ begin
   end;
 end;
 
-end.
-]]>
+end.]]>
         </Source>
         <Design>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<Form version="2" subversion="1">
+<Form version="2" subversion="0">
   <Created>2014-08-14T12:42:26.699</Created>
   <Modified>2014-08-14T12:42:26.699</Modified>
   <object type="TW3Form">
@@ -500,10 +456,10 @@ border-bottom:solid 1px #000000;
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label {
+.TW3Label {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -597,26 +553,17 @@ ul li:active {
       <File type="main">
         <Name>TouchLog</Name>
         <Created>2014-02-01T18:50:45.012Z</Created>
-        <Modified>2014-08-14T12:42:46.497</Modified>
+        <Modified>2014-09-23T23:55:18.713</Modified>
         <Source>
-          <![CDATA[uses TouchLog, Main;
-
-{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
-uses SmartCL.System;
-{$ENDIF}
-
-{$IFDEF SMART_INTERNAL_AUTO_REFRESH}
-uses SmartCL.AutoRefresh;
-TSmartCL.AutoRefresh.Create.Start;
-{$ENDIF}
-
-var Application: TApplication;
+          <![CDATA[uses
+  SmartCL.System, SmartCL.Application, Main;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
 try
 {$ENDIF}
 
-  Application := TApplication.Create;
+  var Application := TW3CustomApplication.Create;
+  Application.CreateForm(TPaintBoxForm, True);
   Application.RunApp;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
@@ -624,8 +571,7 @@ except
   on e: Exception do
     ShowMessage(e.Message);
 end;
-{$ENDIF}
-]]>
+{$ENDIF}]]>
         </Source>
       </File>
     </Files>

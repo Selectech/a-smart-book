@@ -149,7 +149,7 @@ begin
   lblLeft.AlignText := taLeft;
   lblCenter.AlignText := taCenter;
   lblRight.AlignText := taRight;
-  SmartCL.Controls.Label4.Container.Font.Size := 24;
+  W3Label4.Container.Font.Size := 24;
 end;
  
 Procedure TForm1.FinalizeObject;
@@ -184,87 +184,87 @@ end.
     <BorderRadius>0</BorderRadius>
     <Color>536870911</Color>
     <Name>Form1</Name>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>Label 2</Caption>
       <Width>200</Width>
       <Top>104</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Left>168</Left>
       <Height>24</Height>
       <Enabled>False</Enabled>
       <BorderRadius>0</BorderRadius>
       <Opacity>128</Opacity>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label2</Name>
+      <Name>W3Label2</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>Label 4</Caption>
       <Width>200</Width>
       <Top>64</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Left>96</Left>
       <Height>48</Height>
       <BorderRadius>15</BorderRadius>
       <Angle>45</Angle>
       <Color>65535</Color>
-      <Name>SmartCL.Controls.Label4</Name>
+      <Name>W3Label4</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>Label 3</Caption>
       <Width>200</Width>
       <Top>60</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Left>132</Left>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Angle>350</Angle>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label3</Name>
+      <Name>W3Label3</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>Left</Caption>
       <Width>200</Width>
       <Top>168</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Left>96</Left>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
       <Name>lblLeft</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>Center</Caption>
       <Width>200</Width>
       <Top>200</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Left>96</Left>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
       <Name>lblCenter</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>Right</Caption>
       <Width>200</Width>
       <Top>232</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Left>96</Left>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
       <Name>lblRight</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>Invisible</Caption>
       <Width>200</Width>
       <Visible>False</Visible>
       <Top>7</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Left>98</Left>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label1</Name>
+      <Name>W3Label1</Name>
     </object>
   </object>
 </Form>]]>
@@ -775,16 +775,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
+.TW3Label, TW3LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
+.TW3Label:disabled, TW3LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }

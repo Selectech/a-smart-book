@@ -1,8 +1,8 @@
 <SMART>
-  <Project version="2" subversion="1">
+  <Project version="2" subversion="0">
     <Name>HttpAndJsonp</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2014-08-14T12:40:00.082</Modified>
+    <Modified>2014-09-23T23:43:13.008</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -30,39 +30,37 @@
         <EmitRTTI>1</EmitRTTI>
         <Devirtualize>1</Devirtualize>
         <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
         <SmartLinking>1</SmartLinking>
         <Verbosity>1</Verbosity>
       </Codegen>
       <ConditionalDefines>
         <HandleExceptions>0</HandleExceptions>
         <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
       </ConditionalDefines>
       <Linker>
         <SourceMap>0</SourceMap>
         <CompressCSS>1</CompressCSS>
-        <GenerateManifest>1</GenerateManifest>
+        <GenerateMobileManifest>1</GenerateMobileManifest>
+        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
         <ExternalCSS>0</ExternalCSS>
         <Theme>iOS.css</Theme>
         <CustomTheme>0</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
       <Output>
-        <JavaScriptFileName></JavaScriptFileName>
         <HtmlFileName>index.html</HtmlFileName>
         <OutputFilePath>www\</OutputFilePath>
       </Output>
-      <Import>
-        <RODLFile></RODLFile>
-        <DataSnapUrl></DataSnapUrl>
-        <DataSnapUnit></DataSnapUnit>
-      </Import>
+      <Import />
       <Execute>
         <ServeManifest>0</ServeManifest>
         <Server>1</Server>
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>0</ExecuteType>
-        <ExecuteableName></ExecuteableName>
-        <ExecuteableParams></ExecuteableParams>
       </Execute>
     </Options>
     <Files>
@@ -113,18 +111,19 @@ end.
       <File type="form">
         <Name>Form1</Name>
         <Created>2012-08-27T18:55:19.000Z</Created>
-        <Modified>2014-08-14T12:39:54.057</Modified>
+        <Modified>2014-09-23T23:43:12.992</Modified>
         <Source>
           <![CDATA[unit Form1;
 
 interface
 
 uses 
-  SmartCL.System, SmartCL.Graphics, SmartCL.Controls, SmartCL.Components, SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders,
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Controls,
+  SmartCL.Components, SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders,
   SmartCL.Application, SmartCL.Inet;
 
 type
-  TForm1=class(TW3form)
+  TForm1 = class(TW3form)
   private
     {$I 'Form1:intf'}
     FHttp: TW3HttpRequest;
@@ -225,13 +224,11 @@ begin
   outResult.Text:=buf;
 end;
 
-end.
-
-]]>
+end.]]>
         </Source>
         <Design>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<Form version="2" subversion="1">
+<Form version="2" subversion="0">
   <Created>2014-08-14T12:39:39.973</Created>
   <Modified>2014-08-14T12:39:39.973</Modified>
   <object type="TW3Form">
@@ -839,16 +836,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
+.TW3Label, TW3LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
+.TW3Label:disabled, TW3LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }

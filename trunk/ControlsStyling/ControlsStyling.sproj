@@ -690,20 +690,20 @@ html, body
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText, TSmartCL.Controls.LabelShadow {
+.TW3Label, TW3LabelText, TW3LabelShadow {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TSmartCL.Controls.LabelShadow {
+.TW3LabelShadow {
   text-shadow: 0px 1px 0px #fff;
 }
 
-.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled, TSmartCL.Controls.LabelShadow:disabled {
+.TW3Label:disabled, TW3LabelText:disabled, TW3LabelShadow:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }

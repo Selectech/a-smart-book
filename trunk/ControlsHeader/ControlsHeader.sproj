@@ -715,16 +715,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
+.TW3Label, TW3LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
+.TW3Label:disabled, TW3LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }

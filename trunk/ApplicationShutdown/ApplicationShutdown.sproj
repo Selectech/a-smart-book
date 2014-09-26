@@ -1,8 +1,8 @@
 <SMART>
-  <Project version="2" subversion="1">
+  <Project version="2" subversion="0">
     <Name>ApplicationShutdown</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2014-08-12T19:01:11.839</Modified>
+    <Modified>2014-09-23T23:17:20.589</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -30,39 +30,37 @@
         <EmitRTTI>1</EmitRTTI>
         <Devirtualize>1</Devirtualize>
         <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
         <SmartLinking>1</SmartLinking>
         <Verbosity>1</Verbosity>
       </Codegen>
       <ConditionalDefines>
         <HandleExceptions>0</HandleExceptions>
         <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
       </ConditionalDefines>
       <Linker>
         <SourceMap>0</SourceMap>
         <CompressCSS>1</CompressCSS>
-        <GenerateManifest>1</GenerateManifest>
+        <GenerateMobileManifest>1</GenerateMobileManifest>
+        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
         <ExternalCSS>0</ExternalCSS>
         <Theme>iOS7.css</Theme>
         <CustomTheme>0</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
       <Output>
-        <JavaScriptFileName></JavaScriptFileName>
         <HtmlFileName>index.html</HtmlFileName>
         <OutputFilePath>www\</OutputFilePath>
       </Output>
-      <Import>
-        <RODLFile></RODLFile>
-        <DataSnapUrl></DataSnapUrl>
-        <DataSnapUnit></DataSnapUnit>
-      </Import>
+      <Import />
       <Execute>
         <ServeManifest>0</ServeManifest>
         <Server>1</Server>
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>0</ExecuteType>
-        <ExecuteableName></ExecuteableName>
-        <ExecuteableParams></ExecuteableParams>
       </Execute>
     </Options>
     <Files>
@@ -129,17 +127,18 @@ end.
       <File type="form">
         <Name>Form1</Name>
         <Created>2012-08-18T11:14:02.000Z</Created>
-        <Modified>2014-08-12T18:48:53.901</Modified>
+        <Modified>2014-09-23T23:17:20.568</Modified>
         <Source>
           <![CDATA[unit Form1;
 
 interface
 
 uses 
-  SmartCL.System, SmartCL.Graphics, SmartCL.Controls, SmartCL.Components, SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders, SmartCL.Application;
+  SmartCL.System, SmartCL.Graphics, SmartCL.Controls, SmartCL.Components,
+  SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders, SmartCL.Application;
 
 type
-  TForm1=class(TW3form)
+  TForm1 = class(TW3form)
   private
     {$I 'Form1:intf'}
   protected
@@ -176,7 +175,7 @@ end.
         </Source>
         <Design>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<Form version="2" subversion="1">
+<Form version="2" subversion="0">
   <Created>2014-08-12T18:48:53.901</Created>
   <Modified>2014-08-12T18:48:53.901</Modified>
   <object type="TW3Form">
@@ -188,14 +187,14 @@ end.
     <BorderRadius>0</BorderRadius>
     <Color>536870911</Color>
     <Name>Form1</Name>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>ApplicationStarting</Caption>
       <Width>200</Width>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label4</Name>
+      <Name>W3Label4</Name>
     </object>
     <object type="TW3EditBox">
       <Value></Value>
@@ -208,15 +207,15 @@ end.
       <Color>536870911</Color>
       <Name>outApplicationStarting</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>InitializeObject</Caption>
       <Width>200</Width>
       <Top>64</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label1</Name>
+      <Name>W3Label1</Name>
     </object>
     <object type="TW3EditBox">
       <Value></Value>
@@ -229,15 +228,15 @@ end.
       <Color>536870911</Color>
       <Name>outInitializeObject</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>FinalizeObject</Caption>
       <Width>200</Width>
       <Top>128</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label2</Name>
+      <Name>W3Label2</Name>
     </object>
     <object type="TW3EditBox">
       <Value></Value>
@@ -250,15 +249,15 @@ end.
       <Color>536870911</Color>
       <Name>outFinalizeObject</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>ApplicationClosing</Caption>
       <Width>200</Width>
       <Top>192</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label3</Name>
+      <Name>W3Label3</Name>
     </object>
     <object type="TW3EditBox">
       <Value></Value>
@@ -271,15 +270,15 @@ end.
       <Color>536870911</Color>
       <Name>outApplicationClosing</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>OnBeforeUnload</Caption>
       <Width>200</Width>
       <Top>256</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label5</Name>
+      <Name>W3Label5</Name>
     </object>
     <object type="TW3EditBox">
       <Value></Value>
@@ -292,15 +291,15 @@ end.
       <Color>536870911</Color>
       <Name>outOnBeforeUnload</Name>
     </object>
-    <object type="TSmartCL.Controls.Label">
+    <object type="TW3Label">
       <Caption>OnUnload</Caption>
       <Width>200</Width>
       <Top>320</Top>
-      <StyleClass>TSmartCL.Controls.Label</StyleClass>
+      <StyleClass>TW3Label</StyleClass>
       <Height>24</Height>
       <BorderRadius>0</BorderRadius>
       <Color>536870911</Color>
-      <Name>SmartCL.Controls.Label6</Name>
+      <Name>W3Label6</Name>
     </object>
     <object type="TW3EditBox">
       <Value></Value>
@@ -823,16 +822,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
+.TW3Label, TW3LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
+.TW3Label:disabled, TW3LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }
