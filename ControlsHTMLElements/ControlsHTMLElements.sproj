@@ -1,8 +1,8 @@
 <SMART>
-  <Project version="2" subversion="1">
+  <Project version="2" subversion="0">
     <Name>ControlsHTMLElements</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2014-08-14T12:24:36.529</Modified>
+    <Modified>2014-09-24T00:17:50.480</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -30,39 +30,37 @@
         <EmitRTTI>1</EmitRTTI>
         <Devirtualize>1</Devirtualize>
         <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
         <SmartLinking>1</SmartLinking>
         <Verbosity>1</Verbosity>
       </Codegen>
       <ConditionalDefines>
         <HandleExceptions>0</HandleExceptions>
         <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
       </ConditionalDefines>
       <Linker>
         <SourceMap>0</SourceMap>
         <CompressCSS>1</CompressCSS>
-        <GenerateManifest>1</GenerateManifest>
+        <GenerateMobileManifest>1</GenerateMobileManifest>
+        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
         <ExternalCSS>0</ExternalCSS>
         <Theme>iOS.css</Theme>
         <CustomTheme>1</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
       <Output>
-        <JavaScriptFileName></JavaScriptFileName>
         <HtmlFileName>index.html</HtmlFileName>
         <OutputFilePath>www\</OutputFilePath>
       </Output>
-      <Import>
-        <RODLFile></RODLFile>
-        <DataSnapUrl></DataSnapUrl>
-        <DataSnapUnit></DataSnapUnit>
-      </Import>
+      <Import />
       <Execute>
         <ServeManifest>0</ServeManifest>
         <Server>1</Server>
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>0</ExecuteType>
-        <ExecuteableName></ExecuteableName>
-        <ExecuteableParams></ExecuteableParams>
       </Execute>
     </Options>
     <Files>
@@ -868,16 +866,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
+.TW3Label, TW3LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
+.TW3Label:disabled, TW3LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }
@@ -1109,7 +1107,7 @@ end.
         </Source>
         <Design>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<Form version="2" subversion="1">
+<Form version="2" subversion="0">
   <Created>2014-08-14T12:24:28.223</Created>
   <Modified>2014-08-14T12:24:28.223</Modified>
   <object type="TW3Form">
@@ -1162,26 +1160,16 @@ end.
       <File type="main">
         <Name>ControlsHTMLElements</Name>
         <Created>2014-02-01T18:45:24.511Z</Created>
-        <Modified>2014-08-14T12:24:28.228</Modified>
+        <Modified>2014-09-24T00:17:50.480</Modified>
         <Source>
-          <![CDATA[uses HTMLElements, Form1;
-
-{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
-uses SmartCL.System;
-{$ENDIF}
-
-{$IFDEF SMART_INTERNAL_AUTO_REFRESH}
-uses SmartCL.AutoRefresh;
-TSmartCL.AutoRefresh.Create.Start;
-{$ENDIF}
-
-var Application: TApplication;
+          <![CDATA[uses
+  HTMLElements, Form1;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
 try
 {$ENDIF}
 
-  Application := TApplication.Create;
+  var Application := TApplication.Create;
   Application.RunApp;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}

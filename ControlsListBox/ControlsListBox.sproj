@@ -1,8 +1,8 @@
 <SMART>
-  <Project version="2" subversion="1">
+  <Project version="2" subversion="0">
     <Name>ControlsListBox</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2014-08-14T12:26:23.817</Modified>
+    <Modified>2014-09-23T23:29:44.840</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -30,61 +30,57 @@
         <EmitRTTI>1</EmitRTTI>
         <Devirtualize>1</Devirtualize>
         <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
         <SmartLinking>1</SmartLinking>
         <Verbosity>1</Verbosity>
       </Codegen>
       <ConditionalDefines>
         <HandleExceptions>0</HandleExceptions>
         <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
       </ConditionalDefines>
       <Linker>
         <SourceMap>0</SourceMap>
         <CompressCSS>1</CompressCSS>
-        <GenerateManifest>1</GenerateManifest>
+        <GenerateMobileManifest>1</GenerateMobileManifest>
+        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
         <ExternalCSS>0</ExternalCSS>
         <Theme>iOS.css</Theme>
         <CustomTheme>0</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
       <Output>
-        <JavaScriptFileName></JavaScriptFileName>
         <HtmlFileName>index.html</HtmlFileName>
         <OutputFilePath>www\</OutputFilePath>
       </Output>
-      <Import>
-        <RODLFile></RODLFile>
-        <DataSnapUrl></DataSnapUrl>
-        <DataSnapUnit></DataSnapUnit>
-      </Import>
+      <Import />
       <Execute>
         <ServeManifest>0</ServeManifest>
         <Server>1</Server>
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>0</ExecuteType>
-        <ExecuteableName></ExecuteableName>
-        <ExecuteableParams></ExecuteableParams>
       </Execute>
     </Options>
     <Files>
       <File type="unit">
         <Name>ControlsListBox</Name>
         <Created>2013-04-11T21:56:37.000Z</Created>
-        <Modified>2014-08-14T12:25:53.150</Modified>
+        <Modified>2014-09-23T23:29:44.840</Modified>
         <Source>
           <![CDATA[unit ControlsListBox;
 
 interface
 
 uses 
-  SmartCL.System, SmartCL.Components, SmartCL.Forms, SmartCL.Application, form1;
+  SmartCL.System, SmartCL.Components, SmartCL.Forms, SmartCL.Application, Form1;
 
 type
   TApplication = class(TW3CustomApplication)
   private
-    { Private methods }
     FForm1: TForm1;
   public
-    { Public methods }
     procedure ApplicationStarting; override;
   end;
 
@@ -868,16 +864,16 @@ html, body
 }
 
 /* ##########################################################################
-   # TSmartCL.Controls.Label
+   # TW3Label
    ########################################################################## */
 
-.TSmartCL.Controls.Label, TSmartCL.Controls.LabelText {
+.TW3Label, TW3LabelText {
   opacity: 1.0;
 	cursor: default;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.TSmartCL.Controls.Label:disabled, TSmartCL.Controls.LabelText:disabled {
+.TW3Label:disabled, TW3LabelText:disabled {
   text-shadow: 0px 1px 0px #fff;
   opacity: 0.5;
 }
@@ -1054,23 +1050,22 @@ ul li:active {
       <File type="form">
         <Name>Form1</Name>
         <Created>2013-04-11T21:56:37.000Z</Created>
-        <Modified>2014-08-14T12:26:09.810</Modified>
+        <Modified>2014-09-23T23:29:32.413</Modified>
         <Source>
           <![CDATA[unit Form1;
 
 interface
 
 uses 
-  SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders, SmartCL.Application,
+  System.Colors, SmartCL.System, SmartCL.Graphics, SmartCL.Components,
+  SmartCL.Forms, SmartCL.Fonts, SmartCL.Borders, SmartCL.Application,
   SmartCL.Controls;
 
 type
-  TForm1=class(TW3form)
+  TForm1 = class(TW3form)
   private
-    { Private methods }
     {$I 'Form1:intf'}
   protected
-    { Protected methods }
     procedure InitializeObject; override;
     procedure FinalizeObject; override;
     procedure StyleTagObject; reintroduce; virtual;
@@ -1081,7 +1076,7 @@ type
 
 implementation
 
-{ TForm1}
+{ TForm1 }
 
 procedure TForm1.InitializeObject;
 begin
@@ -1127,12 +1122,11 @@ begin
   // Custom styling
 end;
  
-end.
-]]>
+end.]]>
         </Source>
         <Design>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<Form version="2" subversion="1">
+<Form version="2" subversion="0">
   <Created>2014-08-14T12:25:53.151</Created>
   <Modified>2014-08-14T12:25:53.151</Modified>
   <object type="TW3Form">
